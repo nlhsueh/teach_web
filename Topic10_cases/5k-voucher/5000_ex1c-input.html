@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!-- 透過 form, 讓大家綁定消費卷; 並印出一些綁定的統計數據 -->
+
+<head>
+    <!-- Required meta tags -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+
+        var rate_e_voucher = 0.7;   // 領取電子五倍劵的比例
+        var rate_p_voucher = 0.3;   // 領取紙本五倍劵的比例
+
+        var e_spend_percent = 0.9;  // 電子五倍劵花費比率
+        var p_spend_percent = 0.8;  // 紙本五倍劵花費比率
+
+        function show_predicted_cost() {
+            var population = $("#population").val();
+            var rate_getVoucher = $("#rate_getVoucher").val();  // 領劵的比率
+            var voucher = $("#voucher").val();
+            var predicted_cost = population * rate_getVoucher * voucher;
+            predicted_cost = predicted_cost;
+
+            console.log(population + " " + rate_e_voucher + " " + voucher);
+
+            $("#predicted_cost").val(predicted_cost);
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <!-- 做一個介面，讓經濟部長算算看，這個政策可以刺激多少消費 -->
+
+    <h1>五倍劵刺激消費算算看</h1>
+    <p>五倍劵真的可以刺激消費嗎？讓我們算算看！</p>
+
+    <form>
+        <label for="population">全台人口</label>
+        <input type="text" id="population" value="23000000">
+
+        <label for=" rate_getVoucher">預估領取比率</label>
+        <input type="text" id="rate_getVoucher" value="0.9"><br>
+
+        <label for="voucher">五倍劵金額</label>
+        <input type="text" value="5000" id="voucher"><br>
+
+        <label for="">預估花費預算</label>
+        <input type="text" id="predicted_cost">
+
+        <button type="button" onclick="show_predicted_cost()">算算看政府花多少預算</button>
+    </form>
+
+
+</body>

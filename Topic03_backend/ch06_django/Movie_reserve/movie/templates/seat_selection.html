@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seat Selection</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .seat-container {
+            display: grid;
+            grid-template-columns: repeat(10, 50px);
+            grid-gap: 5px;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .seat {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+            background-color: #e0e0e0;
+            transition: background-color 0.3s ease;
+        }
+
+        .seat-booked {
+            background-color: #393838;
+            cursor: not-allowed;
+        }
+
+        .screen {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 10%;
+            background-color: #bdc3c7; /* 較淺的灰色 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <button onclick="goBack()">回到上一頁</button>
+
+        <h1>{{ movie.title }}: {{ movie.release_date|date:"F j, Y" }}</h1>
+        <h2>選擇座位</h2>
+
+        <form method="post" action="{% url 'confirm_seat' %}" id="seatForm">
+            {% csrf_token %}
+            <input type="hidden" name="selected_seats" id="selectedSeats" value="">
+            <div class="seat-container">
+                <div class="screen"></div>
+                {% for row in rows %}
+                    {% for column in columns %}
+                        {% with seat_id=row|stringformat:"s"|add:"-"|add:column|stringformat:"s" %}
+                            {% if seat_id in booked_seat_ids %}
+                                {% if seat_id in selected_seat_ids %}
+                                    <div class="seat seat-booked selected" id="{{ seat_id }}">X</div>
+                                {% else %}
+                                    <div class="seat seat-booked" id="{{ seat_id }}">X</div>
+                                {% endif %}
+                            {% else %}
+                            <button type="button" name="selected_seat" id="{{ row }}-{{ column }}" class="seat" 
+                                onclick="reserveSeat(this)">O</button>
+                            {% endif %}
+                        {% endwith %}
+                    {% endfor %}
+                {% endfor %}
+            </div>            
+            <button type="button" onclick="submitForm()">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        var selectedSeats = [];
+    
+        function reserveSeat(seatButton) {
+            var seatId = seatButton.id;  // 使用 id 來獲取座位 ID
+            console.log('Clicked Seat ID:', seatId);
+            if (seatButton.classList.contains('seat-booked')) {
+                seatButton.textContent = 'O';
+                seatButton.classList.remove('seat-booked');
+                var index = selectedSeats.indexOf(seatId);
+                if (index !== -1) {
+                    selectedSeats.splice(index, 1);
+                }
+            } else {
+                seatButton.textContent = 'X';
+                seatButton.classList.add('seat-booked');
+                selectedSeats.push(seatId);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // 從 URL 中解析時間信息
+            var urlParams = new URLSearchParams(window.location.search);
+            var time = urlParams.get('time');
+
+            // 根據電影 ID 和時間檢索所選座位
+            var movieId = '{{ movie.id }}';  // 請確保在模板中能夠獲取電影的 ID
+            var selectedSeatsFromLocalStorage = localStorage.getItem('selectedSeats-' + movieId + '-' + time);
+
+            if (selectedSeatsFromLocalStorage) {
+                var selectedSeatIds = selectedSeatsFromLocalStorage.split(',');
+                selectedSeatIds.forEach(function (seatId) {
+                    var seat = document.getElementById(seatId);
+                    if (seat) {
+                        seat.textContent = 'X';
+                        seat.classList.add('seat-booked');
+                        seat.onclick = function () { return false; };
+                    }
+                });
+            }
+        });
+
+        function submitForm() {
+        var selectedSeats = document.querySelectorAll('.seat-booked');
+        var selectedSeatValues = Array.from(selectedSeats).map(function (seat) {
+            return seat.getAttribute('id');  // 使用 id 來獲取座位 ID
+        });
+
+        // 在提交表單前在控制台輸出所選座位的 ID
+        console.log('Selected Seat IDs:', selectedSeatValues);
+
+        // 從 URL 中解析時間信息
+        var urlParams = new URLSearchParams(window.location.search);
+        var time = urlParams.get('time');
+
+        // 根據電影 ID 和時間存儲所選座位到 Local Storage 中
+        var movieId = '{{ movie.id }}';  // 請確保在模板中能夠獲取電影的 ID
+        localStorage.setItem('selectedSeats-' + movieId + '-' + time, selectedSeatValues.join(','));
+
+        console.log('LocalStorage updated:', localStorage.getItem('selectedSeats-' + movieId + '-' + time));
+
+        // 重整頁面
+        // location.reload();  // 不再重整頁面
+
+        // 重定向到 confirm_seat 並顯示感謝購買的消息
+        window.location.href = '{% url "confirm_seat" %}';
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    
+    </script>
+
+</body>
+
+</html>

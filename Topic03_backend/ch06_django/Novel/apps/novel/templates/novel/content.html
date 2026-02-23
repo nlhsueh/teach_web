@@ -1,0 +1,93 @@
+{% extends "template.html" %}
+
+{% block title %}{{ novel.title }}{% endblock %}
+
+{% block style %}
+
+<style>
+    #direct.show {
+        position: sticky;
+        bottom: -10px;
+    }
+
+    #scrollup {
+        width: 30px;
+        height: 30px;
+        padding: 5px;
+        position: fixed;
+        right: 20px;
+        bottom: 80px;
+        border-radius: 50%;
+        z-index: 2000;
+        cursor: pointer;
+    }
+</style>
+
+{% endblock %}
+
+{% block content %}
+<div id="scrollup">
+    <svg xmlns="http://www.w3.org/2000/svg" height="16" width="12" fill="currentColor"; viewBox="0 0 384 512">
+        <path
+            d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" />
+    </svg>
+</div>
+
+<section class="content container section">
+    <div class="d-flex justify-content-center">{{ title }}</div>
+    <hr>
+    <div id="acontent" class="acontent" style="height: auto !important;">
+        {{ content|linebreaks }}
+    </div>
+</section>
+
+<section id="direct" class="section container">
+    <div class="toolbox mt-2 d-flex gap-2">
+        {% if previous_chapter %}
+        <a class="btn btn-secondary w-100 mb-2 rounded-0" href="/novel/{{ novel_id }}/{{ previous_chapter }}">
+            上一頁
+        </a>
+        {% else %}
+        <a class="btn btn-secondary w-100 mb-2 rounded-0" href="/novel/{{ novel_id }}/catalog">
+            上一頁
+        </a>
+        {% endif %}
+
+        <a class="btn btn-secondary w-100 mb-2 rounded-0" href="/novel/{{ novel_id }}">
+            封面
+        </a>
+
+        <a class="btn btn-secondary w-100 mb-2 rounded-0" href="/novel/{{ novel_id }}/catalog">
+            目錄
+        </a>
+
+        {% if next_chapter %}
+        <a class="btn btn-secondary w-100 mb-2 rounded-0" href="/novel/{{ novel_id }}/{{ next_chapter }}">
+            下一頁
+        </a>
+        {% else %}
+        <a class="btn btn-secondary w-100 mb-2 rounded-0" href="/novel/{{ novel_id }}/catalog">
+            下一頁
+        </a>
+        {% endif %}
+    </div>
+</section>
+
+<script>
+    document.getElementById('scrollup').addEventListener('click', (ev) => {
+        ev.stopImmediatePropagation();
+
+        window.scrollTo(0, 0);
+    });
+
+    document.body.addEventListener('click', () => {
+        let direct = document.getElementById('direct');
+        if (direct.classList.contains("show")) {
+            direct.classList.remove("show")
+        } else {
+            direct.classList.add("show")
+        }
+    });
+</script>
+
+{% endblock %}

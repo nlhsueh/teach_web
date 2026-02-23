@@ -1,0 +1,82 @@
+
+::object:: In JS, 如何在 JavaScript 中創建一個空物件？
+{=\{\}
+~[]
+~new Object
+~new Object()}
+
+::遞迴:: 如何在 JavaScript 中創建一個遞歸函數來計算階乘？
+{=function factorial(n) { return n <\= 1 ? 1 : n * factorial(n - 1); }
+~function factorial(n) { for (let i = n-1; i > 0; i--) { n *\= i; } return n; }
+~function factorial(n) { return n * factorial(n); }
+~function factorial(n) { return n / factorial(n - 1); }}
+
+::map:: In JS, 以下哪一個選項正確地使用了陣列的 map 方法？
+{=let result \= array.map(x \=> x * 2);
+~let result \= array.map(x, x * 2);
+~let result \= array.map(x \=> {x * 2});
+~let result \= array.map(function(x) x * 2);}
+
+::template:: In JS, 以下哪個選項展示了如何使用模板字串（Template Strings）？
+{=`Hello, ${name}!`
+~'Hello, ${name}!'
+~"Hello, ${name}!"
+~`Hello, {name}!`}
+
+::callback:: In JS, 以下哪個選項展示了如何在陣列方法中使用 callback function？::
+{=let result \= array.map(x \=> x * 2);
+~let result \= array.map(x, x * 2);
+~let result \= array.map(x \=> {x * 2});
+~let result \= array.map(function(x) x * 2);}
+
+::forEach:: In JS, 以下哪個選項展示了正確使用 `forEach` 方法來輸出陣列元素？
+{=array.forEach(element \=> console.log(element));
+~array.forEach(element) \=> console.log(element);
+~array.forEach(element) { console.log(element); };
+~array.forEach(element, console.log(element));}
+
+
+
+::forEach sum:: 以下哪個選項展示了如何使用 `forEach` 方法來計算陣列中所有數字的總和？
+{=let sum \= 0; array.forEach(num => { sum +\= num; });
+~let sum \= array.forEach(num => { sum +\= num; });
+~let sum \= 0; array.forEach(num => { return sum +\= num; });
+~let sum \= array.reduce((acc, num) => { acc +\= num; }, 0);}
+
+
+::array find:: 以下哪個選項展示了如何使用 `array.find()` 找到陣列中第一個大於 10 的元素？
+{=let result \= array.find(element \=> element > 10);
+~let result \= array.filter(element \=> element > 10);
+~let result \= array.find(element > 10);
+~let result \= array.map(element \=> element > 10);}
+
+
+::array sort:: 以下哪個選項展示了 `array.sort()` 方法的正確用法？
+{=array.sort((a, b) \=> a - b);
+~array.sort((a, b) \=> a > b);
+~array.sort((a, b) \=> a < b);
+~array.sort((a, b) \=> a \=\= b);}
+
+
+::array sort:: 以下哪個選項展示了如何使用 `array.sort()` 方法將陣列中的字符串按長度排序？
+{=array.sort((a, b) \=> a.length - b.length);
+~array.sort((a, b) \=> a.length > b.length);
+~array.sort((a, b) \=> b.length - a.length);
+~array.sort((a, b) \=> a.length < b.length);}
+
+
+
+::sort:: 如何使用 `sort` 方法將學生陣列按成績升序排序？
+{=students.sort((a, b) \=> a.grade - b.grade);
+~students.sort((a, b) \=> a.grade > b.grade);
+~students.sort((a, b) \=> b.grade - a.grade);
+~students.sort((a, b) \=> a.grade < b.grade);}
+
+
+// 操作 DOM 元素
+::inner html:: 如何向 DOM 中的某個元素插入新的 HTML 內容？::
+{=element.innerHTML = '<p>New content</p>';
+~element.append('<p>New content</p>');
+~element.addContent('<p>New content</p>');
+~element.insert('<p>New content</p>');}
+

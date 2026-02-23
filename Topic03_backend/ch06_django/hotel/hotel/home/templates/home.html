@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{%  block start %}
+
+<!-- jumbotron and nav -->
+<section class="colorful jumbotron mb-0" role="banner">
+    <nav class="navbar navbar-expand-lg justify-content-between navbar-dark" role="navigation">
+        <div class="navbar-brand">
+            <a href="index.html">飯店惡搞
+                <em>.</em>
+            </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+    <div class="container hotels-container">
+        <div class="row mt-2 justify-content-between">
+            <div class="col-md-8 text-white align-self-center mb-2 p-4">
+                <h1>育成幫飯店訂購網站</h1>
+                <span class=""> 探索夢幻之旅，預訂難忘住宿體驗！無論您前往何處，我們提供多樣化的住宿選擇，滿足各種需求和預算。在我們的酒店預訂平台上，輕鬆尋找並預訂您理想的住宿，為您的旅程增添難忘的回憶。美好的旅程從這裡開始，趕快預訂您的下一次冒險之旅吧！
+                </span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="search-container mb-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="row my-3">
+                    
+                   
+
+                    
+                </div>
+                <div class="row mt-2 justify-content-between">
+                    <div class="filter-card">
+                        <h5>您的住宿時間</h5>
+                        <form action="#">
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <label for="mintopay">入住時間</label>
+                                    <p>
+                                        <input type="date" name="checkin" id="checkin" class="form-control">
+                                    </p>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="maxtopay">退房時間</label>
+                                    <p>
+                                        <input type="date" name="checkout" id="checkout" class="form-control">
+                                    </p>
+                                </div>
+                            </div>
+                           
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <input type="submit" class="btn btn-primary btn-block" value="搜尋">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div class="col-lg-9  px-4 mb-5">
+                <form>
+                <div class="row mt-3">
+                    <div class="col-md-4">
+                    <div class="form-inline">
+                        <label class="" for="exampleFormControlSelect1">排序方式</label>
+                        <select class="form-control" name="sort_by" id="exampleFormControlSelect1">
+                            <option value="">推薦度</option>
+                            <option {% if sort_by == 'ASC' %} selected {%endif %} value="ASC">價格由低到高</option>
+                            <option {% if sort_by == 'DSC' %} selected {%endif %} value="DSC">價格由高到低</option>
+                           
+                        </select>
+                    </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="form-inline">
+                            <label class="" for="exampleFormControlSelect1">搜尋</label>
+                            <input name="search" class="form-control" value="{{search}}" placeholder="搜尋"> 
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-inline">
+                           <label class="" for="exampleFormControlSelect1">附加設施及服務</label>
+                            <select name="amenities" class="form-control" multiple>
+                            <option value="">選擇</option>
+                            {% for amenities_obj in amenities_objs %}
+                            <option {% if amenities_obj.amenity_name in amenities  %} selected {%endif%}value="{{amenities_obj.amenity_name}}">{{amenities_obj.amenity_name}}</option>
+                                {% endfor %}
+                        </select>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                     
+                            <button style="margin-top: 30px;" type="submit" class="btn btn-success">搜尋</button>
+                        </div>
+                </div>
+                </form>
+                
+                {% for hotels_obj in hotels_objs %}
+                <div class="row search-card-result">
+                
+
+                    
+                    <div class="col-md-3">
+                       
+                    <a href="/hotel-detail/{{hotels_obj.uid}}">
+                        <img class="img-fluid" src="/media/{{hotels_obj.images.first.images}}" alt="Card image cap">
+                    
+                    </a></div>
+               
+                    <div class="col-md-5">
+                        <h5>{{hotels_obj.hotel_name}}</h5>
+                        
+                        <p>
+                            {{hotels_obj.description|truncatechars:150}}
+                        </p>
+                        <p>
+                            {%for amenitie in hotels_obj.amenities.all %}
+                            <b>{{amenitie.amenity_name}}</b>,
+                            {% endfor %}
+                        </p>
+                        
+                    </div>
+                    <div class="col-md-2 border-left text-center more-offers">
+                        
+                        <p>育成幫訂購價格</p>
+                        <p>${{hotels_obj.hotel_price}}</p>
+                        <p>房間數量</p>
+                        <p>{{hotels_obj.room_count}}</p>
+                    </div>
+                    <div class="col-md-2 border-left text-center more-offers">
+                       
+                        <div class="btn btn-success">查看優惠</div>
+                    </div>
+                </div>
+                {% endfor %}
+               
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        let a = [
+            [98, 95, 98],
+            [89, 22, 99],
+            [70, 55, 72]
+        ];
+        console.log("original:", a);
+
+        a = a.flat();
+        console.log("after flating: ", a);
+
+        a = a.slice(2, 7);
+        console.log("After slicing:", a);
+
+        a.push(100);
+        console.log("After push 100:", a);
+
+        x = a.shift();
+        console.log("After shift:", a, "shifted:", x);
+
+        a.unshift(200);
+        console.log("After unshift 200:", a);
+
+        x = a.pop();
+        console.log("After pop:", a, "popped:", x);
+
+        j = a.join("#");
+        console.log("After join:", j);
+
+        s = a.toString();
+        console.log("After toString:", s);
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

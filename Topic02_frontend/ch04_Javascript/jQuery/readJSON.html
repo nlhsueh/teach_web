@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        padding: 5px;
+    }
+</style>
+
+<body>
+
+    <h2>The XMLHttpRequest Object- Read JSON</h2>
+
+    <button type="button" onclick="loadDoc()">Get my CD collection</button>
+    <br><br>
+    <table id="demo"></table>
+
+    <script>
+        function loadDoc() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {
+                myFunction (this);
+            }
+            xhttp.open("GET", "cd_catalog.json");
+            xhttp.send();
+        }
+        function myFunction(x) {
+
+            const jsonDoc = JSON.parse(x.responseText);
+            const cd_array = jsonDoc.CD;
+            let table = "<tr><th> Artist </th><th> Title </th></tr>";
+            for (let cd of cd_array) {
+                table += "<tr><td>" +
+                    cd.ARTIST +
+                    "</td><td>" +
+                    cd.TITLE + 
+                    "</td></tr>";
+            }
+            document.getElementById("demo").innerHTML = table;
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<head>
+    <script>
+        function findByCondition(value, index, array) {
+            r = [];
+            for (x of array) {
+                if (x > 55) {
+                    r.push(x);
+                }
+            }
+            return r;
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <h2>JavaScript Functions</h2>
+
+    <p>The result is </p>
+    <p id="demo"></p>
+
+    <script>
+        arr = [11, 22, 99, 55, 34, 99, 55, 77]
+
+        r = arr.find(condition)
+        function condition(value) {
+            return value > 55
+        }
+        // console.log(r)
+
+        function findByCondition(array) {
+            r = [];
+            for (x of array)
+                if (x > 55)
+                    r.push(x);
+            return r;
+        }
+
+        r = findByCondition(arr)
+        console.log('x')
+        console.log(r)
+        console.log('y')
+
+    </script>
+    <script>
+        names = ['Nick', 'Jie', 'Albert'];
+        heights = [172, 177, 176];
+        weights = [67, 65, 72];
+
+        people = [
+            ['Nick', 172, 67],
+            ['Jie', 177, 65],
+            ['Albert', 176, 72]
+        ]
+
+        nick = { name: 'Nick', height: 172, weight: 67 }
+        jie = { name: 'Jie', height: 177, weight: 65 }
+        albert = { name: 'Albert', height: 176, weight: 72 }
+
+
+    </script>
+</body>
+
+</html>

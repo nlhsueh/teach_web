@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* 橫幅的設定 */
+        .banner {
+            width: 100%;
+            margin: 0px;
+            background-color: antiquewhite;
+        }
+
+        .banner .title {
+            font-size: 50px;
+            font-weight: 800;
+            text-align: center;
+            padding: 30px 0px 5px 0px;
+            color: blueviolet;
+        }
+
+        .banner h2 {
+            text-align: center;
+            font-size: 20px;
+            color: green;
+            padding: 2px 0px 20px 0px;
+        }
+
+        /* 搜尋框的設定 */
+        .search {
+            width: 100%;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search input {
+            background-color: white;
+            background-image: url('search.png');
+            background-position: 3px 5px;
+            background-repeat: no-repeat;
+            padding: 10px 0px 10px 33px;
+            border: 2px solid #ccc;
+            font-size: 16px;
+            border-radius: 10px;
+        }
+
+        .search input:focus {
+            border: 5px solid #ccc;
+        }
+
+        /* 子標題的設定 */
+        h2.section-title {
+            text-align: center;
+        }
+
+        /* 重點商品用 showcase 展示框來呈現 */
+        .showcase {
+            width: 800px;
+            margin: auto;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* 在 showcase 內的 book 設定 */
+        .book {
+            width: 200px;
+            margin: 3px;
+            display: block;
+        }
+
+        .book .book-title {
+            text-align: left;
+            font-size: large;
+        }
+
+        .showcase .book-author {
+            font-size: x-small;
+            text-decoration: underline;
+            color: rgba(137, 43, 226, 0.878);
+        }
+
+        .showcase .book-brief {
+            font-size: xx-small;
+            color: rgb(83, 83, 7);
+        }
+
+        .booklist {
+            width: 1000px;
+            height: 400px;
+            margin: auto;
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: flex-start;
+            align-content: center;
+            overflow: hidden;
+        }
+
+        /* 在列表內書籍的設定 */
+        .book-item {
+            width: 480px;
+            display: inline;
+            margin: 2px;
+            padding: 5px;
+        }
+
+        .booklist .book-title {
+            color: blue;
+            display: inline;
+        }
+
+        .booklist .book-title::after {
+            content: ': ';
+        }
+
+        .booklist .book-brief {
+            display: inline;
+        }
+
+        /* 註腳地方的設定 */
+        .footnote {
+            background-color: #ccc;
+            padding: 30px;
+        }
+
+        .footnote p {
+            color: whitesmoke;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+        <div class="title">Nick Book Store</div>
+        <h2>閱讀豐富我們的生活</h2>
+    </div>
+
+    <div class="search">
+        <form action="">
+            <input type="text" id="search_book" placeholder="搜尋你想要看的書" size="80">
+        </form>
+    </div>
+
+    <h2 class="section-title">新書上架</h2>
+
+    <div class="showcase">
+
+        <div class="book">
+            <img src="https://picsum.photos/id/1020/200/200" alt="">
+            <book-title>大雄的故事</book-title>
+            <div class="book-author">藤子不二雄</div>
+            <div class="book-brief">述說野比大雄遇到多拉a夢，他傳奇古怪幸運又愛哭的一生。</div>
+        </div>
+        <div class="book">
+            <img src="https://picsum.photos/id/598/200/200" alt="">
+            <p>我是航海王</p>
+        </div>
+        <div class="book">
+            <img src="https://picsum.photos/id/1076/200/200" alt="">
+            <p>台灣建設之美</p>
+        </div>
+        <div class="book">
+            <img src="https://picsum.photos/id/1060/200/200" alt="">
+            <p>漫步在咖啡</p>
+        </div>
+        <div class="book">
+            <img src="https://picsum.photos/id/1061/200/200" alt="">
+            <p>美麗的沙灘</p>
+        </div>
+        <div class="book">
+            <img src="https://picsum.photos/id/1040/200/200" alt="">
+            <p>歐洲城堡十日遊</p>
+        </div>
+    </div>
+    </div>
+
+    <h2 class="section-title">好書推薦</h2>
+
+    <div class="booklist">
+        <div class="book-item">
+            <div class="book-title">鯨吞億萬</div>
+            <div class="book-brief">一個來自馬來西亞檳城的年輕華人，
+                如何用無數空殼公司，騙過金融界的頂尖高手？
+                如何一步步買通政要，設局掏空國家？
+                為什麼買下EMI? 為什麼要拍《華爾街之狼》？</div>
+        </div>
+        <div class="book-item">
+            <div class="book-title">原子習慣</div>
+            <div class="book-brief">細微改變帶來巨大成就的實證法則。</div>
+        </div>
+        <div class="book-item">
+            <img src="https://d189djjbmcrkk.cloudfront.net/tinymce/FJ5IXFVtpMLDZSmS5M5Ru6YqYyq2XyWh06u5jJTN.jpeg" alt=""
+                style="float:left; margin-right:5px" width="50px">
+            <div class="book-title">馬斯克傳</div>
+            <div class="book-brief">
+                馬斯克唯一不設限、全公開傳記權威傳記作家艾薩克森重磅力作兩年深度跟訪，解密全世界最令人好奇，也最具爭議性的創新者—是狂人還是造勢天才？是破壞者還是創新者？是混蛋還是英雄？想要了解最真實的馬斯克，只能透過這本書！
+            </div>
+        </div>
+        <div class="book-item">
+            <div class="book-title">好好問ChatGPT</div>
+            <div class="book-brief">問對問題，精確提示，讓生成式AI幫你構思工作新點子、規畫美好生活。</div>
+        </div>
+        <div class="book-item">
+            <div class="book-title">愈挫愈勇</div>
+            <div class="book-brief">
+                2019年7月，「日本經營之聖」稻盛和夫正式宣佈卸下盛和塾職務。於此同時，讓我們重新回顧稻盛先生親筆寫下的自傳由敗者轉變為熱血經營者，稻盛和夫在本書中娓娓道來他的人生體悟。</div>
+        </div>
+        <div class="book-item">
+            <div class="book-title">百年早餐史</div>
+            <div class="book-brief">從吃早餐的小歷史，到飲食文化塑造現代文明的大歷史
+                就讓世界甦醒的味道──早餐！縈繞百年的文化美味，喚醒精氣神，滿足文化之欲
+                法國聖迪耶國際地理節獎、2008年聖德尼獎得主克里斯穹‧葛塔魯提醒我們：每天吃的早餐，早已累積了百年各國文化精萃！</div>
+        </div>
+
+        <div class="book-item">
+            <div class="book-title">我們如何守住台灣</div>
+            <div class="book-brief">如果有一天中共發動對台戰爭，
+                如何將家人傷亡的危害降至最低？
+                如何讓事業承受的損失減至最小？
+                我們該怎麼做，
+                讓這一天，永遠不發生？</div>
+        </div>
+        <div class="book-item">
+            <div class="book-title">箱子</div>
+            <div class="book-brief">瑞典犯罪小說第一名卡蜜拉‧拉貝格- 遊樂園裡
+                一個被劍刺穿的箱子，
+                裝著一具女屍體。
+                是設計好的謀殺，還是失誤的魔術？
+                難倒我們的警探了</div>
+        </div>
+        <div class="book-item">
+            <div class="book-title">天職地圖</div>
+            <div class="book-brief">日本「強項大師」獨家設計，直達成功的生涯探索遊戲！不用是天選之人，
+                也能有理想人生！</div>
+        </div>
+    </div>
+
+    <div class="footnote">
+        <p>@Copyright: N.L. Hsueh; 2000-2023</p>
+    </div>
+</body>
+
+</html>

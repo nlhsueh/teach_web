@@ -1,0 +1,111 @@
+
+::function:: JavaScript 中定義 function 的關鍵字是什麼？
+{=function
+~def
+~method
+~func}
+
+::push:: In JS, 以下哪個方法可以用來在陣列的末尾添加一個元素？
+{=push()
+~pop()
+~shift()
+~unshift()}
+
+::join:: In JS, 使用哪個方法可以將陣列轉換為字串？
+{=join()
+~toString()
+~concat()
+~split()}
+
+::includes:: In JS, 以下哪個方法可以用來檢查陣列中是否包含某個特定的值？
+{=includes
+~has
+~contains
+~indexOf}
+
+::length:: In JS, s 為一字串，以下哪個方法可以用來計算字串的長度？
+{=s.length
+~s.size
+~s.size()
+~len(s)
+~s.length()}
+
+::toUpperCase:: In JS, 以下哪個方法可以用來將字串轉換為大寫？
+{=toUpperCase()
+~toUpper()
+~uppercase()
+~toCaps()}
+
+::split:: In JS, 以下哪個方法可以用來將字串拆分為陣列？
+{=split
+~slice
+~splice
+~explode}
+
+::首字母大寫:: In JS, 如何將字串的首字母大寫？
+{=str.charAt(0).toUpperCase() + str.slice(1);
+~str[0].toUpperCase() + str.slice(0);
+~str.substring(0).toUpperCase() + str.substring(1);
+~str.capitalize()}
+
+::reverse:: In JS, 如何反轉一個字串？
+{=str.split('').reverse().join('');
+~str.split(' ').reverse().join(' ');
+~Array.from(str).reverse().join('');
+~str.split('').reverse().toString()}
+
+
+::property:: 如何為 JavaScript 物件添加一個新屬性？
+{=obj.age \= 20;
+~obj.age: 20;
+~obj.addProp("age", 20);
+~obj["age", 20];}
+
+::keys:: In JS, 以下哪個方法可以列出物件的所有屬性名稱？
+{=Object.keys(obj)
+~Object.getProperties(obj)
+~Object.values(obj)
+~Object.list(obj)}
+
+::check attr:: In JS, 如何檢查物件中是否存在某個屬性？
+{="prop" in obj
+~obj.has("prop")
+~obj.includes("prop")
+~obj.contains("prop")}
+
+::for each:: In JS, `forEach` 方法可以應用於哪種類型的數據結構？
+{=陣列
+~對象
+~字串
+~Boolean}
+
+::forEach:: In JS, 在 `forEach` 的 callback function 中，第二個參數表示什麼？
+{=當前元素的索引
+~當前元素的值
+~原陣列
+~當前元素的鍵}
+
+::array find:: `array.find()` 方法的作用是什麼？
+{=返回陣列中符合提供的測試函數的第一個元素
+~返回陣列中所有符合測試函數的元素
+~返回陣列中第一個元素
+~返回陣列的長度}
+
+::array attr:: 以下哪個程式碼可以訪問陣列中第一個物件的某個屬性？
+{=student[0].grade
+~student.grade[0]
+~student.grade
+~student[0, 'grade']}
+
+::DOM:: 如何通過 ID 獲取 DOM 元素？
+{=document.getElementById('elementId');
+~document.getElement('elementId');
+~document.querySelector('elementId');
+~document.selectById('elementId');}
+
+
+::Vue component:: Vue 中的 component 是用來做什麼的？
+{=封裝可重用的 UI 元件
+~管理數據和狀態
+~定義路由和導航
+~處理 HTTP 請求}

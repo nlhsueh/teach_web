@@ -1,0 +1,70 @@
+::img:: [plain] django 中儲存圖片的欄位型態為 {
+~ [plain] Photo
+= [plain] ImageField
+~ [plain] Image
+~ [plain] BinaryField
+}
+
+::ListView:: [plain] django 中如果我們要呈現一個資料的所有實體，可以用哪個物件 {
+= [plain] ListView
+~ [plain] CollectionView
+~ [plain] DictView
+~ [plain] ObjectView
+}
+
+::DetailView:: [plain] django 中，如果要呈現單一資料，可以採用哪個物件？ {
+~ [plain] OneView
+~ [plain] SingleView
+~ [plain] ObjectView
+= [plain] DetailView
+}
+
+::modelform:: [plain] 關於 ModelForm, 以下何者錯誤 {
+~ [plain] 繼承自 form.ModelForm
+= [plain] 每個 Model 都必須設計一個 ModelForm 才能輸入資料
+~ [plain] 用來設定一個資料 Model 在輸入表單時的設計
+~ [plain] 可以 class Meta 來設定個欄位要呈現的標題
+}
+
+::POST:: [plain] 關於 request method 為 POST, 以下何者為錯 {
+= [plain] POST 表示資料要公佈在網站上
+~ [plain] POST 表示資料要寫入儲存
+~ [plain] PersonModelForm(request.POST) 表示依據表單填寫的內容建立一個 PersonModelForm
+~ [plain] 在 html <form> 的標籤中，用 method\='POST' 來設定
+}
+
+::formAs:: [plain] ModelForm 中，有一些方法可以輸出 html 的介面，以下何者不是 {
+~ [plain] f.as_ul()
+~ [plain] f.as_p()
+~ [plain] f.as_table()
+= [plain] f.as_view()
+}
+
+::authPackage:: [plain] django 提供哪一個套件管理使用者帳號密碼？ {
+~ [plain] django.account.user
+= [plain] django.contrib.auth
+~ [plain] django.password
+~ [plain] django.network.user
+}
+
+::auth:: [plain] 以下何者指令可以判斷使用者是否通過登入驗證 {
+= [plain] request.user.is_authenticated
+~ [plain] request.user.is_valid
+~ [plain] request.user.is_pass
+~ [plain] is_pass(user)
+}
+
+::loginRequired:: [plain] view 的方法前，加上 @login_required 的作用為何？ {
+~ [plain] 檢查是否已登入，若無則出現警語
+~ [plain] 檢查是否為管理者帳號，若無要求重新登入
+~ [plain] 檢查是否已登入，若無則拋出例外系統中斷
+= [plain] 檢查是否已登入，若無則會先導向登入頁
+}
+
+::updateform:: [plain] f \= PersonModelForm(request.POST, instance\=obj)較可能為何 {
+~ [plain] 建立一個準備新增資料的表單
+~ [plain] 建立一個準備刪除資料的表單
+~ [plain] 建立一個準備查詢資料的表單
+= [plain] 建立一個準備更新資料的表單
+}
+

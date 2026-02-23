@@ -1,0 +1,79 @@
+
+::DOM:: What is the correct JavaScript syntax to change the content of the HTML element below? {
+~ [plain] <p id\="demo">This is a demonstration.</p>
+~ [plain] document.getElement("p").innerHTML \= "Hello World!";
+~ [plain] #demo.innerHTML \= "Hello World!";
+~ [plain] document.getElementByName("p").innerHTML \= "Hello World!";
+= [plain] document.getElementById("demo").innerHTML \= "Hello World!";
+}
+
+
+
+
+::js:: Where is the correct place to insert a JavaScript? {
+~ [plain] The <head> section
+= [plain] Both the <head> section and the <body> section are correct
+~ [plain] The <body> section
+}
+
+
+
+
+::external:: What is the correct syntax for referring to an external script called "xxx.js"? {
+= [plain] <script src\="xxx.js">
+~ [plain] <script name\="xxx.js">
+~ [plain] <script href\="xxx.js">
+}
+
+
+
+::function:: How do you create a function in JavaScript? {
+= [plain] function myFunction()
+~ [plain] function:myFunction()
+~ [plain] function \= myFunction()
+}
+
+
+
+::if:: How to write an IF statement in JavaScript? {
+~ [plain] if i \= 5 then
+= [plain] if (i \=\= 5)
+~ [plain] if i \= 5
+~ [plain] if i \=\= 5 then
+}
+
+
+
+::not equal:: How to write an IF statement for executing some code if "i" is NOT equal to 5? {
+~ [plain] if (i <> 5)
+= [plain] if (i !\= 5)
+~ [plain] if i \=! 5 then
+~ [plain] if i <> 5
+}
+
+
+
+::comment:: How can you add a comment in a JavaScript? {
+= [plain] //This is a comment
+~ [plain] 'This is a comment
+~ [plain] <!--This is a comment-->
+}
+
+
+
+::aray:: What is the correct way to write a JavaScript array? {
+~ [plain] var colors \= "red", "green", "blue"
+~ [plain] var colors \= (1:"red", 2:"green", 3:"blue")
+= [plain] var colors \= ["red", "green", "blue"]
+~ [plain] var colors \= 1 \= ("red"), 2 \= ("green"), 3 \= ("blue")
+}
+
+
+
+
+::onclick:: Which event occurs when the user clicks on an HTML element? {
+~ onmouseover
+~ onmouseclick
+= onclick
+~ onchange
+}

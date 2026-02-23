@@ -1,0 +1,97 @@
+
+
+::mvt:: [plain] django 的軟體架構為何？ {
+~ [plain] java, python, javascript
+= [plain] model, view, template
+~ [plain] model, view , control
+~ [plain] client, server, middleware
+}
+
+::startapp:: [plain] django 建立一個 app 模組的指令為何？ {
+= [plain] python manage.py startapp module_name
+~ [plain] java createapp module_name
+~ [plain] python startapp module_name
+~ [plain] django startapp module_name
+}
+
+::IntegerField:: [plain] django 的資料表，整數的資料型態如何宣告？ {
+~ [plain] models.CharField()
+~ [plain] models.int()
+~ [plain] 不用宣告
+= [plain] models.IntegerField()
+}
+
+::migrate:: [plain] 以下何種情況不需進行資料 migrate {
+~ [plain] 改變資料物件的名稱
+~ [plain] 改變欄位的型態
+~ [plain] 新增一個欄位
+= [plain] 修改 __str__() 內的功能
+}
+
+::key:: [plain] 以下何者正確 {
+~ [plain] 一個 Model 一定要宣告一個主鍵（primary key）
+~ [plain] 一個 Model 一定要宣告一個外鍵（foreign key）
+~ [plain] 一個 Model 只能有一個外鍵
+= [plain] 宣告外鍵時，一定要宣告該外鍵所指到的資料物件
+}
+
+::all():: [plain] Prize.objects.all() 這段程式碼可能出現在哪檔案？{
+~ [plain] index.html
+~ [plain] setting.py
+~ [plain] urls.py
+= [plain] views.py
+}
+
+::view:: [plain] 哪一個模組會取得資料庫資料，加以處理後傳給 html 呈現？{
+~ [plain] template
+~ [plain] control
+~ [plain] model
+= [plain] view
+}
+
+
+::context:: [plain] view 會把資料打包封裝成Ａ型態，存在Ｂ變數中。A,B 分別是什麼？{
+~ [plain] list, var
+~ [plain] list, context
+~ [plain] dict, var
+= [plain] dict, context
+}
+
+
+::template:: [plain] 在 template 中有父頁面與子頁面的架構，其中子頁面透過何種語法宣告？{
+~ [plain] extending
+~ [plain] import
+~ [plain] include
+= [plain] extends
+}
+
+
+::var template:: [plain] 在 template 中，如何取用一個變數 x? {
+~ [plain] x 
+~ [plain] __x__
+~ [plain] \{% x %\}
+= [plain] \{\{ x \}\}
+}
+
+
+::for:: [plain] 在 template 中，要走訪一個集合物件 x_list 的語法為？ {
+= [plain] \{% for x in x_list %\}
+~ [plain] \{% for x of x_list %\}
+~ [plain] \{% foreach x in x_list %\}
+~ [plain] \{% for x: x_list %\}
+}
+
+::for dict:: [plain] 在 template 中，要走訪一個字典物件 x_dict 的語法為？ {
+= [plain] \{% for k, v in x_dict.items %\}
+~ [plain] \{% for k, v in x_dict.items() %\}
+~ [plain] \{% for k, v in x_dict %\}
+~ [plain] \{% for k, v in x_dict.vaule %\}
+}
+
+::dict:: [plain] 在 template 中，透過 filter 進行此指令： 'a'|add:'b'|add:'c' ，其產出為？{
+= [plain] abc
+~ [plain] 198
+~ [plain] a
+~ [plain] b
+~ [plain] c
+}

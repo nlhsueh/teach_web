@@ -1,0 +1,170 @@
+{% extends "template.html" %}
+
+{% block title %}新增小說{% endblock %}
+
+<!-- for vscode -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+{% block style %}
+
+<style>
+    .obj {
+        width: 100%;
+        aspect-ratio: 1 / 1.42;
+    }
+
+    .img {
+        width: 30%;
+    }
+
+    [contenteditable=true]>p {
+        margin: 0 !important;
+    }
+
+    textarea {
+        height: fit-content !important;
+    }
+
+    @media screen and (max-width: 576px) {
+        .img {
+            width: 75%;
+        }
+    }
+</style>
+
+{% endblock %}
+
+{% block content %}
+<section class="container section">
+    <form action="/studio/new/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% if form_messages %}
+        <div class="text-danger text-center m-3">{{ form_messages }}</div>
+        {% endif %}
+
+        <div class="d-sm-flex gap-2">
+            <div class="mx-auto overflow-hidden img mb-3">
+                <!-- 參考資料 : https://www.oxxostudio.tw/articles/201412/css-boxsizing-backgroundclip.html  -->
+                <input type="file" accept="image/*" id="fileUploader" class="d-none {% if form.cover.errors.0 %}is-invalid{% endif %}" onchange="handleFiles(this.files)" name="cover" />
+
+                <div id="upload_zone" class="w-100 hover border p-3" role="button">
+                    <img class="obj w-100" src="" alt="">
+                </div>
+
+                <div class="invalid-feedback">{{ form.cover.errors.0 }}</div>
+            </div>
+
+            <div class="ms-sm-3 w-100">
+                <div class="form-floating mb-3">
+                    <input class="form-control shadow-none {% if form.title.errors.0 %}is-invalid{% endif %}"
+                        name="title" placeholder="小說名稱" value="{{ form.title.value }}">
+                    <label>小說名稱</label>
+                    <div class="invalid-feedback">{{ form.title.errors.0 }}</div>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <textarea id="description" name="description"
+                        class="form-control shadow-none m-0 {% if form.description.errors.0 %}is-invalid{% endif %}"></textarea>
+                    <label>描述</label>
+                    <div class="invalid-feedback">{{ form.description.errors.0 }}</div>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <select
+                        class="form-control form-select shadow-none {% if form.state.errors.0 %}is-invalid{% endif %}"
+                        name="state">
+                        <option value="0" {% if form.state.value == "0" %}selected{% endif %}>連載中</option>
+                        <option value="1" {% if form.state.value == "1" %}selected{% endif %}>完結</option>
+                    </select>
+                    <label>狀態</label>
+                    <div class="invalid-feedback">{{ form.state.errors.0 }}</div>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input class="form-control shadow-none {% if form.tags.errors.0 %}is-invalid{% endif %}" name="tags"
+                        placeholder="tags" type="text" value="{{ form.tags.value }}">
+                    <label>Tag</label>
+                    <div class="invalid-feedback">{{ form.tags.errors.0 }}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-end gap-2">
+            <a class="btn btn-secondary" href="/studio/work/">取消</a>
+            <button type="submit" class="btn btn-danger">新增</button>
+        </div>
+    </form>
+</section>
+
+<script>
+    document.getElementById("description").value = `{{ form.description.value }}`
+
+    const dropbox = document.getElementById("upload_zone");
+
+    function handleFileSelect(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        const fileUploader = document.getElementById("fileUploader");
+        fileUploader.click();
+    }
+
+    const click = e => handleFileSelect(e);
+
+    // prevent the default method working
+    function dragenter(e) {
+        // add the styling to div
+        dropbox.classList.add("upload_zone_enter");
+        e.stopPropagation();
+        e.preventDefault();
+    }
+
+    const dragleave = () => dropbox.classList.remove("upload_zone_enter");
+
+    // prevent the default method working
+    function dragover(e) {
+        e.stopPropagation();
+        e.preventDefault();
+    }
+
+    function handleFiles(files) {
+        for (var i = 0; i < files.length; i++) {
+            const file = files[i];
+            const imageType = /image.*/;
+
+            if (!file.type.match(imageType)) {
+                continue;
+            }
+
+            const img = document.createElement("img");
+            img.classList.add("obj");
+            img.file = file;
+            upload_zone.innerHTML = ''
+            upload_zone.appendChild(img);
+
+            const reader = new FileReader();
+            reader.onload = (e => img.src = e.target.result);
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function drop(e) {
+        e.stopPropagation();
+        e.preventDefault();
+
+        const dt = e.dataTransfer;
+        const files = dt.files;
+
+        handleFiles(files);
+        dropbox.classList.remove("upload_zone_enter");
+    }
+
+    dropbox.addEventListener("click", click, false);
+    dropbox.addEventListener("dragenter", dragenter, false);
+    dropbox.addEventListener("dragleave", dragleave, false);
+    dropbox.addEventListener("dragover", dragover, false);
+    dropbox.addEventListener("drop", drop, false);
+</script>
+
+{% endblock %}

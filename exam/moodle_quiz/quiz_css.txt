@@ -1,0 +1,7 @@
+
+
+::external::What is the correct HTML for referring to an external style sheet?{
+~ [plain]<stylesheet>mystyle.css</stylesheet>
+~ [plain]<style src\="mystyle.css">
+= [plain]<link rel\="stylesheet" type\="text/css" href="mystyle.css">
+}

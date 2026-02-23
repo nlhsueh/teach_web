@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* body,
+    p {
+        width: 400px;
+        margin: auto;
+    } */
+
+    /* h1,
+    h3,
+    table {
+        text-align: center;
+    } */
+
+    table,
+    th,
+    td {
+        border: 2px solid grey;
+        border-collapse: collapse;
+        padding: 1px;
+    }
+</style>
+<script>
+
+    function showFinal(scoreBoard) {
+        sum1 = 0;
+        sum2 = 0;
+        for (n in scoreBoard) {
+            score1 = scoreBoard[n][0];
+            score2 = scoreBoard[n][1];
+            if (score2 == "X") score2 = 0;
+            sum1 += parseInt(score1);
+            sum2 += parseInt(score2);
+        }
+        match = ` ${sum1}-${sum2}`;
+        console.log(match);
+        p = document.getElementById("finalScore").innerText;
+        p += match;
+        document.getElementById("finalScore").innerHTML = p;
+    }
+    function showTaiwan() {
+        // team: ["Italy", "Taiwan"], 
+        Italy_Taiwan = { 1: [0, 1], 2: [2, 1], 3: [0, 3], 4: [4, 0], 5: [1, 0], 6: [0, 2], 7: [0, 1], 8: [0, 3], 9: [0, "X"] }
+
+        showFinal(Italy_Taiwan);
+    }
+</script>
+
+<body>
+    <h1>WBC 2023 棒球經典賽</h1>
+
+    <h3>Italy <img
+            src="https://upload.wikimedia.org/wikipedia/en/thumb/0/03/Flag_of_Italy.svg/35px-Flag_of_Italy.svg.png"
+            alt=""> vs Taiwan <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Flag_of_Chinese_Taipei_for_Olympic_games.svg/35px-Flag_of_Chinese_Taipei_for_Olympic_games.svg.png"
+            alt=""></h3>
+
+    <table border="4">
+        <tr>
+            <th>Team</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+            <th>8</th>
+            <th>9</th>
+        </tr>
+        <tr>
+            <td>Italy</td>
+            <td>0</td>
+            <td>2</td>
+            <td>0</td>
+            <td>4</td>
+            <td>1</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>Taiwan</td>
+            <td>1</td>
+            <td>1</td>
+            <td>3</td>
+            <td>0</td>
+            <td>0</td>
+            <td>2</td>
+            <td>1</td>
+            <td>3</td>
+            <td>X</td>
+        </tr>
+    </table>
+
+    <br>
+    <p id="finalScore">Italy vs Taiwan: </p>
+    <br>
+
+    <form action="">
+        <input type="button" onclick="showTaiwan()" value="Show Score">
+        </input>
+    </form>
+
+
+
+</body>
+
+</html>

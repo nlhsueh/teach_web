@@ -1,0 +1,37 @@
+<!-- HTML 代碼 -->
+<nav>
+    <ul>
+      <li><a href="#" onclick="showArticle(1)">第一篇文章</a></li>
+      <li><a href="#" onclick="showArticle(2)">第二篇文章</a></li>
+      <li><a href="#" onclick="showArticle(3)">第三篇文章</a></li>
+    </ul>
+  </nav>
+  
+  <article id="article1">
+    <h2>第一篇文章</h2>
+    <p>這是第一篇文章的內容。</p>
+  </article>
+  
+  <article id="article2" style="display: none;">
+    <h2>第二篇文章</h2>
+    <p>這是第二篇文章的內容。</p>
+  </article>
+  
+  <article id="article3" style="display: none;">
+    <h2>第三篇文章</h2>
+    <p>這是第三篇文章的內容。</p>
+  </article>
+  
+  <!-- JavaScript 代碼 -->
+  <script>
+    function showArticle(articleNumber) {
+      // 先隱藏所有文章
+      document.getElementById("article1").style.display = "none";
+      document.getElementById("article2").style.display = "none";
+      document.getElementById("article3").style.display = "none";
+  
+      // 再顯示選中的文章
+      document.getElementById("article" + articleNumber).style.display = "block";
+    }
+  </script>
+  

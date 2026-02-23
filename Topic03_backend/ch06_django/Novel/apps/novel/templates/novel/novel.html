@@ -1,0 +1,619 @@
+{% extends "template.html" %}
+
+{% block title %}{{ novel.title }}{% endblock %}
+
+<!-- for vscode -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+{% block style %}
+
+<style>
+    @media screen and (min-width: 576px) {
+        .mw-sm-25 {
+            max-width: 25% !important;
+        }
+    }
+
+    .toolbox>div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .toolbox>div svg {
+        margin-right: .5rem;
+    }
+
+    .rating .rate_form .star {
+        width: 30px;
+        height: 30px;
+        margin: 5px;
+        cursor: pointer;
+    }
+
+    .rating .star {
+        width: 10px;
+        height: 10px;
+        display: inline-block;
+        -webkit-mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="16" width="18" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg>');
+        -webkit-mask-size: cover;
+        -webkit-mask-position: center;
+        background-color: gray;
+    }
+
+    .rating .star.yellow,
+    .rating .star.hoveryellow {
+        background-color: var(--bs-warning);
+    }
+
+    .rating .star_label {
+        margin: 3px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .rating .star_label .bar {
+        width: 80px;
+        height: 7px;
+        background-color: var(--bs-border-color-translucent);
+        margin-left: 10px;
+        border-radius: 4px;
+    }
+
+    .rating .star_label .bar .val {
+        width: 0;
+        height: 100%;
+        background-color: var(--bs-info);
+        border-radius: 4px;
+    }
+
+    [contenteditable=true]:empty:before {
+        content: attr(placeholder);
+    }
+
+    .avatar {
+        width: 30px;
+        height: 30px;
+    }
+
+    .avatar img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .author #subscribe {
+        width: 60px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        background-color: #a2a2a2;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+
+    .author #subscribe.red {
+        background-color: #9c2e3e;
+    }
+</style>
+
+{% endblock %}
+
+{% block content %}
+<section class="container section">
+    <div class="w-100 mt-1 mb-3 d-sm-flex justify-content-center overflow-hidden">
+        <div class="m-auto" style="width: 10.5rem; height:14.95rem">
+            <img class="cover" width="100%" height="100%"
+                src="http://{{ request.get_host }}/media/{{ novel.cover.name }}" />
+        </div>
+        <div class="ms-sm-3 w-75 mt-2 overflow-hidden">
+            <h5>{{ novel.title }}</h5>
+
+            <span class="d-block py-1">{{ novel.author.username }} 著</span>
+            <span class="d-block py-1">{{ word_count }}字</span>
+            <span class="d-block py-1">最後更新 - {{ last_chapter.update_date|date:"Y-m-d" }}</span>
+            <span class="d-block py-1">最新章節 - {{ last_chapter.volumn.title }} {{ last_chapter.title }}</span>
+            <span class="d-block py-1">{{ novel.get_state_display }}</span>
+            {% for tag in novel.tagrelation_set.all %}
+            <a class="btn btn-outline-danger" href="/search/?q={{ tag.tag.tagname }}&field=tag">
+                {{ tag.tag.tagname }}
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <a class="start btn w-100 rounded-0 btn-danger" href="{{ request.get_full_path }}/catalog">開始閱讀</a>
+
+    <div class="toolbox mt-2 d-sm-flex gap-2">
+        <div id="good" class="btn btn-secondary w-100 mb-2 rounded-0">
+            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" fill="currentColor" viewBox="0 0 512 512">
+                <path
+                    d="M323.8 34.8c-38.2-10.9-78.1 11.2-89 49.4l-5.7 20c-3.7 13-10.4 25-19.5 35l-51.3 56.4c-8.9 9.8-8.2 25 1.6 33.9s25 8.2 33.9-1.6l51.3-56.4c14.1-15.5 24.4-34 30.1-54.1l5.7-20c3.6-12.7 16.9-20.1 29.7-16.5s20.1 16.9 16.5 29.7l-5.7 20c-5.7 19.9-14.7 38.7-26.6 55.5c-5.2 7.3-5.8 16.9-1.7 24.9s12.3 13 21.3 13L448 224c8.8 0 16 7.2 16 16c0 6.8-4.3 12.7-10.4 15c-7.4 2.8-13 9-14.9 16.7s.1 15.8 5.3 21.7c2.5 2.8 4 6.5 4 10.6c0 7.8-5.6 14.3-13 15.7c-8.2 1.6-15.1 7.3-18 15.2s-1.6 16.7 3.6 23.3c2.1 2.7 3.4 6.1 3.4 9.9c0 6.7-4.2 12.6-10.2 14.9c-11.5 4.5-17.7 16.9-14.4 28.8c.4 1.3 .6 2.8 .6 4.3c0 8.8-7.2 16-16 16H286.5c-12.6 0-25-3.7-35.5-10.7l-61.7-41.1c-11-7.4-25.9-4.4-33.3 6.7s-4.4 25.9 6.7 33.3l61.7 41.1c18.4 12.3 40 18.8 62.1 18.8H384c34.7 0 62.9-27.6 64-62c14.6-11.7 24-29.7 24-50c0-4.5-.5-8.8-1.3-13c15.4-11.7 25.3-30.2 25.3-51c0-6.5-1-12.8-2.8-18.7C504.8 273.7 512 257.7 512 240c0-35.3-28.6-64-64-64l-92.3 0c4.7-10.4 8.7-21.2 11.8-32.2l5.7-20c10.9-38.2-11.2-78.1-49.4-89zM32 192c-17.7 0-32 14.3-32 32V448c0 17.7 14.3 32 32 32H96c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32H32z" />
+            </svg>
+            0
+        </div>
+        <div id="bookmark" class="btn btn-secondary w-100 mb-2 rounded-0">
+            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="12" fill="currentColor" viewBox="0 0 384 512">
+                <path
+                    d="M0 48C0 21.5 21.5 0 48 0l0 48V441.4l130.1-92.9c8.3-6 19.6-6 27.9 0L336 441.4V48H48V0H336c26.5 0 48 21.5 48 48V488c0 9-5 17.2-13 21.3s-17.6 3.4-24.9-1.8L192 397.5 37.9 507.5c-7.3 5.2-16.9 5.9-24.9 1.8S0 497 0 488V48z" />
+            </svg>
+            加入書櫃
+        </div>
+        <div id="share" class="btn btn-secondary w-100 mb-2 rounded-0">
+            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" fill="currentColor" viewBox="0 0 512 512">
+                <path
+                    d="M307 34.8c-11.5 5.1-19 16.6-19 29.2v64H176C78.8 128 0 206.8 0 304C0 417.3 81.5 467.9 100.2 478.1c2.5 1.4 5.3 1.9 8.1 1.9c10.9 0 19.7-8.9 19.7-19.7c0-7.5-4.3-14.4-9.8-19.5C108.8 431.9 96 414.4 96 384c0-53 43-96 96-96h96v64c0 12.6 7.4 24.1 19 29.2s25 3 34.4-5.4l160-144c6.7-6.1 10.6-14.7 10.6-23.8s-3.8-17.7-10.6-23.8l-160-144c-9.4-8.5-22.9-10.6-34.4-5.4z" />
+            </svg>分享
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="outline">
+      {% autoescape off %}
+        {{ novel.description|linebreaks }}
+      {% endautoescape %}
+    </div>
+</section>
+
+<section class="rating container section d-sm-flex">
+    <div id="rate_form" class="w-100 rate_form d-flex align-items-center justify-content-center" class="rate_form">
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+    </div>
+
+    <div class="border border-1 m-2"></div>
+
+    <div class="w-100 d-flex align-items-center justify-content-center">
+        <div class="text-center me-4">
+            <h1 id="book_score">0</h1>
+            <span id="rating_count">0人評分</span>
+        </div>
+
+        <div id="rating_chart">
+            <div class="star_label">
+                <span class="star yellow"></span>
+                <span class="star yellow"></span>
+                <span class="star yellow"></span>
+                <span class="star yellow"></span>
+                <span class="star yellow"></span>
+                <div class="bar">
+                    <div class="val"></div>
+                </div>
+            </div>
+            <div class="star_label">
+                <span class="star yellow"></span>
+                <span class="star yellow"></span>
+                <span class="star yellow"></span>
+                <span class="star yellow"></span>
+                <div class="bar">
+                    <div class="val"></div>
+                </div>
+            </div>
+            <div class="star_label">
+                <span class="star yellow"></span>
+                <span class="star yellow"></span>
+                <span class="star yellow"></span>
+                <div class="bar">
+                    <div class="val"></div>
+                </div>
+            </div>
+            <div class="star_label">
+                <span class="star yellow"></span>
+                <span class="star yellow"></span>
+                <div class="bar">
+                    <div class="val"></div>
+                </div>
+            </div>
+            <div class="star_label">
+                <span class="star yellow"></span>
+                <div class="bar">
+                    <div class="val"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="discuss container section">
+    <h5>書評討論</h5>
+    <div class="w-100 mb-3 border rounded-1 d-flex overflow-hidden">
+        <div id="discuss_input" class="form-control overflow-hidden shadow-none border-0" type="text" placeholder="你的心得"
+            contenteditable="true"></div>
+        <div id="discuss_submit" class="btn flex-shrink-0 d-flex align-items-center justify-content-center">
+            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" fill="currentColor" viewBox="0 0 512 512">
+                <path
+                    d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480V396.4c0-4 1.5-7.8 4.2-10.7L331.8 202.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8 17.7 316.6C7.1 311.3 .3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z" />
+            </svg>
+        </div>
+    </div>
+
+    <div id="discuss_list"></div>
+
+    <button id="more" type="button" class="btn w-100" data-bs-toggle="modal"
+        data-bs-target="#discuss_modal">更多書評</button>
+
+    <div id="discuss_modal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">書評討論</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div id="more_discuss_body" class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="author container section">
+    <h5>作者資訊</h5>
+
+    <div class="d-flex">
+        <div class="flex-shrink-0 me-3">
+            <a href="/search/?q={{ novel.author.id }}&field=user">
+                {% if not novel.author.avatar %}
+                <svg xmlns="http://www.w3.org/2000/svg" fill="gray" height="25px" width="25px" viewBox="0 0 448 512">
+                    <path
+                        d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                </svg>
+                {% else %}
+                <img class="rounded-circle" width="40px" height="40px" src="http://{{ request.get_host }}/media/{{novel.author.avatar}}" alt="">
+                {% endif %}
+            </a>
+        </div>
+
+
+        <div class="w-100">
+            <div class="name">{{ novel.author.username }}</div>
+            <div class="content">{% if novel.author.description %}{{ novel.author.description }}{% endif %}</div>
+        </div>
+
+        {% if user.id != novel.author.id %}
+        <div id="subscribe" class="user-select-none flex-shrink-0">訂閱</div>
+        {% endif %}
+    </div>
+
+    <hr>
+
+    {% include "booklist.html" with book_list=novel.author.work.all %}
+</section>
+
+<section class="suggest container section">
+    <h5>相關書籍</h5>
+
+    {% include "booklist.html" with book_list=similar %}
+</section>
+
+<script>
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getCookie('csrftoken')
+    const novel_id = {{ novel.id }}
+
+    async function get_novel_info() {
+        return fetch('/api/novel/info?novel_id={{ novel.id }}', {
+            method: 'GET',
+        })
+            .then((response) => {
+                return response.json();
+            })
+            .then((response) => {
+                // console.log(response);
+                if (response.status == "fail")
+                    throw new Error(response.message)
+                else
+                    return response
+            })
+            .catch((error) => {
+                console.log(`Error: ${error}`);
+            })
+    }
+
+    async function get_subscribe_info() {
+        return fetch('/api/user/getSubscribe?author_id={{ novel.author.id }}', {
+            method: 'GET',
+        })
+            .then((response) => {
+                return response.json();
+            })
+            .then((response) => {
+                // console.log(response);
+                if (response.status == "fail")
+                    throw new Error(response.message)
+                else
+                    return response
+            })
+            .catch((error) => {
+                console.log(`Error: ${error}`);
+            })
+    }
+
+    async function post(operation, data) {
+        return fetch('/api/' + operation, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json',
+                "X-CSRFToken": csrftoken
+            },
+        })
+            .then((response) => {
+                return response.json();
+            })
+            .then((response) => {
+                if (response.status == "fail")
+                    throw new Error(response.message)
+
+                else if (response.status == "denied")
+                    window.location.href = '/login/?redirect={{ request.get_full_path }}'
+
+                else {
+                    // console.log(response)
+                    return response
+                }
+            })
+            .catch((error) => {
+                console.log(`Error: ${error}`);
+            })
+    }
+
+    async function get_discuss() {
+        return fetch('/api/novel/getDiscuss?novel_id={{ novel.id }}', {
+            method: 'GET',
+        })
+            .then((response) => {
+                return response.json();
+            })
+            .then((response) => {
+                if (response.status == "fail")
+                    throw new Error(response.message)
+                else
+                    return response
+            })
+            .catch((error) => {
+                console.log(`Error: ${error}`);
+            })
+    }
+
+    // define element object
+    let good_element = document.getElementById('good')
+    let bookmark_element = document.getElementById('bookmark')
+    let share_button = document.getElementById("share")
+
+    let star_list = document.getElementById("rate_form").getElementsByClassName("star")
+    let book_score = document.getElementById("book_score")
+
+    let rating_count = document.getElementById("rating_count")
+    let rating_chart = document.getElementById("rating_chart").getElementsByClassName("star_label")
+
+    let discuss_input = document.getElementById("discuss_input")
+    let discuss_submit = document.getElementById("discuss_submit")
+    let discuss_list = document.getElementById("discuss_list")
+
+    let subscribe_button = document.getElementById("subscribe")
+
+    let more_button = document.getElementById("more")
+    let more_discuss_body = document.getElementById("more_discuss_body")
+
+    function render_good(response) {
+        if (response["is_good"]) {
+            good_element.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" fill="currentColor" viewBox="0 0 512 512"><path d="M313.4 32.9c26 5.2 42.9 30.5 37.7 56.5l-2.3 11.4c-5.3 26.7-15.1 52.1-28.8 75.2H464c26.5 0 48 21.5 48 48c0 18.5-10.5 34.6-25.9 42.6C497 275.4 504 288.9 504 304c0 23.4-16.8 42.9-38.9 47.1c4.4 7.3 6.9 15.8 6.9 24.9c0 21.3-13.9 39.4-33.1 45.6c.7 3.3 1.1 6.8 1.1 10.4c0 26.5-21.5 48-48 48H294.5c-19 0-37.5-5.6-53.3-16.1l-38.5-25.7C176 420.4 160 390.4 160 358.3V320 272 247.1c0-29.2 13.3-56.7 36-75l7.4-5.9c26.5-21.2 44.6-51 51.2-84.2l2.3-11.4c5.2-26 30.5-42.9 56.5-37.7zM32 192H96c17.7 0 32 14.3 32 32V448c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V224c0-17.7 14.3-32 32-32z" /></svg>`
+        } else {
+            good_element.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" fill="currentColor" viewBox="0 0 512 512"><path d="M323.8 34.8c-38.2-10.9-78.1 11.2-89 49.4l-5.7 20c-3.7 13-10.4 25-19.5 35l-51.3 56.4c-8.9 9.8-8.2 25 1.6 33.9s25 8.2 33.9-1.6l51.3-56.4c14.1-15.5 24.4-34 30.1-54.1l5.7-20c3.6-12.7 16.9-20.1 29.7-16.5s20.1 16.9 16.5 29.7l-5.7 20c-5.7 19.9-14.7 38.7-26.6 55.5c-5.2 7.3-5.8 16.9-1.7 24.9s12.3 13 21.3 13L448 224c8.8 0 16 7.2 16 16c0 6.8-4.3 12.7-10.4 15c-7.4 2.8-13 9-14.9 16.7s.1 15.8 5.3 21.7c2.5 2.8 4 6.5 4 10.6c0 7.8-5.6 14.3-13 15.7c-8.2 1.6-15.1 7.3-18 15.2s-1.6 16.7 3.6 23.3c2.1 2.7 3.4 6.1 3.4 9.9c0 6.7-4.2 12.6-10.2 14.9c-11.5 4.5-17.7 16.9-14.4 28.8c.4 1.3 .6 2.8 .6 4.3c0 8.8-7.2 16-16 16H286.5c-12.6 0-25-3.7-35.5-10.7l-61.7-41.1c-11-7.4-25.9-4.4-33.3 6.7s-4.4 25.9 6.7 33.3l61.7 41.1c18.4 12.3 40 18.8 62.1 18.8H384c34.7 0 62.9-27.6 64-62c14.6-11.7 24-29.7 24-50c0-4.5-.5-8.8-1.3-13c15.4-11.7 25.3-30.2 25.3-51c0-6.5-1-12.8-2.8-18.7C504.8 273.7 512 257.7 512 240c0-35.3-28.6-64-64-64l-92.3 0c4.7-10.4 8.7-21.2 11.8-32.2l5.7-20c10.9-38.2-11.2-78.1-49.4-89zM32 192c-17.7 0-32 14.3-32 32V448c0 17.7 14.3 32 32 32H96c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32H32z" /></svg>`
+        }
+        good_element.innerHTML += response["good_count"]
+    }
+
+    function render_bookmark(response) {
+        if (response["is_in_bookcase"]) {
+            bookmark_element.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="16" width="12" fill="currentColor" viewBox="0 0 384 512"><path d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z" /></svg>`
+            bookmark_element.innerHTML += "已加入書櫃"
+        } else {
+            bookmark_element.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="16" width="12" fill="currentColor" viewBox="0 0 384 512"><path d="M0 48C0 21.5 21.5 0 48 0l0 48V441.4l130.1-92.9c8.3-6 19.6-6 27.9 0L336 441.4V48H48V0H336c26.5 0 48 21.5 48 48V488c0 9-5 17.2-13 21.3s-17.6 3.4-24.9-1.8L192 397.5 37.9 507.5c-7.3 5.2-16.9 5.9-24.9 1.8S0 497 0 488V48z" /></svg>`
+            bookmark_element.innerHTML += "加入書櫃"
+        }
+    }
+
+    function render_rating(response) {
+        // rating
+        for (let i = 1; i <= 5; i++) {
+            if (response["my_grade"] >= i)
+                star_list[i - 1].classList.add("yellow")
+            else
+                star_list[i - 1].classList.remove("yellow")
+        }
+        // book_score
+        book_score.innerHTML = response["grade_chart"].average
+        rating_count.innerHTML = response["grade_chart"].count + "人評分"
+        for (let i = 1; i <= 5; i++) {
+            rating_chart[i - 1].getElementsByClassName("val")[0].style.width = response["grade_chart"][6 - i] + "%"
+        }
+    }
+
+    function get_avatar(path) {
+        if (path) {
+            return `<img class="rounded-circle" src="http://{{ request.get_host }}/media/` + path + `" alt="">`
+        } else {
+            return `<svg xmlns="http://www.w3.org/2000/svg" height="30px" width="30px" fill="gray" viewBox="0 0 448 512">
+                        <path
+                        d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                    </svg>`
+        }
+    }
+
+    function render_discuss(response) {
+        discuss_list.innerHTML = '';
+
+        for (let discuss of response.last_discussion) {
+            let date = new Date(discuss.date)
+            date_str = date.getUTCFullYear() + '-' + date.getUTCMonth() + '-' + date.getUTCDate() + ' ' + date.getUTCHours() + ':' + date.getUTCMinutes()
+
+            discuss_list.innerHTML += `<div class="d-flex gap-3">
+                <div class="avatar flex-shrink-0">
+                    <a href="/search/?q=` + discuss.userid + `&field=user">` + get_avatar(discuss.avatar) + `</a>
+                </div>
+
+                <div>
+                    <div>` + discuss.name + `</div>
+                    <div>` + date_str + `</div>
+                    <div>` + discuss.discussion + `</div>
+                </div>
+            </div>
+            <hr>`
+        }
+    }
+
+    function render_subscribe(response) {
+        if (response["is_subscribe"]) {
+            subscribe_button.classList.remove('red');
+            subscribe_button.innerHTML = "已訂閱"
+        } else {
+            subscribe_button.classList.add('red');
+            subscribe_button.innerHTML = "訂閱"
+        }
+    }
+
+    function init() {
+        // thumbup
+        good_element.addEventListener('click', () => {
+            post('novel/setGood', {
+                'novel_id': novel_id
+            }).then((response) => {
+                render_good(response)
+            })
+        })
+
+        // bookmark
+        bookmark_element.addEventListener('click', () => {
+            post('novel/setBookcase', {
+                'novel_id': novel_id
+            }).then((response) => {
+                render_bookmark(response)
+            })
+        })
+
+        // star form
+        for (let index = 0; index < 5; index++) {
+            star_list[index].addEventListener('mouseover', () => {
+                for (let i = 0; i <= index; i++) {
+                    star_list[i].classList.add('hoveryellow');
+                }
+            })
+
+            star_list[index].addEventListener('mouseout', () => {
+                for (let i = 0; i <= index; i++) {
+                    star_list[i].classList.remove('hoveryellow');
+                }
+            })
+
+            star_list[index].addEventListener('click', () => {
+                post('novel/updateGrade', {
+                    'novel_id': novel_id,
+                    'grade': index + 1
+                }).then((response) => {
+                    for (let i = 0; i <= index; i++) {
+                        star_list[i].classList.remove('hoveryellow');
+                    }
+                    render_rating(response)
+                })
+            })
+        }
+
+        // discuss
+        discuss_submit.addEventListener('click', () => {
+            post('novel/addDiscuss', {
+                'novel_id': novel_id,
+                'discuss': discuss_input.innerText
+            }).then((response) => {
+                render_discuss(response)
+            })
+            discuss_input.innerText = ''
+        })
+
+        more_button.addEventListener('click', () => {
+            more_discuss_body.innerHTML = ''
+            get_discuss().then((response) => {
+                for (let discuss of response.last_discussion) {
+                    let date = new Date(discuss.date)
+                    date_str = date.getUTCFullYear() + '-' + date.getUTCMonth() + '-' + date.getUTCDate() + ' ' + date.getUTCHours() + ':' + date.getUTCMinutes()
+
+                    more_discuss_body.innerHTML += `<div class="d-flex gap-3">
+                        <div class="avatar flex-shrink-0">
+                            <a href="/search/?q=` + discuss.userid + `&field=user">` + get_avatar(discuss.avatar) + `</a>
+                        </div>
+
+                        <div>
+                            <div>` + discuss.name + `</div>
+                            <div>` + date_str + `</div>
+                            <div>` + discuss.discussion + `</div>
+                        </div>
+                    </div>
+                    <hr>`
+                }
+            })
+        })
+
+        // subscribe
+        if (subscribe_button) {
+            subscribe_button.addEventListener('click', () => {
+                post('user/subscribe', {
+                    'novel_id': novel_id,
+                    'author_id': {{ novel.author.id }},
+                }).then((response) => {
+                        render_subscribe(response)
+                    })
+    })
+        }
+
+    share_button.addEventListener('click', () => {
+        navigator.share({ url: "http://{{request.get_host}}/novel/{{novel.id}}" })
+    })
+    }
+
+    async function render() {
+        novel_info = await get_novel_info()
+        subscribe_info = await get_subscribe_info()
+
+        render_good(novel_info)
+        render_bookmark(novel_info)
+        render_rating(novel_info)
+        render_discuss(novel_info)
+
+        if (subscribe_button)
+            render_subscribe(subscribe_info)
+    }
+
+    window.onload = () => {
+        init()
+        render()
+    }
+
+</script>
+
+{% endblock %}

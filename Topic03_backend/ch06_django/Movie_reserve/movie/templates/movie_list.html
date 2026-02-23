@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Movie List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .company-name {
+            text-align: center;
+            color: #333;
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            background-color: #2196F3;
+            color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .movie-container {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .movie-container:hover {
+            transform: scale(1.05);
+        }
+
+        .movie-info {
+            margin-left: 20px;
+        }
+
+        img {
+            width: 150px;
+            height: 225px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        p {
+            color: #666;
+            margin-top: 0;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #ddd;
+            margin: 20px 0;
+        }
+
+        .user-section {
+            text-align: right;
+        }
+
+        .user-section p {
+            font-size: 18px;
+            color: #333;
+            margin: 0;
+        }
+
+        .login-link {
+            color: #2196F3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="company-name">Z<span style="color: #FFC107;">E</span>TAMARK</div>
+
+    <div class="user-section">
+        {% if user.is_authenticated %}
+            <p>Welcome, <strong>{{ user.username }}</strong>! 
+                <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" style="background-color: #4caf50; color: #fff; padding: 8px 12px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">Logout</button>
+                </form>
+            </p>
+        {% else %}
+            <p>Please <a href="{% url 'login' %}" class="login-link">log in</a> to view the movie list.</p>
+        {% endif %}
+    </div>
+
+    <h1>未來上映</h1>
+
+    {% for movie in movies %}
+        <div class="movie-container">
+            <a href="{% url 'movie_detail' movie_id=movie.id %}">
+                <img src="{{ movie.poster.url }}" alt="{{ movie.title }} Poster">
+            </a>
+            <div class="movie-info">
+                <h2>
+                    <a href="{% url 'movie_detail' movie_id=movie.id %}">{{ movie.title }}</a>
+                </h2>
+                <p>{{ movie.description }}</p>
+            </div>
+        </div>
+        <hr>
+    {% endfor %}
+</body>
+
+</html>

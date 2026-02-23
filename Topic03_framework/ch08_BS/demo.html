@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container p-5 my-5 border">
+        <h1>My First Bootstrap Page</h1>
+        <p>This container has a border and some extra padding and margins.</p>
+    </div>
+
+    <div class="container p-5 my-5 bg-dark text-white">
+        <h1>My First Bootstrap Page</h1>
+        <p>This container has a dark background color and a white text, and some extra padding and margins.</p>
+    </div>
+
+    <div class="container p-5 my-5 bg-primary text-white">
+        <h1>My First Bootstrap Page</h1>
+        <p>This container has a blue background color and a white text, and some extra padding and margins.</p>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3">.col-sm-3</div>
+        <div class="col-sm-3">.col-sm-3</div>
+        <div class="col-sm-3">.col-sm-3</div>
+        <div class="col-sm-3">.col-sm-3</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-md-3">.col</div>
+        <div class="col-sm-6 col-md-3">.col</div>
+        <div class="col-sm-6 col-md-3">.col</div>
+        <div class="col-sm-6 col-md-3">.col</div>
+    </div>
+
+    <div class="container mt-3">
+        <h2>Card Image</h2>
+        <p>Image at the top (card-img-top):</p>
+        <div class="card" style="width:400px">
+            <img class="card-img-top" src="" alt="Card image" style="width:100%">
+            <div class="card-body">
+                <h4 class="card-title">John Doe</h4>
+                <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+                <a href="#" class="btn btn-primary">See Profile</a>
+            </div>
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="popover" title="Popover Header"
+        data-bs-content="Some content inside the popover">Toggle popover</button>
+
+    <nav class="navbar navbar-expand-sm bg-light justify-content-center">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">關於本系</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">課程介紹</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">系所成員</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">專任教授</a></li>
+                    <li><a class="dropdown-item" href="#">兼任教授</a></li>
+                    <li><a class="dropdown-item" href="#">退休教授</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <script>
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl)
+        })
+    </script>
+</body>
+
+</html>

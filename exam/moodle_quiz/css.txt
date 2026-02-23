@@ -1,0 +1,152 @@
+// 問題 1
+::假設有一個 `<div>` 內包含若干個 `<p>` 元素，請問以下哪一個 CSS 選擇器可以選中所有這些 `<p>` 元素？
+{
+=div p
+~div + p
+~div > p
+~p \~ div
+}
+
+// 問題 2
+::如果要選中 class 名為 "active" 的所有元素，應該使用哪個選擇器？
+{
+=.active
+~#active
+~*active
+~@active
+}
+
+// 問題 3
+::假設有一個 ID 為 "header" 的 `<div>` 元素，應該使用哪個 CSS 選擇器來選中它？
+{
+=#header
+~.header
+~*header
+~@header
+}
+
+// 問題 4
+::要選中所有 `<h1>` 元素，應該使用哪個選擇器？
+{
+=h1
+~.h1
+~#h1
+~*h1
+}
+
+// 問題 5
+::如果要選中所有 `href` 屬性以 "https" 開頭的 `<a>` 元素，應該使用哪個選擇器？
+{
+=a[href^="https"]
+~a[href="https"]
+~a[href*="https"]
+~a[href$="https"]
+}
+
+// 問題 7
+::如果有一個 `<ul>` 列表，其中的每個 `<li>` 元素都代表一個列表項，應該使用哪個選擇器來選中每個列表的第一個項目？
+{
+=li:first-child
+~li:first-of-type
+~li:last-child
+~li:nth-child(1)
+}
+
+// 問題 8
+::要選中所有 `type` 屬性為 "text" 的 `<input>` 元素，應該使用哪個選擇器？
+{
+=input[type="text"]
+~input[type=text]
+~input[type='text']
+~input[type\="text"]
+}
+
+// 問題 9
+::假設有若干個 `<span>` 元素是某個 `<div>` 元素的直接子元素，應該使用哪個選擇器來選中這些 `<span>` 元素？
+{
+=div > span
+~div + span
+~div \~ span
+~span > div
+}
+
+// 問題 11
+::要選中每個段落 (`<p>`) 中的第一行文字，應該使用哪個偽元素選擇器？
+{
+=p::first-line
+~p::first-letter
+~p:first-line
+~p:first-letter
+}
+
+// 問題 12
+::要選中所有當前被懸停的鏈接 (`<a>`) 元素，應該使用哪個偽類選擇器？
+{
+=a:hover
+~a:active
+~a:focus
+~a:visited
+}
+
+// 問題 14
+::要選中所有當前被聚焦的輸入 (`<input>`) 元素，應該使用哪個偽類選擇器？
+{
+=input:focus
+~input:active
+~input:hover
+~input:checked
+}
+
+// 問題 19
+::要選中所有奇數位置的表格行 (`<tr>`) 元素，應該使用哪個偽類選擇器？
+{
+=tr:nth-child(odd)
+~tr:nth-child(even)
+~tr:nth-of-type(odd)
+~tr:nth-of-type(even)
+}
+
+// 問題 20
+::要選中所有段落 (`<p>`) 元素中的第一個字母，應該使用哪個偽元素選擇器？
+{
+=p::first-letter
+~p:first-letter
+~p::first-line
+~p:first-line
+}
+
+// 問題 26
+::要選中所有當前處於活動狀態的鏈接 (`<a>`) 元素，應該使用哪個偽類選擇器？
+{
+=a:active
+~a:hover
+~a:focus
+~a:visited
+}
+
+// 問題 28
+::要選中所有 `<h1>` 元素中的偶數位置元素，應該使用哪個偽類選擇器？
+{
+=h1:nth-child(even)
+~h1:nth-child(odd)
+~h1:nth-of-type(even)
+~h1:nth-of-type(odd)
+}
+
+// 問題 29
+::要選中所有 `name` 屬性以 "user" 結尾的 `<input>` 元素，應該使用哪個選擇器？
+{
+=input[name$\="user"]
+~input[name^\="user"]
+~input[name*\="user"]
+~input[name\="user"]
+}
+
+// 問題 30
+::要選中所有 `<li>` 元素中的唯一子元素，應該使用哪個偽類選擇器？
+{
+=li:only-child
+~li:first-of-type
+~li:last-of-type
+~li:only-of-type
+}

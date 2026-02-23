@@ -1,0 +1,109 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="{% if user %}{{ user.get_theme_display }}{% else %}dark{% endif %}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- <link href="/static/styles/base.css" rel="stylesheet"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        body {
+            background-color: var(--bs-secondary-bg);
+        }
+
+        .section {
+            max-width: 700px;
+            background-color: var(--bs-body-bg);
+            margin-bottom: 20px;
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        header .search-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        header .search-form input {
+            text-indent: 20px;
+            background-size: 15px 15px;
+            background-repeat: no-repeat;
+            background-position: 10px 10px;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" fill="gray" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" /></svg>');
+        }
+
+        .book_list::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+    {% block style %}
+    {% endblock %}
+</head>
+
+<body>
+    <header>
+        <div class="section container gap-3 d-flex align-items-center">
+            <h2 class="m-0"><a class="navbar-brand" href="/">N</a></h2>
+
+            <form class="flex-fill search-form" action="/search/">
+                <input name="q" type="search" class="form-control shadow-none" placeholder="輸入小說名稱或作者">
+            </form>
+
+            <div class="dropdown">
+                {% if user %}
+                <a href="#" class="dropdown-toggle d-flex align-items-center text-decoration-none"
+                    data-bs-toggle="dropdown">
+                    {% include "avatar.html" with avatar_data=user %}
+                </a>
+
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item drop disabled d-flex align-items-center">
+                        {% include "avatar.html" with avatar_data=user %}
+                        <span class="ms-2">{{ user.username }}</span>
+                    </li>
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li><a class="dropdown-item" href="/profile/">個人資訊</a></li>
+                    <li><a class="dropdown-item" href="/logout/">登出</a></li>
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li><a class="dropdown-item" href="/theme/?redirect={{ request.get_full_path }}">切換主題</a></li>
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li><a class="dropdown-item" href="/studio/work/">我的作品</a></li>
+                    <li><a class="dropdown-item" href="/feed/my/">我的內容</a></li>
+                    <li><a class="dropdown-item" href="/feed/bookcase/">我的書櫃</a></li>
+                    <li><a class="dropdown-item" href="/feed/subscribe/">訂閱內容</a></li>
+                    <li><a class="dropdown-item" href="/feed/history/">閱讀紀錄</a></li>
+                </ul>
+                {% else %}
+                <a href="/login/" class="d-flex align-items-center text-decoration-none">
+                    {% include "avatar.html" with avatar_data=user %}
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+</body>
+
+</html>

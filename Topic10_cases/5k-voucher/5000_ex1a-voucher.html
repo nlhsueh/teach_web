@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!-- 做一個介面，讓經濟部長算算看，這個政策可以刺激多少消費 -->
+
+<head>
+</head>
+
+<body>
+
+    <h1> 五倍劵刺激消費算算看 </h1>
+
+    <input type="button" value="算算看" onclick="compute_expected(); compute_real(); compute_tot()">
+
+    <p id="expectedCost"></p>
+    <p id="realCost"></p>
+    <p id="totolEffect"></p>
+
+    <script>
+        var population = 23000000;
+        var rate_getVoucher = 0.9;  // 領劵的比率
+        var voucher = 5000;
+
+        var rate_e_voucher = 0.7;   // 領取電子五倍劵的比例
+        var rate_p_voucher = 0.3;   // 領取紙本五倍劵的比例
+
+        var e_spend_percent = 0.9;  // 電子五倍劵花費比率
+        var p_spend_percent = 0.8;  // 紙本五倍劵花費比率
+
+        var e_popu; // 電子劵的人數
+        var p_popu; // 紙本劵的人數
+
+        var e_tot_consumption = 9000; // 電子每人平均總共花費
+        var p_tot_consumption = 5900; // 紙本每人平均總共花費
+
+        function compute_expected() {
+            var predicted_cost = population * rate_getVoucher * voucher;
+            // console.log("政府預估的補助花費是：" + abbNumber(predicted_cost));
+            document.getElementById("expectedCost").innerHTML = "政府預估的補助花費是：" + abbNumber(predicted_cost);
+        }
+
+        function compute_real() {
+            e_popu = population * rate_getVoucher * rate_e_voucher; // 電子劵的人數
+            p_popu = population * rate_getVoucher * rate_p_voucher; // 紙本劵的人數
+
+            var real = e_popu * e_spend_percent * voucher + p_popu * p_spend_percent * voucher;
+            document.getElementById("realCost").innerHTML = "真實花費的五倍劵金額：" + abbNumber(real);
+        }
+
+        function compute_tot() {
+            var tot_consumption = e_popu * e_tot_consumption + p_popu * p_tot_consumption;
+            document.getElementById("totolEffect").innerHTML = "刺激民間消費：" + abbNumber(tot_consumption);
+        }
+
+        function abbNumber(number) {
+            var SI_SYMBOL = ["", "千", "百萬", "十億", "兆"];
+
+            var tier = Math.log10(Math.abs(number)) / 3;
+            tier = Math.floor(tier);
+            if (tier == 0) return number;
+            var suffix = SI_SYMBOL[Math.ceil(tier)];
+            var scale = Math.pow(10, tier * 3);
+            var scaled = number / scale;
+            return scaled.toFixed(1) + suffix;
+        }
+
+    </script>
+
+</body>

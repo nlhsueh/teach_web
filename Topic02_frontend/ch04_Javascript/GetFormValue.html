@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <input type="number" id="myInput">
+        <button onclick="showValue()">Show Value</button>
+    </form>
+
+    <form name="bmi">
+        <input type="number" id="ht" name="height" value="172"><br>
+        <input type="button" onclick="showHeight()" value="Show Height">
+    </form>
+
+    <script>
+        function showHeight() {
+            h1 = document.forms["bmi"]["ht"].value;
+            h2 = document.forms.bmi.ht.value;
+            console.log(`透過 forms 取得值 ${h1}, ${h2}`)
+
+            h3 = document.getElementById('ht').value;
+            console.log(`透過 getElementById 取得值 ${h3}`)
+        }
+    </script>
+    <script>
+        function showValue() {
+            const inputElement = document.getElementById("myInput");
+            const inputValue = inputElement.value;
+
+            alert("You entered: " + inputValue);
+        }
+    </script>
+
+</body>
+
+</html>

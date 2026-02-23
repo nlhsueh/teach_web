@@ -1,0 +1,120 @@
+<!-- myapp/templates/movie_detail.html -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{ movie.title }} Detail</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .movie-container {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        img {
+            width: 150px;
+            height: 225px;
+            margin-right: 20px;
+        }
+
+        .movie-info {
+            flex: 1;
+        }
+
+        p {
+            color: #555;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+
+        li:hover {
+            background-color: #2980b9;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <button onclick="goBack()">回到主頁</button>
+
+        <h1>{{ movie.title }}</h1>
+
+        <div class="movie-container">
+            <img src="{{ movie.poster.url }}" alt="{{ movie.title }} Poster">
+            <div class="movie-info">
+                <p>{{ movie.description }}</p>
+            </div>
+        </div>
+
+        <h2>上映時間: {{ movie.release_date }}</h2>
+        <h3>時段:</h3>
+        <ul>
+            <a href="{% url 'seat_selection' movie_id=movie.id %}?time=09:00">
+                <li>09:00</li>
+            </a>
+            <a href="{% url 'seat_selection' movie_id=movie.id %}?time=12:00">
+                <li>12:00</li>
+            </a>
+            <a href="{% url 'seat_selection' movie_id=movie.id %}?time=15:00">
+                <li>15:00</li>
+            </a>
+            <a href="{% url 'seat_selection' movie_id=movie.id %}?time=18:00">
+                <li>18:00</li>
+            </a>
+            <a href="{% url 'seat_selection' movie_id=movie.id %}?time=21:00">
+                <li>21:00</li>
+            </a>
+        </ul>
+    </div>
+    <script>
+        function goBack() {
+            // 使用 JavaScript 返回上一頁
+            window.history.back();
+        }
+    </script>
+</body>
+
+</html>
