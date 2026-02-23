@@ -146,7 +146,33 @@ Web 應用程式之間是如何交談的？目前業界有幾種主流標準：
 
 ---
 
-## 1.8 優質 Web 應用的特質 (User View)
+## 1.9 常見名詞解釋 (Glossary)
+
+在 Web 開發的世界裡，你會不斷聽到以下術語。建立正確的初步認知非常重要：
+
+-   **DOM (Document Object Model)**：文件物件模型。瀏覽器將 HTML 解析後生成的樹狀結構，是 JavaScript 操控網頁內容的橋樑。
+-   **SPA (Single Page Application)**：單頁應用程式。使用者在操作時不會感覺到整個頁面跳轉（重新整理），而是透過 JS 動態替換局部內容（如：Facebook, Gmail）。
+-   **SEO (Search Engine Optimization)**：搜尋引擎優化。透過技術手段讓網站更容易被 Google 搜到並排在前面。
+-   **RWD (Responsive Web Design)**：響應式網頁設計。讓網頁能自動適應手機、平板、電腦等各種螢幕尺寸。
+-   **JSON (JavaScript Object Notation)**：目前 Web 最主流的輕量級資料交換格式，易於人類閱讀也易於機器解析。
+-   **API (Application Programming Interface)**：應用程式介面。兩個系統之間溝通的約定，就像餐廳的菜單。
+
+---
+
+## 1.10 常見問題 Q&A
+
+**Q: 「框架 (Framework)」與「函式庫 (Library)」有什麼差別？**
+- **A**：關鍵在於「控制權」。函式庫是你呼叫它（你掌控流程）；框架是它呼叫你（它規定好結構，你把代碼填進去），這在軟體工程中稱為「控制反轉 (IoC)」。
+
+**Q: 我應該先學前端還是後端？**
+- **A**：資工系學生建議都學！但可以從「興趣」出發。如果你喜歡視覺反饋與直覺互動，從前端開始；如果你喜歡邏輯處理、大型架構與資料運算，從後端開始。
+
+**Q: Web 可以拿來開發「桌面軟體」或「App」嗎？**
+- **A**：可以。透過 **Electron** 技術，可以用 Web 技術開發桌面軟體（如 VS Code、Discord 都是 Web 技術做的）；透過 **PWA** 或 **React Native** 等技術，也能將 Web 邏輯延伸至手機端。
+
+---
+
+## 1.11 優質 Web 應用的特質 (User View)
 
 一個成功的 Web 應用不只要功能正確，更要具備以下特質：
 1. **簡單清爽 (Clean UI)**：不讓使用者感到混亂。
