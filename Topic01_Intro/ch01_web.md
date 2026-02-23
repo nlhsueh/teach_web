@@ -35,8 +35,13 @@
     - **CSS (皮肉)**：負責視覺風格與版面裝飾。
     - **JavaScript (靈魂)**：處理動態互動與資料邏輯。
 
+![前端開發三大支柱](img/three_pillars_1.png)
+![Web 三層架構概念](img/three_pillars_2.png)
+
 > [!NOTE]
 > **💡 重點觀念**：前端的核心是「展示」與「互動」。即使擁有強大的後端，若前端設計不佳，使用者也會因為難以操作而放棄。
+
+![客戶端組件示意圖](img/client_side_component.png)
 
 ### 2. 後端開發 (Back-End) - 「幕後的運作」
 後端（又稱伺服器端，Server-side）負責處理邏輯、資料庫互動與整合。
@@ -44,6 +49,8 @@
 - **關鍵技術**：
     - **語言**：Python (Django/Flask), JavaScript (Node.js), Java (Spring), PHP, Go 等。
     - **資料庫**：MySQL, PostgreSQL (關聯式); MongoDB (非關聯式)。
+
+![伺服器端處理流程](img/server_side_pg.png)
 
 > [!NOTE]
 > **💡 重點觀念**：後端的核心是「資料處理」與「安全性」。它負責保護使用者隱私並確保資料的正確性與一致性。
@@ -74,6 +81,7 @@
 1. **簡單清爽 (Clean UI)**：不讓使用者感到混亂。
 2. **極速響應 (Performance)**：載入超過 3 秒，使用者就會流失。
 3. **行動優先 (Mobile-First)**：現代大部分流量來自手機。
+![多裝置支持的重要性](img/too_many_devices.png)
 4. **包容性 (Accessibility)**：應讓身障人士也能順暢使用。
 5. **友善的報錯 (Error Handling)**：發生錯誤時，給予有建設性的提示，而非冰冷的程式碼噴錯。
 
