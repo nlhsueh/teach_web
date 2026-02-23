@@ -22,7 +22,10 @@
 -   **Ch02: HTTP 協定 ([ch02_http.md](Topic01_Intro/ch02_http.md))**：請求/回應結構、狀態碼、HTTPS 與 HTTP/2。
 
 ### [Topic 02] 前端開發 (Frontend)
--   **Ch03 - Ch04**: 深入探討 HTML 結構、CSS 樣式設計與 JavaScript 動態互動。
+-   **Ch03: HTML 結構 ([ch03a_html.md](Topic02_frontend/ch03a_html/README.md))**：語義化標籤與頁面架構。
+-   **Ch03: CSS 樣式與設計 ([ch03b_CCS](Topic02_frontend/ch03b_CCS/README.md))**：Flexbox, Grid 與視覺設計。
+-   **Ch03: Tailwind CSS ([ch03c_tailwind.md](Topic02_frontend/ch03c_tailwind.md))**：實用優先 (Utility-first) 現代化開發。
+-   **Ch04: JavaScript 動態互動**：DOM 操控與非同步程式設計。
 
 ### [Topic 03] 後端系統與框架 (Backend)
 -   **Ch06: Django 應用基礎 ([ch06a_django.md](Topic03_backend/ch06_django/ch06a_django.md))**：MVT 架構實務，網球俱樂部專案。
