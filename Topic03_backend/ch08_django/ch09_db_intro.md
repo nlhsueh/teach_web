@@ -1,4 +1,4 @@
-# 資料庫概論 (Database Introduction)
+# Ch09 資料庫概論 (Database Introduction)
 
 在 Web 開發中，資料庫 (Database) 是用來長期儲存、管理與檢索資料的核心組件。當你的軟體重新啟動，資料還能存在，就是因為有資料庫。
 

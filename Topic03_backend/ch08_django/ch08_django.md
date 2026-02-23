@@ -1,6 +1,6 @@
 ###### tags: `Web`
 
-# Ch06 Django Application
+# Ch08 Django Application
 
 ## Reference
 

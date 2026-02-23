@@ -13,7 +13,7 @@ Javascript
 * 了解 JS 與 HTML 的進階應用 - DOM 物件操作
 :::
 
-## 4.0 Slides
+## 6.0 Slides
 
 :point_right: [nlh slides- javascript](https://docs.google.com/presentation/d/1JMaa9aSBGomS85OtSDdcQZlwuajNgdmKFtrb3WR-nSI/edit?usp=sharing)
 * Basic
@@ -32,7 +32,7 @@ https://www.w3schools.com/js/default.asp)
 * Bootstrap demo
 
 
-## 4.1 基礎
+## 6.1 基礎
 
 #### JS 能做什麼？
 * JavaScript 可以改變 HTML 內容
@@ -442,7 +442,7 @@ D) 以上皆正確
 - 字串處理
 
 
-## 4.2 陣列 
+## 6.2 陣列 
 
 在 JavaScript 中，**陣列（Array）** 是一種特殊的物件，可用來儲存**多個值**。它們可以包含不同類型的數據，例如數字、字串、物件甚至其他陣列。  
 
@@ -723,7 +723,7 @@ str.split(":")
 - 字串處理
 - reg expression
 
-## 4.3 物件
+## 6.3 物件
 
 在 JavaScript 中，**物件（Object）** 是一種儲存鍵值對（key-value pairs）的資料結構。它類似於 Python 的字典（dictionary）或 JSON 格式，允許使用 `key` 來存取對應的 `value`。  
 

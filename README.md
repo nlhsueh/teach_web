@@ -22,15 +22,21 @@
 -   **Ch02: HTTP 協定 ([ch02_http.md](Topic01_Intro/ch02_http.md))**：請求/回應結構、狀態碼、HTTPS 與 HTTP/2。
 
 ### [Topic 02] 前端開發 (Frontend)
--   **Ch03: HTML 結構 ([ch03a_html.md](Topic02_frontend/ch03a_html/README.md))**：語義化標籤與頁面架構。
--   **Ch03: CSS 樣式與設計 ([ch03b_CCS](Topic02_frontend/ch03b_CCS/README.md))**：Flexbox, Grid 與視覺設計。
--   **Ch03: Tailwind CSS ([ch03c_tailwind.md](Topic02_frontend/ch03c_tailwind.md))**：實用優先 (Utility-first) 現代化開發。
--   **Ch04: JavaScript 動態互動**：DOM 操控與非同步程式設計。
+-   **Ch03: HTML 結構 ([html.md](Topic02_frontend/ch03_html/html.md))**：語義化標籤與頁面架構。
+-   **Ch04: CSS 樣式與設計 ([css.md](Topic02_frontend/ch04_CCS/css.md))**：Flexbox, Grid 與視覺設計。
+-   **Ch05: Tailwind CSS ([ch05_tailwind.md](Topic02_frontend/ch05_tailwind.md))**：實用優先 (Utility-first) 現代化開發。
+-   **Ch06: JavaScript 動態互動 ([js.md](Topic02_frontend/ch06_Javascript/js.md))**：DOM 操控與非同步程式設計。
 
 ### [Topic 03] 後端系統與框架 (Backend)
--   **Ch06: Django 應用基礎 ([ch06a_django.md](Topic03_backend/ch06_django/ch06a_django.md))**：MVT 架構實務，網球俱樂部專案。
--   **Ch06: 資料庫概論 ([ch06b_db_intro.md](Topic03_backend/ch06_django/ch06b_db_intro.md))**：SQL vs NoSQL、ACID 特性與資料模型設計。
--   **Ch06: HTMX 深入探討 ([ch06c_htmx.md](Topic03_backend/ch06_django/ch06c_htmx.md))**：比較 Django+HTMX 與 Django+React 的架構抉擇。
+-   **Ch07: Python 基礎 ([python.md](Topic03_backend/ch07_Python/python.md))**：語言特性、常用語法與 Web 開發應用。
+-   **Ch08: Django 應用基礎 ([ch08_django.md](Topic03_backend/ch08_django/ch08_django.md))**：MVT 架構實務，網球俱樂部專案。
+-   **Ch09: 資料庫概論 ([ch09_db_intro.md](Topic03_backend/ch08_django/ch09_db_intro.md))**：SQL vs NoSQL、ACID 特性與資料模型設計。
+-   **Ch10: HTMX 深入探討 ([ch10_htmx.md](Topic03_backend/ch08_django/ch10_htmx.md))**：比較 Django+HTMX 與 Django+React 的架構抉擇。
+
+### [Topic 04] 框架與進階實務 (Frameworks)
+-   **Ch11: UX 設計 (Topic03_framework/ch11_UX/)**
+-   **Ch12: Bootstrap 實務 (Topic03_framework/ch12_BS/)**
+-   **Ch13: Vue 框架 ([readme.md](Topic03_framework/ch13_Vue/readme.md))**
 
 ---
 
@@ -51,7 +57,7 @@
 本倉庫採用的組織方式旨在分離「教學內容」與「實際範例程式碼」：
 
 -   **教學文件**：位於各個 `Topic/` 目錄下的 `.md` 檔案。
--   **範例專案**：例如 `Topic03_backend/ch06_django/tennis_project/`，包含完整的 Django 專案結構。
+-   **範例專案**：例如 `Topic03_backend/ch08_django/tennis_project/`，包含完整的 Django 專案結構。
 
 ---
 

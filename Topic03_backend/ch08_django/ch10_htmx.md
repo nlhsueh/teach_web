@@ -1,4 +1,4 @@
-# Django + HTMX：提升開發效率與互動性
+# Ch10 Django + HTMX：提升開發效率與互動性
 
 在現代 Web 開發中，我們常面臨一個抉擇：使用簡單的後端模板 (Server-side Templates) 還是複雜的前端框架 (SPA, 如 React)？**HTMX** 提供了一個完美的「中道」。
 
