@@ -6,6 +6,20 @@
 
 ---
 
+## Slide
+
+[nlh Slide](https://docs.google.com/presentation/d/1W6qQwzzvZQ0OH97TqwBSL6uNfpBtBWPv7fz05woE3z8/edit?usp=sharing)
+* Development Tool
+* HTML structure
+* Basic HTML Tag
+* Table
+* FORM
+
+[W3School: HTML 教學](https://www.w3schools.com/html/default.asp)
+
+
+---
+
 ## 3.1 開發工具：VS Code 與 HTML 🛠️
 
 在 VS Code 開發 HTML 時，強大的功能與外掛能顯著提升效率。
