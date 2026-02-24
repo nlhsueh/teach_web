@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ch03 HTML 觀念展示 Demo</title>
+    <style>
+        /* 3.4.2 & 3.4.3 樣式與置中技巧 */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 900px;
+            margin: 20px auto;
+            /* 水平置中應用 */
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        /* 表格美化範例 */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+            /* 斑馬紋效果 */
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        /* 表單樣式 */
+        form fieldset {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            /* 讓 label 佔滿一行 */
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        .inline-group label {
+            display: inline;
+            font-weight: normal;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 3.3.2 語意化標籤應用 -->
+    <header class="container" style="text-align: center;">
+        <h1>Ch03 HTML 核心觀念展示 🏗️</h1>
+        <nav>
+            <a href="#text-elements">文本</a> |
+            <a href="#table-section">表格</a> |
+            <a href="#form-section">表單</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- 3.2.2 核心文本元素 -->
+        <section id="text-elements">
+            <h2>3.2.2 核心文本元素 展示</h2>
+            <p>這是一個普通的段落內容。我們可以使用 <strong>strong 標籤來加強重點</strong>，或者是使用 <em>em 標籤來表示語氣的強調</em>。</p>
+            <h3>這是三級標題 (h3)</h3>
+            <ul>
+                <li>無序列表項目一</li>
+                <li>無序列表項目二 (帶有連結: <a href="https://google.com" target="_blank">Google</a>)</li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <!-- 3.4 進階組件：表格 -->
+        <section id="table-section">
+            <h2>3.4 表格展示 (帶有置中與斑馬紋)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>編號</th>
+                        <th>姓名</th>
+                        <th>職位</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>01</td>
+                        <td>大谷翔平</td>
+                        <td>投手/外野手</td>
+                    </tr>
+                    <tr>
+                        <td>02</td>
+                        <td>Aaron Judge</td>
+                        <td>外野手</td>
+                    </tr>
+                    <tr>
+                        <td>03</td>
+                        <td>Mike Trout</td>
+                        <td>外野手</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <hr>
+
+        <!-- 3.5 進階組件：表單 -->
+        <section id="form-section">
+            <h2>3.5 表單展示 (綜合應用)</h2>
+            <form action="#" method="GET">
+                <fieldset>
+                    <legend>基本報名資訊</legend>
+
+                    <div class="form-group">
+                        <label for="name">姓名 (必填):</label>
+                        <input type="text" id="name" name="user_name" required placeholder="請輸入姓名">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="user_email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>投打習慣:</label>
+                        <div class="inline-group">
+                            <input type="radio" id="right" name="habit" value="right" checked>
+                            <label for="right">右打</label>
+                            <input type="radio" id="left" name="habit" value="left">
+                            <label for="left">左打</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pos">守備位置:</label>
+                        <select id="pos" name="position">
+                            <option value="p">投手</option>
+                            <option value="c">捕手</option>
+                            <option value="if">內野手</option>
+                            <option value="of">外野手</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="speed">預期球速 (range):</label>
+                        <input type="range" id="speed" name="speed" min="0" max="160">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bio">個人簡介:</label>
+                        <textarea id="bio" name="bio" rows="4"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="checkbox" id="agree" name="agree" required>
+                        <label for="agree" style="display:inline;">我同意參賽條款</label>
+                    </div>
+
+                    <button type="submit">確認提交報名</button>
+                    <button type="reset">重設表單</button>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+
+    <footer class="container" style="text-align: center; font-size: 0.8em; color: #777;">
+        <p>範例網頁 &copy; 2025 Web 開發課程教學 Demo</p>
+    </footer>
+
+</body>
+
+</html>
