@@ -67,6 +67,13 @@
 *   **段落 (`<p>`)**：用於包裹成段的文字。
 *   **強調 (`<strong>`, `<em>`)**：分別代表「加粗」與「斜體」，語意上表示強調。
 
+**範例：**
+```html
+<h1>這是主標題</h1>
+<h2>這是副標題</h2>
+<p>這是一個段落，其中包含 <strong>加粗文字</strong> 以示強調，以及 <em>斜體文字</em> 表示語氣。</p>
+```
+
 ### 3.2.3 列表與連結
 *   **無序列表 (`<ul>` + `<li>`)**：用於點狀條列。
 *   **有序列表 (`<ol>` + `<li>`)**：用於數字編號條列。
@@ -132,11 +139,41 @@
 *   **斑馬紋效果**：利用 `tr:nth-child(even)` 設置背景色。
 *   **內邊距**：增加 `padding` 讓文字不擠迫。
 
+**CSS 範例：**
+```css
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* 斑馬紋 */
+}
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+```
+
 ---
 
 ## 3.5 進階組件：表單 (Form) 📝
 
 表單是與使用者互動的最主要途徑。
+
+**基本結構範例：**
+```html
+<form action="/submit-data" method="POST">
+  <label for="name">姓名：</label>
+  <input type="text" id="name" name="user_name" required>
+  
+  <input type="submit" value="送出報名">
+</form>
+```
 
 ### 3.5.1 `<input>` 的多樣類型
 | 類型 | 用途 | 範例 |
