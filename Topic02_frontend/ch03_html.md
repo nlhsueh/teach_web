@@ -108,6 +108,24 @@
 ### 3.4.1 基本結構
 包含 `<table>`, `<tr>` (行), `<th>` (標題單元格), `<td>` (資料單元格)。
 
+**範例程式碼：**
+```html
+<table style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr style="background-color: #f2f2f2;">
+      <th style="border: 1px solid #ddd; padding: 8px;">姓名</th>
+      <th style="border: 1px solid #ddd; padding: 8px;">守備位置</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #ddd; padding: 8px;">大谷翔平</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">投手/外野手</td>
+    </tr>
+  </tbody>
+</table>
+```
+
 ### 3.4.2 樣式美化技巧
 利用 CSS 加強可讀性：
 *   **合併邊框**：`border-collapse: collapse;`。
