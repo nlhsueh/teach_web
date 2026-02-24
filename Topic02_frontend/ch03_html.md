@@ -162,6 +162,18 @@
    答案：將其 CSS 設定為 `display: inline-block;`。
    </details>
 
+4. **在表單中，哪種輸入類型 (type) 適合用於「性別」這種單選題？**
+   <details>
+   <summary>點擊查看答案</summary>
+   答案：`radio` (需要搭配相同的 `name` 屬性)。
+   </details>
+
+5. **`<table>` 中用於標示「標題單元格」與「資料單元格」的標籤分別是？**
+   <details>
+   <summary>點擊查看答案</summary>
+   答案：標題為 `<th>`，資料為 `<td>`。
+   </details>
+
 ---
 
 ## 3.7 實作演練 🛠️
