@@ -1,0 +1,50 @@
+{% extends "master.html" %}
+{% load static %}
+
+{% block title %}
+  阿里山森林圖書館
+{% endblock %}
+
+{% block content %}
+  <link rel="stylesheet" href="{% static '/css/mainpage.css' %}">
+
+  <!-- 主要書的展示區域 -->
+  <div class="card">
+    <div class="card-header">
+      近日熱門
+    </div>
+    <div class="card-body">
+      
+      <div class="card">
+        <img src= {{ book1.photo.url }} class="card-img-top">
+        <div class="card-body">
+          <h5 class="col-sm-5">{{ book1.bookname }} 評價：{{ book1.rate }}/10</h5>
+        </div>
+      </div>
+      <div class="card">
+        <img src= {{ book2.photo.url }} class="card-img-top">
+        <div class="card-body">
+          <h5 class="col-sm-5">{{ book2.bookname }} 評價：{{ book2.rate }}/10</h5>
+        </div>
+      </div>
+      <div class="card">
+        <img src= {{ book3.photo.url }} class="card-img-top">
+        <div class="card-body">
+          <h5 class="col-sm-5">{{ book3.bookname }} 評價：{{ book3.rate }}/10</h5>
+        </div>
+      </div>
+      <div class="card">
+        <img src= {{ book4.photo.url }} class="card-img-top">
+        <div class="card-body">
+          <h5 class="col-sm-5">{{ book4.bookname }} 評價：{{ book4.rate }}/10</h5>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bootstrap 的 JavaScript 插件 -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}

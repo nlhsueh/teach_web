@@ -1,0 +1,20 @@
+{% extends "master.html" %}
+
+{% block title %}
+  Library - List of all books
+{% endblock %}
+
+
+{% block content %}
+<div class='container m-5'>
+
+  <h4 class='text-success'>本館藏書</h4>
+  
+      <ul class="list-group">
+        {% for x in mybooks %}
+          <li class="list-group-item  bg-transparent"><a href="book_details/{{ x.id }}">{{ x.bookname }}</a>  剩餘數量：{{ x.lastQuantity }}</li>
+        {% endfor %}
+      </ul>
+
+</div>
+{% endblock %}

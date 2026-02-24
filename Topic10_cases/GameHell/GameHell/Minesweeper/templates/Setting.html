@@ -1,0 +1,25 @@
+{% extends "master.html" %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {% block content %}
+    <div class="containerbox">
+        {{block.super}}
+        <div class="settingBody">
+            <div class="transbox h-50">
+                <h1>Setting</h2>
+                    <p class="fs-3" style="color: gray;">To be continued...</p>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+
+</html>

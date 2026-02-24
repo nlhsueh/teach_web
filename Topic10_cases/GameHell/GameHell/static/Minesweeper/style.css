@@ -1,0 +1,436 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'PixelFont_EN', 'PixelFont_CH';
+}
+
+@font-face {
+    font-family: 'PixelFont_EN';
+    src: url(/static/fonts/Silkscreen/slkscr.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PixelFont_CH';
+    src: url(/static/fonts/fusion-pixel-font-10px-monospaced-ttf-v2023.11.26/fusion-pixel-10px-monospaced-zh_hant.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.containerbox {
+    background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .3)), url('/static/picture/game_hell_wallpaper.jpg') no-repeat center;
+    background-size: cover;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+nav {
+    position: fixed;
+    width: 90%;
+    top: 0;
+    z-index: 1000;
+    right: 0;
+    height: 10vh;
+
+}
+
+.container_nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    background: transparent;
+    backdrop-filter: blur(15px);
+    border-radius: 1em;
+    box-shadow: 0 0 5px #fff;
+}
+
+.logo {
+    width: 100%;
+    cursor: pointer;
+}
+
+.gameImage {
+    width: 60%;
+    cursor: pointer;
+}
+
+.navbar-nav {
+    display: flex;
+    list-style: none;
+}
+
+.navBar {
+    color: #fff;
+    display: flex;
+    align-items: end;
+    height: 100%;
+}
+
+.nav-link {
+    text-decoration: none;
+}
+
+.logoutBox {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    flex-direction: column;
+    width: 50%;
+}
+
+.banner {
+    margin: 0px;
+    color: #fff;
+}
+
+.gamebody {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 2px solid rgba(255, 255, 255, .7); */
+    box-shadow: 0 0 5px #fff;
+    border-radius: 1em;
+    background-color: transparent;
+    backdrop-filter: blur(20px);
+    color: #fff;
+    width: 90%;
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
+}
+
+.information-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    /* border: 2px solid #fff; */
+    background: linear-gradient(to bottom, rgba(128, 0, 0, .5), rgba(77, 0, 0, .5), rgba(0, 0, 0, .5));
+    opacity: 90%;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #fff;
+}
+
+.gameName {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    width: 100%;
+    font-size: 3.5rem;
+}
+
+.introduce {
+    font-size: 1.5rem;
+}
+
+.runcontainer {
+    height: 10%;
+    height: 100px;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.startGameButton,
+.changeSettingButton {
+    font-size: x-large;
+    background-color: #b5b5b5;
+    backdrop-filter: blur(10%);
+    opacity: 90%;
+    transition: 0.5s ease;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    color: #fff;
+    padding: 10px;
+}
+
+.startGameButton:hover {
+    background-color: #750000;
+    box-shadow: 0px 0px 10px 5px #ff0000;
+}
+
+.changeSettingButton:hover {
+    background-color: #cd6300;
+    box-shadow: 0px 0px 10px 5px #ff5900;
+}
+
+/* 
+header {
+    width: 100%;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    padding: 28px 30px;
+    transition: all.5s ease;
+    gap: 20px;
+    font-size: 1.6rem;
+    height: 12vh;
+} */
+
+.settingBody,
+.loginBox,
+.registerBox,
+.gameSetting,
+.leaderBoardContainer {
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+}
+
+.columnlogin {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    height: 100%;
+}
+.rowlogin {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    width: 100%;
+}
+.loginButton {
+    height: 70%;
+}
+
+.buttonContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+
+.registerButton {
+    width: 20%;
+}
+
+.transbox {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10%;
+    border: 1px solid #fff;
+    height: 80%;
+    color: #fff;
+    background: linear-gradient(to bottom, rgba(128, 0, 0, .5), rgba(77, 0, 0, .5), rgba(0, 0, 0, .5));
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 0 10px #fff;
+}
+
+.transbox1 {
+    height: 50%;
+}
+
+.transbox2 {
+    width: 60%;
+    height: 70%;
+    gap: 0;
+    padding: 30px;
+}
+
+.defaultMode {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.defaultMode_row2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.customMode {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.row2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.gameScreen {
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gamebox {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* gap: 30px; */
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(128, 0, 0, .5), rgba(77, 0, 0, .5), rgba(0, 0, 0, .5));
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 0 10px #fff;
+}
+
+.game_row1 {
+    color: #fff;
+}
+
+.pinline {
+    display: inline;
+}
+
+.Centermap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.mainMap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.block {
+    width: 23px;
+    height: 23px;
+    background-color: gray;
+    font-size: 0px;
+}
+
+.block:hover {
+    background-color: rgb(255, 255, 255);
+}
+
+
+.open {
+    background-color: rgb(255, 255, 255);
+}
+
+.markblock {
+    background-color: red;
+}
+
+.open.Numberblock {
+    font-size: small;
+}
+
+.list {
+    height: 23px;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+
+/* .gameName {
+    font-size: 3.5rem;
+}
+
+.introduce {
+    font-size: 1.5rem;
+} */
+
+@media (min-width: 768px) {
+    .introduce {
+        font-size: 0.7rem;
+    }
+
+    .gameName {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .introduce {
+        font-size: 1rem;
+    }
+
+    .gameName {
+        font-size: 2rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .introduce {
+        font-size: 1rem;
+    }
+
+    .gameName {
+        font-size: 3rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .introduce {
+        font-size: 1.5rem;
+    }
+
+    .gameName {
+        font-size: 3.5rem;
+    }
+}

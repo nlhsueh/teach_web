@@ -1,0 +1,44 @@
+{% extends "master.html" %}
+{% load static %}
+<html lang="en">
+
+<head>
+    {% block head%}
+    <title>MineSweeper</title>
+
+    {% endblock%}
+
+
+
+</head>
+
+<body>
+    {% block content %}
+    <div class="containerbox">
+        {{block.super}}
+        <div class="loginBox">
+            <div class="transbox transbox1">
+                <form method="post"class="formbox">
+                    <div class="column1">
+                        <div>
+                            <p>Username:</p>
+                            <input type="text" name="username" id="username">
+
+                        </div>
+                        <div>
+                            <p>Password:</p>
+                            <input type="text" name = "password" id = "password">
+                        </div>
+                    </div>
+                    <div class="columnlogin">
+                        <input type="submit" href = "Main.html" value="下一步" class="startGameButton loginButton">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+</body>
+
+</html>
