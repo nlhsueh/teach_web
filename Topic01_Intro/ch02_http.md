@@ -4,6 +4,15 @@ HTTP 是網際網路的基石，它定義了客戶端（例如你的瀏覽器）
 
 ---
 
+[nlh Slide](https://docs.google.com/presentation/d/1BmxQy9hXpDyf8xZXNBR5F09Y_1kvMAYjA39kj130gJM/edit?usp=sharing)
+* Web and HTTP
+* History of HTTP
+* HTTP
+    * stateless and keep-alive
+    * 3 way hanshake
+
+---
+
 ## 2.1 HTTP 基本概念
 
 HTTP 是一種基於文本的協議。作為資工系學生，我們通常將它視為客戶端和伺服器之間通訊的主要協議。

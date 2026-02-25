@@ -3,6 +3,14 @@
 在現今的數位時代，Web 已經從單純的「超文字連結」演變成一個強大的應用程式平台。本章將帶領你建立對 Web 開發的全面認知，從基本概念到現代化的開發架構。
 
 ---
+## Web application
+[nlh Slide](https://docs.google.com/presentation/d/1AjFtOvU5wBIwHExzj7kuFVmzIDYxy2nCyF0xjrgm0-o/edit?usp=sharing)
+* What is Web
+* Web Architecture: Front-end and Back-end
+* Front-End Language and Framework: HTML, CSS, JS
+* Back-End Framework
+
+---
 
 ## 1.1 什麼是 Web？
 
