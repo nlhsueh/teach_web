@@ -246,31 +246,41 @@ th {
 1. **哪一種標籤最適合用來建立網站的主要導覽列？**
    <details>
    <summary>點擊查看答案</summary>
+
    答案：`<nav>`
+
    </details>
 
 2. **如果想要讓連結在新視窗開啟，應該加上什麼屬性？**
    <details>
    <summary>點擊查看答案</summary>
+
    答案：`target="_blank"`
+
    </details>
 
 3. **如何讓 `<div>` 標籤在不換行的情況下設定寬高？**
    <details>
    <summary>點擊查看答案</summary>
+
    答案：將其 CSS 設定為 `display: inline-block;`。
+
    </details>
 
 4. **在表單中，哪種輸入類型 (type) 適合用於「性別」這種單選題？**
    <details>
    <summary>點擊查看答案</summary>
+
    答案：`radio` (需要搭配相同的 `name` 屬性)。
+
    </details>
 
 5. **`<table>` 中用於標示「標題單元格」與「資料單元格」的標籤分別是？**
    <details>
    <summary>點擊查看答案</summary>
+
    答案：標題為 `<th>`，資料為 `<td>`。
+
    </details>
 
 ---
