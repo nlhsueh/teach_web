@@ -46,6 +46,12 @@
 ### 練習 1：建立專案與 HTML 骨架 🧱
 請在專案資料夾下建立一個 `schedule.html` 檔案，並使用 VS Code 的 Emmet 快捷鍵 (`!`) 生成標準 HTML5 骨架。將網頁標題 (`<title>`) 設定為「我的大學課表」。
 
+> [!TIP]
+> **延伸學習：VS Code 技巧**
+> * 除了 `!`，試試看輸入 `a` 或 `link` 再按 Tab 會出現什麼？
+> * 如何在 VS Code 中直接預覽 Markdown 檔案的渲染結果？
+> * 到 [W3Schools: HTML Editors](https://www.w3schools.com/html/html_editors.asp) 看看其他開發工具。
+
 ---
 
 ## 3.2 HTML 基礎結構與常用標記 🏷️
@@ -94,6 +100,12 @@
 3.  插入一張你的大頭照或一張與學習相關的圖片 (`<img>`)，並用 `style` 設定寬度為 `150px`。
 4.  使用一個實用的 **無序列表** (`<ul>`) 列出這學期你最期待的三門課程。
 
+> [!TIP]
+> **進階挑戰：語意與結構**
+> * 如何在一個列表項目 (`<li>`) 裡面再放入另一個列表？（巢狀列表）
+> * 如果想讓連結在新分頁開啟，除了 `target="_blank"`，還有哪些安全性屬性建議加上？
+> * 到 [W3Schools: HTML Attributes](https://www.w3schools.com/html/html_attributes.asp) 探索更多標籤屬性。
+
 ---
 
 ## 3.3 元素的呈現行為與佈局 🏗️
@@ -127,6 +139,12 @@
 2.  在段落中對關鍵字使用 `<strong>` 加粗。
 3.  加入一個連結 (`<a>`) 到學校的「選課系統」頁面。
 
+> [!TIP]
+> **延伸學習：版面配置基礎**
+> * 既然 `<div>` 是區塊元素，那有沒有類似但屬於行內元素的標籤？（提示：`<span>`）
+> * `<article>` 和 `<section>` 的語意差別在哪裡？什麼時候該用哪一個？
+> * 到 [W3Schools: HTML Layout](https://www.w3schools.com/html/html_layout.asp) 學習更多排版觀念。
+
 ---
 
 ## 3.4 進階組件：表格 (Table) 📊
@@ -152,6 +170,13 @@
     </tr>
   </tbody>
 </table>
+
+**參數說明：**
+*   `border-collapse: collapse;`：將表格邊框合併為單一線條，避免雙線效果。
+*   `width: 100%;`：讓表格寬度佔滿父容器。
+*   `background-color: #f2f2f2;`：設定背景顏色，常用於區隔標題與內容。
+*   `border: 1px solid #ddd;`：設定 `1px` 寬的「實線」邊框，顏色為淺灰色 (`#ddd`)。
+*   `padding: 8px;`：設定單元格內部的「留白」，讓文字不會緊貼邊框，提升閱讀舒適度。
 ```
 
 ### 3.4.2 樣式美化技巧
@@ -205,7 +230,15 @@ th {
 1.  使用 `<table>` 標籤，並設定 `border="1"` (基本邊框) 與 `width="100%"`。
 2.  第一行 (`<tr>`) 使用 `<th>` 標示「時段、週一、週二...週五」。
 3.  其餘行使用 `<td>` 填入你的課程名稱。如果是空堂，可以填寫「自習」。
-4.  **挑戰**：嘗試在 `<table>` 標籤加入 `style="margin: 20px auto; width: 80%;"` 讓課表在頁面置中。
+4.  **挑戰 1**：嘗試在 `<table>` 標籤加入 `style="margin: 20px auto; width: 80%;"` 讓課表在頁面置中。
+5.  **挑戰 2（進階）**：如果某一門課橫跨兩節（例如：3, 4 節都是 Web 程式設計），該如何讓這兩個儲存格合併呈現？（提示：搜尋 `rowspan`）
+6.  **挑戰 3（進階）**：在課程名稱旁加上老師的名字，並將老師的名字做成連結，點擊後可連結到老師的個人網頁。
+
+> [!TIP]
+> **進階挑戰：表格應用**
+> * 如何給表格加上一個置中的標題文字？（提示：`<caption>`）
+> * 當單元格內容過多時，如何讓文字自動換行或強制不換行？
+> * 到 [W3Schools: HTML Tables](https://www.w3schools.com/html/html_tables.asp) 查看更多儲存格合併範例。
 
 ---
 
@@ -250,6 +283,13 @@ th {
 3.  使用 `textarea` 讓使用者輸入「申請理由」。
 4.  加入一個「提交申請」的按鈕。
 
+點擊 [這裡](https://www.w3schools.com/html/html_forms.asp) 了解更多表單應用。
+
+> [!TIP]
+> **延伸學習：互動與驗證**
+> * 除了文字輸入，如何建立一個讓使用者「只能從多個選項中選一個」的下拉選單？
+> * 如何在不寫 JavaScript 的情況下，限制使用者輸入的數字必須在 1 到 100 之間？
+> * 到 [W3Schools: HTML Form Elements](https://www.w3schools.com/html/html_form_elements.asp) 探索更多表單元件。
 ---
 
 ## 3.6 自我測驗 ✍️
