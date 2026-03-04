@@ -183,8 +183,36 @@ Connection: keep-alive
 
 ---
 
-## 🛠️ 實作演練 (Practical Exercises)
+## 2.3 實作演練 (Practical Exercises)
 
-1. **DevTools 觀察員**: 打開 Chrome Network Tab，觀察 [google.com](https://google.com) 的請求 Headers。
-2. **終端機大師**: 嘗試執行 `curl -I https://www.google.com` 看看標頭長什麼樣子。
-3. **API 實戰**: 到 [httpbin.org](https://httpbin.org) 練習模擬發送 GET/POST 請求。
+### DevTools 觀察員
+
+打開 Chrome DevTools(開發者工具), 或是直接滑鼠右鍵點擊 [google.com](https://google.com) 的按鈕，選擇「檢查」，觀察 [google.com](https://google.com) 的請求 Headers。
+
+#### DevTools 常用面板介紹
+DevTools 是前端開發者的「瑞士刀」，主要包含以下幾個切換分頁：
+- **Elements (元素)**：顯示目前網頁的 **HTML 結構**與 **CSS 樣式**。你可以在這裡即時修改文字或顏色，觀察網頁的變化（這不會影響伺服器上的原始檔案，重新整理後就會恢復）。
+- **Console (主控台)**：顯示程式碼的輸出訊息或錯誤 (Logs & Errors)。你也可以在這裡直接輸入 JavaScript 程式碼並執行。
+- **Network (網路)**：**本章的核心工具**。它記錄了所有瀏覽器發出與收到的網路傳輸請求。
+
+#### 如何在 Network 面板觀察 HTTP 請求？
+1. 打開 DevTools 並切換到 **Network** 分頁。
+2. **重新整理網頁 (F5)**：你會看到下方列出了一長串網頁載入的資源（HTML, CSS, 圖片, API）。
+3. **選擇一個資源**：點擊清單中的第一筆（通常是該網頁的網域名稱），右側會彈出詳細資訊視窗：
+    - **Headers**：這就是我們學習的重點！
+        - **General**：顯示請求網址、方法 (GET/POST) 以及狀態碼 (200 OK)。
+        - **Response Headers**：伺服器發回來的標頭。
+        - **Request Headers**：你的瀏覽器主動發出去的標頭。
+    - **Payload (負載)**：如果你發送的是 POST 請求，可以在這裡看到你填寫的表單內容。
+    - **Preview / Response**：顯示伺服器回傳的原始資料內容（如完整的 HTML 程式碼或圖片預覽）。
+
+
+
+### 終端機大師
+
+嘗試執行 `curl -I https://www.google.com` 看看標頭長什麼樣子。
+
+
+### API 實戰
+
+到 [httpbin.org](https://httpbin.org) 練習模擬發送 GET/POST 請求。
