@@ -2,8 +2,8 @@
 
 ```mermaid
 graph LR
-    Source[chXX_web.md] -- "Gemini AI" --> Marp[chXX_slide.md<br/>(Marp 語法)]
-    Marp -- "Marp Tool<br/>(marp-cli)" --> PDF[chXX_slide.pdf]
+    Source["chXX_web.md"] -- "Gemini AI" --> Marp["chXX_slide.md<br/>(Marp 語法)"]
+    Marp -- "Marp Tool<br/>(marp-cli)" --> PDF["chXX_slide.pdf"]
 ```
 
 - **chXX_web.md**：各章節的原始教材內容。
