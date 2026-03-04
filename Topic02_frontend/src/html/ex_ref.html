@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <!-- 練習 1：建立專案與 HTML 骨架 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的大學課表</title>
+    <style>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        h1.main-title {
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .exercise-label {
+            display: inline-block;
+            background: #e9ecef;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+
+        /* 練習 4 樣式 */
+        .schedule-table {
+            border-collapse: collapse;
+            width: 90%;
+            margin: 20px auto;
+            background: #fff;
+        }
+
+        .schedule-table th,
+        .schedule-table td {
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .schedule-table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .schedule-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        /* 練習 5 樣式 */
+        .adjustment-form {
+            display: grid;
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+        }
+
+        .form-group input[type="text"],
+        .form-group textarea {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn-submit {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-submit:hover {
+            background: #0056b3;
+        }
+
+        /* Level 1-3 Summary Styles */
+        .summary-card img {
+            border-radius: 50%;
+            border: 5px solid #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="main-title">Ch03 HTML 課程練習全解答 📚</h1>
+
+    <!-- 練習 2：加入課表標題與基本資訊 -->
+    <section>
+        <span class="exercise-label">練習 2</span>
+        <h1 style="color: #e67e22;">113 學年度第一學期課表</h1>
+        <h2>資訊管理系 - 王小明</h2>
+        <img src="https://via.placeholder.com/150" alt="個人照" style="width: 150px;">
+        <h3>本學期期待課程：</h3>
+        <ul>
+            <li>Web 程式設計</li>
+            <li>人工智慧導論</li>
+            <li>使用者介面設計</li>
+        </ul>
+    </section>
+
+    <!-- 練習 3：每週學習目標 -->
+    <section>
+        <span class="exercise-label">練習 3</span>
+        <div style="display: block;">
+            <h3>🎯 每週學習目標</h3>
+            <p>本學期我的主要目標是 <strong>掌握前端開發的核心技術 (HTML/CSS/JS)</strong>，並嘗試獨立完成一個完整的專案。為了達成這個目標，我會定期到 <a
+                    href="https://example.edu.tw/course" target="_blank">選課系統</a> 查看相關進度。</p>
+        </div>
+    </section>
+
+    <!-- 練習 4：實作課表表格 -->
+    <section>
+        <span class="exercise-label">練習 4</span>
+        <h3 style="text-align: center;">📅 我的時段課表</h3>
+        <table border="1" class="schedule-table">
+            <caption>2024 秋季班課程表</caption>
+            <thead>
+                <tr>
+                    <th>時段</th>
+                    <th>週一</th>
+                    <th>週二</th>
+                    <th>週三</th>
+                    <th>週四</th>
+                    <th>週五</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>09:10 - 10:00</td>
+                    <td rowspan="2">Web 程式設計<br>(<a href="#">李老師</a>)</td>
+                    <td>自習</td>
+                    <td>自習</td>
+                    <td>作業系統</td>
+                    <td>自習</td>
+                </tr>
+                <tr>
+                    <td>10:10 - 11:00</td>
+                    <td>演算法</td>
+                    <td>微積分</td>
+                    <td>作業系統</td>
+                    <td>體育</td>
+                </tr>
+                <tr>
+                    <td>11:10 - 12:00</td>
+                    <td>資料庫</td>
+                    <td>演算法</td>
+                    <td>微積分</td>
+                    <td>自習</td>
+                    <td>體育</td>
+                </tr>
+                <tr>
+                    <td>13:10 - 14:00</td>
+                    <td>自習</td>
+                    <td>自習</td>
+                    <td>自習</td>
+                    <td>自習</td>
+                    <td>自習</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- 練習 5：課程調整申請表 -->
+    <section>
+        <span class="exercise-label">練習 5</span>
+        <h3>✉️ 課程調整申請表</h3>
+        <form class="adjustment-form" action="#" method="POST">
+            <div class="form-group">
+                <label for="course-name">課程名稱：</label>
+                <input type="text" id="course-name" name="course-name" required placeholder="例如：Web 程式設計">
+            </div>
+            <div class="form-group">
+                <label>申請類型：</label>
+                <div class="radio-group">
+                    <input type="radio" id="add" name="type" value="add" checked>
+                    <label for="add">加選</label>
+                    <input type="radio" id="drop" name="type" value="drop">
+                    <label for="drop">退選</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="reason">申請理由：</label>
+                <textarea id="reason" name="reason" rows="4" placeholder="請簡述您的申請理由..."></textarea>
+            </div>
+            <button type="submit" class="btn-submit">提交申請</button>
+        </form>
+    </section>
+
+    <hr>
+
+</body>
+
+</html>

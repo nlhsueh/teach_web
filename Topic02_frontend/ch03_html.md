@@ -51,6 +51,7 @@
 > * 除了 `!`，試試看輸入 `a` 或 `link` 再按 Tab 會出現什麼？
 > * 如何在 VS Code 中直接預覽 Markdown 檔案的渲染結果？
 > * 到 [W3Schools: HTML Editors](https://www.w3schools.com/html/html_editors.asp) 看看其他開發工具。
+> * 打上 lorem, 看看會出現什麼？（虛擬文件） 
 
 ---
 
