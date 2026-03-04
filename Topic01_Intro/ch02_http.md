@@ -51,11 +51,21 @@ HTTP 協議定義了多種方法來與伺服器進行交互，最常見的有：
 > [!WARNING]
 > **⚠️ 小提示**：GET 請求的參數會顯示在網址 (URL) 中，因此不適合用來傳輸密碼等敏感資訊。雖然 POST 相對安全，但若不配合 HTTPS，資料仍可能被截獲。
 
+
+
 ---
 
 ## 2.2 HTTP 請求與回應結構
 
-### 1. HTTP 請求 (Request)
+當我們在瀏覽器打上一段網址，例如 `https://abc.xyz.com/person/123`，然後按下 Enter，這時瀏覽器就會向 `abc.xyz.com` 的伺服器發送一個 HTTP 請求，伺服器會回傳一個 HTTP 回應，然後瀏覽器就會將回傳的 HTML 渲染成網頁。
+
+**網址 (URL) 組成拆解：**
+- **https**：**通訊協定 (Protocol)**。定義瀏覽器與伺服器溝通的方式。
+- **abc.xyz.com**：**網域位址 (Domain Name/Host)**。指向伺服器在網路上的身分地址。
+- **/person/123**：**資源路徑 (Path)**。告訴伺服器你具體想要哪一個檔案或哪一筆資料。
+
+
+### 2.2.1 HTTP 請求 (Request)
 當客戶端向伺服器發送請求時，它會包含以下內容。
 
 **範例：一個典型的 HTTP GET 請求**
@@ -73,8 +83,8 @@ Accept: text/html
 - **Host**：**標頭欄位-主機 (Header: Host)**。必填欄位，指明請求的目標域名（這讓一台伺服器可以同時代管多個網站）。
 - **User-Agent**：**使用者代理**。描述發起請求的瀏覽器與作業系統資訊。
 
-### 2. HTTP 回應 (Response)
-伺服器會返回回應，通常包括。
+### 2.2.2 HTTP 回應 (Response)
+伺服器會返回回應，通常包括以下內容。
 
 **範例：一個典型的 HTTP 成功回應**
 ```text
@@ -83,7 +93,17 @@ Content-Type: text/html; charset=UTF-8
 Content-Length: 1024
 Connection: keep-alive
 
-<!DOCTYPE html>...
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+</head>
+<body>
+    <h1>你好，Web 開發者！</h1>
+    <p>這是一個從伺服器回傳的真實 HTML 內容。</p>
+</body>
+</html>
 ```
 
 **保留字意義說明：**
@@ -105,7 +125,7 @@ Connection: keep-alive
 - **5xx (Server Error)**: 我的錯 (伺服器噴錯)。(例如：500 Internal Error)
 
 > [!IMPORTANT]
-> **⚠️ 常見面試題**：404 (Not Found) 與 500 (Internal Server Error) 的區別？404 通常是網址打錯；500 則是伺服器程式碼執行時發生錯誤 (Crash)。
+> **⚠️ 常見面試題**：404 (Not Found) 與 500 (Internal Server Error) 的區別？404 是找不到該資源，通常是網址打錯；500 則是伺服器程式碼執行時發生錯誤 (Crash)。
 
 ---
 
@@ -113,6 +133,8 @@ Connection: keep-alive
 
 - **HTTP**: 不加密，數據以純文本傳輸。
 - **HTTPS**: 使用 **TLS/SSL** 加密，保護隱私與完整性。
+    - **確保隱私 (Privacy)**：透過**加密技術**（對稱與非對稱加密），將傳輸中的純文字數據轉換為亂碼。即使駭客在網路中途截獲封包，也無法讀取其中的內容（如帳號密碼）。
+    - **確保完整性 (Integrity)**：透過**數位簽章與雜湊 (Hashing)** 機制。如果數據在傳輸過程中被惡意修改（中間人攻擊），瀏覽器能立即透過比對簽章發現內容已被竄改，並中斷連線。
 
 > [!NOTE]
 > **💡 重點觀念**：HTTPS 透過「數位憑證 (Certificate)」確認網站身分，這需要「憑證頒發機構 (CA)」簽發。
