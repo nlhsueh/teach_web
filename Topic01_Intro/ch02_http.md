@@ -94,7 +94,7 @@ HTTP 協議定義了多種方法來與伺服器進行交互，最常見的有：
 
 **網址 (URL) 組成拆解：**
 - **https**：**通訊協定 (Protocol)**。定義瀏覽器與伺服器溝通的方式。
-- **www.example.com**：**網域位址 (Domain Name/Host)**。伺服器在網路上的身分地址。
+- **www.example.com**：**網域位址(Domain Name/Host)**。伺服器在網路上的身分地址。
 - **:443**：**連接埠 (Port)**。類似大樓的「分機號碼」或「門牌號碼」。伺服器上可以跑很多服務，Port 確保請求送達正確的程式（https 預設為 443，http 預設為 80）。
 - **/person/123**：**資源路徑 (Path)**。告訴伺服器你具體想要哪一個資源。
 - **?name=John&age=25**：**查詢參數 (Query Parameters)**。用來傳遞額外的資料給伺服器，多個參數間用 `&` 隔開。
@@ -292,19 +292,3 @@ x-amz-cf-id: N5TxjUxLehV35gh0FyNkeJD4YfJyC6WLjvcn8PkEj91Ee5sG8WdYnA==
    curl -v https://www.fcu.edu.tw
    ```
    這會完整顯示「三次握手」、「Request Headers」以及「Response Headers」，是排錯時的最佳幫手。
-
-
-### API 實戰
-
-[httpbin.org](https://httpbin.org) 是一個專門設計來測試各種 HTTP 請求的服務。
-
-#### 練習步驟：
-1. **GET 請求測試**：在瀏覽器輸入 `https://httpbin.org/get`。
-    - 你會看到伺服器回傳一段 **JSON 格式** 的數據，內容正是你的瀏覽器發送過去的標頭資訊 (User-Agent, Accept 等)。
-2. **模擬不同狀態碼**：
-    - 輸入 `https://httpbin.org/status/404`：觀察瀏覽器的反應。
-    - 輸入 `https://httpbin.org/status/500`：模擬伺服器崩潰。
-3. **POST 請求實作**：
-    - 到 httpbin 首頁，展開 **HTTP Methods** 區塊。
-    - 點擊 `/post` -> `Try it out` ->輸入一些資料 -> `Execute`。
-    - 觀察 **Response Body**，確認你發送的資料被正確接收並回傳。
