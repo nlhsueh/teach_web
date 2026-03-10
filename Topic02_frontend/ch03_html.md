@@ -1,5 +1,3 @@
-###### tags: `Web`
-
 # Ch03 HTML 結構與基礎應用 🏗️
 
 本章節將深入探討 HTML 的核心結構、開發工具的使用技巧，以及如何利用各種標記構建功能豐富的網頁。
@@ -22,28 +20,41 @@
 
 ## 3.1 開發工具：VS Code 與 HTML 🛠️
 
-在 VS Code 開發 HTML 時，強大的功能與外掛能顯著提升效率。
+常見的 HTML 開發工具包括：
 
-### 3.1.1 為什麼選擇 VS Code？
+1. **VS Code**：現代開發者最愛的 IDE，特別適合前端開發。
+2. **Sublime Text**：輕量級編輯器，適合快速開發。
+3. **Atom**：由 GitHub 打造的開發環境，功能強大。
+
+當然，目前許多 AI 開發工具也已經成為開發者不可或缺的工具，例如：
+
+1. **ChatGPT**：用來產生程式碼、回答問題、寫作等。
+2. **GitHub Copilot**：直接在 VS Code 中產生程式碼。
+3. **Claude**：用來產生程式碼、回答問題、寫作等。
+
+---
+
+### VS Code
+
 *   **智能代碼補全**：內建代碼提示，自動完成標籤與屬性。
 *   **擴展性強**：支援多種外掛，涵蓋即時預覽、格式化等。 
 *   **輕量化**：資源占用低，開啟速度快。
 
-### 3.1.2 必備外掛推薦 🔌
+**必備外掛推薦**
 1.  **HTML Snippets**: 提供常用標籤的代碼片段。
 2.  **Auto Close Tag**: 輸入 `<div>` 後自動補全 `</div>`。
 3.  **Auto Rename Tag**: 修改起始標籤時，自動同步修改結尾標籤。
 4.  **Live Server**: 建立本地伺服器，存檔後瀏覽器自動刷新即時預覽。 🚀
 5.  **Prettier**: 自動美化縮排與代碼格式。
 
-### 3.1.3 高效開發技巧 ⌨️
+**高效開發技巧**
 *   **Emmet 語法**：
     - `!` 或 `html:5` → 生成標準 HTML5 骨架。
     - `div.container>ul>li*5` → 快速生成嵌套結構。
 *   **多光標編輯**：按住 `Alt` (Windows) / `Option` (Mac) 並點擊，可同時編輯多處。
 *   **快速導航**：使用 `Ctrl+P` (Windows) / `Cmd+P` (Mac) 快速搜尋並開啟檔案。
 
-### 練習 1：建立專案與 HTML 骨架 🧱
+**練習 1：建立專案與 HTML 骨架 🧱**
 請在專案資料夾下建立一個 `schedule.html` 檔案，並使用 VS Code 的 Emmet 快捷鍵 (`!`) 生成標準 HTML5 骨架。將網頁標題 (`<title>`) 設定為「我的大學課表」。
 
 > [!TIP]
@@ -53,9 +64,36 @@
 > * 到 [W3Schools: HTML Editors](https://www.w3schools.com/html/html_editors.asp) 看看其他開發工具。
 > * 打上 lorem, 看看會出現什麼？（虛擬文件） 
 
+### 3.1.2 瀏覽器
+
+常見的瀏覽器有 Chrome、Firefox、Edge、Safari、Opera 等。
+
+目前主流的瀏覽器（稱為 **Evergreen Browsers**）對 HTML5 的支援度都非常高且會自動更新。不同的瀏覽器背後使用不同的**渲染引擎 (Rendering Engine)** 來解析 HTML：
+
+*   **Chromium (Blink)**: 包括 Google Chrome、Microsoft Edge、Opera、Brave 等，目前市場佔有率最高。
+*   **WebKit**: 主要是 Apple 的 Safari。所有 iOS 版的瀏覽器（包含 iOS 版 Chrome）都必須使用 WebKit。
+*   **Gecko**: 由 Mozilla 開發，主要用於 Firefox。
+
+> [!TIP]
+> **如何檢查支援狀況？**
+> 雖然現代瀏覽器大多支援基礎 HTML，但某些新特性（如全新的 HTML 標籤或 CSS 屬性）可能在不同瀏覽器的支援度不同。開發者通常會使用 [Can I Use](https://caniuse.com/) 網站來搜尋特定功能的相容性。
+
+
+### 3.1.3 瀏覽器大戰
+
+網頁開發史上最著名的事件莫過於 90 年代中期的「第一次瀏覽器大戰」：
+
+1.  **Netscape 的崛起 (1994)**：Netscape Navigator 是當時的霸主，市佔率一度超過 90%，並引進了許多現代網頁的核心技術。
+2.  **微軟的反擊 (1995)**：微軟推出了 Internet Explorer (IE)，並採取「捆綁銷售」策略（將 IE 與 Windows 系統綁定），讓使用者一開機就有瀏覽器，迅速搶佔市場。
+3.  **標準的混亂**：兩家公司為了爭奪主導權，各自推出了不相容的 HTML 標籤（如 Netscape 的 `<blink>` 和 IE 的 `<marquee>`）。這導致開發者必須寫兩套程式碼，也是早期「建議使用 IE / Netscape 開啟」這類提示的起源。
+4.  **結果與後續影響**：微軟最终贏得了這場戰爭並壟斷市場多年。Netscape 雖然失敗，但其原始碼後來成為了 **Firefox** 的基礎。這段混亂的歷史也促使了 W3C 致力於制定統一的網頁標準，避免網頁被單一企業壟斷。
+
+
 ---
 
 ## 3.2 HTML 基礎結構與常用標記 🏷️
+
+![](img/html_structure.png)
 
 ### 3.2.1 HTML5 標準骨架
 ```html
@@ -72,7 +110,13 @@
 </html>
 ```
 
-### 3.2.2 核心文本元素
+### 3.2.2 空元素與非空元素
+
+非空元素 (Non-empty element) 指的是有內容的標籤，例如 `<p>`、`<div>`、`<ul>` 等。注意，非空元素必須有結尾標籤，例如 `<p>...</p>`。
+
+空元素 (Empty element) 指的是沒有內容的標籤，例如 `<br>`、`<img>`、`<hr>` 等。注意，空元素不能有結尾標籤。
+
+### 3.2.3 核心文本元素
 *   **標題 (`<h1>` - `<h6>`)**：代表權重，`<h1>` 為最高層級（通常一頁一個）。
 *   **段落 (`<p>`)**：用於包裹成段的文字。
 *   **強調 (`<strong>`, `<em>`)**：分別代表「加粗」與「斜體」，語意上表示強調。
@@ -84,15 +128,45 @@
 <p>這是一個段落，其中包含 <strong>加粗文字</strong> 以示強調，以及 <em>斜體文字</em> 表示語氣。</p>
 ```
 
-### 3.2.3 列表與連結
+### 3.2.4 列表與連結
 *   **無序列表 (`<ul>` + `<li>`)**：用於點狀條列。
 *   **有序列表 (`<ol>` + `<li>`)**：用於數字編號條列。
 *   **超連結 (`<a>`)**：使用 `href` 屬性導向目標，`target="_blank"` 可在新分頁開啟。
 
-### 3.2.4 圖片與基礎樣式 🖼️
+範例：
+```html
+<ul>
+    <li>無序列表項目 1</li>
+    <li>無序列表項目 2</li>
+    <li>無序列表項目 3</li>
+</ul>
+
+<ol>
+    <li>有序列表項目 1</li>
+    <li>有序列表項目 2</li>
+    <li>有序列表項目 3</li>
+</ol>
+
+<a href="https://www.example.com" target="_blank">點擊我</a>
+```
+
+### 3.2.5 圖片與基礎樣式 🖼️
 *   **圖片 (`<img>`)**：必須包含 `src` (來源路徑) 與 `alt` (替代文字，對 SEO 有利)。
 *   **樣式屬性 (`style`)**：在標籤內直接加入 CSS，例如：`<h1 style="color: blue;">`。
 *   **CSS 簡介**：CSS 用於美化網頁。雖然本章重點是 HTML，但學會 `style` 屬性可以讓你快速調整顏色、字體與間距。
+
+範例：
+```html
+<img src="img/virtuosi_hall.png" width="150px" alt="示例圖片">
+<h1 style="color: blue;">逢甲共善樓</h1>
+```
+
+* img 是一個元素標籤的`名字`
+* src, width, alt 是`屬性`
+* 它們的 `value` 分別是 `"img/virtuosi_hall.png"`, `"150px"`, `"示例圖片"`
+* h1 的`內容`是「逢甲共善樓」
+
+所以我們在 HTML 文件會看到很多的`標籤`，每個標籤都有`名字`、`屬性`和`內容`。
 
 ### 練習 2：加入課表標題與基本資訊 📝
 在 `<body>` 中加入以下內容：
@@ -180,6 +254,13 @@
 *   `padding: 8px;`：設定單元格內部的「留白」，讓文字不會緊貼邊框，提升閱讀舒適度。
 ```
 
+Table 中 `border: 1px solid black;` 是一種縮寫，完整的寫法是：
+* `border-width: 1px;`
+* `border-style: solid;`
+* `border-color: black;`
+
+![alt text](img/table.png)
+
 ### 3.4.2 樣式美化技巧
 利用 CSS 加強可讀性：
 *   **合併邊框**：`border-collapse: collapse;`。
@@ -190,6 +271,25 @@
 
 > [!IMPORTANT]
 > **醒目提醒**：雖然表格可以做版面配置，但現代網頁開發應僅將表格用於「展示數據」。佈局（Layout）請使用 CSS 的 Flexbox 或 Grid（後續章節會教）。
+
+
+```html
+   table {
+       border: 10px solid yellow;
+       border-spacing: 15px;
+   }
+   th, td {
+       border: 10px solid green;
+       padding: 12px;
+   }
+```
+以上程式碼中的 `border-spacing: 15px;` 是指表格儲存格之間的距離為 `15px`。
+
+![](img/table_border.png)
+
+> [!NOTE]
+> border-spacing 和 border-collapse 不能同時使用。
+
 
 ### 3.4.3 版面置中技巧：Margin 的應用 🎯
 在網頁佈局中，我們常需要將一個「固定寬度」的區塊水平置中於頁面。最簡單的方法就是將左右 `margin` 設定為 `auto`。

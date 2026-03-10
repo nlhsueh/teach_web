@@ -117,6 +117,9 @@ Accept: text/html
 - **Host**：**標頭欄位-主機 (Header: Host)**。必填欄位，指明請求的目標域名（這讓一台伺服器可以同時代管多個網站）。
 - **User-Agent**：**使用者代理**。描述發起請求的瀏覽器與作業系統資訊。
 
+> [!TIP]
+> **為什麼近代瀏覽器都自稱 Mozilla？** 這是網頁開發史上的一段「偽裝史」。早期 Netscape (代號 Mozilla) 支援框架 (Frames)，而其他瀏覽器不支援。伺服器會檢查 User-Agent，若不是 Mozilla 就傳送沒框架的簡易版。為了能正確顯示網頁，IE、Chrome、Safari 等瀏覽器後來都紛紛在 User-Agent 開頭加上 `Mozilla/X.X` 以「欺騙」伺服器它們也是相容的瀏覽器。這就是為什麼現在即便你用 Chrome，標頭仍可能看到 `Mozilla/5.0...Chrome/...`。
+
 ### 2.2.2 HTTP 回應 (Response)
 伺服器會返回回應，通常包括以下內容。
 
