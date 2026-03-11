@@ -233,14 +233,12 @@
 在網頁佈局中，我們常需要將一個「固定寬度」的區塊水平置中於頁面。最簡單的方法就是將左右 `margin` 設定為 `auto`。
 
 **範例：**
-```css
-.centered-box {
-    width: 60%;      /* 必須設定寬度 */
-    margin-left: auto;
-    margin-right: auto;
-    /* 簡寫方式：margin: 0 auto; (上下為 0，左右自動) */
-}
+```html
+<div style="width: 60%; margin-left: auto; margin-right: auto;">
+    <p>這是置中的區塊</p>
+</div>
 ```
+
 > [!IMPORTANT]
 > 此方法僅適用於 **Block 元素**。如果是內容物（如文字或圖片）要置中，應在父容器設定 `text-align: center;`。
 
@@ -372,14 +370,48 @@ Table 中 `border: 1px solid black;` 是一種縮寫，完整的寫法是：
 **基本結構範例：**
 ```html
 <form action="/submit-data" method="POST">
-  <label for="name">姓名：</label>
-  <input type="text" id="name" name="user_name" required>
-  
-  <input type="submit" value="送出報名">
+  <fieldset>
+    <legend>個人基本資料</legend>
+    
+    <label for="name">姓名：</label>
+    <input type="text" id="name" name="user_name" required><br><br>
+
+    <label for="height">身高 (cm)：</label>
+    <input type="number" id="height" name="user_height"><br><br>
+
+    <label for="weight">體重 (kg)：</label>
+    <input type="number" id="weight" name="user_weight"><br><br>
+
+    <label>性別：</label>
+    <input type="radio" id="male" name="gender" value="male">
+    <label for="male">男</label>
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">女</label><br><br>
+
+    <label>興趣：</label>
+    <input type="checkbox" id="coding" name="interest" value="coding">
+    <label for="coding">寫程式</label>
+    <input type="checkbox" id="music" name="interest" value="music">
+    <label for="music">音樂</label>
+    <input type="checkbox" id="sports" name="interest" value="sports">
+    <label for="sports">運動</label><br><br>
+
+    <label for="birthday">生日：</label>
+    <input type="date" id="birthday" name="user_birthday"><br><br>
+    
+    <input type="submit" value="送出報名">
+  </fieldset>
 </form>
 ```
 
+> [!TIP]
+> **id vs. name：屬性的差別**
+> *   **`id`**：這就像是元素的「身份證字號」。它必須在整個網頁中是**唯一**的。通常用於 **CSS 設定樣式** 或 **JavaScript 操作元素**。在表單中，`id` 也可以與 `<label>` 的 `for` 屬性配合，提升點擊的友善度。
+> *   **`name`**：這就像是資料的「標籤」。它是傳送到伺服器端的** key (鍵)**。伺服器端會透過 `name` 來取得使用者輸入的資料。如果是單選題 (Radio)，必須給予相同的 `name` 才能達到互斥的效果。
+
 ### 3.5.1 `<input>` 的多樣類型
+
+
 | 類型 | 用途 | 範例 |
 | :--- | :--- | :--- |
 | `text` / `password` | 文字與密碼 | `<input type="password">` |
@@ -387,12 +419,10 @@ Table 中 `border: 1px solid black;` 是一種縮寫，完整的寫法是：
 | `radio` | 單選題 | 需搭配相同 `name` |
 | `checkbox` | 多選題 | 可選取多個項 |
 | `date` / `time` | 日期與時間 | 顯示內建挑選器 |
-| `file` | 檔案上傳 | `accept="image/*"` 限定格式 |
 
 ### 3.5.2 下拉選單與多行文字
 *   **`<select>`**：建立下拉選單，搭配 `<option>`。
 *   **`<textarea>`**：用於輸入長篇訊息，可自訂行數 `rows`。
-*   **`<button>`**：比起 `<input type="submit">` 更具自訂彈性，可包含圖示。
 
 ### 3.5.3 表單驗證屬性
 *   `required`: 必填。
