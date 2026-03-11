@@ -411,7 +411,6 @@ Table 中 `border: 1px solid black;` 是一種縮寫，完整的寫法是：
 
 ### 3.5.1 `<input>` 的多樣類型
 
-
 | 類型 | 用途 | 範例 |
 | :--- | :--- | :--- |
 | `text` / `password` | 文字與密碼 | `<input type="password">` |
@@ -424,10 +423,43 @@ Table 中 `border: 1px solid black;` 是一種縮寫，完整的寫法是：
 *   **`<select>`**：建立下拉選單，搭配 `<option>`。
 *   **`<textarea>`**：用於輸入長篇訊息，可自訂行數 `rows`。
 
-### 3.5.3 表單驗證屬性
-*   `required`: 必填。
-*   `pattern`: 使用正確表達式驗證格式。
-*   `min` / `max`: 數值範圍。
+範例：
+```html
+<select name="fruit">
+    <option value="apple">Apple</option>
+    <option value="banana">Banana</option>
+    <option value="orange">Orange</option>
+</select>
+```
+
+### 輸入元素的屬性
+
+### 輸入元素的常用屬性
+
+以下是 `<input>` 標籤中常見的屬性及其意義：
+
+| 屬性 | 意義 | 範例 |
+| :--- | :--- | :--- |
+| **`value`** | 設定輸入欄位的**初始值**。 | `<input type="text" value="這是預設文字">` |
+| **`readonly`** | 欄位變為**唯讀**。使用者可以看到並選取文字，但無法修改。資料**會**被送出。 | `<input type="text" value="不可修改" readonly>` |
+| **`disabled`** | **禁用**元素。元素會呈現灰色，無法點擊或修改，且資料**不會**被送出。 | `<input type="text" disabled>` |
+| **`size`** | 設定輸入框在畫面上顯示的**字元寬度** (預設通常為 20)。 | `<input type="text" size="50">` |
+| **`maxlength`** | 限制使用者可輸入的內容**最大字元長度**。 | `<input type="text" maxlength="10">` |
+| **`min` / `max`** | 設定數值 (`number`)、範圍 (`range`) 或日期 (`date`) 的**最小與最大值**。 | `<input type="number" min="1" max="100">` |
+| **`multiple`** | 允許使用者輸入**多個值**。常用於檔案上傳或 Email 列表。 | `<input type="file" multiple>` |
+| **`pattern`** | 利用**正規表達式 (Regular Expression)** 進行格式驗證。 | `<input type="text" pattern="[0-9]{3}" title="請輸入三位數字">` |
+| **`placeholder`** | 在輸入框中顯示**提示文字**，當使用者開始打字時會消失。 | `<input type="text" placeholder="請輸入姓名">` |
+| **`required`** | 標記此欄位為**必填**，若未填寫則瀏覽器會阻止表單送出。 | `<input type="email" required>` |
+| **`step`** | 設定數值調整的**間隔（增量）**。 | `<input type="number" step="0.5">` |
+
+**範例代碼：實用的屬性組合**
+```html
+<!-- 限制長度且必填的文字框 -->
+<input type="text" placeholder="請輸入4-8字帳號" maxlength="8" required>
+
+<!-- 固定步長且有範圍限制的數字選取 -->
+<input type="number" value="10" min="0" max="100" step="10">
+```
 
 ### 練習 5：課程調整申請表
 在頁面最下方建立一個簡單的表單，模擬「加選/退選申請」：
@@ -444,6 +476,20 @@ Table 中 `border: 1px solid black;` 是一種縮寫，完整的寫法是：
 > * 如何在不寫 JavaScript 的情況下，限制使用者輸入的數字必須在 1 到 100 之間？
 > * 到 [W3Schools: HTML Form Elements](https://www.w3schools.com/html/html_form_elements.asp) 探索更多表單元件。
 ---
+
+### 練習 6： BMI 計算表
+
+設計一個表單，如下圖：
+
+![BMI 計算表](img/bmi.png)
+
+要求：
+- 置中顯示
+- 姓名必填，不可超過 20 個字
+- 體重介於 20kg-120kg 之間
+- 身高用選的, 140-200cm
+- 不使用 <br> 換行 (改用 block)
+
 
 ## 3.6 自我測驗
 
