@@ -36,10 +36,58 @@ p {
 }
 ```
 
-
 ## 4.1 CSS 的五大主要選擇器
 
 CSS 提供多種選擇器，讓開發者能夠根據不同條件精確地選擇和設置 HTML 元素的樣式。這裡介紹五個主要的選擇器。
+
+---
+
+### **範例程式 (自我介紹頁面)**
+
+在接下來的練習中，我們可以使用這個簡單的「自我介紹」 HTML 結構作為練習的基礎。你可以將這段代碼複製到你的編譯器中運行，然後嘗試套用不同的選擇器。
+
+```html
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>我的自我介紹</title>
+    <style>
+        /* 基礎樣式 */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="main-title">大家好，我是 [你的名字]</h1>
+        
+        <p class="intro">我是一名正在學習網頁前端開發的學生，對 <strong>CSS 選擇器</strong> 非常感興趣。</p>
+
+        <h2>我的興趣</h2>
+        <ul>
+            <li>閱讀技術部落格</li>
+            <li class="active">撰寫網頁專案</li>
+            <li>參加技術研討會</li>
+        </ul>
+
+        <h2>聯絡我</h2>
+        <p>你可以透過以下方式找到我：</p>
+        <a href="https://github.com" target="_blank" title="我的 GitHub">GitHub 首頁</a>
+        <a href="mailto:example@fcu.edu.tw">發送郵件</a>
+    </div>
+</body>
+</html>
+```
 
 ---
 
