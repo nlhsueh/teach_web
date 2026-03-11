@@ -1,4 +1,4 @@
-# Ch03 HTML 結構與基礎應用 🏗️
+# Ch03 HTML 結構與基礎應用 
 
 本章節將深入探討 HTML 的核心結構、開發工具的使用技巧，以及如何利用各種標記構建功能豐富的網頁。
 
@@ -18,7 +18,7 @@
 
 ---
 
-## 3.1 開發工具：VS Code 與 HTML 🛠️
+## 3.1 開發工具與瀏覽器
 
 常見的 HTML 開發工具包括：
 
@@ -91,7 +91,7 @@
 
 ---
 
-## 3.2 HTML 基礎結構與常用標記 🏷️
+## 3.2 HTML 基礎結構與常用標記 
 
 ![](img/html_structure.png)
 
@@ -116,9 +116,9 @@
 
 空元素 (Empty element) 指的是沒有內容的標籤，例如 `<br>`、`<img>`、`<hr>` 等。注意，空元素不能有結尾標籤。
 
-### 3.2.3 核心文本元素
-*   **標題 (`<h1>` - `<h6>`)**：代表權重，`<h1>` 為最高層級（通常一頁一個）。
-*   **段落 (`<p>`)**：用於包裹成段的文字。
+### 3.2.3 核心文件元素
+*   **標題 (`<h1>` - `<h6>`)**：代表權重，`<h1>` 為最高層級（通常一頁一個）。(headline)
+*   **段落 (`<p>`)**：用於包裹成段 (paragraph)的文字。
 *   **強調 (`<strong>`, `<em>`)**：分別代表「加粗」與「斜體」，語意上表示強調。
 
 **範例：**
@@ -127,6 +127,11 @@
 <h2>這是副標題</h2>
 <p>這是一個段落，其中包含 <strong>加粗文字</strong> 以示強調，以及 <em>斜體文字</em> 表示語氣。</p>
 ```
+
+**Style**
+*   **樣式屬性 (`style`)**：在標籤內直接加入 CSS，例如：`<h1 style="color: blue;">`。
+*   **CSS 簡介**：CSS 用於美化網頁。雖然本章重點是 HTML，但學會 `style` 屬性可以讓你快速調整顏色、字體與間距。
+
 
 ### 3.2.4 列表與連結
 *   **無序列表 (`<ul>` + `<li>`)**：用於點狀條列。
@@ -150,12 +155,22 @@
 <a href="https://www.example.com" target="_blank">點擊我</a>
 ```
 
-### 3.2.5 圖片與基礎樣式 🖼️
+### 3.2.5 圖片
 *   **圖片 (`<img>`)**：必須包含 `src` (來源路徑) 與 `alt` (替代文字，對 SEO 有利)。
-*   **樣式屬性 (`style`)**：在標籤內直接加入 CSS，例如：`<h1 style="color: blue;">`。
-*   **CSS 簡介**：CSS 用於美化網頁。雖然本章重點是 HTML，但學會 `style` 屬性可以讓你快速調整顏色、字體與間距。
 
 範例：
+```html
+<img src="img/virtuosi_hall.png" width="150px" alt="示例圖片">
+```
+
+結果如下：
+<img src="img/virtuosi_hall.png" width="150px" alt="示例圖片">
+
+> [!Note]
+> <img> 是空元素，所以沒有結尾標籤，而且他的 `display` 是 `inline`，所以不會換行。
+
+### 3.2.6 標籤、屬性與內容
+
 ```html
 <img src="img/virtuosi_hall.png" width="150px" alt="示例圖片">
 <h1 style="color: blue;">逢甲共善樓</h1>
@@ -168,7 +183,7 @@
 
 所以我們在 HTML 文件會看到很多的`標籤`，每個標籤都有`名字`、`屬性`和`內容`。
 
-### 練習 2：加入課表標題與基本資訊 📝
+### 練習 2：加入課表標題與基本資訊
 在 `<body>` 中加入以下內容：
 1.  使用 `<h1>` 標題顯示「113 學年度第一學期課表」，並用 `style` 將文字顏色改為你喜歡的顏色。
 2.  使用 `<h2>` 標題顯示你的姓名與系級。
@@ -183,7 +198,7 @@
 
 ---
 
-## 3.3 元素的呈現行為與佈局 🏗️
+## 3.3 元素的呈現行為與佈局
 
 網頁元素的排列方式主要由其顯示屬性（Display）決定。
 
@@ -199,6 +214,11 @@
     - 無法設定寬高。
     - 範例：`<span>`, `<a>`, `<strong>`。
 3.  **Inline-block**：結合兩者特色，不換行但可設定寬高。
+    * 結合了 Block 與 Inline 的特性。
+    * 不會從新行開始，可以與其他元素並排。
+    * **可以**設定寬高。
+    * 常見應用：按鈕 (button)、圖片 (img) 等。
+    * see [See more](https://www.w3schools.com/css/css_inline-block.asp)
 
 ### 3.3.2 語意化標籤 (Semantic HTML)
 為了讓搜尋引擎 (SEO) 與輔助技術更好地理解內容，應使用具備意義的標籤：
@@ -208,7 +228,43 @@
 *   `<article>` / `<section>`：獨立文章或主題區塊。
 *   `<footer>`：頁尾資訊。
 
-### 練習 3：每週學習目標 🎯
+
+### 3.3.3 版面置中技巧：Margin 的應用
+在網頁佈局中，我們常需要將一個「固定寬度」的區塊水平置中於頁面。最簡單的方法就是將左右 `margin` 設定為 `auto`。
+
+**範例：**
+```css
+.centered-box {
+    width: 60%;      /* 必須設定寬度 */
+    margin-left: auto;
+    margin-right: auto;
+    /* 簡寫方式：margin: 0 auto; (上下為 0，左右自動) */
+}
+```
+> [!IMPORTANT]
+> 此方法僅適用於 **Block 元素**。如果是內容物（如文字或圖片）要置中，應在父容器設定 `text-align: center;`。
+
+**CSS 範例：**
+```css
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* 斑馬紋 */
+}
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+```
+
+### 練習 3：每週學習目標
 在課表下方加入一個 `<div>` 區塊，設定其 CSS 為 `display: block` (預設即是)，並在其中包含：
 1.  一個 `<p>` 段落描述你本學期的學習目標。
 2.  在段落中對關鍵字使用 `<strong>` 加粗。
@@ -222,7 +278,7 @@
 
 ---
 
-## 3.4 進階組件：表格 (Table) 📊
+## 3.4 進階組件：表格 (Table)
 
 表格用於展示結構化數據。
 
@@ -245,6 +301,7 @@
     </tr>
   </tbody>
 </table>
+```
 
 **參數說明：**
 *   `border-collapse: collapse;`：將表格邊框合併為單一線條，避免雙線效果。
@@ -252,7 +309,6 @@
 *   `background-color: #f2f2f2;`：設定背景顏色，常用於區隔標題與內容。
 *   `border: 1px solid #ddd;`：設定 `1px` 寬的「實線」邊框，顏色為淺灰色 (`#ddd`)。
 *   `padding: 8px;`：設定單元格內部的「留白」，讓文字不會緊貼邊框，提升閱讀舒適度。
-```
 
 Table 中 `border: 1px solid black;` 是一種縮寫，完整的寫法是：
 * `border-width: 1px;`
@@ -291,40 +347,6 @@ Table 中 `border: 1px solid black;` 是一種縮寫，完整的寫法是：
 > border-spacing 和 border-collapse 不能同時使用。
 
 
-### 3.4.3 版面置中技巧：Margin 的應用 🎯
-在網頁佈局中，我們常需要將一個「固定寬度」的區塊水平置中於頁面。最簡單的方法就是將左右 `margin` 設定為 `auto`。
-
-**範例：**
-```css
-.centered-box {
-    width: 60%;      /* 必須設定寬度 */
-    margin-left: auto;
-    margin-right: auto;
-    /* 簡寫方式：margin: 0 auto; (上下為 0，左右自動) */
-}
-```
-> [!IMPORTANT]
-> 此方法僅適用於 **Block 元素**。如果是內容物（如文字或圖片）要置中，應在父容器設定 `text-align: center;`。
-
-**CSS 範例：**
-```css
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-th, td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: left;
-}
-tr:nth-child(even) {
-    background-color: #f9f9f9; /* 斑馬紋 */
-}
-th {
-    background-color: #4CAF50;
-    color: white;
-}
-```
 
 ### 練習 4：實作課表表格 📅
 建立一個表格來呈現週一至週五的課表：
@@ -343,7 +365,7 @@ th {
 
 ---
 
-## 3.5 進階組件：表單 (Form) 📝
+## 3.5 進階組件：表單 (Form)
 
 表單是與使用者互動的最主要途徑。
 
@@ -377,7 +399,7 @@ th {
 *   `pattern`: 使用正確表達式驗證格式。
 *   `min` / `max`: 數值範圍。
 
-### 練習 5：課程調整申請表 ✉️
+### 練習 5：課程調整申請表
 在頁面最下方建立一個簡單的表單，模擬「加選/退選申請」：
 1.  包含一個 `text` 輸入框填寫「課程名稱」。
 2.  使用 `radio` 按鈕讓使用者選擇「加選」或「退選」。
@@ -393,7 +415,7 @@ th {
 > * 到 [W3Schools: HTML Form Elements](https://www.w3schools.com/html/html_form_elements.asp) 探索更多表單元件。
 ---
 
-## 3.6 自我測驗 ✍️
+## 3.6 自我測驗
 
 1. **哪一種標籤最適合用來建立網站的主要導覽列？**
    <details>
@@ -437,7 +459,7 @@ th {
 
 ---
 
-## 3.7 實作演練：由淺入深實戰 🛠️
+## 3.7 實作演練：由淺入深實戰
 
 ### Level 1：基礎結構實作 (文字與連結)
 建立一個簡易的個人名片頁：
