@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind 視覺效果：精緻卡片</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 p-12">
+
+    <div class="max-w-md mx-auto">
+        <!-- Card with Rounded corners, Border, and Shadow -->
+        <div
+            class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
+            <div class="bg-blue-400 h-48 flex items-center justify-center text-white text-4xl">
+                🏔️
+            </div>
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-2">
+                    <span
+                        class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full uppercase font-bold tracking-wider">五星好評</span>
+                    <span class="text-gray-500 font-medium">$2,500+</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">壯麗雪山之旅</h3>
+                <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                    在專業嚮導的帶領下，體驗雪山的冷冽與壯闊。包含五星級飯店住宿與頂級私廚料理。
+                </p>
+                <button
+                    class="w-full bg-blue-600 text-white py-3 rounded-xl font-bold shadow-lg shadow-blue-200 hover:bg-blue-700">
+                    立即預訂
+                </button>
+            </div>
+        </div>
+
+        <div class="mt-12 space-y-4">
+            <h2 class="text-lg font-bold">使用效果：</h2>
+            <div class="flex flex-wrap gap-2 text-xs font-mono">
+                <span class="bg-gray-200 p-2 rounded">rounded-2xl</span>
+                <span class="bg-gray-200 p-2 rounded">border</span>
+                <span class="bg-gray-200 p-2 rounded">shadow-xl</span>
+                <span class="bg-gray-200 p-2 rounded">hover:shadow-2xl</span>
+                <span class="bg-gray-200 p-2 rounded">transition-shadow</span>
+                <span class="bg-gray-200 p-2 rounded">overflow-hidden</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind 佈局：目的地藝廊</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 p-8">
+
+    <div class="max-w-6xl mx-auto">
+        <header class="flex justify-between items-center mb-12">
+            <h1 class="text-3xl font-bold text-gray-900">熱門目的地</h1>
+            <nav class="flex space-x-6 text-gray-600">
+                <a href="#" class="hover:text-blue-600">亞洲</a>
+                <a href="#" class="hover:text-blue-600">歐洲</a>
+                <a href="#" class="hover:text-blue-600">美洲</a>
+            </nav>
+        </header>
+
+        <!-- Grid Layout for Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div
+                class="bg-white h-64 flex items-center justify-center border-2 border-dashed border-gray-300 rounded-lg">
+                日本 東京</div>
+            <div
+                class="bg-white h-64 flex items-center justify-center border-2 border-dashed border-gray-300 rounded-lg">
+                法國 巴黎</div>
+            <div
+                class="bg-white h-64 flex items-center justify-center border-2 border-dashed border-gray-300 rounded-lg">
+                冰島 雷克雅維克</div>
+        </div>
+
+        <div class="mt-12 p-6 bg-blue-50 rounded-xl">
+            <h2 class="text-xl font-semibold mb-4 text-blue-900">佈局關鍵字</h2>
+            <div class="grid grid-cols-2 gap-4 font-mono text-sm">
+                <div class="bg-white p-2 rounded shadow-sm"><span class="text-blue-600">flex</span>: 彈性佈局</div>
+                <div class="bg-white p-2 rounded shadow-sm"><span class="text-blue-600">justify-between</span>: 兩端對齊
+                </div>
+                <div class="bg-white p-2 rounded shadow-sm"><span class="text-blue-600">grid</span>: 網格佈局</div>
+                <div class="bg-white p-2 rounded shadow-sm"><span class="text-blue-600">grid-cols-3</span>: 三欄設定</div>
+                <div class="bg-white p-2 rounded shadow-sm"><span class="text-blue-600">gap-8</span>: 元素間距</div>
+                <div class="bg-white p-2 rounded shadow-sm"><span class="text-blue-600">mx-auto</span>: 水平置中</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
