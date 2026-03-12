@@ -16,7 +16,7 @@ Tailwind 的核心是將 CSS 屬性映射到簡短的 Class 名稱。
 -   **間距 (Spacing)**：`p-{size}` (Padding), `m-{size}` (Margin)。
 
 ### 📋 實測與範例
-請查看範例檔：[demo_basics.html](file:///Users/nlh/Library/Mobile%20Documents/com~apple~CloudDocs/TEACH/teach_web/Topic02_frontend/src/tailwind/demo_basics.html)
+請查看範例檔：[demo_basics.html](./src/tailwind/demo_basics.html)
 
 ### 💡 觀念測驗
 1. 如何設定文字為紅色且加粗？
@@ -43,7 +43,7 @@ Tailwind 的核心是將 CSS 屬性映射到簡短的 Class 名稱。
 -   **容器置中**：`container mx-auto`。
 
 ### 📋 實測與範例
-請查看範例檔：[demo_layout.html](file:///Users/nlh/Library/Mobile%20Documents/com~apple~CloudDocs/TEACH/teach_web/Topic02_frontend/src/tailwind/demo_layout.html)
+請查看範例檔：[demo_layout.html](src/tailwind/demo_layout.html)
 
 ### 💡 觀念測驗
 1. `grid-cols-3` 的作用是什麼？
@@ -70,7 +70,7 @@ Tailwind 的核心是將 CSS 屬性映射到簡短的 Class 名稱。
 -   **邊框 (Borders)**：`border`, `border-2`, `border-gray-200`。
 
 ### 📋 實測與範例
-請查看範例檔：[demo_effects.html](file:///Users/nlh/Library/Mobile%20Documents/com~apple~CloudDocs/TEACH/teach_web/Topic02_frontend/src/tailwind/demo_effects.html)
+請查看範例檔：[demo_effects.html](src/tailwind/demo_effects.html)
 
 ### 💡 觀念測驗
 1. 想製作一個圓形的按鈕，應該用哪個 Class？
@@ -93,7 +93,7 @@ Tailwind 的核心是將 CSS 屬性映射到簡短的 Class 名稱。
 -   **範例**：`w-full md:w-1/2` (手機滿版，平板一半)。
 
 ### 📋 實測與範例
-請查看範例檔：[demo_responsive.html](file:///Users/nlh/Library/Mobile%20Documents/com~apple~CloudDocs/TEACH/teach_web/Topic02_frontend/src/tailwind/demo_responsive.html)
+請查看範例檔：[demo_responsive.html](src/tailwind/demo_responsive.html)
 
 ---
 
@@ -106,7 +106,7 @@ Tailwind 的核心是將 CSS 屬性映射到簡短的 Class 名稱。
 -   **動畫過渡**：`transition`, `duration-300`。
 
 ### 📋 實測與範例
-請查看範例檔：[demo_states.html](file:///Users/nlh/Library/Mobile%20Documents/com~apple~CloudDocs/TEACH/teach_web/Topic02_frontend/src/tailwind/demo_states.html)
+請查看範例檔：[demo_states.html](src/tailwind/demo_states.html)
 
 ---
 
