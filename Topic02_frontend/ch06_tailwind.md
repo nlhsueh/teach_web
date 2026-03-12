@@ -18,6 +18,22 @@ Tailwind 的核心是將 CSS 屬性映射到簡短的 Class 名稱。
 ### 📋 實測與範例
 請查看範例檔：[demo_basics.html](./src/tailwind/demo_basics.html)
 
+![demo_basics](./src/tailwind/demo_basics.png)
+
+#### 📝 代碼片段講解
+```html
+<section class="bg-blue-600 text-white p-12 text-center">
+    <h1 class="text-4xl font-bold mb-4">探索未知的世界</h1>
+    <a href="#" class="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-blue-50 transition">
+        立即開始
+    </a>
+</section>
+```
+- `bg-blue-600`: 設定背景顏色為藍色，數字 600 代表色深。
+- `p-12`: 設定內距 (Padding) 為 3rem (12 * 0.25rem)。
+- `text-center`: 讓文字水平置中。
+- `rounded-full`: 將按鈕設定為完全圓角。
+
 ### 💡 觀念測驗
 1. 如何設定文字為紅色且加粗？
 <details>
@@ -44,6 +60,21 @@ Tailwind 的核心是將 CSS 屬性映射到簡短的 Class 名稱。
 
 ### 📋 實測與範例
 請查看範例檔：[demo_layout.html](src/tailwind/demo_layout.html)
+
+![demo_layout](src/tailwind/demo_layout.png)
+
+#### 📝 代碼片段講解
+```html
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="bg-white h-64 border-2 rounded-lg">日本 東京</div>
+    <div class="bg-white h-64 border-2 rounded-lg">法國 巴黎</div>
+    <div class="bg-white h-64 border-2 rounded-lg">冰島 雷克雅維克</div>
+</div>
+```
+- `grid`: 啟動網格佈局系統。
+- `grid-cols-3`: 將容器水平切分為三等份。
+- `gap-8`: 子元素之間的間距設定為 2rem。
+- `md:grid-cols-3`: 這是響應式語法，代表中型螢幕 (md) 以上才顯示三欄。
 
 ### 💡 觀念測驗
 1. `grid-cols-3` 的作用是什麼？
@@ -72,6 +103,20 @@ Tailwind 的核心是將 CSS 屬性映射到簡短的 Class 名稱。
 ### 📋 實測與範例
 請查看範例檔：[demo_effects.html](src/tailwind/demo_effects.html)
 
+![demo_effects](src/tailwind/demo_effects.png)
+
+#### 📝 代碼片段講解
+```html
+<div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-xl hover:shadow-2xl transition-shadow">
+    <div class="bg-blue-400 h-48 flex items-center justify-center">...</div>
+    <div class="p-6">...</div>
+</div>
+```
+- `rounded-2xl`: 設定較大的圓角。
+- `shadow-xl`: 設定較明顯的投影效果。
+- `hover:shadow-2xl`: 當滑鼠懸停時，陰影變大。
+- `transition-shadow`: 讓陰影變化時有平滑的動畫效果。
+
 ### 💡 觀念測驗
 1. 想製作一個圓形的按鈕，應該用哪個 Class？
 <details>
@@ -95,6 +140,18 @@ Tailwind 的核心是將 CSS 屬性映射到簡短的 Class 名稱。
 ### 📋 實測與範例
 請查看範例檔：[demo_responsive.html](src/tailwind/demo_responsive.html)
 
+![demo_responsive](src/tailwind/demo_responsive.png)
+
+#### 📝 代碼片段講解
+```html
+<h1 class="text-2xl md:text-4xl lg:text-5xl font-black">
+    響應式標題
+</h1>
+```
+- `text-2xl`: 預設 (手機端) 的字體大小。
+- `md:text-4xl`: 在 768px 以上的螢幕，字體放大。
+- `lg:text-5xl`: 在 1024px 以上的螢幕，字體再次放大。
+
 ---
 
 ## 5. 互動與狀態 (States & Transitions)
@@ -107,6 +164,18 @@ Tailwind 的核心是將 CSS 屬性映射到簡短的 Class 名稱。
 
 ### 📋 實測與範例
 請查看範例檔：[demo_states.html](src/tailwind/demo_states.html)
+
+![demo_states](src/tailwind/demo_states.png)
+
+#### 📝 代碼片段講解
+```html
+<button class="bg-blue-600 hover:bg-blue-700 active:scale-95 transition-all">
+    傳送訊息
+</button>
+```
+- `hover:bg-blue-700`: 滑鼠移入時加深顏色。
+- `active:scale-95`: 按下去的瞬間，按鈕縮小成 95%，產生物理點擊感。
+- `transition-all`: 讓所有屬性變化（如顏色底色、比例）都有過渡動畫。
 
 ---
 
