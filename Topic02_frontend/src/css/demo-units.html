@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 單位展示 (CSS Units Demo)</title>
+    <style>
+        :root {
+            font-size: 16px; /* 根元素大小，影響 rem */
+        }
+
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            background-color: #f0f2f5;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 { border-bottom: 2px solid #ccc; padding-bottom: 10px; }
+
+        .demo-box {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        /* px 展示 */
+        .px-box {
+            font-size: 24px;
+            width: 300px;
+            background-color: #ffeaa7;
+            padding: 10px;
+        }
+
+        /* em 展示 (相對於父元素) */
+        .parent {
+            font-size: 20px;
+            background-color: #fab1a0;
+            padding: 20px;
+        }
+        .em-child {
+            font-size: 1.5em; /* 20px * 1.5 = 30px */
+            background-color: #ff7675;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        /* rem 展示 (相對於根元素) */
+        .rem-box {
+            font-size: 1.5rem; /* 16px * 1.5 = 24px */
+            background-color: #81ecec;
+            padding: 10px;
+        }
+
+        /* vw/vh 展示 (相對於視窗) */
+        .vw-box {
+            width: 50vw; /* 視窗寬度的一半 */
+            background-color: #a29bfe;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .info {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CSS 單位展示</h1>
+
+        <div class="demo-box">
+            <h2>1. Pixels (px) - 絕對單位</h2>
+            <div class="px-box">我是 24px 的文字，寬度 300px</div>
+            <p class="info">固定大小，最精確但不具備彈性。</p>
+        </div>
+
+        <div class="demo-box">
+            <h2>2. em - 相對單位 (相對於父元素)</h2>
+            <div class="parent">
+                我是父元素 (font-size: 20px)
+                <div class="em-child">我是子元素 (font-size: 1.5em = 30px)</div>
+            </div>
+            <p class="info">基準點是父元素的字體大小。容易產生層層相乘的「複利效應」。</p>
+        </div>
+
+        <div class="demo-box">
+            <h2>3. rem - 相對單位 (相對於根元素 html)</h2>
+            <div class="rem-box">我是 1.5rem 的文字 (16px * 1.5 = 24px)</div>
+            <p class="info">基準點永遠是根元素 (通常是 16px)。目前網頁設計的主流建議單位。</p>
+        </div>
+
+        <div class="demo-box">
+            <h2>4. vw / vh - 相對單位 (相對於視窗 Viewport)</h2>
+            <div class="vw-box">我的寬度永遠是視窗寬度的 50% (50vw)</div>
+            <p class="info">隨著瀏覽器視窗大小即時縮放。常用於大標題或滿版佈局。</p>
+        </div>
+    </div>
+</body>
+</html>

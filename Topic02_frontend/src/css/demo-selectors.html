@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 選擇器展示 (CSS Selectors Demo)</title>
+    <style>
+        /* 1. 元素選擇器 (Element Selector) */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        /* 2. ID 選擇器 (ID Selector) */
+        #main-title {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        /* 3. 類選擇器 (Class Selector) */
+        .intro {
+            font-size: 1.1rem;
+            color: #555;
+            background-color: #e8f4fd;
+            padding: 15px;
+            border-left: 5px solid #3498db;
+        }
+
+        .active {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        /* 4. 組合選擇器 - 後代選擇器 (Descendant Selector) */
+        ul li {
+            list-style-type: square;
+            margin-bottom: 5px;
+        }
+
+        /* 4. 組合選擇器 - 子元素選擇器 (Child Selector) */
+        .container > h2 {
+            color: #2980b9;
+        }
+
+        /* 4. 組合選擇器 - 相鄰兄弟選擇器 (Adjacent Sibling) */
+        h2 + p {
+            font-style: italic;
+        }
+
+        /* 5. 屬性選擇器 (Attribute Selector) */
+        a[target="_blank"] {
+            color: #8e44ad;
+            text-decoration: none;
+        }
+
+        a[target="_blank"]::after {
+            content: " ↗";
+            font-size: 0.8rem;
+        }
+
+        a[href^="mailto:"] {
+            color: #27ae60;
+        }
+
+        /* 6. 偽類選擇器 (Pseudo-class) */
+        a:hover {
+            text-decoration: underline;
+            opacity: 0.8;
+        }
+
+        li:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* 7. 偽元素選擇器 (Pseudo-element) */
+        h2::before {
+            content: "📌 ";
+        }
+
+        .intro::first-line {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        ::selection {
+            background: #ffeaa7;
+            color: #2d3436;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="main-title">CSS 選擇器展示</h1>
+        
+        <p class="intro">
+            CSS 選擇器（Selectors）是用來「選擇」你想要套用樣式的 HTML 元素。
+            這是一個綜合展示頁面，包含了簡單選擇器、組合選擇器、偽類、偽元素與屬性選擇器。
+        </p>
+
+        <h2>我的興趣 (後代與偽類展示)</h2>
+        <ul>
+            <li>閱讀技術部落格</li>
+            <li class="active">撰寫網頁專案 (類選擇器)</li>
+            <li>參加技術研討會</li>
+            <li>運動健身</li>
+        </ul>
+
+        <h2>聯絡我 (屬性選擇器展示)</h2>
+        <p>這是一個緊跟在 h2 後的段落 (相鄰兄弟選擇器)。</p>
+        <p>
+            您可以透過以下方式找到我：<br>
+            <a href="https://github.com" target="_blank">GitHub 個人主頁</a> (target="_blank") <br>
+            <a href="mailto:example@fcu.edu.tw">發送郵件給我</a> (mailto:)
+        </p>
+
+        <h2>測試區域</h2>
+        <input type="text" placeholder="試著選取文字看看...">
+    </div>
+</body>
+</html>

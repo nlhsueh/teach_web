@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox 展示 (CSS Flexbox Demo)</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 20px;
+            background-color: #f0f2f5;
+        }
+
+        .section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h2 { border-bottom: 2px solid #eee; padding-bottom: 10px; color: #1a73e8; }
+
+        .flex-container {
+            display: flex;
+            background-color: #e8f0fe;
+            padding: 10px;
+            border: 2px solid #aecbfa;
+            min-height: 100px;
+            margin: 10px 0;
+        }
+
+        .item {
+            background-color: #34a853;
+            color: white;
+            padding: 20px;
+            margin: 5px;
+            text-align: center;
+            border-radius: 4px;
+            font-weight: bold;
+            min-width: 50px;
+        }
+
+        /* justify-content 展示 */
+        .jc-start { justify-content: flex-start; }
+        .jc-center { justify-content: center; }
+        .jc-between { justify-content: space-between; }
+        .jc-around { justify-content: space-around; }
+
+        /* align-items 展示 */
+        .ai-center { align-items: center; height: 150px; }
+        .ai-start { align-items: flex-start; height: 150px; }
+        .ai-end { align-items: flex-end; height: 150px; }
+
+        /* flex-direction 展示 */
+        .dir-column { flex-direction: column; }
+
+        /* flex-wrap 展示 */
+        .wrap { flex-wrap: wrap; }
+
+        .controls {
+            font-size: 0.8rem;
+            background: #eee;
+            padding: 5px;
+            display: inline-block;
+            margin-bottom: 5px;
+            color: #555;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="section">
+        <h2>1. Horizontal Alignment (justify-content)</h2>
+        
+        <div class="controls">justify-content: flex-start (預設)</div>
+        <div class="flex-container jc-start">
+            <div class="item">1</div><div class="item">2</div><div class="item">3</div>
+        </div>
+
+        <div class="controls">justify-content: center</div>
+        <div class="flex-container jc-center">
+            <div class="item">1</div><div class="item">2</div><div class="item">3</div>
+        </div>
+
+        <div class="controls">justify-content: space-between</div>
+        <div class="flex-container jc-between">
+            <div class="item">1</div><div class="item">2</div><div class="item">3</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>2. Vertical Alignment (align-items)</h2>
+        
+        <div class="controls">align-items: center</div>
+        <div class="flex-container ai-center">
+            <div class="item">1</div><div class="item" style="padding: 40px 20px;">2 (Tall)</div><div class="item">3</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>3. Flex Direction & Wrapping</h2>
+        
+        <div class="controls">flex-direction: column</div>
+        <div class="flex-container dir-column">
+            <div class="item">1</div><div class="item">2</div><div class="item">3</div>
+        </div>
+
+        <div class="controls">flex-wrap: wrap</div>
+        <div class="flex-container wrap">
+            <div class="item" style="width: 200px;">Item 1 (Wide)</div>
+            <div class="item" style="width: 200px;">Item 2 (Wide)</div>
+            <div class="item" style="width: 200px;">Item 3 (Wide)</div>
+            <div class="item" style="width: 200px;">Item 4 (Wide)</div>
+        </div>
+    </div>
+</body>
+</html>

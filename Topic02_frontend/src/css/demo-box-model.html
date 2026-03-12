@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 盒模型展示 (CSS Box Model Demo)</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 40px;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        h1 { text-align: center; color: #333; }
+
+        .demo-section {
+            margin-top: 40px;
+            padding: 20px;
+            border: 1px dashed #ccc;
+            background-color: #fff;
+        }
+
+        /* 核心盒模型屬性 */
+        .box {
+            width: 200px;
+            height: 100px;
+            padding: 20px;
+            border: 10px solid #3498db;
+            margin: 20px;
+            background-color: #ffeaa7;
+            text-align: center;
+            line-height: 100px;
+            font-weight: bold;
+        }
+
+        /* box-sizing 展示 */
+        .comparison-container {
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .content-box {
+            box-sizing: content-box; /* 預設 */
+        }
+
+        .border-box {
+            box-sizing: border-box;
+        }
+
+        .label {
+            text-align: center;
+            margin-top: 10px;
+            font-family: monospace;
+            background: #eee;
+            padding: 5px;
+        }
+
+        .highlight { color: #e74c3c; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CSS 盒模型 (Box Model)</h1>
+
+        <div class="demo-section">
+            <h2>1. 盒模型元件</h2>
+            <p>每個 HTML 元素都可以看作是一個盒子，包含：<strong>Content</strong>, <strong>Padding</strong>, <strong>Border</strong>, <strong>Margin</strong>。</p>
+            <div class="box">我是內容</div>
+            <ul>
+                <li><strong>Content (內容)</strong>: 文字或圖片所在處。</li>
+                <li><strong>Padding (內邊距)</strong>: 內容與邊框之間的距離。</li>
+                <li><strong>Border (邊框)</strong>: 包圍內容與內邊距。</li>
+                <li><strong>Margin (外邊距)</strong>: 盒子與其他元素間的距離。</li>
+            </ul>
+        </div>
+
+        <div class="demo-section">
+            <h2>2. box-sizing 比較</h2>
+            <p>設定寬度均為 <span class="highlight">200px</span>，內邊距 <span class="highlight">20px</span>，邊框 <span class="highlight">10px</span>。</p>
+            
+            <div class="comparison-container">
+                <div>
+                    <div class="box content-box">Content Box</div>
+                    <div class="label">
+                        box-sizing: content-box;<br>
+                        總寬度 = 200 + 40 + 20 = <span class="highlight">260px</span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="box border-box">Border Box</div>
+                    <div class="label">
+                        box-sizing: border-box;<br>
+                        總寬度 = 固定 <span class="highlight">200px</span><br>
+                        (內邊距與邊框會向內推)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

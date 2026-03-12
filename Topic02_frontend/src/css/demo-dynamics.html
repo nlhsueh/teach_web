@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 動態效果展示 (CSS Dynamics & Animation Demo)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 40px;
+            background-color: #f4f7f6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h2 { border-bottom: 2px solid #eee; padding-bottom: 10px; color: #333; }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* 1. Transition */
+        .transition-box {
+            transition: background-color 0.5s, transform 0.3s;
+        }
+
+        .transition-box:hover {
+            background-color: #e67e22;
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        /* 2. Transform */
+        .transform-demo {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .tf-box {
+            width: 80px;
+            height: 80px;
+            background: #9b59b6;
+            transition: 0.3s;
+        }
+
+        .tf-box:hover {
+            transform: skewX(-20deg);
+        }
+
+        /* 3. Animation */
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(52, 152, 219, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
+        }
+
+        .animation-box {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .slide-in {
+            animation: slideIn 1s ease-out;
+        }
+
+        code { background: #eee; padding: 2px 4px; }
+    </style>
+</head>
+<body>
+    <h1>CSS 動態效果 (Dynamics)</h1>
+
+    <div class="section slide-in">
+        <h2>1. 過渡效果 (Transition)</h2>
+        <p>將滑鼠移上去觀察 <code>background-color</code> 與 <code>transform</code> 的平滑變化。</p>
+        <div class="box transition-box">Hover Me</div>
+    </div>
+
+    <div class="section">
+        <h2>2. 變形效果 (Transform)</h2>
+        <p>包含 <code>rotate, scale, translate, skew</code>。</p>
+        <div class="transform-demo">
+            <div class="tf-box" style="transform: rotate(45deg);">Rotate</div>
+            <div class="tf-box" style="transform: scale(0.8);">Scale</div>
+            <div class="tf-box">Skew (Hover)</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>3. 關鍵影格動畫 (Animation)</h2>
+        <p>使用 <code>@keyframes</code> 定義複雜的動畫循環。</p>
+        <div class="box animation-box">Pulsing...</div>
+    </div>
+</body>
+</html>

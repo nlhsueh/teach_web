@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 視覺裝飾展示 (CSS Visual Decoration Demo)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 40px;
+            background-color: #f5f6fa;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h2 { border-bottom: 2px solid #eee; padding-bottom: 10px; color: #353b48; }
+
+        .demo-box {
+            margin-bottom: 40px;
+        }
+
+        /* Backgrounds */
+        .bg-gradient {
+            height: 100px;
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Borders & Radius */
+        .border-demo {
+            padding: 20px;
+            border: 5px dashed #fab1a0;
+            border-radius: 50px 10px 50px 10px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        /* Shadows */
+        .shadow-box {
+            width: 200px;
+            height: 100px;
+            background: white;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            /* x-offset y-offset blur spread color */
+            box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .text-shadow-demo {
+            font-size: 3rem;
+            font-weight: 900;
+            text-align: center;
+            color: #d63031;
+            text-shadow: 3px 3px 5px rgba(0,0,0,0.3);
+        }
+
+        /* Opacity & Filter */
+        .image-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .filter-demo {
+            width: 200px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .filter-demo.grayscale { filter: grayscale(100%); }
+        .filter-demo.blur { filter: blur(3px); }
+
+        .filter-demo:hover {
+            filter: none;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CSS 視覺裝飾 (Visual Decoration)</h1>
+
+        <div class="demo-box">
+            <h2>1. 背景與漸層 (Background & Gradients)</h2>
+            <div class="bg-gradient">線性漸層背景 (Linear Gradient)</div>
+        </div>
+
+        <div class="demo-box">
+            <h2>2. 邊框與圓角 (Borders & Radius)</h2>
+            <div class="border-demo">不對稱圓角 (Asymmetric Border Radius)</div>
+        </div>
+
+        <div class="demo-box">
+            <h2>3. 陰影效果 (Shadows)</h2>
+            <p><strong>Box Shadow:</strong></p>
+            <div class="shadow-box">浮動效果</div>
+            <p><strong>Text Shadow:</strong></p>
+            <div class="text-shadow-demo">強調文字</div>
+        </div>
+
+        <div class="demo-box">
+            <h2>4. 濾鏡與透明度 (Filters & Opacity)</h2>
+            <div class="image-container">
+                <div>
+                    <img src="https://picsum.photos/200" class="filter-demo grayscale" alt="Grayscale">
+                    <p style="text-align:center">黑白濾鏡 (Hover 還原)</p>
+                </div>
+                <div>
+                    <img src="https://picsum.photos/200?random=1" class="filter-demo blur" alt="Blur">
+                    <p style="text-align:center">模糊濾鏡 (Hover 還原)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

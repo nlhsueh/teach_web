@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 定位展示 (CSS Positioning Demo)</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 2000px; /* 增加高度以展示捲動效果 */
+            background-color: #f0f0f0;
+        }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            position: relative; /* 作為絕對定位的參考點 */
+            border: 2px solid #ddd;
+        }
+
+        .demo-box {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        /* 1. Relative Positioning */
+        .relative-box {
+            background-color: #3498db;
+            position: relative;
+            top: 20px;
+            left: 50px;
+        }
+
+        /* 2. Absolute Positioning */
+        .absolute-box {
+            background-color: #e74c3c;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        /* 3. Fixed Positioning */
+        .fixed-box {
+            background-color: #27ae60;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 150px;
+            z-index: 100;
+        }
+
+        /* 4. Sticky Positioning */
+        .sticky-box {
+            background-color: #f1c40f;
+            color: #333;
+            position: sticky;
+            top: 0;
+            padding: 10px;
+            margin-top: 100px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .spacer {
+            height: 300px;
+            background: #f9f9f9;
+            margin: 20px 0;
+            border: 1px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+
+        p { line-height: 1.6; }
+        code { background: #eee; padding: 2px 4px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>CSS 定位展示 (Positioning)</h1>
+        <p>請滾動頁面觀察 Fixed 與 Sticky 的效果</p>
+    </div>
+
+    <div class="container">
+        <h2>1. Relative (相對定位)</h2>
+        <p>相對於其「正常位置」進行偏移。它原本佔據的空間仍會保留。</p>
+        <div class="demo-box relative-box">Relative</div>
+        <div class="spacer">這是原本 Relative Box 佔用的空間之後的內容</div>
+
+        <h2>2. Absolute (絕對定位)</h2>
+        <p>相對於最近的「已定位」(非 static) 祖先元素。它會脫離文檔流 (不佔用空間)。</p>
+        <p>注意右上角的紅色方塊，它是相對於 <code>.container</code> 定位的。</p>
+        <div class="demo-box absolute-box">Absolute</div>
+
+        <div class="sticky-box">我是 Sticky (黏性定位) - 滾動到頂部時會固定住</div>
+
+        <h2>3. Fixed (固定定位)</h2>
+        <p>相對於「瀏覽器視窗」定位。即使捲動頁面，它也會待在同一個地方。</p>
+        <p>觀察右下角的綠色方塊。</p>
+        <div class="demo-box fixed-box">Fixed (視窗右下角)</div>
+
+        <div class="spacer">繼續捲動...</div>
+        <div class="spacer">繼續捲動...</div>
+        <div class="spacer">繼續捲動...</div>
+    </div>
+</body>
+</html>
