@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 列表與連結展示</title>
+    <style>
+        body { font-family: sans-serif; margin: 40px; }
+        .box { background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 20px; }
+        a { color: #3498db; text-decoration: none; font-weight: bold; }
+        a:hover { text-decoration: underline; color: #2980b9; }
+    </style>
+</head>
+<body>
+    <h1>列表與連結 (Lists & Links)</h1>
+
+    <div class="box">
+        <h2>1. 無序列表 (Unordered List)</h2>
+        <ul>
+            <li>網頁開發基礎 (HTML)</li>
+            <li>網頁美化技術 (CSS)</li>
+            <li>網頁互動腳本 (JavaScript)</li>
+        </ul>
+    </div>
+
+    <div class="box">
+        <h2>2. 有序列表 (Ordered List)</h2>
+        <ol>
+            <li>打開 VS Code</li>
+            <li>建立一個 .html 檔案</li>
+            <li>輸入標籤內容</li>
+            <li>在瀏覽器預覽</li>
+        </ol>
+    </div>
+
+    <div class="box">
+        <h2>3. 超連結 (Links)</h2>
+        <p>這是導向外部資源的連結：<br>
+           <a href="https://www.w3schools.com" target="_blank">W3Schools 官方教學</a> (在新分頁開啟)</p>
+        
+        <p>這是發送郵件的連結：<br>
+           <a href="mailto:service@example.com">寄信給我們</a></p>
+        
+        <p>這是導向同頁面特定位置的「錨點」連結：<br>
+           <a href="#bottom">跳到頁尾</a></p>
+    </div>
+
+    <div style="height: 1000px; border-left: 2px dashed #ccc; margin-left: 20px; padding-left: 10px; color: #999;">
+        (此處保留空白以展示錨點跳轉效果...)
+    </div>
+
+    <h2 id="bottom">這裡是頁尾</h2>
+    <p><a href="#">回到頂部</a></p>
+</body>
+</html>

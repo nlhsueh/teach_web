@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 圖片標籤展示</title>
+    <style>
+        body { font-family: sans-serif; margin: 40px; text-align: center; }
+        .img-container { margin-bottom: 30px; border: 1px solid #ccc; padding: 15px; display: inline-block; border-radius: 8px; }
+        p { max-width: 600px; margin: 10px auto; color: #666; }
+        code { background: #eee; padding: 2px 4px; }
+    </style>
+</head>
+<body>
+    <h1>圖片標籤 (Images)</h1>
+
+    <div class="img-container">
+        <h3>1. 基本圖片引用</h3>
+        <!-- 使用本地圖片路徑 -->
+        <img src="../img/virtuosi_hall.png" width="300px" alt="逢甲共善樓">
+        <p>標籤：<code>&lt;img src="../img/virtuosi_hall.png" width="300px" alt="逢甲共善樓"&gt;</code></p>
+    </div>
+
+    <div class="img-container">
+        <h3>2. 網路隨機圖片 (Picsum)</h3>
+        <!-- 使用外部 URL -->
+        <img src="https://picsum.photos/300/200" alt="隨機圖片">
+        <p>標籤：<code>&lt;img src="https://picsum.photos/300/200" alt="隨機圖片"&gt;</code></p>
+    </div>
+
+    <div class="img-container">
+        <h3>3. 圓角樣式圖片 (搭配 CSS)</h3>
+        <img src="https://picsum.photos/300/200?random=1" style="border-radius: 50%; border: 5px solid #3498db;" width="200" height="200" alt="圓形圖片">
+        <p>標籤：<code>&lt;img src="..." style="border-radius: 50%;"&gt;</code></p>
+    </div>
+
+    <p><strong>重要屬性：</strong></p>
+    <ul>
+        <li><code>src</code>：來源路徑 (URL 或 本地路徑)</li>
+        <li><code>alt</code>：替代文字 (當圖片加載失敗或螢幕閱讀器讀取時使用)</li>
+        <li><code>width / height</code>：寬高設定</li>
+    </ul>
+</body>
+</html>

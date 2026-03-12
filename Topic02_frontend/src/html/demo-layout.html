@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 佈局與語意化展示</title>
+    <style>
+        body { font-family: sans-serif; margin: 0; padding: 0; background: #f0f2f5; }
+        
+        /* 語意化標籤樣式 */
+        header { background: #2c3e50; color: white; padding: 20px; text-align: center; }
+        nav { background: #34495e; color: white; padding: 10px; text-align: center; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; }
+        main { max-width: 800px; margin: 20px auto; background: white; padding: 20px; border-radius: 8px; }
+        article { border-bottom: 2px solid #eee; padding-bottom: 20px; margin-bottom: 20px; }
+        footer { background: #333; color: #ccc; text-align: center; padding: 20px; font-size: 0.8rem; }
+
+        /* Block vs Inline 展示 */
+        .demo-box { background: #e8f4fd; padding: 15px; border-left: 5px solid #3498db; margin: 10px 0; }
+        .block-element { background: #fab1a0; border: 1px solid #e17055; margin-bottom: 5px; }
+        .inline-element { background: #55efc4; border: 1px solid #00b894; padding: 2px 5px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>這是 &lt;header&gt; (頁頭部)</h1>
+    </header>
+
+    <nav>
+        <a href="#">首頁</a> | <a href="#">關於我們</a> | <a href="#">課程介紹</a>
+        <p>(這是 &lt;nav&gt; 導覽列)</p>
+    </nav>
+
+    <main>
+        <article>
+            <h2>這是一個 &lt;article&gt; (實體內容)</h2>
+            <p>文章內容會放在這裡，語意化標籤讓搜尋引擎和無障礙工具能更清楚網頁結構。</p>
+        </article>
+
+        <section>
+            <h2>Block vs Inline 區間展示</h2>
+            
+            <div class="demo-box">
+                <h3>1. Block (區塊元素)</h3>
+                <div class="block-element">我是 &lt;div&gt;</div>
+                <div class="block-element">我是另一個 &lt;div&gt;</div>
+                <p>特點：佔滿整行，自動換行。</p>
+            </div>
+
+            <div class="demo-box">
+                <h3>2. Inline (行內元素)</h3>
+                <span class="inline-element">我是 &lt;span&gt;</span>
+                <span class="inline-element">我也是 &lt;span&gt;</span>
+                <a href="#" class="inline-element">我是 &lt;a&gt;</a>
+                <p>特點：只佔用需要的寬度，不換行。</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>這是 &lt;footer&gt; (頁尾資訊) &copy; 2026 Web Teaching</p>
+    </footer>
+</body>
+</html>

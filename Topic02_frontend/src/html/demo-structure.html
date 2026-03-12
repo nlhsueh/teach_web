@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!-- 宣告文件類型為 HTML5 -->
+<html lang="zh-Hant">
+<head>
+    <!-- 設定字元編碼為 UTF-8 -->
+    <meta charset="UTF-8">
+    <!-- 設定視窗寬度與縮放，這對行動裝置呈現非常重要 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 網頁標題，會顯示在瀏覽器分頁上 -->
+    <title>HTML5 標準骨架展示</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HTML5 標準骨架 (Structure)</h1>
+        <p>這是 HTML 的基本結構範例。你可以透過「檢視網頁原始碼」(Ctrl+U) 來查看完整的骨架。</p>
+        
+        <hr>
+        
+        <h2>關鍵組成部分：</h2>
+        <ul>
+            <li><code>&lt;!DOCTYPE html&gt;</code>：告訴瀏覽器這是一個 HTML5 文件。</li>
+            <li><code>&lt;html lang="zh-Hant"&gt;</code>：根標籤，<code>lang</code> 指定網頁語言。</li>
+            <li><code>&lt;head&gt;</code>：包含網頁的元數據 (Metadata)，如標題、編碼、樣式表連結，內容不會顯示在網頁主體。</li>
+            <li><code>&lt;body&gt;</code>：包含所有可見的網頁內容（文字、圖片、連結等）。</li>
+        </ul>
+
+        <p><strong>小提醒：</strong> 在 VS Code 中，你可以輸入 <code>!</code> 然後按 Enter，就會自動生成這樣的骨架！</p>
+    </div>
+</body>
+</html>

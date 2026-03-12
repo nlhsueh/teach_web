@@ -93,6 +93,8 @@
 
 ## 3.2 HTML 基礎結構與常用標記 
 
+:point_right: [Demo: HTML Structure](src/html/demo-structure.html) | [Demo: Text Tags](src/html/demo-text.html) | [Demo: List & Link](src/html/demo-list-link.html) | [Demo: Image Tag](src/html/demo-image.html)
+
 ![](img/html_structure.png)
 
 ### 3.2.1 HTML5 標準骨架
@@ -200,6 +202,8 @@
 
 ## 3.3 元素的呈現行為與佈局
 
+:point_right: [Demo: Layout & Semantic](src/html/demo-layout.html)
+
 網頁元素的排列方式主要由其顯示屬性（Display）決定。
 
 ### 3.3.1 Block vs Inline 概念
@@ -277,6 +281,8 @@ th {
 ---
 
 ## 3.4 進階組件：表格 (Table)
+
+:point_right: [Demo: Table](src/html/demo-table.html)
 
 表格用於展示結構化數據。
 
@@ -364,6 +370,8 @@ Table 中 `border: 1px solid black;` 是一種縮寫，完整的寫法是：
 ---
 
 ## 3.5 進階組件：表單 (Form)
+
+:point_right: [Demo: Form](src/html/demo-form.html)
 
 表單是與使用者互動的最主要途徑。
 

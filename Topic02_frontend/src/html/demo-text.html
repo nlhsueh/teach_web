@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 文字標籤展示</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; line-height: 1.8; margin: 40px; color: #333; }
+        .demo-section { border-bottom: 1px solid #eee; padding: 20px 0; }
+        h1, h2, h3, h4, h5, h6 { color: #2c3e50; }
+        .highlight { background: #fff3cd; padding: 2px 5px; }
+    </style>
+</head>
+<body>
+    <h1>HTML 文字標籤展示 (Text Tags)</h1>
+
+    <div class="demo-section">
+        <h2>1. 標題標籤 (Headings)</h2>
+        <h1>H1: 網頁最重要的大標題</h1>
+        <h2>H2: 次要標題</h2>
+        <h3>H3: 小標題</h3>
+        <h4>H4: 更小的標題</h4>
+        <p>標題標籤 (h1-h6) 不僅影響外觀大小，更重要的是「語意權重」，對 SEO 非常重要。</p>
+    </div>
+
+    <div class="demo-section">
+        <h2>2. 段落與換行 (Paragraph & Break)</h2>
+        <p>這是第一個段落 <code>&lt;p&gt;</code>。段落之間會有自動的間距。</p>
+        <p>這是第二個段落。如果我想在段落內換行，可以使用 <br> <code>&lt;br&gt;</code> 標籤。<br>換行後依然在同一個段落中。</p>
+    </div>
+
+    <div class="demo-section">
+        <h2>3. 強調標籤 (Emphasis)</h2>
+        <p>我們可以使用 <strong>strong 標籤</strong> 來加粗文字（語意上表示非常重要）。</p>
+        <p>我們可以使用 <em>em 標籤</em> 來讓文字傾斜（語意上表示強調語氣）。</p>
+        <p>使用 <span class="highlight">mark 標籤</span> 可以做出像螢光筆標記的效果。</p>
+    </div>
+</body>
+</html>
