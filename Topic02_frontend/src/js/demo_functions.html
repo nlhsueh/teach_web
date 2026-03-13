@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>Functions Demo</title>
+</head>
+<body>
+    <h1>函式範例</h1>
+    <p>請打開 Console 檢視結果。</p>
+
+    <script>
+        // 5.5.1 函式宣告
+        function greet(name) {
+            return "Hello, " + name + "!";
+        }
+
+        console.log("--- 函式宣告 ---");
+        console.log(greet("Alice"));
+
+        // 5.5.2 箭頭函式
+        const add = (a, b) => a + b;
+        const multiply = (a, b) => a * b;
+
+        console.log("--- 箭頭函式 ---");
+        console.log("10 + 20 =", add(10, 20));
+        console.log("5 * 4 =", multiply(5, 4));
+
+        // 預設參數
+        function welcome(user = "訪客") {
+            console.log("歡迎光臨, " + user);
+        }
+        welcome();
+        welcome("小明");
+    </script>
+</body>
+</html>

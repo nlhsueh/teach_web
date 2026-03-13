@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Types & Strings Demo</title>
+</head>
+<body>
+    <h1>資料型態與字串處理範例</h1>
+    <p>請打開 Console 檢視結果。</p>
+
+    <script>
+        // 5.3.1 基本型態
+        let str = "Hello JS";
+        let num = 3.14;
+        let isTrue = true;
+        let empty = null;
+        let unknown;
+
+        console.log("--- 資料型態 (typeof) ---");
+        console.log(typeof str);     // string
+        console.log(typeof num);     // number
+        console.log(typeof isTrue);  // boolean
+        console.log(typeof empty);   // object (JS 歷史遺留)
+        console.log(typeof unknown); // undefined
+
+        // 5.3.2 字串處理
+        let text = "JavaScript is powerful!";
+        console.log("--- 字串方法 ---");
+        console.log("長度:", text.length);
+        console.log("轉大寫:", text.toUpperCase());
+        console.log("擷取 0~10:", text.slice(0, 10));
+        console.log("尋找 'is' 位置:", text.indexOf("is"));
+
+        // 字串轉數字
+        let strVal = "100.55 px";
+        console.log("--- 型別轉換 ---");
+        console.log("parseInt:", parseInt(strVal));
+        console.log("parseFloat:", parseFloat(strVal));
+    </script>
+</body>
+</html>

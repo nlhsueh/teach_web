@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Demo</title>
+    <style>
+        .highlight {
+            color: red;
+            font-weight: bold;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="main-title">DOM 操作範例</h1>
+
+    <section>
+        <h2>5.8.1 選取與操作</h2>
+        <p id="message">這是一段原始文字。</p>
+        <button id="change-btn">改變文字內容</button>
+        <button id="style-btn">改變樣式</button>
+    </section>
+
+    <section>
+        <h2>5.8.2 事件監聽</h2>
+        <input type="text" id="user-input" placeholder="隨便輸入點東西...">
+        <p id="input-display">你輸入了: </p>
+    </section>
+
+    <script>
+        // 選取元素
+        const title = document.getElementById("main-title");
+        const msg = document.getElementById("message");
+        const changeBtn = document.getElementById("change-btn");
+        const styleBtn = document.getElementById("style-btn");
+        const userInput = document.getElementById("user-input");
+        const inputDisplay = document.getElementById("input-display");
+
+        // 改變內容
+        changeBtn.addEventListener("click", () => {
+            msg.textContent = "文字已被更新！";
+        });
+
+        // 改變樣式 (切換 Class)
+        styleBtn.addEventListener("click", () => {
+            msg.classList.toggle("highlight");
+        });
+
+        // 監聽輸入事件
+        userInput.addEventListener("keyup", () => {
+            inputDisplay.textContent = "你輸入了: " + userInput.value;
+        });
+    </script>
+</body>
+</html>

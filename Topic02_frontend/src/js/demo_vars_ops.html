@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>Variables & Operators Demo</title>
+</head>
+<body>
+    <h1>變數與運算元範例</h1>
+    <p>請打開 Console 檢視結果。</p>
+
+    <script>
+        // 5.2.1 變數宣告
+        let count = 10;
+        const PI = 3.14159;
+        var legacy = "舊式變數";
+
+        console.log("--- 變數宣告 ---");
+        console.log("count:", count);
+        console.log("PI:", PI);
+
+        // 5.2.2 運算元
+        let a = 10;
+        let b = 3;
+
+        console.log("--- 算術運算 ---");
+        console.log("a + b =", a + b);
+        console.log("a % b (取餘數) =", a % b);
+
+        console.log("--- 比較運算 ---");
+        console.log('5 == "5" (自動轉型):', 5 == "5");
+        console.log('5 === "5" (嚴格相等):', 5 === "5");
+
+        let score = 80;
+        let result = (score >= 60) ? "及格" : "不及格";
+        console.log("三元運算結果:", result);
+    </script>
+</body>
+</html>

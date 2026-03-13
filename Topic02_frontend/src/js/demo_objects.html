@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>Objects Demo</title>
+</head>
+<body>
+    <h1>物件範例</h1>
+    <p>請打開 Console 檢視結果。</p>
+
+    <script>
+        // 5.7.1 物件宣告
+        let person = {
+            name: "John",
+            age: 20,
+            isStudent: true,
+            greet: function() {
+                return "哈囉, 我是 " + this.name;
+            }
+        };
+
+        console.log("--- 物件存取 ---");
+        console.log("姓名:", person.name);
+        console.log("呼叫方法:", person.greet());
+
+        // 5.7.2 物件遍歷 (for...in)
+        console.log("--- 物件遍歷 ---");
+        for (let key in person) {
+            console.log(key + " : " + person[key]);
+        }
+
+        // JSON 轉換
+        console.log("--- JSON 轉換 ---");
+        let jsonStr = JSON.stringify(person);
+        console.log("轉為 JSON 字串:", jsonStr);
+        console.log("轉回物件:", JSON.parse(jsonStr));
+
+        // 物件陣列
+        let students = [
+            { name: "A", score: 80 },
+            { name: "B", score: 90 },
+            { name: "C", score: 70 }
+        ];
+        console.log("--- 物件陣列排序 ---");
+        students.sort((a, b) => b.score - a.score); // 由高到低
+        console.log(students);
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Basics Demo</title>
+    <script>
+        function sayHello() {
+            alert("Hello JavaScript! (來自內部分訊)");
+        }
+
+        function changeContent() {
+            document.getElementById("demo-text").innerHTML = "內容已改變！";
+        }
+
+        function logToConsole() {
+            console.log("這是一條在 Console 中輸出的訊息。");
+            alert("請打開開發者工具 (F12) 的 Console 標籤查看結果。");
+        }
+    </script>
+</head>
+<body>
+    <h1>JavaScript 基礎範例</h1>
+
+    <section>
+        <h2>5.1.2 整合應用</h2>
+        <button onclick="sayHello()">點擊測試 Alert</button>
+    </section>
+
+    <section>
+        <h2>5.1.3 輸出方法</h2>
+        <p id="demo-text">點擊下方按鈕來改變這段文字。</p>
+        <button onclick="changeContent()">使用 innerHTML 改變內容</button>
+        <button onclick="logToConsole()">使用 console.log()</button>
+    </section>
+</body>
+</html>

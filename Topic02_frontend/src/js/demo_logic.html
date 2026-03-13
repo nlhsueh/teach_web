@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>Control Flow Demo</title>
+</head>
+<body>
+    <h1>流程控制範例</h1>
+    <p>請打開 Console 檢視結果。</p>
+
+    <script>
+        // 5.4.1 條件判斷
+        let age = 20;
+        console.log("--- if/else ---");
+        if (age >= 18) {
+            console.log("成年人");
+        } else {
+            console.log("未成年人");
+        }
+
+        // 5.4.2 迴圈
+        console.log("--- for 迴圈 ---");
+        for (let i = 1; i <= 5; i++) {
+            console.log("次數:", i);
+        }
+
+        console.log("--- while 迴圈 ---");
+        let count = 0;
+        while (count < 3) {
+            console.log("Wait...", count);
+            count++;
+        }
+
+        // 九九乘法表範例 (雙層迴圈)
+        console.log("--- 九九乘法表 (前兩列) ---");
+        for (let i = 2; i <= 3; i++) {
+            for (let j = 1; j <= 9; j++) {
+                console.log(`${i} x ${j} = ${i * j}`);
+            }
+        }
+    </script>
+</body>
+</html>

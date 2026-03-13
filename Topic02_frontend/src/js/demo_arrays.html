@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>Arrays Demo</title>
+</head>
+<body>
+    <h1>陣列範例</h1>
+    <p>請打開 Console 檢視結果。</p>
+
+    <script>
+        // 5.6.1 建立與存取
+        let fruits = ["Apple", "Banana", "Cherry"];
+        console.log("--- 建立陣列 ---");
+        console.log(fruits);
+        console.log("第一個元素:", fruits[0]);
+
+        // 5.6.2 常用方法
+        fruits.push("Durian"); // 尾部新增
+        console.log("push 後:", fruits);
+
+        fruits.pop(); // 尾部刪除
+        console.log("pop 後:", fruits);
+
+        // 高階方法
+        let numbers = [1, 2, 3, 4, 5];
+        let doubled = numbers.map(x => x * 2);
+        let evens = numbers.filter(x => x % 2 === 0);
+
+        console.log("--- 高階方法 ---");
+        console.log("原陣列:", numbers);
+        console.log("map (x2):", doubled);
+        console.log("filter (偶數):", evens);
+
+        // join
+        console.log("join:", fruits.join(" - "));
+    </script>
+</body>
+</html>
