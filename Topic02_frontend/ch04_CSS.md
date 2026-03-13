@@ -692,6 +692,7 @@ Flexbox 是一種一維佈局工具，專門用來處理元素在一條線上的
     <div class="item" style="height:80px">2</div>
     <div class="item">3</div>
 </div>
+```
 
 ---
 
@@ -717,7 +718,6 @@ Flexbox 是一種一維佈局工具，專門用來處理元素在一條線上的
 >     <div>冰島</div>
 > </div>
 > ```
-```
 
 ---
 
@@ -1074,63 +1074,48 @@ button:hover {
 
 ---
 
-## 綜合練習
+## 綜合練習：ShowMovie 影城訂票系統設計
 
-### 練習 4.1
-:basketball: Exercise01 :basketball:
-
-* 整體內容置中，寬度 800px
-* h1 變顏色置中，前面會自動加上報紙符號 (emoji 🗞️)
-* 圖片可以設定 class 為 R 或 L, 表示 float 為 right/left; 邊框圓潤; 滑鼠移過去時清晰度加強 (原 opacity 低); 有設定 margin 所以圖和字不會黏在一起。
-* 標記 boy 或 girl; 個有不同的顏色及後置符號（👦👧）。
-
-![image](https://hackmd.io/_uploads/S1gwfk8R6.png)
-
-[ccc](https://www.icloud.com/iclouddrive/0d6K8_AQmRS4Rt8ZUOrLhd6Xg#CCS)
+請以「影城訂票系統」為主題，運用本章所學的 CSS 技術（選擇器、盒模型、佈局、裝飾、動態效果），完成以下三個進階練習。
 
 ---
 
-### 練習 4.2
+### **1. 基礎挑戰：響應式電影海報牆**
+設計一個直觀的電影選單介面，讓使用者一眼就能看到正在熱映的作品。
 
-:basketball: Exercise02 :basketball:
-
-同上，當滑鼠移動時會有互動
-* 宣告一個 container，內放置圖片與名字。當滑鼠移到照片時，照片變清晰; 框也會出現。
-* 使用 position 來進行文字在圖中的定位。
-* 當滑鼠移到名字時，名字變大。
-* [參考: style image](https://www.w3schools.com/css/css3_images.asp)
-
-<img src="https://hackmd.io/_uploads/r1xJLUUAp.png" width="200px">
-<img src="https://hackmd.io/_uploads/Hy9m88L0a.png" width="200px">
-
----
-### 練習 4.3
-
-:basketball: Exercise03 :basketball:
-* 到 [道奇官網](http://www.mlb.com/dodgers/roster) 獲取球員訊息。
-* 設計一個球員卡的展覽頁面。
-* 版面設為 85% 寬。
-* 使用 float left 來做球員卡的排版。
-* 為球員姓名及編號設計 player 及 pno 等 class, 前者名字加粗，後者加上底線。參考 font-weight 及 text-decoration。
-* 移到球員時，邊框會出現。
-* 點擊球員照片時，會跳到該球員的官網。
-* 使用 box-sizing 避免可能的跑版。
-
-![image](https://hackmd.io/_uploads/H1zC4uIR6.png)
+*   **佈局要求**：
+    - 建立一個寬度為 `90%` 的主容器，並在頁面中水平置中。
+    - 使用 **Flexbox** 排版電影卡片，設定 `justify-content: space-around` 並允許換行 (`flex-wrap: wrap`)。
+*   **卡片樣式**：
+    - 每張電影卡片要有固定寬度（例如 `220px`）並設定圓角 `border-radius: 12px;`。
+    - 海報圖片必須撐滿卡片寬度，且圖片下方要留白置入片名（`<h3>`）與分級資訊（`<span>`）。
+    - 對片名使用 `margin: 10px 0;` 以確保視覺上的層次感。
 
 ---
 
-### 練習 4.4
+### **2. 變形練習一：互動式視覺強化 (Hover & Shadow)**
+承接基礎挑戰，透過裝飾屬性與動態效果，提升使用者與介面的互動感。
 
-:basketball: Exercise04 :basketball:
+*   **陰影與層次**：
+    - 為每張卡片加上輕微的 `box-shadow`。
+    - 當滑鼠移到卡片上時，陰影要變得更深、範圍更廣，模擬卡片「浮起來」的感覺。
+*   **變形與過渡**：
+    - 實作滑鼠懸停效果：讓卡片略微放大 5% (`transform: scale(1.05);`)。
+    - 加入 `transition: all 0.3s ease;` 確保放大的過程平滑流暢。
+*   **文字裝飾**：
+    - 點擊購票按鈕（`<a>` 標籤）時，使用 `:active` 偽類讓按鈕產生被「按下」的視覺反饋。
 
-請選擇一個應用系統，並應用 [此版面](https://www.w3schools.com/css/css_website_layout.asp) 設計其首頁：
-* 大谷翔平個人官網
-* 逢甲大學資工系首頁
-* Ace 網球會員管理系統
-* HappyBear 訂餐系統
-* ezGo 旅遊規劃網
-* 喀嚓相機租借系統
-* ShowShow 電影訂位系統
+---
 
-:point_right: 請說明你的設計巧思與應用 :point_left:
+### **3. 變形練習二：座位選取面板與偽類應用 (Grid & State)**
+設計一個模擬影廳座位選取的區塊，挑戰更精確的選擇器與佈局應用。
+
+*   **座位陣列**：
+    - 使用 CSS Grid 或 Flexbox 排列 8排 x 10列 的座位（可以是一個個的小 `div`）。
+    - 每個座位寬高各 `25px`，並帶有圓角。
+*   **狀態選擇器**：
+    - 使用 **`:not(.taken)`**：選擇所有還沒被買走的座位，並設置懸停變色。
+    - 使用 **屬性選擇器 `[data-status="selected"]`**：標註當前選中的座位為綠色。
+    - 使用 **`:nth-child()`**：將影廳中間的黃金位置（例如第 4 與 第 5 列）標註為不同背景色。
+*   **浮動定位**：
+    - 設計一個「確認訂購」的區塊，使用 **`position: sticky;`** 將其固定在瀏覽器視窗底部，確保使用者無論滑到哪都能隨時提交。
