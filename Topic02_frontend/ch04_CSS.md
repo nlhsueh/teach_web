@@ -3,7 +3,7 @@ Ch04 CSS
 ===
 
 ## 投影片
-:point_right: [nlh Slide- CSS](https://docs.google.com/presentation/d/1bFOmxDbSbIGHRwrFITqlc3SdZB33QmQ5dMBe2lVSPq0/edit?usp=sharing) 
+👉 [nlh Slide- CSS](https://docs.google.com/presentation/d/1bFOmxDbSbIGHRwrFITqlc3SdZB33QmQ5dMBe2lVSPq0/edit?usp=sharing) 
 * Basic CSS
 * CSS Selectors
     * Simple; Combinator; Pseudo-class; Pseudo-element; Attribute selector
@@ -12,9 +12,9 @@ Ch04 CSS
 * Responsive Design and Advanced Topics
 
 
-:point_right: [W3school CSS](https://www.w3schools.com/css/default.asp)
+👉 [W3school CSS](https://www.w3schools.com/css/default.asp)
 
-:point_right: [nlh GitHub www-js](https://github.com/nlhsueh/www-js)
+👉 [nlh GitHub www-js](https://github.com/nlhsueh/www-js)
 * **CSS demo**
 * Bootstrap demo
 * Javascript demo
@@ -38,9 +38,9 @@ p {
 
 ## 4.2 主要選擇器
 
-:point_right: [Demo: CSS Selectors](src/css/demo-selectors.html)
+👉 [Demo: CSS Selectors](src/css/demo-selectors.html)
 
-:point_right: [W3Schools - CSS Selectors](https://www.w3schools.com/css/css_selectors.asp)
+👉 [W3Schools - CSS Selectors](https://www.w3schools.com/css/css_selectors.asp)
 
 CSS 提供多種選擇器，讓開發者能夠根據不同條件精確地選擇和設置 HTML 元素的樣式。這裡介紹五個主要的選擇器。
 
@@ -132,7 +132,7 @@ CSS 提供多種選擇器，讓開發者能夠根據不同條件精確地選擇�
   ```
   這樣的選擇器會選擇所有具有 `button` 類名的元素，並設置內邊距和背景顏色。
 
-**小練習：簡單選擇器**
+**小練習：簡單選擇器** (練習程式：[demo-selectors.html](src/css/demo-selectors.html))
 請基於「自我介紹範例程式」，嘗試完成以下練習：
 1. 使用 **ID 選擇器** 將主標題 (`#main-title`) 的文字顏色改為綠色。
 2. 使用 **類控制選擇器** 將簡介段落 (`.intro`) 的文字大小改為 `1.2rem` 並加粗。
@@ -183,7 +183,7 @@ CSS 提供多種選擇器，讓開發者能夠根據不同條件精確地選擇�
   ```
   這樣的選擇器會選擇所有位於 `<h1>` 元素後的 `<p>` 元素。
 
-**小練習：組合選擇器**
+**小練習：組合選擇器** (練習程式：[demo-selectors.html](src/css/demo-selectors.html))
 請基於「自我介紹範例程式」，嘗試完成以下練習：
 1. 使用 **子元素選擇器 (`>`)** 僅將 `.container` 下的首層 `<h2>` 顏色改為藍色。
 2. 使用 **後代選擇器** 將所有 `<ul>` 中的 `<li>` 加上圓點符號 (`list-style-type: circle`)。
@@ -204,7 +204,7 @@ CSS 提供多種選擇器，讓開發者能夠根據不同條件精確地選擇�
 | **`[attribute$=value]`** | `a[href$=".pdf"]` | 屬性值以特定字結尾的元素 |
 | **`[attribute*=value]`** | `a[href*="w3schools"]` | 屬性值包含特定字的元素 |
 
-**小練習：屬性選擇器**
+**小練習：屬性選擇器** (練習程式：[demo-selectors.html](src/css/demo-selectors.html))
 請基於「自我介紹範例程式」，嘗試完成以下練習：
 1. 使用 **`[target="_blank"]`** 選擇器，將外連連結的後方加上一個小圖標或標記（例如 `(EXT)`）。
 2. 使用 **`[title]`** 選擇器，將所有擁有 `title` 屬性的元素加上下虛線。
@@ -271,7 +271,7 @@ CSS 提供多種選擇器，讓開發者能夠根據不同條件精確地選擇�
   ```
 
 
-**小練習：偽類選擇器**
+**小練習：偽類選擇器** (練習程式：[demo-selectors.html](src/css/demo-selectors.html))
 請基於「自我介紹範例程式」，嘗試完成以下練習：
 1. 使用 **`:hover`** 讓滑鼠移到聯絡連結 (`<a>`) 上時，背景色變為淡黃色。
 2. 使用 **`:nth-child(even)`** 將興趣列表中的偶數項目背景改為灰色。
@@ -361,7 +361,7 @@ CSS 提供多種選擇器，讓開發者能夠根據不同條件精確地選擇�
   }
   ```
 
-**小練習：偽元素選擇器**
+**小練習：偽元素選擇器** (練習程式：[demo-selectors.html](src/css/demo-selectors.html))
 請基於「自我介紹範例程式」，嘗試完成以下練習：
 1. 使用 **`::selection`** 讓使用者選取網頁文字時，背景變為紫色，文字變為白色。
 2. 使用 **`::first-line`** 將自我介紹段落的第一行設為粗體。
@@ -418,7 +418,7 @@ CSS 提供多種選擇器，讓開發者能夠根據不同條件精確地選擇�
 
 ---
 
-### 4.1 測驗題
+### 4.2 測驗題
 
 1. 哪個 CSS 選擇器會選擇所有 `<div>` 標籤的元素？
    - A. `.div`
@@ -464,23 +464,23 @@ CSS 提供多種選擇器，讓開發者能夠根據不同條件精確地選擇�
 
 ---
 
-### 4.1 練習題
+### 4.2 練習題
 
-**練習一**
+**練習一** (練習程式：[demo-selectors.html](src/css/demo-selectors.html))
 1. 使用 `::before` 偽元素在每個 `<h2>` 標題前添加 "Chapter: "。
 2. 使用 `:nth-child()` 選擇器將每個父元素中的奇數項 `<li>` 文字顏色設為紅色。
 3. 使用屬性選擇器，選擇所有 `type="checkbox"` 的 `<input>` 元素並設置它們的背景顏色為黃色。
 
 **練習二**
-4. **課表應用**：使用 `:first-child` 選擇器，將課表表格中每一行的第一個儲存格（時段欄位）背景顏色設為 `#f2f2f2`，並將字體加粗。
+4. **課表應用** (練習程式：[coursetable.html](src/html/coursetable.html))：使用 `:first-child` 選擇器，將課表表格中每一行的第一個儲存格（時段欄位）背景顏色設為 `#f2f2f2`，並將字體加粗。
 
-5. **課表應用**：使用 **後代選擇器 (Descendant Selector)**，將課表中所有包含在 `<td>` 內的超連結 (`<a>`) 顏色設為橘色 (`orange`)，並移除下標線 (`text-decoration: none`)。
+5. **課表應用** (練習程式：[coursetable.html](src/html/coursetable.html))：使用 **後代選擇器 (Descendant Selector)**，將課表中所有包含在 `<td>` 內的超連結 (`<a>`) 顏色設為橘色 (`orange`)，並移除下標線 (`text-decoration: none`)。
 
 ## 4.3 尺寸單位
 
-:point_right: [Demo: CSS Units](src/css/demo-units.html)
+👉 [Demo: CSS Units](src/css/demo-units.html)
 
-:point_right: [W3Schools - CSS Units](https://www.w3schools.com/css/css_units.asp)
+👉 [W3Schools - CSS Units](https://www.w3schools.com/css/css_units.asp)
 
 ### 單位定義與特性表
 
@@ -596,7 +596,7 @@ $$Target\ Px / Root\ Px = rem$$
 
 ---
 
-### 練習題
+### 練習題 (實驗程式：[demo-units.html](src/css/demo-units.html))
 
 > 「如果 `<html>` 是 `16px`，父元素是 `2rem`，子元素是 `1.5em`，請問子元素實際是多少像素？」
 
@@ -608,15 +608,16 @@ $$Target\ Px / Root\ Px = rem$$
 
 ## 4.4 排版與盒模型
 
-:point_right: [Demo: Box Model](src/css/demo-box-model.html)
-
-:point_right: [W3Schools - CSS Box Model](https://www.w3schools.com/css/css_boxmodel.asp)
-
 在 CSS 中，**佈局 (Layout)** 和 **盒模型 (Box Model)** 是設計網頁結構和樣式的基礎概念。理解這些概念有助於更有效地控制網頁元素的顯示和排列。
 
 ---
 
 ### 4.4.1 盒模型
+
+👉 [Demo: Box Model](src/css/demo-box-model.html)
+
+👉 [W3Schools - CSS Box Model](https://www.w3schools.com/css/css_boxmodel.asp)
+
 
 盒模型是 CSS 中用來描述元素如何在頁面上呈現的框架結構。每個元素都被視為一個矩形框，它由以下四個部分組成：
 
@@ -631,25 +632,27 @@ div {
   width: 200px;
   height: 100px;
   padding: 20px;
-  border: 5px solid black;
+  border: 10px solid black;
   margin: 10px;
 }
 ```
 在這個例子中，`div` 的實際顯示區域會是：
 - 實際內容區域寬度：200px
 - 內邊距：20px
-- 邊框：5px
+- 邊框：10px
 - 外邊距：10px
 
-這樣，`div` 的總寬度會是：`200px (內容) + 20px (左內邊距) + 20px (右內邊距) + 5px (左邊框) + 5px (右邊框) = 250px`。
+這樣，`div` 的總寬度會是：`200px (內容) + 20px (左內邊距) + 20px (右內邊距) + 10px (左邊框) + 10px (右邊框) = 260px`。
+
+![](img/box_model.png)
 
 ---
 
 ### 4.4.2 彈性盒佈局
 
-:point_right: [Demo: Flexbox](src/css/demo-flexbox.html)
+👉 [Demo: Flexbox](src/css/demo-flexbox.html)
 
-:point_right: [W3Schools - CSS Flexbox](https://www.w3schools.com/css/css_flexbox.asp)
+👉 [W3Schools - CSS Flexbox](https://www.w3schools.com/css/css_flexbox.asp)
 
 Flexbox 是一種一維佈局工具，專門用來處理元素在一條線上的對齊與空間分配。它是目前網頁開發中最主流的佈局方式。
 
@@ -852,17 +855,17 @@ div {
 
 ### 練習題
 
-1. 使用 Flexbox 將三個 `.item` 元素放在一行，並使它們均勻分佈，且每個元素的寬度相等。
-2. 使用 CSS Grid 創建一個三列的佈局，第一列的寬度為 `1fr`，第二列的寬度為 `2fr`，第三列的寬度為 `1fr`。並且給每個元素設定 10px 的間距。
-3. 設計一個包含兩個區塊的頁面，使用 CSS 盒模型確保其中一個區塊有 20px 的內邊距，5px 的邊框，並且與另一個區塊保持 10px 的外邊距。
+1. 使用 Flexbox 將三個 `.item` 元素放在一行，並使它們均勻分佈，且每個元素的寬度相等。 (練習程式：[demo-flexbox.html](src/css/demo-flexbox.html))
+2. 使用 CSS Grid 創建一個三列的佈局，第一列的寬度為 `1fr`，第二列的寬度為 `2fr`，第三列的寬度為 `1fr`。並且給每個元素設定 10px 的間距。 (練習程式：[demo-layout.html](src/html/demo-layout.html))
+3. 設計一個包含兩個區塊的頁面，使用 CSS 盒模型確保其中一個區塊有 20px 的內邊距，5px 的邊框，並且與另一個區塊保持 10px 的外邊距。 (練習程式：[demo-box-model.html](src/css/demo-box-model.html))
 
 ---
 
 ## 4.5 樣式與效果
 
-:point_right: [Demo: Typography](src/css/demo-typography.html) | [Demo: Decoration](src/css/demo-decoration.html) | [Demo: Positioning](src/css/demo-positioning.html) | [Demo: Dynamics](src/css/demo-dynamics.html)
+👉 [Demo: Typography](src/css/demo-typography.html) | [Demo: Decoration](src/css/demo-decoration.html) | [Demo: Positioning](src/css/demo-positioning.html) | [Demo: Dynamics](src/css/demo-dynamics.html)
 
-:point_right: [W3Schools - CSS Tutorial](https://www.w3schools.com/css/default.asp)
+👉 [W3Schools - CSS Tutorial](https://www.w3schools.com/css/default.asp)
 
 CSS（層疊樣式表）是用來控制 HTML 元素的外觀和排版的技術。透過 CSS，我們可以設計出美觀的網頁佈局、特效和動畫。以下是 CSS 中一些常用的樣式與效果，這些技巧將幫助你創建富有吸引力的網頁。
 
@@ -1010,14 +1013,14 @@ button:hover {
 
 ### 練習題
 
-1. 設計一個 `div` 元素，當滑鼠懸停時，背景顏色從紅色變為綠色，並且這個過渡效果持續 0.7 秒。
-2. 創建一個 3 欄的文本布局，每欄的寬度各自為 `33%`，並設置每欄之間的間距為 `20px`。
-3. 使用 `transform` 屬性將一個 `div` 元素旋轉 45 度，並使它縮放至 1.2 倍大小。
+1. 設計一個 `div` 元素，當滑鼠懸停時，背景顏色從紅色變為綠色，並且這個過渡效果持續 0.7 秒。 (練習程式：[demo-dynamics.html](src/css/demo-dynamics.html))
+2. 創建一個 3 欄的文本布局，每欄的寬度各自為 `33%`，並設置每欄之間的間距為 `20px`。 (練習程式：[demo-typography.html](src/css/demo-typography.html))
+3. 使用 `transform` 屬性將一個 `div` 元素旋轉 45 度，並使它縮放至 1.2 倍大小。 (練習程式：[demo-dynamics.html](src/css/demo-dynamics.html))
 
 
 ## 4.6 其他
 
-:point_right: [W3Schools - CSS Flexbox](https://www.w3schools.com/css/css_flexbox.asp)
+👉 [W3Schools - CSS Flexbox](https://www.w3schools.com/css/css_flexbox.asp)
 
 ### 4.6.1 假圖產生器
 
