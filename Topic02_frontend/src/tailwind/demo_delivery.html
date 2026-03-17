@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例探討：外送點餐系統 (Food Delivery)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans">
+
+    <!-- Top Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 px-4 py-3 flex justify-between items-center shadow-sm">
+        <div class="flex items-center gap-2">
+            <span class="text-orange-600 text-2xl font-black italic tracking-tighter">FastBite</span>
+        </div>
+        <div class="hidden md:flex flex-1 max-w-md mx-8">
+            <input type="text" placeholder="想吃點什麼？" class="w-full bg-slate-100 border-none rounded-full px-6 py-2 text-sm focus:ring-2 focus:ring-orange-500 transition-all outline-none">
+        </div>
+        <div class="flex items-center gap-4">
+            <button class="p-2 hover:bg-slate-100 rounded-full transition-colors relative">
+                <span class="absolute top-0 right-0 w-2 h-2 bg-orange-500 rounded-full"></span>
+                🛒
+            </button>
+            <div class="w-8 h-8 bg-slate-200 rounded-full border-2 border-white shadow-sm overflow-hidden">
+                <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="User Avatar">
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row min-h-screen">
+        
+        <!-- Left Sidebar (Category) - Fixed on desktop, scrollable on mobile -->
+        <aside class="md:w-64 bg-white border-r border-slate-200 p-4 sticky top-[61px] h-[calc(100vh-61px)] hidden md:block overflow-y-auto custom-scrollbar">
+            <div class="space-y-1">
+                <a href="#" class="flex items-center gap-3 bg-orange-50 text-orange-600 p-3 rounded-xl font-bold transition-all">
+                    <span>🔥</span> 熱門推薦
+                </a>
+                <a href="#" class="flex items-center gap-3 hover:bg-slate-50 p-3 rounded-xl text-slate-500 transition-all">
+                    <span>🍔</span> 美式漢堡
+                </a>
+                <a href="#" class="flex items-center gap-3 hover:bg-slate-50 p-3 rounded-xl text-slate-500 transition-all">
+                    <span>🍣</span> 日式料理
+                </a>
+                <a href="#" class="flex items-center gap-3 hover:bg-slate-50 p-3 rounded-xl text-slate-500 transition-all">
+                    <span>🍕</span> 義大利麵
+                </a>
+                <a href="#" class="flex items-center gap-3 hover:bg-slate-50 p-3 rounded-xl text-slate-500 transition-all">
+                    <span>🍩</span> 甜點飲品
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6 md:p-10">
+            <!-- Hero Promo -->
+            <div class="bg-gradient-to-br from-orange-400 to-orange-600 rounded-3xl p-8 mb-10 text-white relative overflow-hidden group shadow-xl">
+                <div class="relative z-10 max-w-md">
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 inline-block">限時優惠</span>
+                    <h2 class="text-3xl md:text-5xl font-black mb-4">今天點餐，<br>現折 50% 免運！</h2>
+                    <p class="text-orange-100 text-sm md:text-base mb-6">週年慶大放送，新會員首兩單全面半價，快來領取優惠券。</p>
+                    <button class="bg-white text-orange-600 px-8 py-3 rounded-2xl font-black shadow-lg hover:shadow-2xl transition-all active:scale-95">
+                        立即申領
+                    </button>
+                </div>
+                <div class="absolute right-0 bottom-0 -mb-10 -mr-10 w-64 h-64 bg-white/10 rounded-full blur-3xl group-hover:scale-110 transition-transform duration-1000"></div>
+            </div>
+
+            <!-- Restaurant Grid -->
+            <div class="flex justify-between items-end mb-8">
+                <h3 class="text-2xl font-black">你附近的美味</h3>
+                <a href="#" class="text-orange-600 text-sm font-bold flex items-center gap-1 hover:underline">查看全部 ➜</a>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Card 1 -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-100">
+                    <div class="relative h-48 bg-slate-200 overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1599&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Burger">
+                        <span class="absolute top-4 left-4 z-20 bg-orange-500 text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider">熱銷第一</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="text-lg font-black group-hover:text-orange-600 transition-colors">Juicy King 漢堡</h4>
+                            <span class="bg-green-50 text-green-600 px-2 py-0.5 rounded text-[10px] font-black">★ 4.9</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-4">美式料理 • 15-25 分鐘</p>
+                        <div class="flex items-center gap-2">
+                            <span class="text-orange-600 font-black">$120</span>
+                            <span class="text-slate-300 text-xs line-through">$240</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-100">
+                    <div class="relative h-48 bg-slate-200 overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=1740&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Sushi">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="text-lg font-black group-hover:text-orange-600 transition-colors">千壽壽司</h4>
+                            <span class="bg-green-50 text-green-600 px-2 py-0.5 rounded text-[10px] font-black">★ 4.7</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-4">日式料理 • 30-45 分鐘</p>
+                        <div class="flex items-center gap-2 text-orange-600 font-black">
+                            <span>$350</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-100">
+                    <div class="relative h-48 bg-slate-200 overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=1740&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Pizza">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="text-lg font-black group-hover:text-orange-600 transition-colors">羅馬職人披薩</h4>
+                            <span class="bg-green-50 text-green-600 px-2 py-0.5 rounded text-[10px] font-black">★ 4.8</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-4">義式料理 • 20-35 分鐘</p>
+                        <div class="flex items-center gap-2 text-orange-600 font-black">
+                            <span>$280</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

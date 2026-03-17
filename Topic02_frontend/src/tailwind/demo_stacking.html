@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind 響應式開發：元件堆疊 (Stacking)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold text-center mb-8">元件堆疊 (Stacking) 範例</h1>
+        <p class="text-center text-gray-600 mb-12">嘗試縮小瀏覽器寬度，觀察卡片如何自動擠到下一行。</p>
+
+        <!-- Stacking / Wrapping Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Card 1 -->
+            <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-blue-500">
+                <h2 class="text-xl font-bold mb-2">卡片 A</h2>
+                <p class="text-gray-500">在手機上是單欄，在平板(sm)以上會並排。</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-green-500">
+                <h2 class="text-xl font-bold mb-2">卡片 B</h2>
+                <p class="text-gray-500">透過 grid-cols 的設定，讓元件在寬度不足時自動調整排列。</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-purple-500">
+                <h2 class="text-xl font-bold mb-2">卡片 C</h2>
+                <p class="text-gray-500">這不會像 hidden 那樣消失，而是提供完整的瀏覽體驗。</p>
+            </div>
+            
+        </div>
+
+        <div class="mt-12 bg-blue-900 text-blue-100 p-6 rounded-lg font-mono text-sm shadow-inner">
+            <p>// 關鍵 Class：</p>
+            <p><span class="text-yellow-400">grid-cols-1</span> <span class="text-gray-400">(手機：1欄)</span></p>
+            <p><span class="text-green-400">sm:grid-cols-2</span> <span class="text-gray-400">(平板：2欄)</span></p>
+            <p><span class="text-blue-400">lg:grid-cols-3</span> <span class="text-gray-400">(桌機：3欄)</span></p>
+        </div>
+    </div>
+
+</body>
+
+</html>

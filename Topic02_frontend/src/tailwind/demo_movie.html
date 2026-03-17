@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例探討：電影訂票系統 (Movie Booking)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .screen-shadow {
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <!-- Header Section -->
+        <header class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-12">
+            <div>
+                <nav class="text-sm text-slate-400 mb-2">電影專區 / 正在熱映</nav>
+                <h1 class="text-4xl md:text-5xl font-black text-white">沙丘：第二部</h1>
+                <p class="text-slate-400 mt-2">Dune: Part Two (2024)</p>
+            </div>
+            <div class="flex gap-2">
+                <span class="bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-xs font-bold ring-1 ring-blue-500/50">IMAX 2D</span>
+                <span class="bg-slate-800 text-slate-300 px-3 py-1 rounded-full text-xs font-bold">166 分鐘</span>
+            </div>
+        </header>
+
+        <!-- Main Layout: Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            
+            <!-- Left: Seat Selection (2 Columns on Large Screens) -->
+            <div class="lg:col-span-2">
+                <div class="bg-slate-900 p-8 rounded-3xl ring-1 ring-slate-800 shadow-2xl">
+                    <h2 class="text-xl font-bold mb-8 text-center text-slate-400 uppercase tracking-widest">選擇位置</h2>
+                    
+                    <!-- Screen Overlay -->
+                    <div class="w-2/3 h-1 bg-gradient-to-r from-blue-600 to-cyan-400 mx-auto rounded-full screen-shadow mb-16 relative">
+                        <span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] text-blue-400 font-bold uppercase tracking-tighter">螢幕方向</span>
+                    </div>
+
+                    <!-- Seats Grid -->
+                    <div class="grid grid-cols-8 gap-3 max-w-sm mx-auto mb-12">
+                        <!-- Generative seats for demo -->
+                        <div class="aspect-square bg-slate-700 rounded-lg hover:bg-blue-500 cursor-pointer transition-colors"></div>
+                        <div class="aspect-square bg-slate-700 rounded-lg hover:bg-blue-500 cursor-pointer transition-colors"></div>
+                        <div class="aspect-square bg-slate-800 rounded-lg"></div> <!-- Path -->
+                        <div class="aspect-square bg-blue-600 rounded-lg ring-4 ring-blue-500/30"></div> <!-- Selected -->
+                        <div class="aspect-square bg-blue-600 rounded-lg ring-4 ring-blue-500/30"></div> <!-- Selected -->
+                        <div class="aspect-square bg-slate-800 rounded-lg"></div> <!-- Path -->
+                        <div class="aspect-square bg-slate-700 rounded-lg hover:bg-blue-500 cursor-pointer transition-colors"></div>
+                        <div class="aspect-square bg-slate-700 rounded-lg hover:bg-blue-500 cursor-pointer transition-colors"></div>
+                        
+                        <!-- Row 2 -->
+                        <div class="aspect-square bg-slate-500 rounded-lg opacity-30 cursor-not-allowed"></div> <!-- Sold -->
+                        <div class="aspect-square bg-slate-500 rounded-lg opacity-30 cursor-not-allowed"></div>
+                        <div class="aspect-square bg-slate-800 rounded-lg"></div>
+                        <div class="aspect-square bg-slate-700 rounded-lg hover:bg-blue-500 transition-colors"></div>
+                        <div class="aspect-square bg-slate-700 rounded-lg hover:bg-blue-500 transition-colors"></div>
+                        <div class="aspect-square bg-slate-800 rounded-lg"></div>
+                        <div class="aspect-square bg-slate-500 rounded-lg opacity-30"></div>
+                        <div class="aspect-square bg-slate-500 rounded-lg opacity-30"></div>
+                    </div>
+
+                    <!-- Legend -->
+                    <div class="flex justify-center gap-6 text-[10px] font-bold uppercase tracking-widest">
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 bg-slate-700 rounded"></div> <span>可選</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 bg-blue-600 rounded shadow-[0_0_10px_rgba(37,99,235,0.8)]"></div> <span>已選</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 bg-slate-500 opacity-30 rounded"></div> <span>售完</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Booking Details (Sticky) -->
+            <div class="lg:col-span-1">
+                <div class="bg-blue-600 p-8 rounded-3xl shadow-xl lg:sticky lg:top-8 overflow-hidden group">
+                    <div class="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+                    
+                    <h3 class="text-xl font-black mb-6">訂票資訊</h3>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex justify-between border-b border-blue-500 pb-2">
+                            <span class="text-blue-200">席位</span>
+                            <span class="font-bold">E-04, E-05</span>
+                        </div>
+                        <div class="flex justify-between border-b border-blue-500 pb-2">
+                            <span class="text-blue-200">時間</span>
+                            <span class="font-bold">20:30, 2024/03/24</span>
+                        </div>
+                        <div class="flex justify-between pt-4">
+                            <span class="text-blue-100 text-lg">總額</span>
+                            <span class="text-2xl font-black">$640</span>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full bg-white text-blue-600 py-4 rounded-2xl font-black text-lg hover:bg-blue-50 active:scale-95 transition-all shadow-lg">
+                        確認訂票
+                    </button>
+                    <p class="text-center text-[10px] text-blue-200 mt-4 uppercase">結帳後不接受取消退款</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Highlights -->
+        <footer class="mt-20 border-t border-slate-800 pt-8 pb-12">
+            <h4 class="text-blue-500 font-bold mb-4 uppercase tracking-[0.2em] text-xs">實作重點</h4>
+            <ul class="grid md:grid-cols-3 gap-6 text-sm text-slate-400">
+                <li><strong class="text-slate-200 block mb-1">Grid System</strong> 使用 <code class="bg-slate-800 px-1 rounded text-blue-300">grid-cols-8</code> 快速建立座椅排列，比起 CSS 傳統做法節省 80% 程式碼。</li>
+                <li><strong class="text-slate-200 block mb-1">Sticky Sidebar</strong> 利用 <code class="bg-slate-800 px-1 rounded text-blue-400">lg:sticky</code> 讓右側訂票資訊在桌面端隨滾動固定。</li>
+                <li><strong class="text-slate-200 block mb-1">Glassmorphism</strong> 側邊欄背景透明度與模糊效果，營造高品質電影院氛圍。</li>
+            </ul>
+        </footer>
+    </div>
+
+</body>
+</html>
