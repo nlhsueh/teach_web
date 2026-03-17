@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>4.2.4 偽元素選擇器解答</title>
+    <style>
+        /* 基礎樣式 */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+        }
+
+        /* 解答部分 */
+        /* 1. 使用 ::selection 讓使用者選取網頁文字時，背景變為紫色，文字變為白色。 */
+        ::selection {
+            background-color: purple;
+            color: white;
+        }
+
+        /* 2. 使用 ::first-line 將自我介紹段落的第一行設為粗體。 */
+        .intro::first-line {
+            font-weight: bold;
+        }
+
+        /* 3. 使用 ::after 在每個 <h2> 的標題後方加上一個符號 🔗 (content: " 🔗")。 */
+        h2::after {
+            content: " 🔗";
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="main-title">大家好，我是 [你的名字]</h1>
+        
+        <p class="intro">我是一名正在學習網頁前端開發的學生，對 CSS 選擇器非常感興趣。<br>這是第二行文字，用來測試 ::first-line 效果。</p>
+
+        <h2>我的興趣</h2>
+        <ul>
+            <li>閱讀技術部落格</li>
+            <li class="active">撰寫網頁專案</li>
+        </ul>
+
+        <h2>聯絡我</h2>
+        <a href="https://github.com" target="_blank">GitHub 首頁</a>
+    </div>
+</body>
+</html>

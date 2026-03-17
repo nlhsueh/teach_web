@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>4.2.2 屬性選擇器解答</title>
+    <style>
+        /* 基礎樣式 */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+        }
+
+        /* 解答部分 */
+        /* 1. 使用 [target="_blank"] 選擇器，將外連連結的後方加上一個小圖標或標記（例如 (EXT)）。 */
+        a[target="_blank"]::after {
+            content: " (EXT)";
+            font-size: 0.8rem;
+        }
+
+        /* 2. 使用 [title] 選擇器，將所有擁有 title 屬性的元素加上下虛線。 */
+        [title] {
+            text-decoration: underline dashed;
+        }
+
+        /* 3. 使用 [href^="mailto:"] 選擇器，將郵件連結的文字設為紅色。 */
+        a[href^="mailto:"] {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="main-title">大家好，我是 [你的名字]</h1>
+        
+        <p class="intro">我是一名正在學習網頁前端開發的學生，對 <strong>CSS 選擇器</strong> 非常感興趣。</p>
+
+        <h2 title="興趣標題">我的興趣</h2>
+        <ul>
+            <li>閱讀技術部落格</li>
+            <li class="active">撰寫網頁專案</li>
+            <li>參加技術研討會</li>
+        </ul>
+
+        <h2>聯絡我</h2>
+        <p>你可以透過以下方式找到我：</p>
+        <a href="https://github.com" target="_blank" title="我的 GitHub">GitHub 首頁</a>
+        <a href="mailto:example@fcu.edu.tw">發送郵件</a>
+    </div>
+</body>
+</html>

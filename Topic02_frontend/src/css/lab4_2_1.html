@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>4.2.1 簡單選擇器解答</title>
+    <style>
+        /* 基礎樣式 */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+        }
+
+        /* 解答部分 */
+        /* 1. 使用 ID 選擇器將主標題 (#main-title) 的文字顏色改為綠色。 */
+        #main-title {
+            color: green;
+        }
+
+        /* 2. 使用類控制選擇器將簡介段落 (.intro) 的文字大小改為 1.2rem 並加粗。 */
+        .intro {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* 3. 使用元素選擇器將所有 <h2> 的下方補上 10px 的間距 (margin-bottom: 10px)。 */
+        h2 {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="main-title">大家好，我是 [你的名字]</h1>
+        
+        <p class="intro">我是一名正在學習網頁前端開發的學生，對 <strong>CSS 選擇器</strong> 非常感興趣。</p>
+
+        <h2>我的興趣</h2>
+        <ul>
+            <li>閱讀技術部落格</li>
+            <li class="active">撰寫網頁專案</li>
+            <li>參加技術研討會</li>
+        </ul>
+
+        <h2>聯絡我</h2>
+        <p>你可以透過以下方式找到我：</p>
+        <a href="https://github.com" target="_blank" title="我的 GitHub">GitHub 首頁</a>
+        <a href="mailto:example@fcu.edu.tw">發送郵件</a>
+    </div>
+</body>
+</html>

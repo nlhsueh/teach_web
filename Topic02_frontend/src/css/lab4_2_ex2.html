@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>4.2 練習二 (課表應用) 解答</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        /* 解答部分 */
+        /* 4. 使用 :first-child 選擇器，將課表表格中每一行的第一個儲存格（時段欄位）背景顏色設為 #f2f2f2，並將字體加粗。 */
+        tr td:first-child {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        /* 5. 使用 後代選擇器 (Descendant Selector)，將課表中所有包含在 <td> 內的超連結 (<a>) 顏色設為橘色 (orange)，並移除下標線 (text-decoration: none)。 */
+        td a {
+            color: orange;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">我的課表</h1>
+    <table>
+        <tr>
+            <th>時段</th>
+            <th>星期一</th>
+            <th>星期二</th>
+            <th>星期三</th>
+        </tr>
+        <tr>
+            <td>09:00 - 10:00</td>
+            <td><a href="#">網頁設計</a></td>
+            <td>資料庫</td>
+            <td>計算機概論</td>
+        </tr>
+        <tr>
+            <td>10:00 - 11:00</td>
+            <td>網頁設計</td>
+            <td><a href="#">演算法</a></td>
+            <td>作業系統</td>
+        </tr>
+        <tr>
+            <td>11:00 - 12:00</td>
+            <td><a href="#">體育</a></td>
+            <td>通識課程</td>
+            <td>自主學習</td>
+        </tr>
+    </table>
+</body>
+</html>

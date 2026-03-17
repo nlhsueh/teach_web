@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>4.4 排版與盒模型解答</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        section { margin-bottom: 50px; border-top: 2px solid #eee; padding-top: 20px; }
+        h2 { color: #2c3e50; }
+
+        /* 練習 1: Flexbox */
+        .flex-container {
+            display: flex;
+            justify-content: space-between; /* 均勻分佈 */
+            gap: 10px;
+        }
+        .flex-item {
+            flex: 1; /* 寬度相等 */
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* 練習 2: CSS Grid */
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr; /* 三列比例 */
+            gap: 10px; /* 10px 間距 */
+            margin-top: 10px;
+        }
+        .grid-item {
+            background-color: #2ecc71;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* 練習 3: Box Model */
+        .box-container {
+            display: flex;
+            gap: 10px; /* 這裡用來展示區塊間的 10px 外邊距 */
+        }
+        .box-1 {
+            width: 200px;
+            padding: 20px;          /* 20px 內邊距 */
+            border: 5px solid red;  /* 5px 邊框 */
+            margin-right: 10px;      /* 與另一個區塊保持 10px 外邊距 */
+            background-color: #f1c40f;
+            box-sizing: border-box;  /* 建議使用 border-box 簡化計算 */
+        }
+        .box-2 {
+            width: 200px;
+            background-color: #e67e22;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h2>1. Flexbox 均勻分佈</h2>
+        <div class="flex-container">
+            <div class="flex-item">Item 1</div>
+            <div class="flex-item">Item 2</div>
+            <div class="flex-item">Item 3</div>
+        </div>
+    </section>
+
+    <section>
+        <h2>2. CSS Grid 比例佈局 (1fr 2fr 1fr)</h2>
+        <div class="grid-container">
+            <div class="grid-item">1fr</div>
+            <div class="grid-item">2fr</div>
+            <div class="grid-item">1fr</div>
+        </div>
+    </section>
+
+    <section>
+        <h2>3. 盒模型測試</h2>
+        <div class="box-container">
+            <div class="box-1">區塊 A (內距20, 邊框5)</div>
+            <div class="box-2">區塊 B</div>
+        </div>
+    </section>
+</body>
+</html>

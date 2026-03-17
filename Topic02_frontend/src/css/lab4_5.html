@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>4.5 樣式與效果解答</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        section { margin-bottom: 50px; border-top: 2px solid #eee; padding-top: 20px; }
+
+        /* 1. 背景過渡效果 */
+        .hover-box {
+            width: 200px;
+            height: 100px;
+            background-color: red;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: background-color 0.7s ease; /* 過渡持續 0.7 秒 */
+            cursor: pointer;
+        }
+        .hover-box:hover {
+            background-color: green;
+        }
+
+        /* 2. 三欄文本佈局 */
+        .text-layout {
+            display: flex;
+            gap: 20px; /* 每欄之間的間距為 20px */
+        }
+        .column {
+            width: 33.33%; /* 每欄寬度約 33% */
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        /* 3. Transform 變形 */
+        .transform-box {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            margin: 40px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transform: rotate(45deg) scale(1.2); /* 旋轉 45 度，縮放 1.2 倍 */
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h2>1. 背景過渡 (Hover 0.7s)</h2>
+        <div class="hover-box">滑鼠移上來看看</div>
+    </section>
+
+    <section>
+        <h2>2. 三欄文本佈局 (Gap 20px)</h2>
+        <div class="text-layout">
+            <div class="column">
+                <h3>第一欄</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+            </div>
+            <div class="column">
+                <h3>第二欄</h3>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <div class="column">
+                <h3>第三欄</h3>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>3. Transform 旋轉與縮放</h2>
+        <div class="transform-box">45度 1.2x</div>
+    </section>
+</body>
+</html>

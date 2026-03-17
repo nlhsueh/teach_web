@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>4.2.2 組合選擇器解答</title>
+    <style>
+        /* 基礎樣式 */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+        }
+
+        /* 解答部分 */
+        /* 1. 使用子元素選擇器 (>) 僅將 .container 下的首層 <h2> 顏色改為藍色。 */
+        .container > h2 {
+            color: blue;
+        }
+
+        /* 2. 使用後代選擇器將所有 <ul> 中的 <li> 加上圓點符號 (list-style-type: circle)。 */
+        ul li {
+            list-style-type: circle;
+        }
+
+        /* 3. 使用相鄰兄弟選擇器 (+) 讓緊接在 <h2> 後方的段落文字加粗。 */
+        h2 + p {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="main-title">大家好，我是 [你的名字]</h1>
+        
+        <p class="intro">我是一名正在學習網頁前端開發的學生，對 <strong>CSS 選擇器</strong> 非常感興趣。</p>
+
+        <h2>我的興趣</h2>
+        <ul>
+            <li>閱讀技術部落格</li>
+            <li class="active">撰寫網頁專案</li>
+            <li>參加技術研討會</li>
+        </ul>
+
+        <h2>聯絡我</h2>
+        <p>這是一個緊跟在 h2 後的段落。</p>
+        <a href="https://github.com" target="_blank" title="我的 GitHub">GitHub 首頁</a>
+        <a href="mailto:example@fcu.edu.tw">發送郵件</a>
+    </div>
+</body>
+</html>

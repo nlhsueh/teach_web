@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>4.3 尺寸單位練習解答</title>
+    <style>
+        /* 根元素設定 */
+        html {
+            font-size: 16px;
+        }
+
+        /* 父元素：2rem = 16px * 2 = 32px */
+        .parent {
+            font-size: 2rem;
+            border: 1px solid blue;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* 子元素：1.5em = 父元素(32px) * 1.5 = 48px */
+        .child {
+            font-size: 1.5em;
+            border: 1px solid red;
+            padding: 10px;
+        }
+
+        .info {
+            font-size: 1rem;
+            color: #666;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>尺寸單位換算預覽</h1>
+    <div class="parent">
+        我是父元素 (2rem)
+        <div class="child">
+            我是子元素 (1.5em)
+        </div>
+    </div>
+
+    <div class="info">
+        <p>換算過程：</p>
+        <ul>
+            <li>根元素 (html) = 16px</li>
+            <li>父元素 = 16px * 2rem = 32px</li>
+            <li>子元素 = 32px * 1.5em = <strong>48px</strong></li>
+        </ul>
+    </div>
+</body>
+</html>

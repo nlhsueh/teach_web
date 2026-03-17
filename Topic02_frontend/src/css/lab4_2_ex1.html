@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>4.2 練習一解答</title>
+    <style>
+        /* 基礎樣式 */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+        }
+
+        /* 解答部分 */
+        /* 1. 使用 ::before 偽元素在每個 <h2> 標題前添加 "Chapter: "。 */
+        h2::before {
+            content: "Chapter: ";
+        }
+
+        /* 2. 使用 :nth-child() 選擇器將每個父元素中的奇數項 <li> 文字顏色設為紅色。 */
+        li:nth-child(odd) {
+            color: red;
+        }
+
+        /* 3. 使用屬性選擇器，選擇所有 type="checkbox" 的 <input> 元素並設置它們的背景顏色為黃色。 */
+        /* 注意：checkbox 的背景色在多數瀏覽器無法直接透過樣式修改，這裡示範選擇器用法 */
+        input[type="checkbox"] {
+            outline: 2px solid yellow;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="main-title">大家好，我是 [你的名字]</h1>
+        
+        <p class="intro">我是一名正在學習網頁前端開發的學生。</p>
+
+        <h2>我的興趣</h2>
+        <ul>
+            <li>閱讀技術部落格</li>
+            <li>撰寫網頁專案</li>
+            <li>參加技術研討會</li>
+            <li>運動健身</li>
+        </ul>
+
+        <h2>訂閱資訊</h2>
+        <label><input type="checkbox"> 訂閱電子報</label><br>
+        <label><input type="checkbox" checked> 接受服務條款</label>
+    </div>
+</body>
+</html>

@@ -132,7 +132,7 @@ CSS 提供多種選擇器，讓開發者能夠根據不同條件精確地選擇�
   ```
   這樣的選擇器會選擇所有具有 `button` 類名的元素，並設置內邊距和背景顏色。
 
-**小練習：簡單選擇器** (練習程式：[demo-selectors.html](src/css/demo-selectors.html))
+**小練習：簡單選擇器** (練習程式：[demo-selectors.html](src/css/demo-selectors.html) | [解答](src/css/lab4_2_1.html))
 請基於「自我介紹範例程式」，嘗試完成以下練習：
 1. 使用 **ID 選擇器** 將主標題 (`#main-title`) 的文字顏色改為綠色。
 2. 使用 **類控制選擇器** 將簡介段落 (`.intro`) 的文字大小改為 `1.2rem` 並加粗。
@@ -183,7 +183,7 @@ CSS 提供多種選擇器，讓開發者能夠根據不同條件精確地選擇�
   ```
   這樣的選擇器會選擇所有位於 `<h1>` 元素後的 `<p>` 元素。
 
-**小練習：組合選擇器** (練習程式：[demo-selectors.html](src/css/demo-selectors.html))
+**小練習：組合選擇器** (練習程式：[demo-selectors.html](src/css/demo-selectors.html) | [解答](src/css/lab4_2_2.html))
 請基於「自我介紹範例程式」，嘗試完成以下練習：
 1. 使用 **子元素選擇器 (`>`)** 僅將 `.container` 下的首層 `<h2>` 顏色改為藍色。
 2. 使用 **後代選擇器** 將所有 `<ul>` 中的 `<li>` 加上圓點符號 (`list-style-type: circle`)。
@@ -204,7 +204,7 @@ CSS 提供多種選擇器，讓開發者能夠根據不同條件精確地選擇�
 | **`[attribute$=value]`** | `a[href$=".pdf"]` | 屬性值以特定字結尾的元素 |
 | **`[attribute*=value]`** | `a[href*="w3schools"]` | 屬性值包含特定字的元素 |
 
-**小練習：屬性選擇器** (練習程式：[demo-selectors.html](src/css/demo-selectors.html))
+**小練習：屬性選擇器** (練習程式：[demo-selectors.html](src/css/demo-selectors.html) | [解答](src/css/lab4_2_5.html))
 請基於「自我介紹範例程式」，嘗試完成以下練習：
 1. 使用 **`[target="_blank"]`** 選擇器，將外連連結的後方加上一個小圖標或標記（例如 `(EXT)`）。
 2. 使用 **`[title]`** 選擇器，將所有擁有 `title` 屬性的元素加上下虛線。
@@ -271,7 +271,7 @@ CSS 提供多種選擇器，讓開發者能夠根據不同條件精確地選擇�
   ```
 
 
-**小練習：偽類選擇器** (練習程式：[demo-selectors.html](src/css/demo-selectors.html))
+**小練習：偽類選擇器** (練習程式：[demo-selectors.html](src/css/demo-selectors.html) | [解答](src/css/lab4_2_3.html))
 請基於「自我介紹範例程式」，嘗試完成以下練習：
 1. 使用 **`:hover`** 讓滑鼠移到聯絡連結 (`<a>`) 上時，背景色變為淡黃色。
 2. 使用 **`:nth-child(even)`** 將興趣列表中的偶數項目背景改為灰色。
@@ -361,7 +361,7 @@ CSS 提供多種選擇器，讓開發者能夠根據不同條件精確地選擇�
   }
   ```
 
-**小練習：偽元素選擇器** (練習程式：[demo-selectors.html](src/css/demo-selectors.html))
+**小練習：偽元素選擇器** (練習程式：[demo-selectors.html](src/css/demo-selectors.html) | [解答](src/css/lab4_2_4.html))
 請基於「自我介紹範例程式」，嘗試完成以下練習：
 1. 使用 **`::selection`** 讓使用者選取網頁文字時，背景變為紫色，文字變為白色。
 2. 使用 **`::first-line`** 將自我介紹段落的第一行設為粗體。
@@ -466,15 +466,15 @@ CSS 提供多種選擇器，讓開發者能夠根據不同條件精確地選擇�
 
 ### 4.2 練習題
 
-**練習一** (練習程式：[demo-selectors.html](src/css/demo-selectors.html))
+**練習一** (練習程式：[demo-selectors.html](src/css/demo-selectors.html) | [解答](src/css/lab4_2_ex1.html))
 1. 使用 `::before` 偽元素在每個 `<h2>` 標題前添加 "Chapter: "。
 2. 使用 `:nth-child()` 選擇器將每個父元素中的奇數項 `<li>` 文字顏色設為紅色。
 3. 使用屬性選擇器，選擇所有 `type="checkbox"` 的 `<input>` 元素並設置它們的背景顏色為黃色。
 
 **練習二**
-4. **課表應用** (練習程式：[coursetable.html](src/html/coursetable.html))：使用 `:first-child` 選擇器，將課表表格中每一行的第一個儲存格（時段欄位）背景顏色設為 `#f2f2f2`，並將字體加粗。
+4. **課表應用** (練習程式：[coursetable.html](src/html/coursetable.html) | [解答](src/css/lab4_2_ex2.html))：使用 `:first-child` 選擇器，將課表表格中每一行的第一個儲存格（時段欄位）背景顏色設為 `#f2f2f2`，並將字體加粗。
 
-5. **課表應用** (練習程式：[coursetable.html](src/html/coursetable.html))：使用 **後代選擇器 (Descendant Selector)**，將課表中所有包含在 `<td>` 內的超連結 (`<a>`) 顏色設為橘色 (`orange`)，並移除下標線 (`text-decoration: none`)。
+5. **課表應用** (練習程式：[coursetable.html](src/html/coursetable.html) | [解答](src/css/lab4_2_ex2.html))：使用 **後代選擇器 (Descendant Selector)**，將課表中所有包含在 `<td>` 內的超連結 (`<a>`) 顏色設為橘色 (`orange`)，並移除下標線 (`text-decoration: none`)。
 
 ## 4.3 尺寸單位
 
@@ -596,7 +596,7 @@ $$Target\ Px / Root\ Px = rem$$
 
 ---
 
-### 練習題 (實驗程式：[demo-units.html](src/css/demo-units.html))
+### 練習題 (實驗程式：[demo-units.html](src/css/demo-units.html) | [解答](src/css/lab4_3.html))
 
 > 「如果 `<html>` 是 `16px`，父元素是 `2rem`，子元素是 `1.5em`，請問子元素實際是多少像素？」
 
@@ -855,9 +855,9 @@ div {
 
 ### 練習題
 
-1. 使用 Flexbox 將三個 `.item` 元素放在一行，並使它們均勻分佈，且每個元素的寬度相等。 (練習程式：[demo-flexbox.html](src/css/demo-flexbox.html))
-2. 使用 CSS Grid 創建一個三列的佈局，第一列的寬度為 `1fr`，第二列的寬度為 `2fr`，第三列的寬度為 `1fr`。並且給每個元素設定 10px 的間距。 (練習程式：[demo-layout.html](src/html/demo-layout.html))
-3. 設計一個包含兩個區塊的頁面，使用 CSS 盒模型確保其中一個區塊有 20px 的內邊距，5px 的邊框，並且與另一個區塊保持 10px 的外邊距。 (練習程式：[demo-box-model.html](src/css/demo-box-model.html))
+1. 使用 Flexbox 將三個 `.item` 元素放在一行，並使它們均勻分佈，且每個元素的寬度相等。 (練習程式：[demo-flexbox.html](src/css/demo-flexbox.html) | [解答](src/css/lab4_4.html))
+2. 使用 CSS Grid 創建一個三列的佈局，第一列的寬度為 `1fr`，第二列的寬度為 `2fr`，第三列的寬度為 `1fr`。並且給每個元素設定 10px 的間距。 (練習程式：[demo-layout.html](src/html/demo-layout.html) | [解答](src/css/lab4_4.html))
+3. 設計一個包含兩個區塊的頁面，使用 CSS 盒模型確保其中一個區塊有 20px 的內邊距，5px 的邊框，並且與另一個區塊保持 10px 的外邊距。 (練習程式：[demo-box-model.html](src/css/demo-box-model.html) | [解答](src/css/lab4_4.html))
 
 ---
 
@@ -1013,9 +1013,9 @@ button:hover {
 
 ### 練習題
 
-1. 設計一個 `div` 元素，當滑鼠懸停時，背景顏色從紅色變為綠色，並且這個過渡效果持續 0.7 秒。 (練習程式：[demo-dynamics.html](src/css/demo-dynamics.html))
-2. 創建一個 3 欄的文本布局，每欄的寬度各自為 `33%`，並設置每欄之間的間距為 `20px`。 (練習程式：[demo-typography.html](src/css/demo-typography.html))
-3. 使用 `transform` 屬性將一個 `div` 元素旋轉 45 度，並使它縮放至 1.2 倍大小。 (練習程式：[demo-dynamics.html](src/css/demo-dynamics.html))
+1. 設計一個 `div` 元素，當滑鼠懸停時，背景顏色從紅色變為綠色，並且這個過渡效果持續 0.7 秒。 (練習程式：[demo-dynamics.html](src/css/demo-dynamics.html) | [解答](src/css/lab4_5.html))
+2. 創建一個 3 欄的文本布局，每欄的寬度各自為 `33%`，並設置每欄之間的間距為 `20px`。 (練習程式：[demo-typography.html](src/css/demo-typography.html) | [解答](src/css/lab4_5.html))
+3. 使用 `transform` 屬性將一個 `div` 元素旋轉 45 度，並使它縮放至 1.2 倍大小。 (練習程式：[demo-dynamics.html](src/css/demo-dynamics.html) | [解答](src/css/lab4_5.html))
 
 
 ## 4.6 其他

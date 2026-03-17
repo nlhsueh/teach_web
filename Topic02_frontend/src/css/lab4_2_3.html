@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>4.2.3 偽類選擇器解答</title>
+    <style>
+        /* 基礎樣式 */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+        }
+
+        /* 解答部分 */
+        /* 1. 使用 :hover 讓滑鼠移到聯絡連結 (<a>) 上時，背景色變為淡黃色。 */
+        a:hover {
+            background-color: lightyellow;
+        }
+
+        /* 2. 使用 :nth-child(even) 將興趣列表中的偶數項目背景改為灰色。 */
+        li:nth-child(even) {
+            background-color: #f0f0f0;
+        }
+
+        /* 3. 使用 :active 讓點擊連結時有稍微縮小的動畫效果 (transform: scale(0.95))。 */
+        a:active {
+            display: inline-block; /* 確保 transform 生效 */
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="main-title">大家好，我是 [你的名字]</h1>
+        
+        <p class="intro">我是一名正在學習網頁前端開發的學生，對 <strong>CSS 選擇器</strong> 非常感興趣。</p>
+
+        <h2>我的興趣</h2>
+        <ul>
+            <li>閱讀技術部落格</li>
+            <li class="active">撰寫網頁專案</li>
+            <li>參加技術研討會</li>
+            <li>運動健身</li>
+        </ul>
+
+        <h2>聯絡我</h2>
+        <p>你可以透過以下方式找到我：</p>
+        <a href="https://github.com" target="_blank">GitHub 首頁</a>
+        <a href="mailto:example@fcu.edu.tw">發送郵件</a>
+    </div>
+</body>
+</html>
