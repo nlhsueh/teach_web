@@ -932,6 +932,8 @@ article {
 
 ### 4.5.2 視覺裝飾
 
+👉 [Demo: Image Gallery](src/css/demo-gallery.html) | [W3Schools - CSS Image Gallery](https://www.w3schools.com/css/css_image_gallery.asp)
+
 透過顏色、邊框與陰影提升介面的精緻感。
 
 **裝飾技巧：**
@@ -981,7 +983,7 @@ article {
 
 定位與流 (Position & Float) 控制元素在頁面中的物理位置與互動關係。這是網頁排版中非常強大但也有一定複雜度的部分。
 
-#### 1. 浮動與清除 (`float` & `clear`)
+#### 1. 浮動與清除 
 
 👉 [W3Schools - CSS Float and Clear](https://www.w3schools.com/css/css_float.asp)
 
@@ -1000,12 +1002,15 @@ article {
 <div style="clear: both;"></div> <!-- 確保後方的內容不會被影響 -->
 ```
 
+**範例：圖片並排**
+👉 [Demo: Float Images](src/css/demo-float-images.html)
+
 > [!IMPORTANT]
-> **The Clearfix Hack** (解決父元素高度塌陷)
+> **Clearfix 技巧**
 > 
 > 👉 [W3Schools - The Clearfix Hack](https://www.w3schools.com/css/css_float_clear.asp)
 > 
-> 當父元素內的所有子元素都設置了 `float` 時，父元素會因為子元素脫離文件流而「高度塌陷」（變為 0）。解決方案是使用 **Clearfix**：
+> 當子元素都設了 `float` 時，父元素會因為看不到子元素的高度而無法自動撐開（高度變為 0）。解決方法是在父元素上加 `clearfix` 樣式：
 > 
 > ```css
 > .clearfix::after {
@@ -1014,9 +1019,9 @@ article {
 >   display: table;
 > }
 > ```
-> 將 `clearfix` 類別加到父元素上，即可自動完成清除浮體的效果，這比在 HTML 手動加 `<div>` 乾淨許多。
+> 將 `clearfix` 加到父元素的 class，就不需要在 HTML 裡手動加 `<div style="clear:both">`，更乾淨。
 
-#### 2. 定位 (`position`)
+#### 2. 定位
 
 👉 [W3Schools - CSS Positioning](https://www.w3schools.com/css/css_positioning.asp)
 
@@ -1034,7 +1039,7 @@ CSS 定位決定了元素在文件流（Document Flow）中的位置：
 .child { position: absolute; top: 0; right: 0; } /* 置於父元素右上角 */
 ```
 
-#### 3. 溢出處理 (`overflow`)
+#### 3. 溢出處理
 
 當內容超出容器大小時：
 - **`hidden`**：直接切掉超出的部分。
@@ -1140,7 +1145,7 @@ button:hover {
 - **`width=device-width`**：將網頁寬度設置為裝置的螢幕寬度。
 - **`initial-scale=1.0`**：設置瀏覽器首次載入網頁時的縮放比例為 1:1。
 
-### 4.6.2 媒體查詢 (@media Query)
+### 4.6.2 媒體查詢
 
 媒體查詢是 RWD 的核心，它允許你根據裝置的特性（如寬度、高度、解析度）套用不同的 CSS 規則。
 
@@ -1169,7 +1174,7 @@ button:hover {
 
 👉 [Demo: Responsive Layout](src/css/demo-responsive-layout.html)
 
-### 4.6.3 斷點策略 (Breakpoints)
+### 4.6.3 斷點策略
 
 斷點是指網頁佈局發生變化的臨界點。常見的斷點設定如下：
 

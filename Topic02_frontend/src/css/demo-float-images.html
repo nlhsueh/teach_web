@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS float 圖片並排範例</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: sans-serif; padding: 20px; background: #f9f9f9; }
+        h1 { text-align: center; margin-bottom: 30px; }
+
+        /* 圖片並排容器：用 clearfix 確保父元素能包住所有浮動子元素 */
+        .gallery-row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* 每欄佔 33.33%，三欄並排 */
+        .gallery-col {
+            float: left;
+            width: 33.33%;
+            padding: 8px;
+        }
+
+        .gallery-col img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 6px;
+            display: block;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .caption {
+            text-align: center;
+            padding: 8px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        /* 說明區塊 */
+        .note {
+            background: #eef3fb;
+            border-left: 4px solid #3498db;
+            padding: 12px 16px;
+            margin-top: 30px;
+            border-radius: 4px;
+        }
+        code { background: #eee; padding: 2px 5px; border-radius: 3px; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <h1>CSS Float 圖片並排</h1>
+
+    <!-- 用 .gallery-row 包住三欄，搭配 .clearfix 讓父元素能正確撐開 -->
+    <div class="gallery-row">
+        <div class="gallery-col">
+            <img src="https://picsum.photos/seed/201/400/300" alt="圖片1">
+            <p class="caption">景點 A</p>
+        </div>
+        <div class="gallery-col">
+            <img src="https://picsum.photos/seed/202/400/300" alt="圖片2">
+            <p class="caption">景點 B</p>
+        </div>
+        <div class="gallery-col">
+            <img src="https://picsum.photos/seed/203/400/300" alt="圖片3">
+            <p class="caption">景點 C</p>
+        </div>
+    </div>
+
+    <div class="note">
+        <strong>核心概念：</strong><br>
+        每個 <code>.gallery-col</code> 使用 <code>float: left</code> 並設定 <code>width: 33.33%</code>，實現三欄並排。<br>
+        父元素 <code>.gallery-row</code> 使用 <code>::after</code> (Clearfix) 技巧，確保其高度能正確包住所有浮動的子元素。
+    </div>
+</body>
+</html>
