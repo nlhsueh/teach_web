@@ -1159,7 +1159,7 @@ button:hover {
 }
 ```
 
-![範例](https://www.w3schools.com/css/tryit.asp?filename=tryresponsive_breakpoints)
+[範例](https://www.w3schools.com/css/tryit.asp?filename=tryresponsive_breakpoints)
 
 
 **常用的媒體特性 (Media Features)：**
