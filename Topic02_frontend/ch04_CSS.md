@@ -975,14 +975,55 @@ article {
 
 ---
 
-### 4.5.3 定位與流
+### 4.5.3 定位與流 (Position & Float)
 
-控制元素在頁面中的物理位置與互動關係。
+👉 [Demo: Positioning](src/css/demo-positioning.html)
 
-**核心概念：**
-- **定位 (`position`)**：`relative` (相對), `absolute` (絕對), `fixed` (固定)。
-- **浮動 (`float`)**：使元素浮動並讓文字環繞。
-- **溢出處理 (`overflow`)**：當內容太大時，使用 `hidden` 隱藏或 `scroll` 捲動。
+控制元素在頁面中的物理位置與互動關係。這是網頁排版中非常強大但也有一定複雜度的部分。
+
+#### 1. 浮動與清除 (`float` & `clear`)
+
+👉 [W3Schools - CSS Float and Clear](https://www.w3schools.com/css/css_float.asp)
+
+- **`float`**：控制元素的浮動方向，使其他內容（如文字）繞過它。常見於文字環繞圖片的排版。
+    - `left`：向左浮動。
+    - `right`：向右浮動。
+    - `none`：不浮動（預設）。
+- **`clear`**：用來清除浮動元素造成的影響。當一個元素浮動後，後面的元素會向上遞補，可能導致版面混亂。
+    - `both`：清除左右兩側的浮動效果。
+    - `left` / `right`：清除單側浮動。
+
+**範例：文字環繞圖片**
+```html
+<img src="pic.jpg" style="float: left; margin: 10px;">
+<p>這段文字會環繞在圖片的右側...</p>
+<div style="clear: both;"></div> <!-- 確保後方的內容不會被影響 -->
+```
+
+#### 2. 定位 (`position`)
+
+👉 [W3Schools - CSS Positioning](https://www.w3schools.com/css/css_positioning.asp)
+
+CSS 定位決定了元素在文件流（Document Flow）中的位置：
+
+- **`static` (預設)**：正常的網頁流動，不受 `top`, `bottom`, `left`, `right` 影響。
+- **`relative` (相對定位)**：相對於「自己原本的位置」進行偏移。**常用於作外部容器，讓內部的 `absolute` 元素參考。**
+- **`absolute` (絕對定位)**：相對於「最近一個非 static 的父元素」進行定位。它會脫離文件流，不佔據空間。
+- **`fixed` (固定定位)**：相對於「瀏覽器視窗 (Viewport)」定位。即使捲動頁面，它也會固定在畫面上（常轉用於導覽列或回到頂部按鈕）。
+- **`sticky` (黏性定位)**：在跨越特定門檻（如捲動到頂部）前像 `relative`，之後像 `fixed`。常轉用於表格標題或測欄。
+
+**範例：絕對定位**
+```css
+.parent { position: relative; width: 300px; height: 300px; }
+.child { position: absolute; top: 0; right: 0; } /* 置於父元素右上角 */
+```
+
+#### 3. 溢出處理 (`overflow`)
+
+當內容超出容器大小時：
+- **`hidden`**：直接切掉超出的部分。
+- **`scroll`**：無論是否超出，都顯示捲軸。
+- **`auto`**：只有在超出時才顯示捲軸。
 
 ---
 
