@@ -466,15 +466,21 @@ CSS 提供多種選擇器，讓開發者能夠根據不同條件精確地選擇�
 
 ### 4.2 練習題
 
-**練習一** (練習程式：[demo-selectors.html](src/css/demo-selectors.html) | [解答](src/css/lab4_2_ex1.html))
+**練習一** (練習程式：[demo-selectors.html](src/css/demo-selectors.html))
 1. 使用 `::before` 偽元素在每個 `<h2>` 標題前添加 "Chapter: "。
 2. 使用 `:nth-child()` 選擇器將每個父元素中的奇數項 `<li>` 文字顏色設為紅色。
 3. 使用屬性選擇器，選擇所有 `type="checkbox"` 的 `<input>` 元素並設置它們的背景顏色為黃色。
 
-**練習二**
-4. **課表應用** (練習程式：[coursetable.html](src/html/coursetable.html) | [解答](src/css/lab4_2_ex2.html))：使用 `:first-child` 選擇器，將課表表格中每一行的第一個儲存格（時段欄位）背景顏色設為 `#f2f2f2`，並將字體加粗。
+[解答](src/css/lab4_2_ex1.html)
 
-5. **課表應用** (練習程式：[coursetable.html](src/html/coursetable.html) | [解答](src/css/lab4_2_ex2.html))：使用 **後代選擇器 (Descendant Selector)**，將課表中所有包含在 `<td>` 內的超連結 (`<a>`) 顏色設為橘色 (`orange`)，並移除下標線 (`text-decoration: none`)。
+**練習二**
+4. **課表應用** (練習程式：[coursetable.html](src/html/coursetable.html))：使用 `:first-child` 選擇器，將課表表格中每一行的第一個儲存格（時段欄位）背景顏色設為 `#f2f2f2`，並將字體加粗。
+
+[解答](src/css/lab4_2_ex2.html)
+
+5. **課表應用** (練習程式：[coursetable.html](src/html/coursetable.html))：使用 **後代選擇器 (Descendant Selector)**，將課表中所有包含在 `<td>` 內的超連結 (`<a>`) 顏色設為橘色 (`orange`)，並移除下標線 (`text-decoration: none`)。
+
+[解答](src/css/lab4_2_ex2.html)
 
 ## 4.3 尺寸單位
 
@@ -596,15 +602,18 @@ $$Target\ Px / Root\ Px = rem$$
 
 ---
 
-### 練習題 (實驗程式：[demo-units.html](src/css/demo-units.html) | [解答](src/css/lab4_3.html))
+### 練習題 
 
 > 「如果 `<html>` 是 `16px`，父元素是 `2rem`，子元素是 `1.5em`，請問子元素實際是多少像素？」
+
+實驗程式：[demo-units.html](src/css/demo-units.html) 
 
 **答案解析：**
 
 * 父元素 = $16 \times 2 = 32px$
 * 子元素 = $32 \times 1.5 = 48px$
 
+[解答](src/css/lab4_3.html)
 
 ## 4.4 排版與盒模型
 
@@ -855,9 +864,17 @@ div {
 
 ### 練習題
 
-1. 使用 Flexbox 將三個 `.item` 元素放在一行，並使它們均勻分佈，且每個元素的寬度相等。 (練習程式：[demo-flexbox.html](src/css/demo-flexbox.html) | [解答](src/css/lab4_4.html))
-2. 使用 CSS Grid 創建一個三列的佈局，第一列的寬度為 `1fr`，第二列的寬度為 `2fr`，第三列的寬度為 `1fr`。並且給每個元素設定 10px 的間距。 (練習程式：[demo-layout.html](src/html/demo-layout.html) | [解答](src/css/lab4_4.html))
-3. 設計一個包含兩個區塊的頁面，使用 CSS 盒模型確保其中一個區塊有 20px 的內邊距，5px 的邊框，並且與另一個區塊保持 10px 的外邊距。 (練習程式：[demo-box-model.html](src/css/demo-box-model.html) | [解答](src/css/lab4_4.html))
+1. 使用 Flexbox 將三個 `.item` 元素放在一行，並使它們均勻分佈，且每個元素的寬度相等。 (練習程式：[demo-flexbox.html](src/css/demo-flexbox.html))
+
+[解答](src/css/lab4_4.html)
+
+2. 使用 CSS Grid 創建一個三列的佈局，第一列的寬度為 `1fr`，第二列的寬度為 `2fr`，第三列的寬度為 `1fr`。並且給每個元素設定 10px 的間距。 (練習程式：[demo-layout.html](src/html/demo-layout.html))
+
+[解答](src/css/lab4_4.html)
+
+3. 設計一個包含兩個區塊的頁面，使用 CSS 盒模型確保其中一個區塊有 20px 的內邊距，5px 的邊框，並且與另一個區塊保持 10px 的外邊距。 (練習程式：[demo-box-model.html](src/css/demo-box-model.html))
+
+[解答](src/css/lab4_4.html)
 
 ---
 
@@ -1013,16 +1030,130 @@ button:hover {
 
 ### 練習題
 
-1. 設計一個 `div` 元素，當滑鼠懸停時，背景顏色從紅色變為綠色，並且這個過渡效果持續 0.7 秒。 (練習程式：[demo-dynamics.html](src/css/demo-dynamics.html) | [解答](src/css/lab4_5.html))
-2. 創建一個 3 欄的文本布局，每欄的寬度各自為 `33%`，並設置每欄之間的間距為 `20px`。 (練習程式：[demo-typography.html](src/css/demo-typography.html) | [解答](src/css/lab4_5.html))
-3. 使用 `transform` 屬性將一個 `div` 元素旋轉 45 度，並使它縮放至 1.2 倍大小。 (練習程式：[demo-dynamics.html](src/css/demo-dynamics.html) | [解答](src/css/lab4_5.html))
+1. 設計一個 `div` 元素，當滑鼠懸停時，背景顏色從紅色變為綠色，並且這個過渡效果持續 0.7 秒。 (練習程式：[demo-dynamics.html](src/css/demo-dynamics.html))
 
+[解答](src/css/lab4_5.html)
 
-## 4.6 其他
+2. 創建一個 3 欄的文本布局，每欄的寬度各自為 `33%`，並設置每欄之間的間距為 `20px`。 (練習程式：[demo-typography.html](src/css/demo-typography.html))
 
-👉 [W3Schools - CSS Flexbox](https://www.w3schools.com/css/css_flexbox.asp)
+[解答](src/css/lab4_5.html)
 
-### 4.6.1 假圖產生器
+3. 使用 `transform` 屬性將一個 `div` 元素旋轉 45 度，並使它縮放至 1.2 倍大小。 (練習程式：[demo-dynamics.html](src/css/demo-dynamics.html))
+
+[解答](src/css/lab4_5.html)
+
+## 4.6 響應式設計 (Responsive Web Design)
+
+👉 [Demo: Responsive Design](src/css/demo-rwd.html)
+
+👉 [W3Schools - CSS Responsive Web Design](https://www.w3schools.com/css/css_rwd_intro.asp)
+
+響應式設計（RWD）是一種網頁設計方法，旨在讓網頁在不同裝置（桌機、平板、手機）上都能提供最佳的閱覽體驗。
+
+### 4.6.1 Viewport 設定
+
+在 HTML 的 `<head>` 中必須包含以下標籤，這告訴瀏覽器如何調整網頁的尺寸與比例：
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+
+- **`width=device-width`**：將網頁寬度設置為裝置的螢幕寬度。
+- **`initial-scale=1.0`**：設置瀏覽器首次載入網頁時的縮放比例為 1:1。
+
+### 4.6.2 媒體查詢 (@media Query)
+
+媒體查詢是 RWD 的核心，它允許你根據裝置的特性（如寬度、高度、解析度）套用不同的 CSS 規則。
+
+**語法結構：**
+```css
+@media screen and (max-width: 600px) {
+  /* 當螢幕寬度小於或等於 600px 時套用的樣式 */
+  body {
+    background-color: lightblue;
+  }
+}
+```
+
+**常用的媒體特性 (Media Features)：**
+- **`min-width`**：最小寬度（通常用於 Mobile First 設計）。
+- **`max-width`**：最大寬度（通常用於 Desktop First 設計）。
+- **`orientation`**：裝置方向（`portrait` 縱向, `landscape` 橫向）。
+
+### 4.6.3 斷點策略 (Breakpoints)
+
+斷點是指網頁佈局發生變化的臨界點。常見的斷點設定如下：
+
+- **手機**：`max-width: 600px`
+- **平板**：`min-width: 601px` 且 `max-width: 1024px`
+- **桌機**：`min-width: 1025px`
+
+> [!TIP]
+> **Mobile First (行動優先)：**
+> 現代開發趨勢是優先撰寫手機版的 CSS，再使用 `min-width` 媒體查詢為較大螢幕添加樣式。這樣可以減少不必要的樣式覆寫，並優化效能。
+
+---
+
+### 4.6 測驗題
+
+1. 在 RWD 中，`<meta name="viewport">` 標籤的主要作用是什麼？
+   - A. 加快網頁載入速度
+   - B. 控制網頁在行動裝置上的顯示比例與寬度
+   - C. 設定網頁的背景顏色
+   - D. 用於 SEO 優化
+
+2. 以下哪一個 `@media` 規則會選擇「螢幕寬度大於或等於 768px」的裝置？
+   - A. `@media (max-width: 768px)`
+   - B. `@media (width: 768px)`
+   - C. `@media (min-width: 768px)`
+   - D. `@media screen 768`
+
+3. 「Mobile First」設計模式通常建議使用哪種媒體查詢？
+   - A. `max-width`
+   - B. `min-width`
+   - C. `device-height`
+   - D. `orientation`
+
+4. 媒體查詢中的 `and` 關鍵字是用來？
+   - A. 排除特定條件
+   - B. 連接多個媒體特性
+   - C. 僅套用於列印模式
+   - D. 跳過錯誤的 CSS
+
+5. 在 CSS 中，`100vw` 代表什麼意思？
+   - A. 100 個像素
+   - B. 父元素寬度的 100%
+   - C. 視窗（Viewport）寬度的 100%
+   - D. 字體大小的 100 倍
+
+**4.6 測驗題答案：**
+<details>
+<summary>點擊展開看解答</summary>
+
+1. **B** (Viewport 確保行動裝置正確縮放)
+2. **C** (`min-width` 代表最小寬度起點)
+3. **B** (從小螢幕開始，用 `min-width` 往大螢幕擴展)
+4. **B** (用於組合條件)
+5. **C** (`vw` = Viewport Width)
+
+</details>
+
+---
+
+### 4.6 練習題
+
+1. **響應式標題**：請撰寫 CSS，讓 `<h1>` 在寬度小於 600px 的螢幕上字體大小為 `1.5rem`，在大於 600px 的螢幕上為 `3rem`。
+
+[解答](src/css/lab4_6.html)
+
+2. **側邊欄隱藏**：設計一個佈局，具有 `.sidebar` 和 `.main`。在桌機版（> 768px）兩者並排，在手機版（<= 768px）時隱藏 `.sidebar`。
+
+[解答](src/css/lab4_6.html)
+
+---
+## 4.7 其他
+
+### 4.7.1 假圖產生器
 
 在使用 CSS 進行版面測試時，我們常需要一些假圖片來填充版位。**Picsum Photos** 是最受歡迎的工具。
 
@@ -1035,7 +1166,7 @@ button:hover {
     - **模糊效果**：`https://picsum.photos/200?blur=5` (模糊程度從 1-10)
     - **指定圖片 ID**：`https://picsum.photos/id/237/200/300` (固定使用同一張圖)
 
-### 4.6.2 假文字產生器
+### 4.7.2 假文字產生器
 
 **Lorem Ipsum** 是一段沒有意義的拉丁文字，用於測試網頁的排版、字體對齊與段落樣式。
 
@@ -1051,7 +1182,7 @@ button:hover {
 
 ![](https://hackmd.io/_uploads/rJltxwcl6.png)
 
-### 測驗題
+### 4.7 測驗題
 
 1. 在 HTML 中使用 `<img src="https://picsum.photos/300/200">`，圖片的寬度是多少？
    - A. 200px
@@ -1071,19 +1202,19 @@ button:hover {
    - C. `chineselorem50`
    - D. `text50`
 
-**4.6 測驗題答案：**
+**4.7 測驗題答案：**
 <details>
 <summary>點擊展開看解答</summary>
 
 1. **B** (Picsum 格式為 `width/height`)
 2. **C** (用於測試排版效果)
-3. **B** (`ctlorem` + 數字)
+3. **B** (`ctlorem` + 長度)
 
 </details>
 
 ---
 
-## 4.7 綜合練習：ShowMovie 影城訂票系統設計
+## 4.8 綜合練習：ShowMovie 影城訂票系統設計
 
 請以「影城訂票系統」為主題，運用本章所學的 CSS 技術（選擇器、盒模型、佈局、裝飾、動態效果），完成以下三個進階練習。
 
