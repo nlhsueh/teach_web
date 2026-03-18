@@ -621,7 +621,29 @@ $$Target\ Px / Root\ Px = rem$$
 
 ---
 
-### 4.4.1 盒模型
+### 4.4.1 Margin (外距)
+
+CSS 的 `margin` 有四個方位的數值，可以透過縮寫語法一次設定。根據提供的數值數量，對應的邊界如下：
+
+```html
+p {
+  margin: 25px 50px 75px 100px;
+}
+```
+
+*   **4 個數值**：按照 **順時針方向 (上、右、下、左)** 套用。
+    - `margin: 25px 50px 75px 100px;` (上=25px, 右=50px, 下=75px, 左=100px)
+*   **3 個數值**：第一位為 **上**，第二位為 **左右**，第三位為 **下**。
+    - `margin: 25px 50px 75px;` (上=25px, 左右=50px, 下=75px)
+*   **2 個數值**：第一位為 **上下**，第二位為 **左右**。
+    - `margin: 25px 50px;` (上下=25px, 左右=50px)
+*   **1 個數值**：**四邊** 同時套用相同數值。
+    - `margin: 25px;` (四邊皆為 25px)
+
+> [!TIP]
+> **Padding (內邊距)** 的縮寫規則與 `margin` 完全相同，包含 4, 3, 2, 1 個數值的對應方式皆一致。
+
+### 4.4.2 盒模型
 
 👉 [Demo: Box Model](src/css/demo-box-model.html)
 
@@ -657,7 +679,7 @@ div {
 
 ---
 
-### 4.4.2 彈性盒佈局
+### 4.4.3 彈性盒佈局
 
 👉 [Demo: Flexbox](src/css/demo-flexbox.html)
 
@@ -733,7 +755,7 @@ Flexbox 是一種一維佈局工具，專門用來處理元素在一條線上的
 
 ---
 
-### 4.4.3 `box-sizing` 屬性介紹
+### 4.4.4 `box-sizing` 屬性介紹
 
 在 CSS 中，`box-sizing` 屬性控制著如何計算元素的寬度和高度。它決定了元素的總寬度和高度是否包含內邊距（`padding`）和邊框（`border`）的尺寸。`box-sizing` 有兩個主要的值：
 
@@ -1042,13 +1064,13 @@ button:hover {
 
 [解答](src/css/lab4_5.html)
 
-## 4.6 響應式設計 (Responsive Web Design)
+## 4.6 響應式設計 
 
 👉 [Demo: Responsive Design](src/css/demo-rwd.html)
 
 👉 [W3Schools - CSS Responsive Web Design](https://www.w3schools.com/css/css_rwd_intro.asp)
 
-響應式設計（RWD）是一種網頁設計方法，旨在讓網頁在不同裝置（桌機、平板、手機）上都能提供最佳的閱覽體驗。
+響應式設計（Responsive Web Design, RWD）是一種網頁設計方法，旨在讓網頁在不同裝置（桌機、平板、手機）上都能提供最佳的閱覽體驗。
 
 ### 4.6.1 Viewport 設定
 
@@ -1075,10 +1097,20 @@ button:hover {
 }
 ```
 
+![範例](https://www.w3schools.com/css/tryit.asp?filename=tryresponsive_breakpoints)
+
+
 **常用的媒體特性 (Media Features)：**
 - **`min-width`**：最小寬度（通常用於 Mobile First 設計）。
 - **`max-width`**：最大寬度（通常用於 Desktop First 設計）。
 - **`orientation`**：裝置方向（`portrait` 縱向, `landscape` 橫向）。
+
+如果有 12 張照片，我們可以使用 `@media` 來設定不同的佈局：
+* 手機：每行 2 張
+* 平板：每行 3 張
+* 桌機：每行 4 張
+
+👉 [Demo: Responsive Layout](src/css/demo-responsive-layout.html)
 
 ### 4.6.3 斷點策略 (Breakpoints)
 
