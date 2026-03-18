@@ -975,11 +975,11 @@ article {
 
 ---
 
-### 4.5.3 定位與流 (Position & Float)
+### 4.5.3 定位與流
 
 👉 [Demo: Positioning](src/css/demo-positioning.html)
 
-控制元素在頁面中的物理位置與互動關係。這是網頁排版中非常強大但也有一定複雜度的部分。
+定位與流 (Position & Float) 控制元素在頁面中的物理位置與互動關係。這是網頁排版中非常強大但也有一定複雜度的部分。
 
 #### 1. 浮動與清除 (`float` & `clear`)
 
@@ -999,6 +999,22 @@ article {
 <p>這段文字會環繞在圖片的右側...</p>
 <div style="clear: both;"></div> <!-- 確保後方的內容不會被影響 -->
 ```
+
+> [!IMPORTANT]
+> **The Clearfix Hack** (解決父元素高度塌陷)
+> 
+> 👉 [W3Schools - The Clearfix Hack](https://www.w3schools.com/css/css_float_clear.asp)
+> 
+> 當父元素內的所有子元素都設置了 `float` 時，父元素會因為子元素脫離文件流而「高度塌陷」（變為 0）。解決方案是使用 **Clearfix**：
+> 
+> ```css
+> .clearfix::after {
+>   content: "";
+>   clear: both;
+>   display: table;
+> }
+> ```
+> 將 `clearfix` 類別加到父元素上，即可自動完成清除浮體的效果，這比在 HTML 手動加 `<div>` 乾淨許多。
 
 #### 2. 定位 (`position`)
 
