@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 4.6 練習解答：響應式設計</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; margin: 0; padding: 0; }
+        
+        section { padding: 40px 20px; border-bottom: 2px dashed #ccc; }
+        h2 { color: #2c3e50; border-left: 5px solid #3498db; padding-left: 10px; }
+
+        /* --- 練習 1: 響應式標題 --- */
+        .responsive-title {
+            color: #e74c3c;
+            text-align: center;
+            /* 手機版預設 (或使用 Mobile First) */
+            font-size: 1.5rem;
+        }
+
+        /* 當螢幕大於 600px 時 */
+        @media screen and (min-width: 601px) {
+            .responsive-title {
+                font-size: 3rem;
+            }
+        }
+
+        /* --- 練習 2: 側邊欄隱藏 --- */
+        .layout-container {
+            display: flex;
+            height: 200px;
+            margin-top: 20px;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: #34495e;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main {
+            flex: 1;
+            background-color: #ecf0f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* 當螢幕寬度小於或等於 768px 時隱藏側邊欄 */
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+        }
+
+        .label { font-weight: bold; color: #666; margin-bottom: 5px; display: block; }
+    </style>
+</head>
+<body>
+
+    <section>
+        <h2>練習 1：響應式標題</h2>
+        <p class="label">題目：請撰寫 CSS，讓 &lt;h1&gt; 在寬度小於 600px 的螢幕上字體大小為 1.5rem，在大於 600px 的螢幕上為 3rem。</p>
+        <h1 class="responsive-title">我是響應式標題</h1>
+        <p style="text-align:center; color: #777;">(縮放視窗觀察標題大小變化)</p>
+    </section>
+
+    <section>
+        <h2>練習 2：側邊欄隱藏</h2>
+        <p class="label">題目：設計一個佈局，具有 .sidebar 和 .main。在桌機版（> 768px）兩者並排，在手機版（<= 768px）時隱藏 .sidebar。</p>
+        
+        <div class="layout-container">
+            <div class="sidebar">側邊欄 (Sidebar)</div>
+            <div class="main">內容區 (Main Content)</div>
+        </div>
+        <p style="color: #777; margin-top: 10px;">(當螢幕寬度 <= 768px 時，深藍色側邊欄會消失)</p>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例：響應式圖片佈局 (Breakpoints)</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: sans-serif; margin: 0; padding: 20px; background-color: #f0f2f5; }
+        
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            margin: -10px; /* 抵消 item 的 margin */
+        }
+
+        .item {
+            padding: 10px;
+            /* 預設：桌機版 每行 4 個 (100% / 4) */
+            width: 25%;
+        }
+
+        .card {
+            background-color: white;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            background-color: #ddd;
+        }
+
+        /* 平板斷點：小於等於 1024px 時，改為每行 3 個 */
+        @media screen and (max-width: 1024px) {
+            .item { width: 33.33%; }
+        }
+
+        /* 手機斷點：小於等於 600px 時，改為每行 2 個 */
+        @media screen and (max-width: 600px) {
+            .item { width: 50%; }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .status {
+            display: inline-block;
+            padding: 5px 15px;
+            background: #333;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>我的相簿庫</h1>
+        <div class="status" id="breakpoint-info">目前的佈局狀態：桌機 (4 欄)</div>
+        <p>縮放視窗查看排列變化：桌機 (4) → 平板 (3) → 手機 (2)</p>
+    </div>
+
+    <div class="gallery">
+        <div class="item"><div class="card"><img src="https://picsum.photos/seed/101/400/300" class="gallery-img"><h5>景點 A</h5></div></div>
+        <div class="item"><div class="card"><img src="https://picsum.photos/seed/102/400/300" class="gallery-img"><h5>景點 B</h5></div></div>
+        <div class="item"><div class="card"><img src="https://picsum.photos/seed/103/400/300" class="gallery-img"><h5>景點 C</h5></div></div>
+        <div class="item"><div class="card"><img src="https://picsum.photos/seed/104/400/300" class="gallery-img"><h5>景點 D</h5></div></div>
+        <div class="item"><div class="card"><img src="https://picsum.photos/seed/105/400/300" class="gallery-img"><h5>景點 E</h5></div></div>
+        <div class="item"><div class="card"><img src="https://picsum.photos/seed/106/400/300" class="gallery-img"><h5>景點 F</h5></div></div>
+        <div class="item"><div class="card"><img src="https://picsum.photos/seed/107/400/300" class="gallery-img"><h5>景點 G</h5></div></div>
+        <div class="item"><div class="card"><img src="https://picsum.photos/seed/108/400/300" class="gallery-img"><h5>景點 H</h5></div></div>
+        <div class="item"><div class="card"><img src="https://picsum.photos/seed/109/400/300" class="gallery-img"><h5>景點 I</h5></div></div>
+        <div class="item"><div class="card"><img src="https://picsum.photos/seed/110/400/300" class="gallery-img"><h5>景點 J</h5></div></div>
+        <div class="item"><div class="card"><img src="https://picsum.photos/seed/111/400/300" class="gallery-img"><h5>景點 K</h5></div></div>
+        <div class="item"><div class="card"><img src="https://picsum.photos/seed/112/400/300" class="gallery-img"><h5>景點 L</h5></div></div>
+    </div>
+
+    <script>
+        function updateStatus() {
+            const w = window.innerWidth;
+            const info = document.getElementById('breakpoint-info');
+            if (w <= 600) {
+                info.innerText = '目前的佈局狀態：手機 (2 欄)';
+                info.style.backgroundColor = '#e67e22';
+            } else if (w <= 1024) {
+                info.innerText = '目前的佈局狀態：平板 (3 欄)';
+                info.style.backgroundColor = '#2ecc71';
+            } else {
+                info.innerText = '目前的佈局狀態：桌機 (4 欄)';
+                info.style.backgroundColor = '#3498db';
+            }
+        }
+        window.addEventListener('resize', updateStatus);
+        updateStatus();
+    </script>
+</body>
+</html>

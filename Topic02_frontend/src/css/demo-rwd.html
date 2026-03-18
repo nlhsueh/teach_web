@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <!-- Viewport 設定是 RWD 的第一步 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 響應式設計：基礎範例</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            transition: background-color 0.5s ease;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .box {
+            background-color: #3498db;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+
+        /* 媒體查詢：當螢幕寬度小於或等於 600px 時 */
+        @media screen and (max-width: 600px) {
+            body {
+                background-color: lightgoldenrodyellow;
+                margin: 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+            .box {
+                background-color: #e67e22; /* 橘色 */
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>響應式設計 (RWD) 測試</h1>
+        <p>請嘗試縮放瀏覽器視窗，或切換至手機模擬模式查看變化。</p>
+        
+        <div class="box">
+            這是一個測試區塊。<br>
+            當螢幕寬度 <strong>> 600px</strong> 時，它是 <strong>藍色</strong>。<br>
+            當螢幕寬度 <strong><= 600px</strong> 時，它會變為 <strong>橘色</strong>。
+        </div>
+
+        <div style="margin-top: 30px; border-top: 1px solid #ddd; padding-top: 20px;">
+            <h3>實戰重點：</h3>
+            <ul>
+                <li>檢查 HTML 的 <code>&lt;meta name="viewport"&gt;</code>。</li>
+                <li>使用 <code>@media</code> 定義斷點。</li>
+                <li>使用相對單位（如 <code>rem</code>, <code>%</code>）而非絕對單位（如 <code>px</code>）。</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
