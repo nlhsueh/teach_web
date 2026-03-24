@@ -35,7 +35,7 @@
     <!-- Navbar -->
     <header class="bg-slate-900 text-white p-3 md:p-4 shadow-md flex justify-between items-center z-10 shrink-0 border-b border-slate-800">
         <div class="flex items-center gap-3 md:gap-5">
-            <a href="web2026.html" class="flex items-center gap-2 text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-800 px-3 md:px-4 py-2 rounded-lg transition-all text-sm font-bold shadow-sm">
+            <a href="index.html" class="flex items-center gap-2 text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-800 px-3 md:px-4 py-2 rounded-lg transition-all text-sm font-bold shadow-sm">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
                 </svg>
@@ -134,7 +134,7 @@
         } else {
             filenameDisplay.textContent = '未指定參數';
             filenameMobile.textContent = '錯誤';
-            iframe.srcdoc = '<div style="font-family: sans-serif; padding: 2rem; text-align: center; color: #64748b;"><h2>請在 URL 中透過 ?file=路徑 指定檔案。</h2><br><a href="web2026.html" style="color: #2563eb;">返回首頁</a></div>';
+            iframe.srcdoc = '<div style="font-family: sans-serif; padding: 2rem; text-align: center; color: #64748b;"><h2>請在 URL 中透過 ?file=路徑 指定檔案。</h2><br><a href="index.html" style="color: #2563eb;">返回首頁</a></div>';
             codeBlock.textContent = '/* 在 url 中加入 ?file=html/demo.html 看結果 */';
             hljs.highlightElement(codeBlock);
         }
