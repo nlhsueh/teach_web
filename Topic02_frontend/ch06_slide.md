@@ -245,6 +245,19 @@ D. 使用 CDN 時，必須加上 `type="text/tailwindcss"` 才能解析它。
 
 ---
 
+## 6.11 部署專案：使用 GitHub Pages
+
+寫好的靜態網頁如何讓全世界看見？
+**GitHub Pages** 提供免費、快速的靜態網頁代管服務。
+
+1. **建立 Repo**：在 GitHub 開新專案 (Public)。
+2. **上傳檔案**：將你的 `index.html` 丟進去並 Commit。
+3. **開啟服務**：進入專案 `Settings` > `Pages`。
+4. **設定來源**：選擇 `Deploy from a branch`，Branch 選擇 `main`，按下 `Save`。
+5. **等待一分鐘**：專屬網址 (`帳號.github.io/專案名稱`) 就誕生了！
+
+---
+
 # Q & A
 
 **恭喜！你已經掌握了現代最強大前端框架的核心兵器。**

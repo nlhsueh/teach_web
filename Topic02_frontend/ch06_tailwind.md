@@ -449,3 +449,30 @@ AI 是學習與撰寫 Tailwind 的得力助手，你可以透過精準的提示�
 
 > [!TIP]
 > **💡 重點觀念**：Tailwind 的強大在於你「不需要離開 HTML」就能完成設計。這在進行 Django 或 HTMX 開發時，能極大地提升效率。
+
+---
+
+## 6.11 部署與展示：使用 GitHub Pages
+
+當你完成了綜合練習或是自己的作品，你一定會想把它發佈到網路上讓大家看到。**GitHub Pages** 是一個由 GitHub 提供的免費靜態網頁代管服務，也是豐富你作品集的第一站。
+
+### 🚀 部署步驟
+
+1. **建立 GitHub 儲存庫 (Repository)**
+   - 登入你的 GitHub 帳號，點擊右上角的 `+` 選擇 `New repository`。
+   - 填寫專案名稱（例如 `my-travel-website`），並設定為 Public。
+
+2. **上傳你的程式碼**
+   - 將你寫好的 `index.html` 以及引用的圖片推送（或手動上傳）到這個剛建立好的 Repository 中。
+   - *注意：網站首頁檔名必須叫做 `index.html`，且盡量放在專案根目錄。*
+
+3. **開啟 GitHub Pages 服務**
+   - 在該 Repository 頁面中，點擊上方標籤列右側的 **`Settings`** (設定)。
+   - 在左側側邊欄中找到 **`Pages`** 點擊進入。
+   - 在 `Build and deployment` 區塊中，**Source** 選擇 `Deploy from a branch`。
+   - 下方的 **Branch** 下拉選單中選擇 `main` (或是 `master`) 分支，資料夾維持 `/ (root)`，然後按下 `Save`。
+
+4. **等待與觀看成果**
+   - 等待約 1~2 分鐘讓 GitHub 進行編譯部署。
+   - 頁面上方（或重新整理後）會顯示一串類似 `https://你的帳號.github.io/my-travel-website/` 的專屬網址。
+   - 點擊該網址，就能直接看到你用 Tailwind CSS 實作出的精美網站了！
