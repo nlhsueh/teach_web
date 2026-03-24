@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 6.3 佈局與排版：四欄式藝廊 (解答)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 p-8">
+
+    <div class="max-w-6xl mx-auto">
+        <header class="flex justify-between items-center mb-12">
+            <h1 class="text-3xl font-bold text-gray-900">熱門目的地 (四欄版)</h1>
+            <nav class="flex space-x-6 text-gray-600">
+                <a href="#" class="hover:text-blue-600">亞洲</a>
+                <a href="#" class="hover:text-blue-600">歐洲</a>
+                <a href="#" class="hover:text-blue-600">美洲</a>
+            </nav>
+        </header>
+
+        <!-- Grid Layout for Cards -->
+        <!-- 修改目標：從 md:grid-cols-3 改為 md:grid-cols-4，並將 gap 加大到 10 -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+            <div
+                class="bg-white h-64 flex items-center justify-center border-2 border-dashed border-gray-300 rounded-lg shadow-sm hover:border-blue-500 hover:text-blue-600 transition-colors cursor-pointer">
+                日本 東京</div>
+            <div
+                class="bg-white h-64 flex items-center justify-center border-2 border-dashed border-gray-300 rounded-lg shadow-sm hover:border-blue-500 hover:text-blue-600 transition-colors cursor-pointer">
+                法國 巴黎</div>
+            <div
+                class="bg-white h-64 flex items-center justify-center border-2 border-dashed border-gray-300 rounded-lg shadow-sm hover:border-blue-500 hover:text-blue-600 transition-colors cursor-pointer">
+                冰島 雷克雅維克</div>
+            <!-- 新增第四張卡片 -->
+            <div
+                class="bg-white h-64 flex items-center justify-center border-2 border-dashed border-gray-300 rounded-lg shadow-sm hover:border-blue-500 hover:text-blue-600 transition-colors cursor-pointer">
+                美國 紐約</div>
+        </div>
+
+        <div class="mt-12 p-6 bg-blue-50 rounded-xl">
+            <h2 class="text-xl font-semibold mb-4 text-blue-900">Lab 6.3 完成目標</h2>
+            <ul class="list-disc list-inside space-y-2 text-blue-800">
+                <li>✅ 將網格設定改為 <code>md:grid-cols-4</code>。</li>
+                <li>✅ 將原本的間距 <code>gap-8</code> 加大為 <code>gap-10</code>。</li>
+                <li>✅ 複製並新增第四張卡片「美國 紐約」。</li>
+                <li>✅ (進階) 為每張卡片加上 <code>hover:border-blue-500 hover:text-blue-600</code>，增加互動感。</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>

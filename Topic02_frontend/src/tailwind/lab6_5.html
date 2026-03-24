@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 6.5 響應式開發：導覽列顯示控制 (解答)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- Responsive Navbar -->
+    <nav class="bg-white shadow-sm p-4">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="text-xl font-bold text-blue-600">Travel.Go</div>
+            
+            <!-- 桌面端才顯示的選單 (md:flex, 手機端 hidden) -->
+            <ul class="hidden md:flex flex-row space-x-6 text-gray-600 font-medium">
+                <li><a href="#" class="hover:text-blue-600">行程</a></li>
+                <li><a href="#" class="hover:text-blue-600">住宿</a></li>
+                <li><a href="#" class="hover:text-blue-600">租車</a></li>
+                <li><a href="#" class="hover:text-blue-600">部落格</a></li>
+            </ul>
+
+            <!-- 手機端才顯示的漢堡選單圖示 (md:hidden) -->
+            <button class="block md:hidden text-gray-500 hover:text-blue-600">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <div class="p-8 max-w-6xl mx-auto mt-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Lab 6.5 完成目標</h2>
+        <ul class="list-disc list-inside space-y-2 text-gray-700 bg-white p-6 rounded-lg shadow-sm">
+            <li>✅ 將原本的 <code>ul</code> 選單在手機板隱藏：加入 <code>hidden md:flex</code>。</li>
+            <li>✅ 新增一個漢堡選單圖示按鈕，只在手機板顯示：加入 <code>block md:hidden</code>。</li>
+            <li>✅ 將 <code>flex-col md:flex-row</code> 移除，直接讓左右兩側在同一行 (因為中間的選單會隱藏)。</li>
+        </ul>
+        <p class="mt-4 text-sm text-gray-500">嘗試縮小瀏覽器寬度，看看右上角的選單變化！</p>
+    </div>
+
+</body>
+
+</html>

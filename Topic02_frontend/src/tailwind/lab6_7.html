@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 6.7 進階技巧：新增自定義徽章 (解答)</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style type="text/tailwindcss">
+        .btn-primary {
+            @apply block w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:bg-blue-700 hover:-translate-y-1 hover:shadow-xl active:scale-95 transition-all duration-300 text-center cursor-pointer;
+        }
+
+        .card-container {
+            @apply bg-white p-8 sm:p-10 rounded-3xl shadow-xl ring-1 ring-slate-900/5;
+        }
+
+        .input-field {
+            @apply w-full px-4 py-3 rounded-xl border border-slate-300 bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200;
+        }
+
+        /* Lab 6.7: 新增自定義的徽章 (Badge) class */
+        .badge-danger {
+            @apply inline-block bg-red-100 text-red-700 font-bold px-3 py-1 rounded-full text-xs tracking-wider border border-red-200;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 min-h-screen flex justify-center items-center p-4">
+
+    <div class="card-container max-w-sm w-full mx-auto relative cursor-pointer hover:-translate-y-2 transition-transform duration-300">
+        
+        <!-- 使用我們新定義的 .badge-danger -->
+        <div class="absolute -top-3 -right-3">
+            <span class="badge-danger shadow-md">急件處理</span>
+        </div>
+
+        <div class="text-center mb-6 mt-4">
+            <h2 class="text-2xl font-black text-slate-800">客服工單</h2>
+            <p class="text-sm text-slate-500 mt-2">
+                使用自定義的 <code>.badge-danger</code> 標籤
+            </p>
+        </div>
+        
+        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-6">
+            <p class="text-slate-700 font-medium">顧客：王小明</p>
+            <p class="text-slate-500 text-sm mt-1">問題：無法登入會員系統</p>
+        </div>
+        
+        <button type="button" class="btn-primary">
+            聯絡顧客
+        </button>
+    </div>
+
+</body>
+</html>
