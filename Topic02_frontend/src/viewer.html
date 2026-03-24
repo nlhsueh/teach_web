@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Viewer | Web 2026</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Highlight.js for Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <style>
+        /* 自定義優雅的卷軸給程式碼區塊 */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #282c34; 
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #4b5363; 
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #5c6370; 
+        }
+        
+        /* Highlight.js 覆蓋背景色 */
+        .hljs { background: transparent !important; }
+    </style>
+</head>
+<body class="h-screen w-screen flex flex-col bg-slate-100 overflow-hidden font-sans">
+    
+    <!-- Navbar -->
+    <header class="bg-slate-900 text-white p-3 md:p-4 shadow-md flex justify-between items-center z-10 shrink-0 border-b border-slate-800">
+        <div class="flex items-center gap-3 md:gap-5">
+            <a href="web2026.html" class="flex items-center gap-2 text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-800 px-3 md:px-4 py-2 rounded-lg transition-all text-sm font-bold shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                </svg>
+                <span class="hidden sm:inline">返回大廳</span>
+            </a>
+            <div class="hidden md:flex flex-col">
+                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest leading-tight">目前預覽檔案</span>
+                <span id="filename" class="font-mono text-cyan-400 font-bold tracking-wide">載入中...</span>
+            </div>
+            <!-- Mobile Filename -->
+            <span id="filename-mobile" class="font-mono text-cyan-400 text-xs font-bold md:hidden">載入中...</span>
+        </div>
+
+        <button id="toggleView" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-lg transition-all flex items-center gap-2 text-sm shadow-lg shadow-blue-900/50 ring-1 ring-blue-400/30 active:scale-95">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+            </svg>
+            <span class="hidden sm:inline" id="btn-text">並列看程式碼</span>
+            <span class="sm:hidden">切換雙窗</span>
+        </button>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="mainContainer" class="flex flex-1 w-full bg-slate-200 overflow-hidden relative">
+        
+        <!-- View 1: HTML Document Preview (Iframe) -->
+        <section id="resultSection" class="w-full h-full flex flex-col transition-[width] duration-500 ease-in-out bg-white relative z-10 shadow-[10px_0_15px_-3px_rgba(0,0,0,0.1)]">
+            <!-- 標題帶 (Split View 時才顯示) -->
+            <div id="resultHeader" class="hidden h-9 bg-slate-100 border-b border-slate-200 flex items-center px-5 shrink-0 shadow-sm transition-opacity">
+                <div class="w-2 h-2 rounded-full bg-emerald-500 mr-2"></div>
+                <span class="text-xs font-black text-slate-500 uppercase tracking-widest">渲染結果 (Browser Result)</span>
+            </div>
+            <iframe id="resultIframe" class="w-full h-full border-none flex-1 bg-white" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+        </section>
+        
+        <!-- View 2: Source Code Preview (<pre><code>) -->
+        <section id="codeSection" class="w-0 overflow-hidden h-full flex flex-col bg-[#282c34] transition-[width] duration-500 ease-in-out shrink-0">
+            <!-- 標題帶 -->
+            <div class="h-9 bg-[#21252b] border-b border-[#181a1f] flex justify-between items-center px-5 shrink-0 shadow-sm">
+                <div class="flex items-center">
+                    <div class="w-2 h-2 rounded-full bg-cyan-500 mr-2"></div>
+                    <span class="text-xs font-black text-slate-400 uppercase tracking-widest">原始碼 (Source Code)</span>
+                </div>
+            </div>
+            <div class="flex-1 overflow-auto custom-scrollbar relative">
+                <!-- Highlight.js 的對齊與間距設定 -->
+                <pre class="m-0 p-6 text-[13px] leading-relaxed font-mono min-h-full whitespace-pre" style="background:#282c34;"><code id="codeBlock" class="language-html">正在抓取原始碼...</code></pre>
+            </div>
+        </section>
+        
+    </main>
+
+    <script>
+        // 抓取 URL 中的 ?file= 參數
+        const urlParams = new URLSearchParams(window.location.search);
+        const fileParam = urlParams.get('file');
+
+        // DOM 節點
+        const iframe = document.getElementById('resultIframe');
+        const codeBlock = document.getElementById('codeBlock');
+        const filenameDisplay = document.getElementById('filename');
+        const filenameMobile = document.getElementById('filename-mobile');
+        
+        const toggleBtn = document.getElementById('toggleView');
+        const btnText = document.getElementById('btn-text');
+        
+        const mainContainer = document.getElementById('mainContainer');
+        const resultSection = document.getElementById('resultSection');
+        const codeSection = document.getElementById('codeSection');
+        const resultHeader = document.getElementById('resultHeader');
+
+        let isSplitView = false;
+        
+        if (fileParam) {
+            // 由於安全性與路徑寫法，直接將網址設給 iframe
+            filenameDisplay.textContent = fileParam;
+            filenameMobile.textContent = fileParam.split('/').pop(); // 手機版只顯示檔名
+            iframe.src = fileParam;
+
+            // 使用 fetch API 讀取同樣的檔案內容，作為字串顯示在右側的 codeBlock 中
+            fetch(fileParam)
+                .then(response => {
+                    if(!response.ok) throw new Error('File not found');
+                    return response.text();
+                })
+                .then(text => {
+                    // 將 HTML 特殊字元跳脫，否則瀏覽器會真的把 <div> 渲染出來
+                    const escaped = text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                    codeBlock.innerHTML = escaped;
+                    // 套用 Syntax Highlighting
+                    hljs.highlightElement(codeBlock);
+                })
+                .catch(err => {
+                    codeBlock.innerHTML = '<span class="text-red-400 font-bold">Error: 無法讀取原始檔案<br>' + err.message + '</span>';
+                });
+        } else {
+            filenameDisplay.textContent = '未指定參數';
+            filenameMobile.textContent = '錯誤';
+            iframe.srcdoc = '<div style="font-family: sans-serif; padding: 2rem; text-align: center; color: #64748b;"><h2>請在 URL 中透過 ?file=路徑 指定檔案。</h2><br><a href="web2026.html" style="color: #2563eb;">返回首頁</a></div>';
+            codeBlock.textContent = '/* 在 url 中加入 ?file=html/demo.html 看結果 */';
+            hljs.highlightElement(codeBlock);
+        }
+
+        // 切換雙窗格邏輯
+        toggleBtn.addEventListener('click', () => {
+            isSplitView = !isSplitView;
+            if (isSplitView) {
+                // 進入 Split View (50% / 50%)
+                resultSection.classList.remove('w-full');
+                resultSection.classList.add('w-1/2');
+                codeSection.classList.remove('w-0');
+                codeSection.classList.add('w-1/2');
+                
+                resultHeader.classList.remove('hidden');
+                
+                // 按鈕樣式改變
+                btnText.textContent = '回到全螢幕';
+                toggleBtn.classList.remove('bg-blue-600', 'hover:bg-blue-500', 'shadow-blue-900/50', 'ring-blue-400/30');
+                toggleBtn.classList.add('bg-emerald-600', 'hover:bg-emerald-500', 'shadow-emerald-900/50', 'ring-emerald-400/30');
+            } else {
+                // 回到單窗格 Full View (Result only)
+                resultSection.classList.remove('w-1/2');
+                resultSection.classList.add('w-full');
+                codeSection.classList.remove('w-1/2');
+                codeSection.classList.add('w-0');
+                
+                resultHeader.classList.add('hidden');
+                
+                // 按鈕樣式還原
+                btnText.textContent = '並列看程式碼';
+                toggleBtn.classList.remove('bg-emerald-600', 'hover:bg-emerald-500', 'shadow-emerald-900/50', 'ring-emerald-400/30');
+                toggleBtn.classList.add('bg-blue-600', 'hover:bg-blue-500', 'shadow-blue-900/50', 'ring-blue-400/30');
+            }
+        });
+    </script>
+</body>
+</html>
