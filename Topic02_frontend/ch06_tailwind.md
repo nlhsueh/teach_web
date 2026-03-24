@@ -73,7 +73,7 @@ Tailwind 的核心是將 CSS 屬性映射到簡短的 Class 名稱。這不僅�
     - 定向間距：`pt-` (top), `px-` (水平), `py-` (垂直)。
 
 ### 6.2.2 實測與範例
-請查看範例檔：[demo_basics.html](./src/tailwind/demo_basics.html)
+請查看範例檔：[demo_basics.html](https://nlhsueh.github.io/web2026/viewer.html?file=tailwind/demo_basics.html)
 
 ![demo_basics](./src/tailwind/demo_basics.png)
 
@@ -107,11 +107,11 @@ Tailwind 的核心是將 CSS 屬性映射到簡短的 Class 名稱。這不僅�
 </details>
 
 ### 6.2.4 動手做：Lab 6.2 旅遊網站標題修改
-**目標**：修改 [demo_basics.html](./src/tailwind/demo_basics.html)，將主視覺改為「祖母綠」的森林主題。
+**目標**：修改 [demo_basics.html](https://nlhsueh.github.io/web2026/viewer.html?file=tailwind/demo_basics.html)，將主視覺改為「祖母綠」的森林主題。
 - 將背景改為 `bg-emerald-600`，文字改為 `text-emerald-50`。
 - 將按鈕改為 `rounded-full` (完全圓角)，字體變色為 `text-emerald-700`。
 - 觀察不同的 padding (`p-12` 改為 `p-16`) 對排版的影響。
-- **解答參考**：👉 [lab6_2.html](./src/tailwind/lab6_2.html)
+- **解答參考**：👉 [lab6_2.html](https://nlhsueh.github.io/web2026/viewer.html?file=tailwind/lab6_2.html)
 
 ---
 
@@ -133,7 +133,7 @@ Tailwind 讓佈局變得極其直覺，通常透過最外層容器的 Class 就�
     - `container mx-auto`: 建立一個限寬且水平居中的區塊，這在寬螢幕顯示上非常重要。
 
 ### 6.3.2 實測與範例
-請查看範例檔：[demo_layout.html](src/tailwind/demo_layout.html)
+請查看範例檔：[demo_layout.html](https://nlhsueh.github.io/web2026/viewer.html?file=tailwind/demo_layout.html)
 
 ![demo_layout](src/tailwind/demo_layout.png)
 
@@ -168,11 +168,11 @@ Tailwind 讓佈局變得極其直覺，通常透過最外層容器的 Class 就�
 </details>
 
 ### 6.3.4 動手做：Lab 6.3 調整旅遊網站佈局
-**目標**：修改 [demo_layout.html](src/tailwind/demo_layout.html)，將三欄式佈局改為四欄式。
+**目標**：修改 [demo_layout.html](https://nlhsueh.github.io/web2026/viewer.html?file=tailwind/demo_layout.html)，將三欄式佈局改為四欄式。
 - 將網格設定改為 `md:grid-cols-4`。
 - 將原本的間距 `gap-8` 加大為 `gap-10`。
 - 新增第四張目的地卡片（例如：美國 紐約）。
-- **解答參考**：👉 [lab6_3.html](src/tailwind/lab6_3.html)
+- **解答參考**：👉 [lab6_3.html](https://nlhsueh.github.io/web2026/viewer.html?file=tailwind/lab6_3.html)
 
 ---
 
@@ -189,7 +189,7 @@ Tailwind 讓佈局變得極其直覺，通常透過最外層容器的 Class 就�
 -   **圖片比例 (Aspect Ratio)**：`aspect-video`, `aspect-square`。
 
 ### 6.4.2 實測與範例
-請查看範例檔：[demo_effects.html](src/tailwind/demo_effects.html)
+請查看範例檔：[demo_effects.html](https://nlhsueh.github.io/web2026/viewer.html?file=tailwind/demo_effects.html)
 
 ![demo_effects](src/tailwind/demo_effects.png)
 
@@ -224,11 +224,11 @@ Tailwind 讓佈局變得極其直覺，通常透過最外層容器的 Class 就�
 </details>
 
 ### 6.4.4 動手做：Lab 6.4 卡片視覺優化
-**目標**：修改 [demo_effects.html](src/tailwind/demo_effects.html)，讓卡片更精緻且具備互動感。
+**目標**：修改 [demo_effects.html](https://nlhsueh.github.io/web2026/viewer.html?file=tailwind/demo_effects.html)，讓卡片更精緻且具備互動感。
 - 將卡片圓角改為更大的 `rounded-3xl`。
 - 滑鼠移入時，除了陰影效果，加入 `hover:ring-4 hover:ring-blue-300/50` 讓邊框發光。
 - （進階）加上 `hover:-translate-y-2` 讓卡片移入時會有往上浮動的效果。
-- **解答參考**：👉 [lab6_4.html](src/tailwind/lab6_4.html)
+- **解答參考**：👉 [lab6_4.html](https://nlhsueh.github.io/web2026/viewer.html?file=tailwind/lab6_4.html)
 
 ---
 
@@ -252,9 +252,9 @@ Tailwind 讓佈局變得極其直覺，通常透過最外層容器的 Class 就�
 
 ### 6.5.2 實測與範例
 1. **元素隱藏 (Hiding)**：練習在小螢幕時隱藏次要資訊。
-   👉 [demo_responsive.html](src/tailwind/demo_responsive.html)
+   👉 [demo_responsive.html](https://nlhsueh.github.io/web2026/viewer.html?file=tailwind/demo_responsive.html)
 2. **元件堆疊 (Stacking)**：練習在小螢幕時讓元件自動往下擠。
-   👉 [demo_stacking.html](src/tailwind/demo_stacking.html)
+   👉 [demo_stacking.html](https://nlhsueh.github.io/web2026/viewer.html?file=tailwind/demo_stacking.html)
 
 ![demo_stacking](src/tailwind/demo_stacking.png)
 
@@ -287,10 +287,10 @@ Tailwind 讓佈局變得極其直覺，通常透過最外層容器的 Class 就�
 - `lg:grid-cols-3`: 大型螢幕顯示三欄。
 
 ### 6.5.3 動手做：Lab 6.5 響應式導覽列
-**目標**：修改 [demo_responsive.html](src/tailwind/demo_responsive.html)，讓右上角的選單只在桌面端顯示。
+**目標**：修改 [demo_responsive.html](https://nlhsueh.github.io/web2026/viewer.html?file=tailwind/demo_responsive.html)，讓右上角的選單只在桌面端顯示。
 - 在包含連結的 `<ul>` 選單加上 `hidden md:flex`，代表在手機版隱藏，在 md 尺寸以上才轉為 flex 佈局顯示。
 - 嘗試加入一個代表「漢堡選單」的按鈕，並加上 `block md:hidden` 設定，讓它只在手機板才會出現。
-- **解答參考**：👉 [lab6_5.html](src/tailwind/lab6_5.html)
+- **解答參考**：👉 [lab6_5.html](https://nlhsueh.github.io/web2026/viewer.html?file=tailwind/lab6_5.html)
 
 ---
 
@@ -310,7 +310,7 @@ Tailwind 讓動態效果變得像靜態排版一樣簡單，透過「修飾符�
     - `ease-in-out`: 設定運動曲線。
 
 ### 📋 實測與範例
-請查看範例檔：[demo_states.html](src/tailwind/demo_states.html)
+請查看範例檔：[demo_states.html](https://nlhsueh.github.io/web2026/viewer.html?file=tailwind/demo_states.html)
 
 ![demo_states](src/tailwind/demo_states.png)
 
@@ -325,11 +325,11 @@ Tailwind 讓動態效果變得像靜態排版一樣簡單，透過「修飾符�
 - `group-hover:text-white`: 當父容器被 hover 時，標題會變白。這是製作互動卡片的標準做法。
 
 ### 6.6.3 動手做：Lab 6.6 按鈕 Group Hover 效果
-**目標**：修改 [demo_states.html](src/tailwind/demo_states.html) 的按鈕，當 hover 按鈕整體時，裡面的圖示會產生位移。
+**目標**：修改 [demo_states.html](https://nlhsueh.github.io/web2026/viewer.html?file=tailwind/demo_states.html) 的按鈕，當 hover 按鈕整體時，裡面的圖示會產生位移。
 - 將 `<button>` 加上 `group` class 以包裹整個按鈕。
 - 在按鈕內加入一個 SVG 箭頭圖示 `<svg>...</svg>`。
 - 為箭頭圖示加上 `group-hover:translate-x-2` 與 `transition-transform`。觀察 hover 按鈕時，箭頭向右移動。
-- **解答參考**：👉 [lab6_6.html](src/tailwind/lab6_6.html)
+- **解答參考**：👉 [lab6_6.html](https://nlhsueh.github.io/web2026/viewer.html?file=tailwind/lab6_6.html)
 
 ---
 
@@ -345,7 +345,7 @@ Tailwind 讓動態效果變得像靜態排版一樣簡單，透過「修飾符�
 - **適用時機**：高度重複的 UI 元件（如 `.btn`, `.card`, `.input`）。如果這組樣式只在頁面出現一次，直接寫在 HTML 會更好維護。
 
 ### 📋 實測與範例
-👉 [demo_apply.html](src/tailwind/demo_apply.html)
+👉 [demo_apply.html](https://nlhsueh.github.io/web2026/viewer.html?file=tailwind/demo_apply.html)
 
 #### 📝 程式碼片段講解
 ```html
@@ -377,11 +377,11 @@ Tailwind 讓動態效果變得像靜態排版一樣簡單，透過「修飾符�
 </details>
 
 ### 6.7.4 動手做：Lab 6.7 新增自定義徽章
-**目標**：修改 [demo_apply.html](src/tailwind/demo_apply.html)，練習自己抽取一組 class。
+**目標**：修改 [demo_apply.html](https://nlhsueh.github.io/web2026/viewer.html?file=tailwind/demo_apply.html)，練習自己抽取一組 class。
 - 在 `<style type="text/tailwindcss">` 中，新增一個自定義 class 叫做 `.badge-danger`。
 - 在裡面使用 `@apply` 指令，加入紅色的背景、文字、圓角與內框等樣式（如 `bg-red-100 text-red-700 font-bold px-3 py-1 rounded-full text-xs`）。
 - 在 HTML 結構的適當位置，套用這個 `.badge-danger` 測試效果。
-- **解答參考**：👉 [lab6_7.html](src/tailwind/lab6_7.html)
+- **解答參考**：👉 [lab6_7.html](https://nlhsueh.github.io/web2026/viewer.html?file=tailwind/lab6_7.html)
 
 ---
 
@@ -393,7 +393,7 @@ Tailwind 讓動態效果變得像靜態排版一樣簡單，透過「修飾符�
 這是一個黑暗風格的 UI，展示了 Grid 在處理「座椅矩陣」上的強大能力，以及桌面端「側邊欄固定」的響應式設計。
 
 - **核心技術**：Grid 佈局、Glassmorphism (玻璃擬態)、Sticky 側邊欄。
-- **原始碼**：👉 [demo_movie.html](src/tailwind/demo_movie.html)
+- **原始碼**：👉 [demo_movie.html](https://nlhsueh.github.io/web2026/viewer.html?file=tailwind/demo_movie.html)
 
 ![demo_movie](src/tailwind/demo_movie.png)
 
@@ -405,7 +405,7 @@ Tailwind 讓動態效果變得像靜態排版一樣簡單，透過「修飾符�
 模擬一個外送平台的主頁面，重點在於處理多層次的資訊架構：分類、廣告輪播與餐廳列表。
 
 - **核心技術**：Flex-wrap、多斷點 Grid、漸層疊加圖片。
-- **原始碼**：👉 [demo_delivery.html](src/tailwind/demo_delivery.html)
+- **原始碼**：👉 [demo_delivery.html](https://nlhsueh.github.io/web2026/viewer.html?file=tailwind/demo_delivery.html)
 
 ![demo_delivery](src/tailwind/demo_delivery.png)
 
