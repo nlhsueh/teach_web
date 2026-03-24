@@ -64,6 +64,8 @@ D. 掛載 jQuery 套件
 
 ## 6.2 基礎觀念：顏色、文字與間距
 
+👉 [查看互動 Demo 與原始碼](https://nlhsueh.github.io/web2026/viewer.html?file=tailwind/demo_basics.html)
+
 - **顏色系統**：`{屬性}-{顏色}-{色階}` (如 `bg-blue-500`、`text-red-200`)。支援任意值：`bg-[#1da1f2]`。
 - **排版字體**：
   - 大小：`text-sm`, `text-xl`, `text-4xl`
@@ -97,6 +99,8 @@ D. `pl-4 pr-4 pt-2`
 ---
 
 ## 6.3 佈局與排版：Flexbox 與 Grid
+
+👉 [查看互動 Demo 與原始碼](https://nlhsueh.github.io/web2026/viewer.html?file=tailwind/demo_layout.html)
 
 透過最外層容器的 Class 就能快速決定內部排列方式！
 
@@ -132,6 +136,8 @@ D. `align-items-stretch`
 
 ## 6.4 視覺精修：邊框、圓角與陰影
 
+👉 [查看互動 Demo 與原始碼](https://nlhsueh.github.io/web2026/viewer.html?file=tailwind/demo_effects.html)
+
 只要幾個 class，立刻擁有現代化 UI 質感。
 
 - **圓角 (Rounded)**：`rounded-md`, `rounded-3xl`, `rounded-full`。
@@ -162,6 +168,8 @@ D. `rounded-3xl`
 
 ## 6.5 響應式設計 (Responsive Design)
 
+👉 [查看互動 Demo 與原始碼](https://nlhsueh.github.io/web2026/viewer.html?file=tailwind/demo_responsive.html)
+
 Tailwind 採用 **Mobile First (手機優先)** 策略！
 
 - **無前綴**的 class (`w-full`)：預設套用到手機版。
@@ -188,6 +196,8 @@ Tailwind 採用 **Mobile First (手機優先)** 策略！
 
 ## 6.6 互動與狀態 (States & Transitions)
 
+👉 [查看互動 Demo 與原始碼](https://nlhsueh.github.io/web2026/viewer.html?file=tailwind/demo_states.html)
+
 動態效果與互動狀態也能用 Utility-First 搞定。
 
 - **`hover:`** (懸停)：`hover:bg-blue-700`
@@ -199,6 +209,8 @@ Tailwind 採用 **Mobile First (手機優先)** 策略！
 ---
 
 ## 6.7 進階技巧：使用 @apply 自定義 Class
+
+👉 [查看互動 Demo 與原始碼](https://nlhsueh.github.io/web2026/viewer.html?file=tailwind/demo_apply.html)
 
 當 Class 寫得太長變成 "Class Soup"，或同一個樣式（如按鈕）在各處出現多次時怎麼辦？
 
