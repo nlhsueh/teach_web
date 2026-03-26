@@ -4,9 +4,14 @@
 
 > **「HTML 給了網頁骨架，CSS 賦予了美麗的外觀，而 JavaScript 則是網頁的肌肉與神經，讓它能對使用者的操作做出反應。」**
 
+[nlh slides- javascript](https://docs.google.com/presentation/d/1JMaa9aSBGomS85OtSDdcQZlwuajNgdmKFtrb3WR-nSI/edit?usp=sharing)
+
+
 ---
 
 ## 5.1 JavaScript 基礎引導
+
+📚 [W3Schools 參考：JS Introduction & Output](https://www.w3schools.com/js/js_intro.asp)
 
 在學習用 JS 做出酷炫的購物車前，我們先來看看 JS 到底怎麼寫、它能改變什麼。
 
@@ -53,6 +58,8 @@ JavaScript 可以直接寫在 HTML 的 `<script>` 標籤中：
 ---
 
 ## 5.2 變數、常數與運算元
+
+📚 [W3Schools 參考：JS Variables](https://www.w3schools.com/js/js_variables.asp) | [JS Operators](https://www.w3schools.com/js/js_operators.asp)
 
 要讓網頁具備「計算」的能力（例如計算總得分、計算總金額），就必須要有容器來儲存這些數字。
 
@@ -101,6 +108,8 @@ score += 5; // 同上，這是一樣的意思
 
 ## 5.3 資料型態與字串處理
 
+📚 [W3Schools 參考：JS Data Types](https://www.w3schools.com/js/js_datatypes.asp) | [JS String Methods](https://www.w3schools.com/js/js_string_methods.asp)
+
 JavaScript 的變數不只能裝數字，還能裝文字、真假值。
 
 ### 5.3.1 基礎概念：型態與字串方法
@@ -147,6 +156,8 @@ let trueNumber = parseInt(numberStr); // 變成數學上的數字 50
 ---
 
 ## 5.4 流程控制
+
+📚 [W3Schools 參考：JS If...Else](https://www.w3schools.com/js/js_if_else.asp) | [JS For Loop](https://www.w3schools.com/js/js_loop_for.asp)
 
 程式如果只會從上往下執行是不夠的，我們需要讓他在不同的情況「轉彎」(If)，或是重覆做無聊的事 (For)。
 
@@ -198,6 +209,8 @@ for (let i = 1; i <= 5; i++) {
 
 ## 5.5 函式 (Functions)
 
+📚 [W3Schools 參考：JS Functions](https://www.w3schools.com/js/js_functions.asp) | [JS Arrow Function](https://www.w3schools.com/js/js_arrow_function.asp)
+
 當同樣的程式碼要在不同地方寫好幾次時，我們就可以把它「包裝」起來變成函式。
 
 ### 5.5.1 基礎概念：宣告函式與回傳 (`return`)
@@ -240,6 +253,8 @@ const addNumbers = (a, b) => a + b;
 
 ## 5.6 陣列 (Arrays)
 
+📚 [W3Schools 參考：JS Arrays](https://www.w3schools.com/js/js_arrays.asp) | [JS Array Methods](https://www.w3schools.com/js/js_array_methods.asp)
+
 遇到大量的資料，如果每個都要宣告變數（`let a=1, b=2, c=3...`）會非常麻煩，此時我們用陣列 (Array) 把他們裝成一排。
 
 ### 5.6.1 基礎概念：陣列宣告與存取
@@ -272,6 +287,8 @@ fruits.push("Mango"); // push() 是把新東西推到陣列的最後一格
 ---
 
 ## 5.7 物件 (Objects)
+
+📚 [W3Schools 參考：JS Objects](https://www.w3schools.com/js/js_objects.asp) | [JS JSON](https://www.w3schools.com/js/js_json_intro.asp)
 
 陣列只能裝單一維度的資料，但如果一筆資料包含了很多個「特徵」呢？這時候需要用物件。
 
@@ -310,6 +327,8 @@ person.name = "Alice";
 ---
 
 ## 5.8 檔案物件模型 (DOM) 與事件：讓網頁活起來
+
+📚 [W3Schools 參考：JS HTML DOM](https://www.w3schools.com/js/js_htmldom.asp) | [JS Events](https://www.w3schools.com/js/js_events.asp)
 
 有了以上的 JS 基礎，我們終於準備好去觸摸 HTML 畫面上的標籤了。
 
