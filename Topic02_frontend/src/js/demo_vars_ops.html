@@ -2,37 +2,88 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>Variables & Operators Demo</title>
-</head>
-<body>
-    <h1>變數與運算元範例</h1>
-    <p>請打開 Console 檢視結果。</p>
-
+    <title>JS Variables & Ops - 旅費計算機</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // 5.2.1 變數宣告
-        let count = 10;
-        const PI = 3.14159;
-        var legacy = "舊式變數";
+        function calculateTotal() {
+            // 宣告常數 (不會改變的價格)
+            const FLIGHT_PRICE = 12000;
+            const HOTEL_NIGHT_PRICE = 3000;
+            const SERVICE_FEE_RATE = 0.05;
 
-        console.log("--- 變數宣告 ---");
-        console.log("count:", count);
-        console.log("PI:", PI);
+            // 宣告變數 (可以改變的輸入值)
+            let stayNights = parseInt(document.getElementById("nights").value);
+            
+            if(isNaN(stayNights) || stayNights < 0) {
+                alert("請輸入有效的天數！");
+                return;
+            }
 
-        // 5.2.2 運算元
-        let a = 10;
-        let b = 3;
+            // 基礎計算
+            let baseTotal = FLIGHT_PRICE + (HOTEL_NIGHT_PRICE * stayNights);
+            
+            // 加入服務費
+            let finalTotal = baseTotal + (baseTotal * SERVICE_FEE_RATE);
 
-        console.log("--- 算術運算 ---");
-        console.log("a + b =", a + b);
-        console.log("a % b (取餘數) =", a % b);
-
-        console.log("--- 比較運算 ---");
-        console.log('5 == "5" (自動轉型):', 5 == "5");
-        console.log('5 === "5" (嚴格相等):', 5 === "5");
-
-        let score = 80;
-        let result = (score >= 60) ? "及格" : "不及格";
-        console.log("三元運算結果:", result);
+            // 顯示結果
+            document.getElementById("result-flight").textContent = `NT$ ${FLIGHT_PRICE}`;
+            document.getElementById("result-hotel").textContent = `NT$ ${HOTEL_NIGHT_PRICE * stayNights} (${stayNights} 晚)`;
+            document.getElementById("result-total").textContent = `NT$ ${finalTotal}`;
+            
+            console.log(`計算完成: 機票 ${FLIGHT_PRICE} + 住宿 ${HOTEL_NIGHT_PRICE * stayNights} + 服務費 5% = ${finalTotal}`);
+        }
     </script>
+</head>
+<body class="bg-gray-100 p-10 font-sans text-gray-800">
+    <div class="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+        <h1 class="text-3xl font-bold text-blue-600 border-b pb-4 mb-6">🧮 旅費計算機 - 變數與運算元</h1>
+
+        <div class="grid grid-cols-2 gap-6">
+            <div class="bg-blue-50/50 p-6 rounded-xl border border-blue-100">
+                <h2 class="text-sm font-bold text-blue-500 uppercase tracking-wider mb-4">輸入條件</h2>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">機票固定價格：</label>
+                    <p class="text-gray-600">NT$ 12,000</p>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">每晚住宿費：</label>
+                    <p class="text-gray-600">NT$ 3,000 / 晚</p>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">您預計住宿幾晚？</label>
+                    <input type="number" id="nights" value="4" min="0" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-blue-500">
+                </div>
+                <button onclick="calculateTotal()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg shadow-md transition-colors">
+                    開始試算 (含 5% 服務費)
+                </button>
+            </div>
+
+            <div class="bg-gray-50 p-6 rounded-xl border border-gray-200 flex flex-col justify-center">
+                <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4">估價結果</h2>
+                <div class="space-y-3 text-sm text-gray-600 border-b pb-4 mb-4">
+                    <div class="flex justify-between">
+                        <span>機票小計</span>
+                        <span id="result-flight" class="font-semibold text-gray-800">NT$ 0</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>住宿小計</span>
+                        <span id="result-hotel" class="font-semibold text-gray-800">NT$ 0</span>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-400">
+                        <span>服務費 (5%)</span>
+                        <span>系統自動計算</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center bg-blue-100 p-4 rounded-lg">
+                    <span class="font-bold text-blue-800">總金額</span>
+                    <span id="result-total" class="font-black text-2xl text-blue-600">NT$ 0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8">
+            <a href="../index.html" class="text-blue-500 hover:underline text-sm font-semibold">← 回到大廳</a>
+        </div>
+    </div>
 </body>
 </html>

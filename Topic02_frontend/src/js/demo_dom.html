@@ -2,54 +2,85 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>DOM Demo</title>
-    <style>
-        .highlight {
-            color: red;
-            font-weight: bold;
-            background-color: yellow;
-        }
-    </style>
-</head>
-<body>
-    <h1 id="main-title">DOM 操作範例</h1>
-
-    <section>
-        <h2>5.8.1 選取與操作</h2>
-        <p id="message">這是一段原始文字。</p>
-        <button id="change-btn">改變文字內容</button>
-        <button id="style-btn">改變樣式</button>
-    </section>
-
-    <section>
-        <h2>5.8.2 事件監聽</h2>
-        <input type="text" id="user-input" placeholder="隨便輸入點東西...">
-        <p id="input-display">你輸入了: </p>
-    </section>
-
+    <title>JS DOM Manipulation - 行程預訂介面</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // 選取元素
-        const title = document.getElementById("main-title");
-        const msg = document.getElementById("message");
-        const changeBtn = document.getElementById("change-btn");
-        const styleBtn = document.getElementById("style-btn");
-        const userInput = document.getElementById("user-input");
-        const inputDisplay = document.getElementById("input-display");
+        // 等待網頁結構載入完畢後再執行綁定，這是一個好習慣！
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // DOM 選取器
+            const bookBtn = document.getElementById("book-btn");
+            const cartCountElement = document.getElementById("cart-count");
+            const theCard = document.getElementById("tour-card");
+            
+            // 變數記錄數量
+            let currentCartNumber = 0;
 
-        // 改變內容
-        changeBtn.addEventListener("click", () => {
-            msg.textContent = "文字已被更新！";
-        });
+            // 事件監聽 Event Listener (點擊預訂按鈕時)
+            bookBtn.addEventListener("click", () => {
+                // 數量加一
+                currentCartNumber += 1;
+                
+                // 更改右上角數字
+                cartCountElement.textContent = currentCartNumber;
+                
+                // 動態加上動畫效果 (讓數字跳一下)
+                cartCountElement.classList.add("animate-bounce");
+                setTimeout(() => {
+                    cartCountElement.classList.remove("animate-bounce");
+                }, 1000);
 
-        // 改變樣式 (切換 Class)
-        styleBtn.addEventListener("click", () => {
-            msg.classList.toggle("highlight");
-        });
+                // 更改按鈕文字與外觀
+                bookBtn.textContent = `已選 ${currentCartNumber} 位 (繼續加人)`;
+                bookBtn.classList.remove("bg-blue-600", "hover:bg-blue-700");
+                bookBtn.classList.add("bg-green-600", "hover:bg-green-700");
 
-        // 監聽輸入事件
-        userInput.addEventListener("keyup", () => {
-            inputDisplay.textContent = "你輸入了: " + userInput.value;
+                // 改變卡片邊框，暗示已選中
+                theCard.classList.add("ring-2", "ring-green-400");
+                
+                // console 確認
+                console.log(`成功加入 1 位，目前購物車共 ${currentCartNumber} 筆`);
+            });
         });
     </script>
+</head>
+<body class="bg-gray-100 p-10 font-sans text-gray-800">
+    <div class="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-200 relative">
+        
+        <!-- Navbar 模擬購物車數字 -->
+        <div class="absolute top-6 right-8 flex items-center bg-gray-50 border px-4 py-2 rounded-full shadow-sm">
+            <span class="mr-2">🛒 購物車</span>
+            <!-- 這個 badge 就是等一下要被 JS 控制的地方 -->
+            <span id="cart-count" class="bg-red-500 text-white font-bold text-xs rounded-full h-6 w-6 flex items-center justify-center">0</span>
+        </div>
+
+        <h1 class="text-3xl font-bold text-blue-600 border-b pb-4 mb-8 pr-32">🖱️  DOM 與事件 - 購物車操作</h1>
+        
+        <p class="text-gray-600 mb-6 text-sm">透過 JS 尋找畫面上的元素（按鈕、文字標籤），並綁定事件（點擊），就能做出動態的互動效果，不再只是死板的靜態頁面。</p>
+
+        <!-- 行程卡片 -->
+        <div id="tour-card" class="max-w-sm mx-auto bg-white border border-gray-200 rounded-2xl shadow-md overflow-hidden transition-all duration-300 transform hover:-translate-y-1">
+            <div class="h-40 bg-indigo-100 flex items-center justify-center relative">
+                <span class="text-4xl">🗼</span>
+                <div class="absolute bottom-2 right-2 bg-black/50 text-white text-xs px-2 py-1 rounded backdrop-blur-sm">特選行程</div>
+            </div>
+            <div class="p-6">
+                <h2 class="text-xl font-bold mb-2 text-gray-800">日本關西京阪神 5 日</h2>
+                <div class="flex justify-between items-center mb-6">
+                    <span class="text-gray-500 text-sm">保證出發．含小費</span>
+                    <span class="text-red-500 font-black text-xl">NT$ 22,500</span>
+                </div>
+                
+                <!-- 真正的預訂按鈕 -->
+                <button id="book-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl shadow-md transition-all duration-300 active:scale-95">
+                    立即預訂
+                </button>
+            </div>
+        </div>
+
+        <div class="mt-12 text-center">
+            <a href="../index.html" class="text-blue-500 hover:underline text-sm font-semibold">← 回到大廳</a>
+        </div>
+    </div>
 </body>
 </html>

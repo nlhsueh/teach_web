@@ -2,40 +2,72 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>Data Types & Strings Demo</title>
-</head>
-<body>
-    <h1>資料型態與字串處理範例</h1>
-    <p>請打開 Console 檢視結果。</p>
-
+    <title>JS Data Types - 訂單字串處理</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // 5.3.1 基本型態
-        let str = "Hello JS";
-        let num = 3.14;
-        let isTrue = true;
-        let empty = null;
-        let unknown;
+        function processInput() {
+            let inputDest = document.getElementById("destination").value;
+            let promoCode = document.getElementById("promo").value;
+            let outputElement = document.getElementById("log");
+            
+            let logText = "";
 
-        console.log("--- 資料型態 (typeof) ---");
-        console.log(typeof str);     // string
-        console.log(typeof num);     // number
-        console.log(typeof isTrue);  // boolean
-        console.log(typeof empty);   // object (JS 歷史遺留)
-        console.log(typeof unknown); // undefined
+            // 處理字串：去掉空白並轉大寫
+            let cleanDest = inputDest.trim().toUpperCase();
+            let cleanPromo = promoCode.trim().toUpperCase();
 
-        // 5.3.2 字串處理
-        let text = "JavaScript is powerful!";
-        console.log("--- 字串方法 ---");
-        console.log("長度:", text.length);
-        console.log("轉大寫:", text.toUpperCase());
-        console.log("擷取 0~10:", text.slice(0, 10));
-        console.log("尋找 'is' 位置:", text.indexOf("is"));
+            logText += `👉 原始輸入：[${inputDest}]\n`;
+            logText += `👉 處理後地點：[${cleanDest}]\n`;
+            
+            // 檢查是否包含特定字詞
+            if (cleanDest.includes("TOKYO") || cleanDest.includes("OSAKA")) {
+                logText += `✨ 系統判定：此為日本熱門航線！\n`;
+            } else if (cleanDest === "") {
+                logText += `⚠️ 錯誤：目的地不可為空！\n`;
+            } else {
+                logText += `🌐 系統判定：此為其他國際航線。\n`;
+            }
 
-        // 字串轉數字
-        let strVal = "100.55 px";
-        console.log("--- 型別轉換 ---");
-        console.log("parseInt:", parseInt(strVal));
-        console.log("parseFloat:", parseFloat(strVal));
+            // 處理折扣碼
+            if (cleanPromo === "SAVE100") {
+                logText += `🎉 優惠碼 [${cleanPromo}] 檢查通過：減免 NT$ 100\n`;
+            } else if (cleanPromo !== "") {
+                logText += `❌ 優惠碼無效。\n`;
+            }
+
+            outputElement.textContent = logText;
+        }
     </script>
+</head>
+<body class="bg-gray-100 p-10 font-sans text-gray-800">
+    <div class="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+        <h1 class="text-3xl font-bold text-blue-600 border-b pb-4 mb-6">✈️ 訂單字串處理 - 型態與字串方法</h1>
+
+        <div class="bg-blue-50 p-6 rounded-xl border border-blue-100 mb-6">
+            <h2 class="text-sm font-bold text-blue-500 uppercase tracking-wider mb-4">航班與折扣查詢</h2>
+            
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">目的地 (英文)</label>
+                <input type="text" id="destination" value="   Tokyo  " class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <p class="text-xs text-gray-500 mt-1">試著保留前後空白，系統會自動幫您清除並轉為大寫。</p>
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2">優惠碼</label>
+                <input type="text" id="promo" value=" save100" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <button onclick="processInput()" class="bg-gray-800 hover:bg-black text-white px-6 py-2 rounded shadow transition">驗證輸入轉換</button>
+        </div>
+
+        <div class="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm leading-relaxed overflow-x-auto">
+            <div class="text-gray-400 mb-2 border-b border-gray-700 pb-2">Terminal Output:</div>
+            <pre id="log">等待輸入與執行...</pre>
+        </div>
+
+        <div class="mt-8">
+            <a href="../index.html" class="text-blue-500 hover:underline text-sm font-semibold">← 回到大廳</a>
+        </div>
+    </div>
 </body>
 </html>

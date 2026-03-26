@@ -2,38 +2,73 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>Arrays Demo</title>
-</head>
-<body>
-    <h1>陣列範例</h1>
-    <p>請打開 Console 檢視結果。</p>
-
+    <title>JS Arrays - 管理熱門目的地陣列</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // 5.6.1 建立與存取
-        let fruits = ["Apple", "Banana", "Cherry"];
-        console.log("--- 建立陣列 ---");
-        console.log(fruits);
-        console.log("第一個元素:", fruits[0]);
+        // 1. 基本陣列宣告
+        let destinations = ["東京", "大阪", "京都", "北海道", "沖繩"];
+        
+        // 存放準備用來畫在畫面上的 HTML 內容
+        let htmlList = "";
 
-        // 5.6.2 常用方法
-        fruits.push("Durian"); // 尾部新增
-        console.log("push 後:", fruits);
+        // 2. 顯示所有的目的地
+        function showAll() {
+            let container = document.getElementById("list-container");
+            htmlList = "";
+            for (let i = 0; i < destinations.length; i++) {
+                htmlList += `<li class="py-2 border-b text-gray-700">📍 ${destinations[i]}</li>`;
+            }
+            container.innerHTML = `<ul class="list-none">${htmlList}</ul>`;
+        }
 
-        fruits.pop(); // 尾部刪除
-        console.log("pop 後:", fruits);
+        // 3. 陣列新增：push()
+        function addDestination() {
+            let newDest = prompt("請輸入新的熱門地點：", "福岡");
+            if (newDest) {
+                destinations.push(newDest); // 加到最後面
+                showAll(); // 更新畫面
+                alert(`已成功將 [${newDest}] 加入陣列中 (共有 ${destinations.length} 項)`);
+            }
+        }
 
-        // 高階方法
-        let numbers = [1, 2, 3, 4, 5];
-        let doubled = numbers.map(x => x * 2);
-        let evens = numbers.filter(x => x % 2 === 0);
-
-        console.log("--- 高階方法 ---");
-        console.log("原陣列:", numbers);
-        console.log("map (x2):", doubled);
-        console.log("filter (偶數):", evens);
-
-        // join
-        console.log("join:", fruits.join(" - "));
+        // 4. 進階過濾：filter() (只找有 "大" 字的地點)
+        function filterSpecific() {
+            // 用 filter 取出符合條件的陣列元素
+            let filtered = destinations.filter(dest => dest.includes("大"));
+            
+            let container = document.getElementById("list-container");
+            htmlList = "";
+            
+            filtered.forEach(d => {
+                htmlList += `<li class="py-2 border-b font-bold text-blue-600">✨ ${d}</li>`;
+            });
+            
+            if(htmlList === "") {
+                container.innerHTML = "<p class='text-red-500'>找不到包含「大」字的地點。</p>";
+            } else {
+                container.innerHTML = `<ul class="list-none">${htmlList}</ul>`;
+            }
+        }
     </script>
+</head>
+<body class="bg-gray-100 p-10 font-sans text-gray-800">
+    <div class="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+        <h1 class="text-3xl font-bold text-blue-600 border-b pb-4 mb-6">🗂️ 陣列 (Arrays) - 目的地管理</h1>
+        <p class="text-gray-600 mb-6">陣列非常適合用來管理一系列同類的資料。我們可以把它拿來呈現在畫面上，或是對它進行新增、刪除、過濾等操作。</p>
+        
+        <div class="flex flex-wrap gap-4 mb-6 pb-6 border-b border-gray-100">
+            <button onclick="showAll()" class="bg-indigo-500 hover:bg-indigo-600 text-white px-5 py-2 rounded-lg shadow-sm transition">顯示原始陣列列表 (For Loop)</button>
+            <button onclick="addDestination()" class="bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded-lg shadow-sm transition">新增地點 (push)</button>
+            <button onclick="filterSpecific()" class="bg-yellow-500 hover:bg-yellow-600 text-white px-5 py-2 rounded-lg shadow-sm transition">篩選包含「大」的地點 (filter)</button>
+        </div>
+
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 min-h-[200px]" id="list-container">
+            <p class="text-gray-400 italic">請點擊上方按鈕操作陣列...</p>
+        </div>
+
+        <div class="mt-8">
+            <a href="../index.html" class="text-blue-500 hover:underline text-sm font-semibold">← 回到大廳</a>
+        </div>
+    </div>
 </body>
 </html>

@@ -2,35 +2,80 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>Functions Demo</title>
-</head>
-<body>
-    <h1>函式範例</h1>
-    <p>請打開 Console 檢視結果。</p>
-
+    <title>JS Functions - 會員折扣計算</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // 5.5.1 函式宣告
-        function greet(name) {
-            return "Hello, " + name + "!";
+        // 一般函式宣告 (Function Declaration)
+        function calculateFinalPrice(basePrice, taxRate) {
+            let tax = basePrice * taxRate;
+            return basePrice + tax;
         }
 
-        console.log("--- 函式宣告 ---");
-        console.log(greet("Alice"));
+        // ES6 箭頭函式 (Arrow Function)
+        const getVipDiscount = (price) => price * 0.8;
+        const getNormalDiscount = (price) => price * 0.95;
 
-        // 5.5.2 箭頭函式
-        const add = (a, b) => a + b;
-        const multiply = (a, b) => a * b;
-
-        console.log("--- 箭頭函式 ---");
-        console.log("10 + 20 =", add(10, 20));
-        console.log("5 * 4 =", multiply(5, 4));
-
-        // 預設參數
-        function welcome(user = "訪客") {
-            console.log("歡迎光臨, " + user);
+        // 統籌的會員折扣函式
+        function getMemberDiscount(price, level) {
+            if (level === "VIP") {
+                return getVipDiscount(price);
+            } else if (level === "Normal") {
+                return getNormalDiscount(price);
+            }
+            return price; // 未知等級原價
         }
-        welcome();
-        welcome("小明");
+
+        function runDemo() {
+            let inputPrice = parseInt(document.getElementById("price").value);
+            let inputLevel = document.getElementById("level").value;
+            let logPanel = document.getElementById("log");
+            
+            if(isNaN(inputPrice)) return;
+
+            // 1. 先計算會員折扣
+            let afterDiscount = getMemberDiscount(inputPrice, inputLevel);
+            
+            // 2. 加上 5% 營業稅
+            let finalTotal = calculateFinalPrice(afterDiscount, 0.05);
+
+            logPanel.innerHTML = `
+                <div class="mb-2">💰 原始行程定價：NT$ ${inputPrice}</div>
+                <div class="mb-2">會員身分 [${inputLevel}] 折扣價：NT$ ${afterDiscount}</div>
+                <div class="border-t pt-2 mt-2 font-bold text-red-600">最終結帳含稅總額：NT$ ${finalTotal}</div>
+            `;
+        }
     </script>
+</head>
+<body class="bg-gray-100 p-10 font-sans text-gray-800">
+    <div class="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+        <h1 class="text-3xl font-bold text-blue-600 border-b pb-4 mb-6">🛠️ 自訂函式 - 會員折扣計算器</h1>
+        <p class="text-gray-600 mb-6">這是一個模擬將「計算稅金」與「取得會員折扣」包裝成專屬函數 (Functions) 的小工具。當邏輯變複雜時，拆解成函數能讓程式碼更好維護。</p>
+        
+        <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 flex flex-col md:flex-row gap-6 mb-6">
+            <div class="flex-1">
+                <label class="block text-gray-700 text-sm font-bold mb-2">定價 (未稅)</label>
+                <input type="number" id="price" value="20000" class="shadow appearance-none border rounded w-full py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            
+            <div class="flex-1">
+                <label class="block text-gray-700 text-sm font-bold mb-2">會員等級</label>
+                <select id="level" class="shadow border rounded w-full py-2 px-3 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="Guest">無 (Guest) - 不打折</option>
+                    <option value="Normal" selected>一般會員 (Normal) - 95 折</option>
+                    <option value="VIP">尊榮會員 (VIP) - 8 折</option>
+                </select>
+            </div>
+        </div>
+
+        <button onclick="runDemo()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded shadow-lg transition">呼叫結帳計算函式</button>
+
+        <div class="mt-6 bg-white border-2 border-dashed border-gray-300 p-6 rounded-xl h-32 flex flex-col justify-center text-lg" id="log">
+            <span class="text-gray-400 text-center">結帳結果會顯示在這裡...</span>
+        </div>
+
+        <div class="mt-8">
+            <a href="../index.html" class="text-blue-500 hover:underline text-sm font-semibold">← 回到大廳</a>
+        </div>
+    </div>
 </body>
 </html>

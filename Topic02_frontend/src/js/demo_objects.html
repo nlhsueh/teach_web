@@ -2,48 +2,71 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>Objects Demo</title>
-</head>
-<body>
-    <h1>物件範例</h1>
-    <p>請打開 Console 檢視結果。</p>
-
+    <title>JS Objects - 旅遊套裝物件</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // 5.7.1 物件宣告
-        let person = {
-            name: "John",
-            age: 20,
-            isStudent: true,
-            greet: function() {
-                return "哈囉, 我是 " + this.name;
-            }
+        // 宣告一個物件 (Object)
+        let tourPackage = {
+            id: "T101",
+            title: "經典東京迪士尼五日遊",
+            basePrice: 28000,
+            days: 5,
+            isAvailable: true,
+            highlights: ["迪士尼樂園", "淺草寺", "秋葉原", "台場"] // 陣列可以作為物件的屬性
         };
 
-        console.log("--- 物件存取 ---");
-        console.log("姓名:", person.name);
-        console.log("呼叫方法:", person.greet());
-
-        // 5.7.2 物件遍歷 (for...in)
-        console.log("--- 物件遍歷 ---");
-        for (let key in person) {
-            console.log(key + " : " + person[key]);
+        function displayObject() {
+            let infoBox = document.getElementById("obj-info");
+            
+            // 讀取屬性: tourPackage.title 或 tourPackage["title"]
+            let content = `
+                <div class="text-lg font-bold text-gray-800 mb-2 border-b pb-2">
+                    [${tourPackage.id}] ${tourPackage.title}
+                </div>
+                <ul class="text-sm text-gray-600 mb-4 space-y-2">
+                    <li>📅 <strong>天數：</strong> ${tourPackage.days} 天</li>
+                    <li>💰 <strong>售價：</strong> NT$ ${tourPackage.basePrice}</li>
+                    <li>✅ <strong>開賣狀態：</strong> ${tourPackage.isAvailable ? "熱烈搶購中" : "已售滿"}</li>
+                    <li>✨ <strong>行程亮點：</strong> <br> ${tourPackage.highlights.join("、")}</li>
+                </ul>
+            `;
+            infoBox.innerHTML = content;
         }
 
-        // JSON 轉換
-        console.log("--- JSON 轉換 ---");
-        let jsonStr = JSON.stringify(person);
-        console.log("轉為 JSON 字串:", jsonStr);
-        console.log("轉回物件:", JSON.parse(jsonStr));
+        function toggleStatus() {
+            // 修改物件的屬性
+            tourPackage.isAvailable = !tourPackage.isAvailable;
+            
+            // 更新畫面
+            displayObject();
+            
+            // 將物件轉為 JSON 字串並顯示
+            document.getElementById("json-output").textContent = JSON.stringify(tourPackage, null, 2);
+        }
 
-        // 物件陣列
-        let students = [
-            { name: "A", score: 80 },
-            { name: "B", score: 90 },
-            { name: "C", score: 70 }
-        ];
-        console.log("--- 物件陣列排序 ---");
-        students.sort((a, b) => b.score - a.score); // 由高到低
-        console.log(students);
     </script>
+</head>
+<body class="bg-gray-100 p-10 font-sans text-gray-800">
+    <div class="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+        <h1 class="text-3xl font-bold text-blue-600 border-b pb-4 mb-6">📦 物件 (Objects) - 行程包裹</h1>
+        <p class="text-gray-600 mb-6">單純的陣列無法表達多維度的資料。使用物件可以把行程的「名稱、天數、價格」等屬性全部封裝在一個變數裡，這正是現代系統最常用的資料格式。</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div class="bg-blue-50 border border-blue-100 rounded-xl p-6" id="obj-info">
+                <p class="text-gray-400 italic mb-4">點擊下方按鈕載入物件資料...</p>
+                <button onclick="displayObject()" class="bg-blue-600 hover:bg-blue-700 text-white w-full py-2 rounded shadow transition">載入並印出物件屬性</button>
+            </div>
+
+            <div class="bg-slate-800 text-green-400 border border-slate-900 rounded-xl p-4 font-mono text-xs overflow-auto h-48 relative group">
+                <button onclick="toggleStatus()" class="absolute top-2 right-2 bg-gray-600 hover:bg-gray-500 text-white text-[10px] px-2 py-1 rounded">修改物件狀態</button>
+                <p class="text-gray-500 border-b border-gray-700 pb-2 mb-2">JSON String Representation:</p>
+                <pre id="json-output">/* 等待修改物件狀態... */</pre>
+            </div>
+        </div>
+
+        <div class="mt-8">
+            <a href="../index.html" class="text-blue-500 hover:underline text-sm font-semibold">← 回到大廳</a>
+        </div>
+    </div>
 </body>
 </html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab - 旅遊網站互動清單</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 新增項目進場動畫的自訂 CSS */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-item-in {
+            animation: slideIn 0.3s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen p-8 text-slate-800 font-sans">
+    
+    <div class="max-w-md mx-auto relative mt-10">
+        <!-- 裝飾用漂浮圓形 -->
+        <div class="absolute -top-12 -left-12 w-24 h-24 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70"></div>
+        <div class="absolute -top-12 -right-4 w-24 h-24 bg-teal-200 rounded-full mix-blend-multiply filter blur-xl opacity-70"></div>
+
+        <!-- 主體卡片 -->
+        <div class="bg-white/80 backdrop-blur-lg rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] ring-1 ring-slate-900/5 p-8 relative z-10">
+            
+            <header class="flex justify-between items-center mb-8">
+                <div>
+                    <h1 class="text-2xl font-black text-slate-900 mb-1">我的旅遊願望清單</h1>
+                    <p class="text-sm text-slate-500">將想去的地方記錄下來！</p>
+                </div>
+                <!-- 數量 badge -->
+                <div class="bg-blue-100 text-blue-700 font-black text-sm w-10 h-10 rounded-full flex items-center justify-center shadow-inner" id="total-count">0</div>
+            </header>
+
+            <!-- 輸入區塊 -->
+            <div class="flex gap-2 mb-8">
+                <input type="text" id="dest-input" placeholder="例如：冰島看極光" class="flex-1 bg-slate-100 border-0 rounded-xl px-4 py-3 text-slate-700 placeholder:text-slate-400 focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all outline-none">
+                <button id="add-btn" class="bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-bold p-3 rounded-xl shadow-md shadow-blue-500/30 transition-all flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- 清單列表，空的就不用東西 -->
+            <ul id="wishlist" class="space-y-3 min-h-[150px]">
+                <!-- 預設等待空位 (可用 JS 清空) -->
+                <li class="empty-state text-center text-slate-400 text-sm py-10 italic border-2 border-dashed border-slate-200 rounded-2xl">
+                    你還沒有加入任何行程喔～立刻新增吧！
+                </li>
+            </ul>
+
+            <!-- 回首頁 -->
+            <div class="mt-8 pt-4 border-t border-slate-100 text-center">
+                <a href="../index.html" class="text-slate-400 hover:text-blue-500 text-sm font-medium transition-colors">回到大廳首頁</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript 邏輯部分 -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const inputField = document.getElementById("dest-input");
+            const addBtn = document.getElementById("add-btn");
+            const wishlist = document.getElementById("wishlist");
+            const countBadge = document.getElementById("total-count");
+
+            let destinations = [];
+
+            // 渲染列表的函數
+            function renderList() {
+                // 如果陣列是空的，顯示等待空位
+                if(destinations.length === 0) {
+                    wishlist.innerHTML = `
+                        <li class="empty-state text-center text-slate-400 text-sm py-10 italic border-2 border-dashed border-slate-200 rounded-2xl">
+                            你還沒有加入任何行程喔～立刻新增吧！
+                        </li>
+                    `;
+                    countBadge.textContent = "0";
+                    return;
+                }
+
+                wishlist.innerHTML = ""; // 清空舊的內容
+                countBadge.textContent = destinations.length; // 更新 badge
+
+                // 把陣列裡的每個地點產生為 HTML
+                destinations.forEach((dest, index) => {
+                    // 建立一個 `li`
+                    const li = document.createElement("li");
+                    li.className = "flex justify-between items-center bg-white border border-slate-100 p-4 rounded-2xl shadow-sm animate-item-in group hover:border-blue-200 transition-colors";
+                    
+                    li.innerHTML = `
+                        <span class="font-medium text-slate-700">📍 ${dest}</span>
+                        <button class="delete-btn text-slate-300 hover:text-red-500 hover:bg-red-50 p-2 rounded-lg transition-colors cursor-pointer" data-id="${index}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                        </button>
+                    `;
+                    wishlist.appendChild(li);
+                });
+
+                // 替所有的刪除按鈕綁定事件
+                const deleteBtns = document.querySelectorAll(".delete-btn");
+                deleteBtns.forEach(btn => {
+                    btn.addEventListener("click", (e) => {
+                        // 利用 dataset (data-id) 取得陣列裡的索引
+                        const indexToRemove = e.currentTarget.dataset.id;
+                        // 洗掉該項目 (splice)
+                        destinations.splice(indexToRemove, 1);
+                        // 重新繪製清單
+                        renderList();
+                    });
+                });
+            }
+
+            // 新增事件
+            addBtn.addEventListener("click", () => {
+                const text = inputField.value.trim();
+                if (text !== "") {
+                    destinations.push(text); // 塞入陣列
+                    inputField.value = "";   // 清空輸入框
+                    renderList();            // 重新重繪
+                } else {
+                    alert("請確實輸入目的地！");
+                }
+            });
+
+            // 支援在輸入框按下 Enter 送出
+            inputField.addEventListener("keydown", (e) => {
+                if(e.key === "Enter") {
+                    addBtn.click();
+                }
+            });
+
+            // 初次載入渲染一次 (確保為空)
+            renderList();
+        });
+    </script>
+</body>
+</html>

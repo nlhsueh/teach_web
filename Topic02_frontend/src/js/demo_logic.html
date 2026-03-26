@@ -2,42 +2,105 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>Control Flow Demo</title>
-</head>
-<body>
-    <h1>流程控制範例</h1>
-    <p>請打開 Console 檢視結果。</p>
-
+    <title>JS Logic - 購票規則與迴圈</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // 5.4.1 條件判斷
-        let age = 20;
-        console.log("--- if/else ---");
-        if (age >= 18) {
-            console.log("成年人");
-        } else {
-            console.log("未成年人");
-        }
-
-        // 5.4.2 迴圈
-        console.log("--- for 迴圈 ---");
-        for (let i = 1; i <= 5; i++) {
-            console.log("次數:", i);
-        }
-
-        console.log("--- while 迴圈 ---");
-        let count = 0;
-        while (count < 3) {
-            console.log("Wait...", count);
-            count++;
-        }
-
-        // 九九乘法表範例 (雙層迴圈)
-        console.log("--- 九九乘法表 (前兩列) ---");
-        for (let i = 2; i <= 3; i++) {
-            for (let j = 1; j <= 9; j++) {
-                console.log(`${i} x ${j} = ${i * j}`);
+        function calculateTickets() {
+            let outputElement = document.getElementById("log");
+            let logText = "";
+            let basePrice = 2000;
+            let adults = parseInt(document.getElementById("adults").value);
+            let children = parseInt(document.getElementById("children").value);
+            
+            // 條件判斷 (if / else)
+            if (isNaN(adults) || isNaN(children) || adults < 0 || children < 0) {
+                outputElement.textContent = "請輸入正確的人數格式！";
+                return;
             }
+            if (adults === 0 && children > 0) {
+                outputElement.innerHTML = "<span class='text-red-500'>⚠️ 必須至少有一名成人陪同！</span>";
+                return;
+            }
+
+            logText += "--- 🎫 開始計算票價 ---\n";
+            let total = 0;
+
+            // 迴圈：印出每位成人的票價
+            for (let i = 1; i <= adults; i++) {
+                logText += `成人票 ${i}：NT$ ${basePrice}\n`;
+                total += basePrice;
+            }
+
+            // 迴圈：印出每位兒童的優惠票價 (半價)
+            for (let i = 1; i <= children; i++) {
+                let childPrice = basePrice * 0.5;
+                logText += `兒童票 ${i} (半價)：NT$ ${childPrice}\n`;
+                total += childPrice;
+            }
+
+            // 總計判定
+            logText += `\n>> 總共 ${adults + children} 張票，總額：NT$ ${total}\n`;
+
+            if (total >= 10000) {
+                logText += `🎉 恭喜！訂單滿萬元，贈送「機場貴賓室通行證」兩張！\n`;
+            }
+
+            outputElement.textContent = logText;
+        }
+
+        function buildHotelPricing() {
+            let outputElement = document.getElementById("log2");
+            let logText = "--- 🏨 住宿多晚優惠表 ---\n";
+            let nightCost = 2500;
+            
+            // 建立 1 到 5 晚的房價表
+            for (let day = 1; day <= 5; day++) {
+                let cost = nightCost * day;
+                if (day >= 3) {
+                    cost = cost * 0.9; // 三晚含以上打九折
+                    logText += `連住 ${day} 晚：NT$ ${cost} (享連住 9 折優惠！)\n`;
+                } else {
+                    logText += `連住 ${day} 晚：NT$ ${cost}\n`;
+                }
+            }
+            outputElement.textContent = logText;
         }
     </script>
+</head>
+<body class="bg-gray-100 p-10 font-sans text-gray-800">
+    <div class="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+        <h1 class="text-3xl font-bold text-blue-600 border-b pb-4 mb-6">🎟️ 購票規則與流程控制</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <!-- 左側：條件判斷 -->
+            <div class="bg-blue-50 p-6 rounded-xl border border-blue-100">
+                <h2 class="text-lg font-bold text-blue-800 mb-4">1. 樂園門票金額試算 (If / For)</h2>
+                <div class="flex gap-4 mb-4">
+                    <div class="w-1/2">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">成人票 (NT$ 2000)</label>
+                        <input type="number" id="adults" value="2" min="0" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div class="w-1/2">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">兒童票 (半價)</label>
+                        <input type="number" id="children" value="1" min="0" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                </div>
+                <button onclick="calculateTickets()" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded shadow transition mb-4">確認訂票</button>
+                <div class="bg-white p-3 border rounded text-xs font-mono h-40 overflow-y-auto whitespace-pre-wrap" id="log">等待輸入...</div>
+            </div>
+
+            <!-- 右側：迴圈產生表格 -->
+            <div class="bg-indigo-50 p-6 rounded-xl border border-indigo-100">
+                <h2 class="text-lg font-bold text-indigo-800 mb-4">2. 產生長住優惠表 (For Loop)</h2>
+                <p class="text-sm text-gray-600 mb-4">旅遊網的飯店房間，連住 3 天以上可享優惠，我們用程式自動把 1~5 天的試算表印出來。</p>
+                <button onclick="buildHotelPricing()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded shadow transition mb-4">產生房價表</button>
+                <div class="bg-white p-3 border rounded text-xs font-mono h-40 overflow-y-auto whitespace-pre-wrap" id="log2">點擊產生表格...</div>
+            </div>
+        </div>
+
+        <div class="">
+            <a href="../index.html" class="text-blue-500 hover:underline text-sm font-semibold">← 回到大廳</a>
+        </div>
+    </div>
 </body>
 </html>
