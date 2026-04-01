@@ -135,15 +135,56 @@ JavaScript 的變數不只能裝數字，還能裝文字、真假值。
 * `String` (字串): 如 `"Hello"`。字串必須被引號包圍。
 * `Boolean` (布林值): 只有 `true` (真) 或 `false` (假)。
 
-**字串是非常常被處理的東西，我們可以對字串做加工：**
-```javascript
-let text = "  apple  ";
-console.log(text.trim()); // 去掉前後空白，變成 "apple"
-console.log(text.toUpperCase()); // 轉為大寫 "  APPLE  "
+**字串是非常常被處理的東西，我們常藉由各種「方法 (Methods)」來提取或轉換字串：**
 
-// 將字串轉回數字
+> [!IMPORTANT]
+> **字串是不可變的 (Immutable)**：在 JavaScript 中，任何針對字串的操作（如切割、轉大寫）都**不會改變原本的字串**，而是會**回傳一個全新的字串**。你必須用變數去接住這個新結果，不然等於白做！
+
+#### 1. 字串切割三兄弟（擷取部分字串）
+JavaScript 提供了三種常見的切割方法，雖然長得很像，但行為略有不同：
+- `.slice(start, end)`：從 `start` 切到 `end` (不包含 end)。**支援負數**（從後面數過來）。**(最推薦使用)**
+- `.substring(start, end)`：和 `slice` 一樣，但**不支援負數**（會直接把負數當作 `0`），且如果 `start > end` 它會自動對調。
+- `.substr(start, length)`：從 `start` 開始，**往後連取 `length` 個字元**。（⚠️ 注意：此方法已逐漸被現代開發淘汰，官方建議改用 `slice`）。
+
+```javascript
+// 💡 以下用一個範例來闡述這三者的差異
+let text = "Hello World";
+
+// slice() 支援負號：把最後 5 個字切下來！
+console.log(text.slice(-5));     // 輸出："World"
+
+// substring() 不支援負號：把 -5 當作 0 放棄處理，從頭印到尾！
+console.log(text.substring(-5)); // 輸出："Hello World"
+// 偷偷幫你對調大於小於：
+console.log(text.substring(5, 0)); // 輸出："Hello" (自動變成 0, 5)
+
+// ✨ 以上操作完，原本的 text 有變嗎？
+// 證明字串 Immutable 的特性：
+console.log(text); // 依舊是 "Hello World"！剛剛的處理只是回傳了「新產物」
+```
+
+#### 2. 常用的實用加工：去空白與轉陣列
+
+除了切割，我們還經常需要將使用者輸入的字串進行**資料清洗**與**陣列化**：
+
+- `.trim()`：去除字串「頭尾」的多餘空白（處理使用者建立帳號或搜尋表單時必用！避免他手滑多按了空白鍵）。
+- `.split(separator)`：用指定的符號字串，把一長串文字狠狠劈開，並**轉換成一個真實的陣列 (Array)**。
+
+```javascript
+// trim 應用：去除多餘空格
+let inputStr = "   日本旅遊  ";
+let cleanInput = inputStr.trim(); 
+console.log(cleanInput); // 輸出乾淨的："日本旅遊"
+
+// split 應用：把逗號拆成多個標籤
+let tags = "溫泉,美食,泡湯";
+let tagArray = tags.split(","); 
+// 登愣！字串瞬間變成可以跑 map 或 for 迴圈的陣列了：
+console.log(tagArray); // 輸出：["溫泉", "美食", "泡湯"]
+
+// 補充：如果要把純數字的字串轉成正規數學數字
 let numberStr = "50";
-let trueNumber = parseInt(numberStr); // 變成數學上的數字 50
+let trueNumber = parseInt(numberStr); // 變成可以加減乘除的數字 50
 ```
 
 ### 5.3.2 實戰應用：訂單折扣碼檢查
@@ -164,11 +205,17 @@ let trueNumber = parseInt(numberStr); // 變成數學上的數字 50
 `10 == "10"` 為 true (自動轉型)；`10 === "10"` 為 false (嚴格相等，型別不同，常被推薦使用以避免 bug)。
 </details>
 
-#### 📝 5.3 實作練習：Lab 5.3 目的地區域判斷
-**目標：** 處理使用者輸入的字串。
-1. 宣告一個變數 `inputDestination` 並隨意給定地點，例如 `"  Tokyo "`。
-2. 使用字串方法清除空白並轉為大寫。
-3. 如果處理後等於 `"TOKYO"`，在 Console 印出 `"此為日本航線"`。
+#### 📝 5.3 實作練習：Lab 5.3 字串加工與解構
+**目標 1：機票代碼擷取 (`slice` 的應用)**
+1. 宣告一組包含航空公司代號與航班編號的字串：`let flight = "BR-2132";`。
+2. 請使用 `.slice()` 方法，將前兩個字元的航空公司代號（`"BR"`）切出來。
+3. 再切出後面的編號（`"2132"`），並分別印在 Console 中，例如輸出："航空代碼：BR，航班編號：2132"。
+
+**目標 2：景點標籤陣列化 (`split` 與 `trim` 的應用)**
+1. 宣告一組使用者常常亂打多餘空白的標籤輸入：`let userInput = "  溫泉, 美食, 海景   ";`。
+2. 先使用 `.trim()` 一次性去掉字串最外圍頭尾沒必要的隱藏空白。
+3. 再使用 `.split(",")` 把這串文字依照逗號「劈開」成獨立的陣列。
+4. 將最後得到的乾淨陣列印出來，觀察結果！
 
 ---
 
