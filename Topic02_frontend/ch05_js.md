@@ -48,7 +48,100 @@ JavaScript 可以直接寫在 HTML 的 `<script>` 標籤中：
 除了單純印文字，JS 最強大的地方在於它可以控制 HTML。例如：
 * `document.getElementById('title').innerHTML = "新標題"`：將 ID 為 `title` 的標籤內容換掉。
 
-### 5.1.3 實戰應用：旅遊網站歡迎訊息
+### 5.1.3 基礎概念：JS 載入位置與執行順序
+
+在網頁中，我們有幾種常見的方式來引入 JavaScript，最推薦的是**外部引入 (External)**：
+將 JS 寫在獨立的 `.js` 檔案中，透過 `<script src="app.js"></script>` 將其連結到 HTML。這可以讓 HTML (骨架) 與 JS (肌肉) 乾淨分離，方便日後維護。
+
+**💡 放在 HTML 的哪裡？執行順序的經典陷阱**
+
+瀏覽器在讀取 HTML 時，是**由上往下 (Top-Down)** 依序解析的。當瀏覽器遇到 `<script>` 標籤時，會暫停讀取 HTML，先去執行 JS 程式碼，執行完才繼續往下畫出剩餘的畫面。
+
+這個特性常常導致初學者遇到一個經典錯誤：**「JS 執行了，但找不到 HTML 元素」**。
+
+❌ **錯誤的載入案例 (放在 `<head>` 裡)：**
+如果把操作畫面的 JS 寫在 `<head>`：
+```html
+<head>
+    <script>
+        // ❌ 報錯：TypeError: Cannot read properties of null (reading 'innerHTML')
+        // 因為程式執行到這行時，瀏覽器還沒讀到 <body> 裡的 <h1>，所以找不到 ID 為 title 的元素！
+        document.getElementById('title').innerHTML = "新標題"; 
+    </script>
+</head>
+<body>
+    <h1 id="title">舊標題</h1>
+</body>
+```
+
+✅ **正確的載入位置 (放在 `<body>` 底部)：**
+最保險且傳統的做法，是將 `<script>` 放在 `</body>` 標籤的上一行。確保瀏覽器已經把所有的 HTML 畫完，JS 才能順利找到元素去操作。
+```html
+<body>
+    <h1 id="title">舊標題</h1>
+    
+    <!-- ✅ 放在 body 底部：此時 <h1> 已經存在畫面上了，JS 順利抓取並修改成功 -->
+    <script>
+        document.getElementById('title').innerHTML = "新標題"; 
+    </script>
+</body>
+```
+
+*(補充：現代開發中，常見的做法是將 `<script>` 寫在 `<head>`，並加上 `defer` 屬性，例如 `<script src="app.js" defer></script>`。這會告訴瀏覽器「在背景先下載 JS，但等 HTML 全部畫完再來執行」，這也是官方最推薦的新式做法。)*
+
+### 5.1.4 實戰應用：BMI 計算機 (表單取值與按鈕事件)
+
+在網頁中最常見的互動之一，就是使用者在表單輸入資料後，按下按鈕讓程式進行運算並顯示結果。我們以「BMI 計算機」為例，來了解 JavaScript 如何取得輸入框的值，以及如何透過 `onclick` 事件觸發計算。
+
+**💡 核心觀念：**
+1. **取得輸入值 (`.value`)**：使用 `document.getElementById('id').value` 可以拿到使用者在 `<input>` 內輸入的內容。
+2. **設定輸出值 (`.value`)**：同樣地，若想把計算結果放回畫面上的 `<input>`，也是直接將值賦予給它的 `.value`。
+3. **按鈕事件 (`onclick`)**：在 HTML 的 `<button>` 加上 `onclick="函式名稱()"`，就能告訴瀏覽器「按鈕被點擊時，請去執行指定的 JS 程式碼區塊」。
+
+**📝 BMI 實作範例：**
+```html
+<!-- HTML 表單區域 -->
+<div>
+    <label>身高 (公分):</label>
+    <input type="number" id="heightInput" placeholder="例如: 175">
+    <br><br>
+    
+    <label>體重 (公斤):</label>
+    <input type="number" id="weightInput" placeholder="例如: 70">
+    <br><br>
+    
+    <!-- 點擊按鈕時，觸發名為 calculateBMI 的 JS 程式區塊 (函式) -->
+    <button onclick="calculateBMI()">計算 BMI</button>
+    <br><br>
+    
+    <label>你的 BMI:</label>
+    <!-- 使用 readonly 讓此輸入框只能觀看，無法手動打字 -->
+    <input type="text" id="resultInput" readonly>
+</div>
+
+<!-- JS 邏輯區域 -->
+<script>
+    // 將程式「打包」成一個名叫 calculateBMI 的區塊，等待按鈕點擊才執行
+    function calculateBMI() {
+        // 1. 抓取身高與體重的數值 (取得 .value)
+        let h = document.getElementById('heightInput').value;
+        let w = document.getElementById('weightInput').value;
+        
+        // 2. 進行數學計算 (身高先轉為公尺)
+        let heightInMeters = h / 100;
+        let bmi = w / (heightInMeters * heightInMeters);
+        
+        // 3. 將算出來的結果塞回結果輸入框中 (設定 .value)
+        // toFixed(2) 可以讓數字自動四捨五入到小數點後兩位
+        document.getElementById('resultInput').value = bmi.toFixed(2);
+    }
+</script>
+```
+
+> **⚠️ 經典陷阱提醒**：
+> 絕對不要在一開網頁時，就直接在最外層抓取 `<input>.value` 進行運算！因為網頁剛載入時，使用者根本還沒輸入任何字，你只會抓到空值。**我們必須把「抓取數值」與「計算」的動作，確實包裝在「按鈕被點擊時才觸發」的函式區塊裡。**
+
+### 5.1.5 實戰應用：旅遊網站歡迎訊息
 當我們把這個概念套用到旅遊網站上，就可以在訪客進站時跳出歡迎訊息，或是點擊按鈕時替換首頁的促銷標題。
 
 👉 **[Demo 5.1: 旅遊網歡迎訊息](src/js/demo_basics.html)**
@@ -186,6 +279,33 @@ console.log(tagArray); // 輸出：["溫泉", "美食", "泡湯"]
 let numberStr = "50";
 let trueNumber = parseInt(numberStr); // 變成可以加減乘除的數字 50
 ```
+
+#### 3. 樣板字串 (Template Literals)：字串與變數的完美混搭
+
+在開發網頁時，常常需要把「純文字」跟「變數」串接在一起（例如：顯示「您好，王小明！您的餘額是 100 元」）。
+過去我們只能使用加號 (`+`) 辛苦地把字串和變數拼湊起來，遇到需要換行或包含 HTML 標籤時非常容易寫錯或漏寫雙引號：
+
+```javascript
+let userName = "王小明";
+let balance = 100;
+
+// ❌ 傳統寫法：充滿加號與引號，而且換行還要補上 \n
+let msgOld = "您好，" + userName + "！\n您的餘額是 " + balance + " 元。";
+```
+
+現代 JavaScript 提供了一個超強大的功能：**樣板字串 (Template Literals)**。
+只要把文字最外層的引號換成**反引號 (`` ` ``，位於鍵盤左上角 Esc 下方)**，你就可以直接在字串裡面利用 `${變數名稱}` 來挖洞並塞入變數！這不僅語法更直覺，還天然支援程式碼的直接換行：
+
+```javascript
+// ✅ 現代寫法：使用反引號 (`) 與 ${變數} 來挖洞
+let msgNew = `您好，${userName}！
+您的餘額是 ${balance} 元。`; 
+// 可以直接按 Enter 換行，寫起來超乾淨！
+
+console.log(msgNew);
+```
+
+> **💡 實戰小技巧：** 未來我們在用 JS 動態產生 HTML 標籤（例如用程式碼畫出好幾個 `<div class="card">` 行程卡片）時，使用樣板字串是前端開發中最常被選擇的方式，它能讓 HTML 結構在 JS 檔案中依舊保持極佳的閱讀性！
 
 ### 5.3.2 實戰應用：訂單折扣碼檢查
 當使用者在旅遊網輸入折扣碼時，常常會不小心多打空白、或是沒切換大小寫。我們就利用字串方法來幫使用者自動修正，並且判斷有沒有打對！
@@ -330,7 +450,148 @@ console.log(fruits[0]); // 印出 Apple
 fruits.push("Mango"); // push() 是把新東西推到陣列的最後一格
 ```
 
-### 5.6.2 實戰應用：目的地清單管理
+### 5.6.2 基礎概念：陣列常用操作方法 (Methods)
+
+JavaScript 提供了非常多內建的方法來幫助我們操作陣列，這裡整理最基礎且開發上最常用的幾項：
+
+* **特徵值 `.length`**：取得這條陣列裡的總數量。（注意：因為它是「特徵」而非「動作」，所以不用加小括號）。
+* **新增與移除 `.push() / .pop()`**：
+  * `.push(值)`：將新元素推入到陣列的**最後面**。
+  * `.pop()`：把陣列**最後面**的元素拔除。
+* **重組與轉換 `.toString() / .join()`**：
+  * `.toString()`：將陣列轉為純文字字串（預設會用逗號隔開）。
+  * `.join("自訂符號")`：類似 `toString()`，但威力更強，可以讓你自訂字串中間的「連接符號」。
+* **排序 `.sort()`**：將陣列內容進行排序。（⚠️ 注意陷阱：預設會將內容視作「字串」並依照字母順序排列。如果要拿來排數字，會發生 `10` 排在 `2` 前面的狀況，數字排序需要另外給予判斷規則）。
+
+```javascript
+let cars = ["Toyota", "Honda", "BMW"];
+console.log(cars.length); // 3 (總共三個廠牌)
+
+cars.push("Benz"); // 從後面推進去 -> ["Toyota", "Honda", "BMW", "Benz"]
+cars.pop();        // 從後面拔走一個 -> 又回到原本的 3 個
+
+// 使用 join() 輸出漂亮乾淨的字串
+console.log(cars.join(" - ")); // 轉換成字串："Toyota - Honda - BMW"
+
+// 依字母順序重新排列
+cars.sort(); 
+console.log(cars); // 字母排序："B"MW, "H"onda, "T"oyota
+```
+
+> **💡 進階補充：`.sort()` 與現代新語法 `.toSorted()` 的關鍵差異**
+> 
+> 回想一下前面對字串所做的加工（字串是不可變的 Immutable）。但你有沒有發現，執行 `cars.sort()` 後，**原本的 `cars` 陣列直接被破壞並改變了**？這種會影響原本陣列的方法稱為「破壞性操作 (Mutating)」。
+> 
+> 在現代開發（例如近年很紅的 React 框架）中，非常強調資料的「不可變性 (Immutability)」，也就是極度不喜歡原本的資料被偷偷修改。
+> 
+> 為此，最新的 JavaScript 推出了一系列「非破壞性」的新方法，其中最實用的就是 **`.toSorted()`**。
+> 它與 `.sort()` 的功能完全相同，但它**「絕不更動原本的陣列」**，而是**「回傳一個全新的、已經排好序的陣列」**：
+> 
+> ```javascript
+> let original = [3, 1, 2];
+> 
+> // 使用現代的 toSorted() 來排序，並用一個新變數接住它
+> let sortedArray = original.toSorted(); 
+> 
+> console.log(original);    // [3, 1, 2] (原本的陣列平安無事！)
+> console.log(sortedArray); // [1, 2, 3] (拿到一份嶄新的結果陣列)
+> ```
+
+### 5.6.3 進階觀念：回呼函式 (Callback Function) 與 forEach
+
+在撰寫網頁時（尤其是綁定按鈕事件或進階陣列操作），我們會非常頻繁地聽到「**Callback Function (回呼函式)**」這個詞。
+**什麼是 Callback？** 簡單來說，就是「**把一小段程式碼 (函式)，當成包裹 (參數) 傳給別人，請別人在適當的時機幫你執行**」。
+
+陣列中最好用的 `.forEach()` 方法，就是 Callback 最經典的應用。過去我們要印出所有資料得寫一大串 `for(let i=0...)` 迴圈，現在只要呼叫 `forEach`，並把「你希望每一回合做什麼動作」包裝成函數（Callback），丟給它就好了：
+
+```javascript
+let colors = ["Red", "Green", "Blue"];
+
+// ❌ 傳統的 for 迴圈寫法：
+for (let i = 0; i < colors.length; i++) {
+    console.log("傳統印出: " + colors[i]);
+}
+
+// ✅ 現代 forEach 搭配 Callback：
+// 我們宣告了一個只執行一次的「匿名函式」丟進去給 forEach 重覆呼叫
+colors.forEach(function(color) {
+    console.log("forEach印出: " + color);
+});
+
+// 🔥 更常見的做法：搭配前面學過的「箭頭函式」讓語法極致簡化！
+colors.forEach((color) => {
+    console.log(`箭頭 Callback: ${color}`);
+});
+```
+
+**💡 Callback 的另一個經典應用：自訂 `.sort()` 排序規則**
+前面我們提過 `.sort()` 預設會把陣列內容當作字串、依照字母順序排。如果是數字，這會導致 `10` 排在 `2` 前面。
+為了解決這個問題，我們可以丟一個 Callback 函式（比較器）給 `.sort()`，教它如何判斷誰大誰小！
+
+舉例來說，我們有一群學生，想要改為**「依據體重做排序」**：
+
+```javascript
+let students = [
+    { name: "John", weight: 70 },
+    { name: "Alice", weight: 55 },
+    { name: "Bob", weight: 85 }
+];
+
+// 我們丟入一個比較函式 (Callback)，每次挑兩個學生 (x, y) 出來比體重。
+// 規則：若 x.weight - y.weight 為負數，代表 x 比較輕，x 就會被排在前面（升冪排序由輕到重）！
+students.sort((x, y) => x.weight - y.weight);
+
+// (如果是要「降冪排序」由重到輕，只要改成 y.weight - x.weight 即可)
+
+console.log(students); 
+// 原陣列已重新排序，結果依序為：Alice (55), John (70), Bob (85)
+```
+*(備註：剛學過的現代語法 `.toSorted()` 也完全支援同樣的 Callback 比較器寫法唷！)*
+
+### 5.6.4 進階觀念：陣列高階方法 (map, filter, reduce)
+
+學會了 Callback 之後，JavaScript 提供了三個被譽為「陣列三劍客」的強大高階方法。它們全部都依賴 Callback 運作，並且**都不會改變原本的陣列**（非破壞性），而是回傳全新的結果。這在開發複雜的網頁資料處理與畫面繪製時超級實用！
+
+#### 1. `.map()`：陣列元素的一對一加工
+當你想把陣列裡的「每一個東西」都經過某種加工，並收集成另一個長度相同的全新陣列時使用。
+```javascript
+let prices = [100, 200, 300];
+
+// 把每個價格都打 8 折 (產生新陣列)
+let discountedPrices = prices.map(price => price * 0.8);
+
+console.log(discountedPrices); // [80, 160, 240]
+```
+
+#### 2. `.filter()`：陣列元素的過濾器
+當你想從陣列中「篩選」出符合條件的元素，拋棄不符合的，並把它們集中成一個新陣列時使用。Callback 內部必須提供一個條件，它會被判定為 `true`（保留）或 `false`（丟棄）。
+```javascript
+let scores = [45, 80, 60, 30, 95];
+
+// 只保留大於等於 60 分的及格分數
+let passScores = scores.filter(score => score >= 60);
+
+console.log(passScores); // [80, 60, 95]
+```
+
+#### 3. `.reduce()`：陣列元素的收斂與總計算
+當你想把陣列裡的所有東西「累積」成一個單一結果（例如總和加總）時使用。
+它的 Callback 會接收兩個核心參數：`accumulator`（負責記憶到目前為止的總累積值）與 `currentValue`（目前回合被拿出來處理的元素）。
+```javascript
+let expenses = [150, 60, 800, 20];
+
+// total 負責記憶目前的總和，expense 則是每一次拿出來的開銷
+// 結尾拋出的 `, 0` 代表「總和起點從 0 開始算」
+let totalExpense = expenses.reduce((total, expense) => total + expense, 0);
+
+console.log(`總花費：${totalExpense} 元`); // 1030 
+```
+
+> **💡 實戰小技巧：連鎖技 (Chaining)**
+> 因為 `map` 與 `filter` 執行完畢後都會回傳全新的「陣列」，所以你可以把它們像火車車廂一樣無窮盡地串接起來！
+> 例如：你可以先呼叫 `.filter()` 濾出及格的成績，後面直接加一個 `.map()` 把這些成績加上十分。這種寫法能用一行程式碼取代過去落落長的 `for` 迴圈與 `if` 邏輯！
+
+### 5.6.5 實戰應用：目的地清單管理
 旅遊網有幾十個目的地，我們會將它們統整到陣列裡。還能用進階的方法（如 `filter()`）快速找出符合特定關鍵字的行程。
 
 👉 **[Demo 5.6: 陣列與熱門目的地管理](src/js/demo_arrays.html)**
@@ -370,7 +631,237 @@ console.log(person.name); // John
 person.name = "Alice"; 
 ```
 
-### 5.7.2 實戰應用：旅遊套裝包裹
+### 5.7.2 為什麼需要物件？陣列與物件的資料結構比較
+
+當我們要儲存一群使用者的詳細資料（例如：姓名、身高、體重）時，如果只用前面學過的「陣列」，很快就會遇到管理上的災難。我們用三個人的資料（Nick, Jie, Albert）來比較各種寫法：
+
+**❌ 寫法一：多個一維陣列 (散落的資料)**
+```javascript
+let names = ['Nick', 'Jie', 'Albert'];
+let heights = [172, 177, 176];
+let weights = [67, 65, 72];
+```
+* **痛點**：資料徹底散落。如果我們要找「Jie 的體重」，必須先知道 Jie 在 `names` 的索引是 `1`，再去 `weights[1]` 尋找。若是未來有人被刪除而沒同步改到另一個陣列，體重就會冠到錯的人身上！
+
+**❌ 寫法二：二維陣列 (失去可讀性的神秘數字)**
+```javascript
+let people = [
+    ['Nick', 172, 67],
+    ['Jie', 177, 65],
+    ['Albert', 176, 72]
+];
+```
+* **痛點**：雖然資料總算被綁在一起了，但我們必須用 `people[1][2]` 才能拿到 Jie 的體重。未來的開發者只看程式碼根本猜不到這個 `[2]` 到底代表體重、還是年紀、還是考績？
+
+**✅ 寫法三：陣列結合物件 (現代標準做法)**
+物件最強大的地方在於：它能為每個數值標上明確的「屬性名稱 (Key)」。
+```javascript
+let nick = { name: 'Nick', height: 172, weight: 67 };
+let jie = { name: 'Jie', height: 177, weight: 65 };
+let albert = { name: 'Albert', height: 176, weight: 72 };
+
+// 用一個大陣列把它們裝起來！
+let people = [nick, jie, albert];
+
+// 或是更常見的實戰縮寫方式：
+/*
+let people = [
+    { name: 'Nick', height: 172, weight: 67 },
+    { name: 'Jie', height: 177, weight: 65 },
+...
+]
+*/
+
+// 🎯 超直覺的取值方式：
+console.log(people[1].weight);  // 印出 65
+
+/* === 🚀 進階挑戰：結合陣列找最大值，找出這群人中 BMI 最高的人 === */
+// 先拿第一個人的 BMI 當作預設的「目前最高紀錄」
+let maxBmiPerson = people[0];
+let maxBmi = maxBmiPerson.weight / ((maxBmiPerson.height/100) ** 2);
+
+// 使用前面學過的 forEach 去巡過每一個陣列裡的人
+people.forEach(person => {
+    let currentBmi = person.weight / ((person.height/100) ** 2);
+    // 如果這個人的 BMI 比最高紀錄還高，就把它替換成最高紀錄！
+    if (currentBmi > maxBmi) {
+        maxBmi = currentBmi;
+        maxBmiPerson = person; // 記住這整個人(物件)的資料，非常方便
+    }
+});
+
+console.log(`BMI 最高的是 ${maxBmiPerson.name}，他的 BMI 為 ${maxBmi.toFixed(2)}`);
+// (運算結果會是 Albert 的 BMI 最高，數值為 23.24)
+```
+* **完美解法**：`people[1].weight` 這種寫法就像在讀英文句子一樣自然 ——「找出陣列裡的第 2 個人，接著拿他的體重」。它兼具了陣列方便跑迴圈篩選的優點，以及物件能清楚標示意義的高可讀性，這就是未來你最常遇到的 JSON 資料結構！
+
+### 5.7.3 進階觀念：物件的內建技能 (Method)
+
+在上面找最高 BMI 的挑戰裡，我們每次都需要把 `person.weight` 跟 `person.height` 拉出來重新進行數學運算，稍微有點麻煩。
+但其實，**物件除了可以存文字、數字特徵之外，還能把「函式 (Function)」存進去當作自己的專屬技能！** 當一個函式被綁在物件裡時，我們在術語上將其稱為這個物件的「**方法 (Method)**」。
+
+如果我們讓這些名單資料自帶「結算這筆資料 BMI」的技能呢？
+
+```javascript
+let albert = {
+    name: 'Albert', 
+    height: 176, 
+    weight: 72,
+    
+    // 把一段函式存入，成為專屬於這個物件的方法 (Method)
+    getBMI: function() {
+        // 👉 在物件的方法裡，我們使用特殊的關鍵字 `this` 
+        // `this` 代表「呼叫這個方法的物件自己」
+        // 所以這行可以翻譯成：拿「我自己」的 height 除以 100
+        let hInMeters = this.height / 100;
+        let bmi = this.weight / (hInMeters * hInMeters);
+        
+        return bmi;
+    }
+};
+
+// 呼叫起來就像變魔術！要查 Albert 的 BMI 不用再幫他算了，請他「發動技能」回答你！
+console.log( albert.getBMI().toFixed(2) ); // 印出 23.24
+```
+> **💡 `this` 關鍵字的威力**：
+> 當你在物件的函式中使用 `this`，它就代表「擁有這個方法的物件」。`this.weight` 直接等於「拿我自己的體重」。未來用這種寫法來封裝資料，在開發動態表單時會省下大量拉扯變數的心力！
+
+> **ℹ️ 語法補充：直接使用 `{}` (物件字面值) 與 `class` (類別) 的差異**
+> 我們現在這樣直接寫出 `{ name: 'Albert' }`，稱為「由物件字面值 (Object Literal) 直接生成」。這適合用作產生一次性、單一獨立的資料。
+> 如果在遊戲開發中，你需要量產 100 個屬性結構一模一樣的史萊姆怪物，我們就會改用 **`class (類別)`** 作為藍圖範本，再透過藍圖去把這 100 個物件實體化 (Instances) 製造出來。
+
+**💡 進階觀念：物件裡面還可以包物件 (Nested Objects)**
+物件的屬性值並不僅限於數字或字串，它也可以是「另一個物件」！這種像俄羅斯娃娃一樣的寫法非常普遍，能幫助我們建立非常立體的資料層級：
+```javascript
+let order = {
+    orderId: "A101",
+    customer: {         // 屬性 customer 的值，又是另外一層獨立的物件！
+        name: "Nick",
+        phone: "0912-345-678"
+    },
+    total: 500
+};
+
+// 想抓到這筆訂單客人的電話？直接利用連續的「點」來抓取即可！
+console.log(order.customer.phone); // 印出 0912-345-678
+```
+
+### 5.7.4 走訪物件：for...in 迴圈
+
+前面學過陣列可以用 `forEach` 輕鬆從頭跑到尾。但如果我們遇到一個「物件」，想要把裡面的每一個「屬性 (Key)」與「值 (Value)」都反覆印出來，就要使用專門對付物件的 `for...in` 迴圈：
+
+```javascript
+let infoObj = {
+    name: 'Albert', 
+    height: 176, 
+    weight: 72
+};
+
+// 使用 for...in 將 infoObj 裡的屬性 (Key) 一個個抓出來
+for (let prop in infoObj) {
+    // prop 此時會依序變成 'name', 'height', 'weight' 這些字串
+    // 我們利用中括號 [prop] 的方式來取得動態的對應「值」
+    console.log(`屬性名：${prop}，數值：${infoObj[prop]}`);
+}
+```
+
+> **⚠️ 經典陷阱提醒：`for...of` 與 `for...in` 的關鍵差異**
+> 這兩個迴圈長得很像，但請記得它們處理的主戰場天差地遠：
+> - **`for...of`**：專門用來走訪**陣列裡面的「值 (元素)」**。針對陣列使用，可以正確拿出身高、體重等資料本身。
+> - **`for...in`**：專門用來走訪**物件裡面的「屬性名 (Keys)」**。如果你不小心把 `for...in` 拿去跑陣列，它抓出來的將會是陣列背後隱藏的「索引序號 (Indexes，即 0, 1, 2)」，而不是你想要的陣列數值！切記別搞混！
+
+### 5.7.5 現代資料結構：Set 與 Map
+
+在 ES6 之後，JavaScript 引入了兩種非常實用的全新資料結構：**`Set`** 與 **`Map`**。它們分別解決了傳統陣列與物件在某些情境下的痛點。
+
+#### 1. Set：不會重複的特殊陣列
+**`Set`** 就像是一個「**絕對不能有重複元素**」的陣列。
+- **與 Array 的差異**：陣列可以容納無限多個一樣的值，但 `Set` 內部擁有極嚴格的管控，會**自動剃除重複的資料**。
+- **常見應用**：非常適合拿來做「購物車清單去重」、「搜尋歷史唯一值過濾」。
+
+```javascript
+// 宣告一個 Set，並嘗試放入重複的 "溫泉"
+let uniqueTags = new Set(["溫泉", "美食", "溫泉", "海景"]);
+
+// 登愣！它自動幫你過濾掉第二個 "溫泉" 了！
+console.log(uniqueTags); // Set(3) {'溫泉', '美食', '海景'} 
+
+// 🎯 常見存取方法
+uniqueTags.add("購物");      // 新增元素
+uniqueTags.delete("美食");   // 移除元素
+console.log(uniqueTags.has("海景"));  // 檢查是否存在 (回傳 true)
+console.log(uniqueTags.size);         // 取得總數量 (對標陣列的 length)
+
+// 🏃 走訪 Set (像陣列一樣使用 for...of)
+for (let tag of uniqueTags) {
+    console.log(`標籤：${tag}`);
+}
+```
+
+#### 2. Map：打破限制的進階物件
+傳統的物件 (`{}`) 雖然好用，但它的「屬性名稱 (Key)」**硬性規定只能是字串**。而 **`Map`** 則允許你使用**任何資料型態（甚至可以直接把另一個物件，或是 HTML DOM 元素當作 Key）**來建立關聯表！
+- **與 Object 的差異**：Key 的型態不受限制、內建計算數量的 `size` 屬性，且會精準記憶你塞入資料的「絕對順序」。
+- **常見應用**：當你需要把「某個按鈕元件」與「一段特定的隱藏資料」死死綁在一起時極度強大。
+
+```javascript
+let userCart = new Map();
+
+// 🎯 存取方法：set(建立關聯) 與 get(拿取資料)
+userCart.set("A101", { item: "東京機票", qty: 2 });
+userCart.set("B202", { item: "京都住宿", qty: 3 });
+
+console.log(userCart.get("A101").qty); // 輕鬆印出 2
+console.log(userCart.has("C303"));     // 檢查有沒有這個 Key (回傳 false)
+console.log(userCart.size);            // 查看裡面有幾組對應資料 (結果：2)
+
+// 🏃 走訪 Map (使用 for...of 可以同時把 Key 和 Value 拆解出來)
+for (let [orderId, data] of userCart) {
+    console.log(`訂單 ${orderId}: ${data.item}`);
+}
+```
+
+#### 💡 實戰範例：用 Map 記憶 HTML 按鈕的獨立點擊次數
+這是一個完美體現 `Map` 威力的場景，我們直接把畫面上的「HTML 元素本體」當作 Key，去對應它各自被按了幾次！
+
+```html
+<!-- HTML 區域 -->
+<button id="btnLike">👍 讚</button>
+<button id="btnShare">🔗 分享</button>
+<p id="statusDisplay">尚未點擊</p>
+```
+
+```javascript
+// JS 邏輯區域
+// 1. 抓出畫面上的 HTML 節點
+let btnL = document.getElementById('btnLike');
+let btnS = document.getElementById('btnShare');
+let display = document.getElementById('statusDisplay');
+
+// 2. 建立一個專屬於紀錄次數的 Map
+let clickRecords = new Map();
+
+// 👉 直接拿 HTML 節點 (DOM) 本身當作 Key！幫它們各自設定初始次數 0
+clickRecords.set(btnL, 0); 
+clickRecords.set(btnS, 0);
+
+// 3. 撰寫一個共用的點擊發動技能
+function handleClick(event) {
+    let clickedBtn = event.target; // event.target 可以抓到「這次究竟是哪一個按鈕被點了」
+    
+    // 從 Map 中精準抓出這個按鈕目前的次數，加 1 後重新存回去
+    let currentCount = clickRecords.get(clickedBtn);
+    clickRecords.set(clickedBtn, currentCount + 1);
+    
+    // 即時更新畫面狀態！
+    display.innerHTML = `${clickedBtn.innerHTML} 總共被點了 ${clickRecords.get(clickedBtn)} 次！`;
+}
+
+// 掛載監聽器：當特定按鈕被點擊時，就去執行 handleClick 函式
+btnL.addEventListener('click', handleClick);
+btnS.addEventListener('click', handleClick);
+```
+
+### 5.7.6 實戰應用：旅遊套裝包裹
 一個旅遊行程不單單只有名稱，它還包含了天數、價錢、是否還有名額等。用物件把它們封裝在一起，是現代網頁與伺服器溝通的標準格式。
 
 👉 **[Demo 5.7: 物件與行程資料包裹](src/js/demo_objects.html)**
@@ -382,11 +873,51 @@ person.name = "Alice";
 使用 `JSON.stringify(obj)`。
 </details>
 
-#### 📝 5.7 實作練習：Lab 5.7 定義你的個人頁面
-**目標：** 操作物件結構。
-1. 建立一個包含 `name`, `age`, 與布林值 `isStudent` 的物件代表你自己。
+2. (選擇題) 關於 `for...of` 與 `for...in` 的敘述，下列何者正確？
+   (A) `for...of` 用來走訪物件的屬性，`for...in` 用來走訪陣列的元素
+   (B) `for...in` 可以確保陣列迭代的順序不會被打亂
+   (C) `for...of` 專用於陣列的數值，`for...in` 適合用來取得物件的屬性名稱 (Key)
+   (D) 兩者功能完全相同，可以隨時互換使用
+<details>
+<summary>點擊查看解答</summary>
+(C)
+</details>
+
+3. (選擇題) 關於 `Set` 與 `Map` 的特性，下列哪一個是**錯誤**的？
+   (A) `Set` 會自動過濾掉重複的值，無法放入兩個一樣的字串
+   (B) 使用 `Map` 時，可以把網頁的 HTML 元素直接當作 Key
+   (C) `Map` 和物件 (Object) 完全一樣，它們的 Key 強制只能是字串格式
+   (D) 兩者都是 ES6 以後新增的強大資料結構
+<details>
+<summary>點擊查看解答</summary>
+(C)。Map 的最大威力就是 Key 可以是任何資料型態 (包含陣列、物件或 HTML 節點)，而傳統 Object 的 Key 預設只能是字串。
+</details>
+
+4. (選擇題) 在物件的方法 (Method) 裡面，如果要抓取「屬於這個物件自己」的另一個屬性，我們規定應該使用哪一個關鍵字？
+   (A) self
+   (B) this
+   (C) me
+   (D) target
+<details>
+<summary>點擊查看解答</summary>
+(B)
+</details>
+
+#### 📝 5.7 實作練習：Lab 5.7 物件結構與現代資料操作
+**目標 1：定義個人巢狀頁面**
+1. 建立一個包含 `name`, `age` 的物件代表你自己。
 2. 加上一個名為 `skills` 的屬性，裡面放一個陣列 `["HTML", "CSS"]`。
-3. 把所有的內容利用字串串接或 Console 完整印出來。
+3. 加上一個名為 `contact` 的屬性，裡面「放另外一個物件」，包含你的 `phone` 與 `email`。建立完成後，試著用連續的 `.` 把你的電話單獨印出來。
+
+**目標 2：具備自我計算技能的購物車**
+1. 建立一個叫 `myCart` 的物件，裡面給予 `appleQty: 3` 與 `bananaQty: 2` 這兩個水果數量屬性。
+2. 在該物件內加入一個名為 `getTotal()` 的方法 (Method)。
+3. 在裡面使用 `this` 關鍵字，讓 `getTotal()` 把自己的蘋果與香蕉數量相加，並使用 `return` 丟出數學結果。
+4. 使用 `console.log(myCart.getTotal())` 測試看看它是否能順利印出總數量 `5`。
+
+**目標 3：不重複的 Set 景點清單**
+1. 定義一個全新的 `Set`，並試著塞入這批資料：`["阿里山", "日月潭", "阿里山", "太魯閣"]`。
+2. 利用 `console.log` 觀察這組 Set 的 `.size` 與裡面的內容，看看多餘的阿里山是不是真的被過濾掉而剩下 3 個了！
 
 ---
 
@@ -397,25 +928,55 @@ person.name = "Alice";
 有了以上的 JS 基礎，我們終於準備好去觸摸 HTML 畫面上的標籤了。
 
 ### 5.8.1 基礎概念：尋找元素與綁定事件
-JavaScript 把整個網頁視作一棵樹，我們稱為 **DOM (Document Object Model)**。
-我們可以使用 JS 這個「夾子」去網頁上找出特定按鈕，並在其上安裝「監聽器」(Event Listener)。
+JavaScript 把整個網頁視作一棵樹，我們稱為 **DOM (Document Object Model，檔案物件模型)**。在這棵樹上的每一種 HTML 標籤（例如 `<h1>`, `<button>`, `<div>`），對 JS 來說都是一個能夠被操控的「物件 (Object)」。
+
+我們能使用 JavaScript 提供的主人公 `document` 作為夾子，去網頁上找出特定的標籤，並在上面修改文字、調整樣式，或是安裝「監聽器」(Event Listener)。
 
 ```html
 <button id="myBtn">點我</button>
 <p id="message"></p>
 
 <script>
-    // 1. 抓取按鈕元素
+    // 1. 抓取按鈕元素 (就像用雷達抓怪物一樣鎖定它)
     let btn = document.getElementById("myBtn");
     
-    // 2. 安裝點擊事件監聽器
+    // 2. 安裝事件監聽器！這裡設定「當按鈕被 click 時」，去執行後方那段函式
     btn.addEventListener("click", () => {
         document.getElementById("message").innerHTML = "你點了按鈕！";
     });
 </script>
 ```
 
-### 5.8.2 實戰應用：旅遊購物車與互動清單
+### 5.8.2 必備武器清單：DOM 常見的尋找方法與屬性
+在前端實戰開發中，你 90% 的工作會是這三步：「找到標籤 ➔ 修改長相 ➔ 掛上事件」。以下是我們在現代開發中最常用到的語法清單：
+
+**🕵️‍♂️ 尋找元素的方法 (Methods)**
+* `document.getElementById('id名稱')`：最基本也最常用的夾子，專門精準鎖定單一的 ID 元素。
+* `document.querySelector('CSS選擇器')`：現在**最推薦**的終極武器！支援用大家熟悉的 CSS 語法來抓取（例如抓 class：`.btn`，抓結構：`div > p`）。它會回傳抓到符合條件的「第一個」元素。
+* `document.querySelectorAll('CSS選擇器')`：和上面相似，但威力更大！它會把畫面上「所有」符合條件的元素，全部打包成一個類似陣列的 NodeList 給你。實務上常常搭配 `.forEach()` 一次幫十個按鈕綁上事件！
+
+**✍️ 操控元素的屬性 (Properties)**
+一旦你把元素抓起來存成變數後，就可以讀寫它的以下屬性：
+* `.innerHTML`：替換標籤內的內容（支援寫入 HTML 語法，例如可以塞入 `<strong style="color:red">嗨</strong>`）。
+* `.value`：專屬表單元件！用來取得使用者在 `<input>` 或 `<textarea>` 裡面輸入的字串。
+* `.style`：用來直接改變行內 CSS 樣式。例如 `btn.style.color = "red"`。（⚠️ 需注意特例：像 `font-size` 等有橫線的 CSS 屬性，在 JS 裡面全部要改成駝峰式命名 `fontSize`）。
+* `.classList`：操控標籤 class 的超級好幫手！這在切換版型特效時極度實用：
+  * `.classList.add('active')`：幫元素動態掛上一個新的 class。
+  * `.classList.remove('hidden')`：幫元素拔掉特定的 class。
+  * `.classList.toggle('dark-mode')`：像開關一樣！如果元素原本沒有這個 class 就加上去，有的話就拔掉。（實作深夜模式的絕佳神器！）
+
+### 5.8.3 豐富的互動：常見的滑鼠與鍵盤事件 (Events)
+剛才你看到了在 `addEventListener` 裡面填入的第一個參數 `"click"` 就是事件名稱。網頁之所以生動，就是因為我們能在各種千奇百怪的時機點去觸發效果：
+
+| 事件名稱 (Events) | 什麼時候會發動 (觸發時機)？ | 實戰常見應用場景 |
+|------------------|---------------------------|----------------|
+| `click` | 滑鼠左鍵點擊元素時 | 傳送表單、開啟 / 關閉彈出視窗 (Modal) |
+| `mouseenter` / `mouseleave` | 滑鼠游標「進入」與「離開」元素時 | 製作進階的懸停動畫 (Hover) 或是顯示 tooltip 提示框文字 |
+| `keydown` / `keyup` | 在鍵盤上「按下」或是「放開」按鍵時 | 製作網頁闖關小遊戲的方向鍵控制，或是偵測使用者按下 Enter 鍵直接發送聊天訊息 |
+| `input` | 在 `<input>` 欄位裡面每次打字改變內容時 | 即刻檢查密碼長度是否符合規範、或是做 Google 的「輸入即自動搜尋字詞建議」功能 |
+| `scroll` | 當使用者在視窗或是特定區塊滾動頁面時 | 當畫面往下滑超過 500px，右下角浮現一個「回到頂端」的按鈕 |
+
+### 5.8.4 實戰應用：旅遊購物車與互動清單
 把先前的變數計數器，跟網頁上的結帳按鈕綁在一起，這就是現代電商最核心的「加入購物車」行為！
 
 👉 **[Demo 5.8: DOM 操作與加入購物車](src/js/demo_dom.html)**
