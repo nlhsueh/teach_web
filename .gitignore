@@ -69,3 +69,6 @@ htmlcov/
 *_slide.md
 *_talk.md
 *.pptx
+
+# Agent
+.agent/

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>實作題 Q2：水果購物車 (解答版)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-50 flex items-center justify-center min-h-screen p-4">
+
+  <!-- ✅ 解答版：完整套用 Tailwind CSS 類別與正確 JS 物件處理邏輯 -->
+  <main class="w-full max-w-md bg-white p-8 rounded-3xl shadow-2xl border border-blue-100">
+    <h1 class="text-3xl font-black text-blue-900 mb-8 text-center tracking-tight">🍎 水果鮮選購物車</h1>
+
+    <!-- 選擇區 -->
+    <div class="space-y-4 mb-8 bg-blue-50 p-6 rounded-2xl border border-blue-100">
+      <div>
+        <label class="block text-sm font-black text-blue-400 uppercase tracking-widest mb-2">選擇品項 (Fruit)</label>
+        <select id="fruit-select" class="w-full border-2 border-white rounded-xl p-3 shadow-inner bg-white focus:ring-4 focus:ring-blue-200 outline-none transition-all cursor-pointer">
+          <option value="蘋果">🍎 蘋果 ($50)</option>
+          <option value="香蕉">🍌 香蕉 ($20)</option>
+          <option value="櫻桃">🍒 櫻桃 ($80)</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm font-black text-blue-400 uppercase tracking-widest mb-2">購買數量 (Quantity, 限制 1-10)</label>
+        <!-- 解答：加上屬性 max="10" -->
+        <input type="number" id="qty-input" value="1" min="1" max="10"
+               class="w-full border-2 border-white rounded-xl p-3 shadow-inner bg-white focus:ring-4 focus:ring-blue-200 outline-none font-bold text-gray-700">
+      </div>
+
+      <button onclick="addToCart()" 
+              class="w-full bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-black py-4 rounded-xl shadow-lg shadow-blue-200 transition-all active:scale-95 text-lg">
+        加入購物車 (Add to Cart)
+      </button>
+    </div>
+
+    <!-- 購物車清單區 -->
+    <div id="cart-container" class="bg-gray-50 p-5 rounded-2xl border-2 border-dashed border-gray-200">
+      <h2 class="text-xs font-black text-gray-400 uppercase tracking-widest mb-4 flex items-center">
+        <span class="mr-2">🛒 SHOPPING LIST</span>
+        <div class="h-[1px] bg-gray-200 flex-grow"></div>
+      </h2>
+      <ul id="cart-list" class="space-y-2 max-h-[200px] overflow-y-auto pr-2 custom-scrollbar">
+        <!-- JS 動態生成 li -->
+      </ul>
+      <div id="empty-hint" class="text-xs text-gray-300 text-center py-4">您的清單目前是空的</div>
+    </div>
+
+    <!-- 總計區 -->
+    <div class="mt-8 pt-6 border-t-2 border-gray-50 flex justify-between items-end">
+      <span class="text-gray-400 font-bold uppercase text-xs tracking-tighter">Total Payable</span>
+      <span id="total-price" class="text-5xl font-black text-blue-600 leading-none">$ 0</span>
+    </div>
+  </main>
+
+  <style>
+    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 10px; }
+  </style>
+
+  <script>
+    // ✅ 解答 1：正確的 JSON/Object 資料對應 (Key 必須對應 HTML 的 value)
+    const fruitPrices = {
+      "蘋果": 50,
+      "香蕉": 20,
+      "櫻桃": 80
+    };
+
+    // ✅ 解答 2：宣告在函式外部的全域變數，紀錄累計金額
+    let currentTotal = 0;
+
+    function addToCart() {
+      const select = document.getElementById('fruit-select');
+      const fruitName = select.value;
+      const qty = parseInt(document.getElementById('qty-input').value);
+
+      // ✅ 解舉 3：計算小計
+      const pricePerUnit = fruitPrices[fruitName];
+      
+      // 驗證數量範圍
+      if (isNaN(qty) || qty < 1 || qty > 10) {
+        alert("請輸入正確的購買數量 (1-10)！");
+        return;
+      }
+
+      const subtotal = pricePerUnit * qty;
+
+      // ✅ 更新總計
+      currentTotal += subtotal;
+      document.getElementById('total-price').innerText = "$ " + currentTotal.toLocaleString();
+
+      // ✅ 解答 4：DOM 動態渲染項目
+      const list = document.getElementById('cart-list');
+      const hint = document.getElementById('empty-hint');
+      
+      // 隱藏提示
+      if (hint) hint.classList.add('hidden');
+
+      const li = document.createElement('li');
+      li.className = "flex justify-between items-center bg-white p-3 rounded-xl shadow-sm border border-gray-100 text-sm animate-pop-in";
+      li.innerHTML = `
+        <div class="flex flex-col">
+          <span class="font-bold text-gray-700">${fruitName}</span>
+          <span class="text-xs text-gray-400">數量: ${qty}</span>
+        </div>
+        <div class="text-blue-500 font-black">$${subtotal.toLocaleString()}</div>
+      `;
+      
+      list.appendChild(li);
+
+      // 自動滾動到底部
+      list.scrollTop = list.scrollHeight;
+    }
+  </script>
+
+</body>
+</html>
