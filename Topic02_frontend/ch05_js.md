@@ -144,7 +144,7 @@ JavaScript 可以直接寫在 HTML 的 `<script>` 標籤中：
 ### 5.1.5 實戰應用：旅遊網站歡迎訊息
 當我們把這個概念套用到旅遊網站上，就可以在訪客進站時跳出歡迎訊息，或是點擊按鈕時替換首頁的促銷標題。
 
-👉 **[Demo 5.1: 旅遊網歡迎訊息](src/js/demo_basics.html)**
+👉 **[Demo 5.1: 旅遊網歡迎訊息](https://nlhsueh.github.io/web2026/viewer.html?file=js/demo_basics.html)**
 
 #### 💡 5.1 隨堂測驗
 
@@ -221,7 +221,7 @@ score += 5; // 同上，這是一樣的意思
 ### 5.2.2 實戰應用：旅遊總價計算機
 在旅遊網站中，機位與房價的計算就是運用這些基礎數學運算。我們可以把機票設為 `const`，而使用者的天數設為 `let` 來進行總價計算。
 
-👉 **[Demo 5.2: 旅費計算機](src/js/demo_vars_ops.html)**
+👉 **[Demo 5.2: 旅費計算機](https://nlhsueh.github.io/web2026/viewer.html?file=js/demo_vars_ops.html)**
 
 #### 💡 5.2 隨堂測驗
 
@@ -368,7 +368,7 @@ console.log(msgNew);
 ### 5.3.2 實戰應用：訂單折扣碼檢查
 當使用者在旅遊網輸入折扣碼時，常常會不小心多打空白、或是沒切換大小寫。我們就利用字串方法來幫使用者自動修正，並且判斷有沒有打對！
 
-👉 **[Demo 5.3: 訂單字串處理](src/js/demo_datatypes.html)**
+👉 **[Demo 5.3: 訂單字串處理](https://nlhsueh.github.io/web2026/viewer.html?file=js/demo_datatypes.html)**
 
 #### 💡 5.3 隨堂測驗
 
@@ -456,7 +456,7 @@ for (let i = 1; i <= 5; i++) {
 ### 5.4.3 實戰應用：購票規則與優惠表
 在購票系統中，我們利用 `if / else` 判斷大人與兒童票價；同時，我們也能利用 `for` 迴圈，一口氣算出旅客住 1 到 5 晚分別要付多少錢。
 
-👉 **[Demo 5.4: 購票規則與迴圈佈局](src/js/demo_logic.html)**
+👉 **[Demo 5.4: 購票規則與迴圈佈局](https://nlhsueh.github.io/web2026/viewer.html?file=js/demo_logic.html)**
 
 #### 💡 5.4 隨堂測驗
 
@@ -534,7 +534,7 @@ const addNumbers = (a, b) => a + b;
 ### 5.5.2 實戰應用：會員折扣計算模組
 旅遊系統中，結帳時有一大串計算營業稅、手續費、會員折扣的邏輯。如果把這些寫成函式，主程式看起來就會非常的乾淨又好維護！
 
-👉 **[Demo 5.5: 自訂函式與會員折扣](src/js/demo_functions.html)**
+👉 **[Demo 5.5: 自訂函式與會員折扣](https://nlhsueh.github.io/web2026/viewer.html?file=js/demo_functions.html)**
 
 #### 💡 5.5 隨堂測驗
 
@@ -745,7 +745,7 @@ console.log(`總花費：${totalExpense} 元`); // 1030
 ### 5.6.5 實戰應用：目的地清單管理
 旅遊網有幾十個目的地，我們會將它們統整到陣列裡。還能用進階的方法（如 `filter()`）快速找出符合特定關鍵字的行程。
 
-👉 **[Demo 5.6: 陣列與熱門目的地管理](src/js/demo_arrays.html)**
+👉 **[Demo 5.6: 陣列與熱門目的地管理](https://nlhsueh.github.io/web2026/viewer.html?file=js/demo_arrays.html)**
 
 #### 💡 5.6 隨堂測驗
 
@@ -1050,7 +1050,7 @@ btnS.addEventListener('click', handleClick);
 ### 5.7.6 實戰應用：旅遊套裝包裹
 一個旅遊行程不單單只有名稱，它還包含了天數、價錢、是否還有名額等。用物件把它們封裝在一起，是現代網頁與伺服器溝通的標準格式。
 
-👉 **[Demo 5.7: 物件與行程資料包裹](src/js/demo_objects.html)**
+👉 **[Demo 5.7: 物件與行程資料包裹](https://nlhsueh.github.io/web2026/viewer.html?file=js/demo_objects.html)**
 
 #### 💡 5.7 隨堂測驗
 
@@ -1170,12 +1170,12 @@ JavaScript 把整個網頁視作一棵樹，我們稱為 **DOM (Document Object 
 ### 5.8.4 實戰應用：旅遊購物車與互動清單
 把先前的變數計數器，跟網頁上的結帳按鈕綁在一起，這就是現代電商最核心的「加入購物車」行為！
 
-👉 **[Demo 5.8: DOM 操作與加入購物車](src/js/demo_dom.html)**
+👉 **[Demo 5.8: DOM 操作與加入購物車](https://nlhsueh.github.io/web2026/viewer.html?file=js/demo_dom.html)**
 
 #### 📝 5.8 綜合演練：Lab 5.8 旅遊網站購物車介面 (期中統整)
 這是一個把陣列、DOM 節點繪製、按鈕事件監聽結合在一起的純前端實戰專案：
 
-👉 **[Lab: 旅遊願望清單完整實作](src/js/lab_travel_booking.html)**
+👉 **[Lab: 旅遊願望清單完整實作](https://nlhsueh.github.io/web2026/viewer.html?file=js/lab_travel_booking.html)**
 
 **實作目標：**
 1. 練習在畫面上輸入字串，按下按鈕後將字串存入 JS 的陣列中。
