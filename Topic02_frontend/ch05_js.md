@@ -149,43 +149,55 @@ JavaScript 可以直接寫在 HTML 的 `<script>` 標籤中：
 #### 💡 5.1 隨堂測驗
 
 1️⃣ 在開發網頁時，若想在不干擾使用者介年的情況下查看變數內容或進行除錯，最推薦使用哪種方法？
-
-🇦 `alert()`🇧 `prompt()`🇨 `console.log()`🇩 `document.write()`
+- (A) `alert()`
+- (B) `prompt()`
+- (C) `console.log()`
+- (D) `document.write()`
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇨**  
-解析：`console.log()` 會將訊息輸出至瀏覽器開發者工具（Console）中，不會彈出視窗干擾使用者流程，是現代網頁開發最核心的除錯工具。
+<summary>解答</summary>
+🇨。  
+說明：`console.log()` 會將訊息輸出至瀏覽器開發者工具（Console）中，不會彈出視窗干擾使用者流程，是現代網頁開發最核心的除錯工具。
 </details>
+
+---
 
 2️⃣ 關於引入 JavaScript 的位置與方式，下列敘述何者正確？
-
-🇦 將 JS 寫在 `<head>` 中且不加任何屬性，能確保抓到所有 body 元素  🇧 為了方便管理，應該將所有 JS 硬編碼（Hard-code）在 HTML 標籤內  🇨 外部引入（External）如 `<script src="app.js"></script>` 能讓結構與邏輯分離，利於維護  🇩 瀏覽器讀取 HTML 時是由下往上的，所以腳本應該放最上面
+- (A) 將 JS 寫在 `<head>` 中且不加任何屬性，能確保抓到所有 body 元素
+- (B) 為了方便管理，應該將所有 JS 硬編碼（Hard-code）在 HTML 標籤內
+- (C) 外部引入（External）如 `<script src="app.js"></script>` 能讓結構與邏輯分離，利於維護
+- (D) 瀏覽器讀取 HTML 時是由下往上的，所以腳本應該放最上面
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇨**  
-解析：外部引入是開發大型網站的標準做法，能讓 HTML 專注於結構，JS 專注於邏輯。若 JS 放在 `<head>` 且未加 `defer`，常會發生找不到 HTML 元素的錯誤。
+<summary>解答</summary>
+🇨。  
+說明：外部引入是開發大型網站的標準做法，能讓 HTML 專注於結構，JS 專注於邏輯。若 JS 放在 `<head>` 且未加 `defer`，常會發生找不到 HTML 元素的錯誤。
 </details>
 
-3️⃣ 現代開發中，若要將 `<script>` 放在 `<head>` 卻又希望它在 HTML 解析完後才執行，應加上哪個屬性？
+---
 
-🇦 `async`  🇧 `defer`  🇨 `wait`  🇩 `hold`
+3️⃣ 現代開發中，若要將 `<script>` 放在 `<head>` 卻又希望它在 HTML 解析完後才執行，應加上哪個屬性？
+- (A) `async`
+- (B) `defer`
+- (C) `wait`
+- (D) `hold`
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇧**  
-解析：`defer` 屬性會告訴瀏覽器在背景下載腳本，並等到整個 HTML 文件解析完成後才執行。
+<summary>解答</summary>
+🇧。  
+說明：`defer` 屬性會告訴瀏覽器在背景下載腳本，並等到整個 HTML 文件解析完成後才執行。
 </details>
     
 4️⃣ 安裝 Node.js 後，主要能為網頁開發者帶來什麼便利？
-
-🇦 讓網頁可以在沒有網路的情況下運行  🇧 提供 npm 套件管理工具，輕鬆下載各種開發工具與套件  🇨 自動幫你把 HTML 轉換為 CSS  🇩 強制瀏覽器使用更快的渲染引擎
+- (A) 讓網頁可以在沒有網路的情況下運行
+- (B) 提供 npm 套件管理工具，輕鬆下載各種開發工具與套件
+- (C) 自動幫你把 HTML 轉換為 CSS
+- (D) 強制瀏覽器使用更快的渲染引擎
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇧**  
-解析：Node.js 讓我們能在本機環境執行 JS，其附帶的 npm 是全球最大的程式碼套件庫。
+<summary>解答</summary>
+🇧。  
+說明：Node.js 讓我們能在本機環境執行 JS，其附帶的 npm 是全球最大的程式碼套件庫。
 </details>
 
 #### 📝 5.1 實作練習：Lab 5.1 歡迎訊息
@@ -226,43 +238,59 @@ score += 5; // 同上，這是一樣的意思
 #### 💡 5.2 隨堂測驗
 
 1️⃣ 關於 `let` 與 `const` 的宣告方式，下列敘述何者正確？
-
-🇦 `const` 宣告的變數可以隨時用等號重新賦值  🇧 `let` 用於宣告「常數」，一旦給定初始值就不能更改  🇨 圓周率 PI 或航空公司代號等不會變動的值，應優先使用 `const` 宣告  🇩 兩者功能完全一樣，在現代 JavaScript 中可以隨意互換
+- (A) `const` 宣告的變數可以隨時用等號重新賦值
+- (B) `let` 用於宣告「常數」，一旦給定初始值就不能更改
+- (C) 圓周率 PI 或航空公司代號等不會變動的值，應優先使用 `const` 宣告
+- (D) 兩者功能完全一樣，在現代 JavaScript 中可以隨意互換
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇨**  
-解析：`const` 用於宣告不可變的常數，`let` 用於宣告可變的變數。使用 `const` 能避免程式碼在不經意間被修改，增加程式健壯性。
+<summary>解答</summary>
+🇨。  
+說明：`const` 用於宣告不可變的常數，`let` 用於宣告可變的變數。使用 `const` 能避免程式碼在不經意間被修改，增加程式健壯性。
 </details>
+
+---
 
 2️⃣ 執行以下程式碼後：`let x = 10; x += 5; x *= 2;`，變數 `x` 的最終數值為何？
-
-🇦 15  🇧 30  🇨 25  🇩 20
+- (A) 15
+- (B) 30
+- (C) 25
+- (D) 20
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇧**  
-解析：首先 `10 + 5 = 15`，接著 `15 * 2 = 30`。
+<summary>解答</summary>
+🇧。  
+說明：首先 `10 + 5 = 15`，接著 `15 * 2 = 30`。
 </details>
+
+---
 
 3️⃣ 在 JavaScript 中，下列哪一個變數名稱是「合法」且符合規範的？
-
-🇦 `let 1stPlace = "Win";`  🇧 `let my-variable = 10;`  🇨 `let _userAge = 25;`  🇩 `let let = 100;`
+- (A) `let 1stPlace = "Win";`
+- (B) `let my-variable = 10;`
+- (C) `let _userAge = 25;`
+- (D) `let let = 100;`
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇨**  
-解析：變數名不能以數字開頭 (🇦)，不能包含橫線 (🇧)，且不能使用保留字如 `let` (🇩)。底線或錢字號 `$ `開頭是合法的。
+<summary>解答</summary>
+🇨。  
+說明：變數名不能以數字開頭 (- (A) )，不能包含橫線 (
+- (B) )，且不能使用保留字如 `let` (
+- (D) )。底線或錢字號 `$ `開頭是合法的。
 </details>
 
-4️⃣ 運算式 `10 % 3` 的結果為何？
+---
 
-🇦 3  🇧 1  🇨 0.33  🇩 3.33
+4️⃣ 運算式 `10 % 3` 的結果為何？
+- (A) 3
+- (B) 1
+- (C) 0.33
+- (D) 3.33
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇧**  
-解析：`%` 是取餘數符號。10 除以 3 等於 3 餘 1，因此結果為 1。
+<summary>解答</summary>
+🇧。  
+說明：`%` 是取餘數符號。10 除以 3 等於 3 餘 1，因此結果為 1。
 </details>
 
 #### 📝 5.2 實作練習：Lab 5.2 總價計算
@@ -373,43 +401,57 @@ console.log(msgNew);
 #### 💡 5.3 隨堂測驗
 
 1️⃣ 如果有變數 `let a = "10"; let b = 20;`，執行 `a + b` 的結果為何？
-
-🇦 30  🇧 `"1020"`  🇨 `NaN`  🇩 報錯（Error）
+- (A) 30
+- (B) `"1020"`
+- (C) `NaN`
+- (D) 報錯（Error）
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇧**  
-解析：當「字串」與「數字」使用 `+` 號時，JavaScript 會進行「字串串接（Concatenation）」，將數字轉為字串後拼在一起。若要進行數學加法，需先用 `parseInt()` 將字串轉為數字。
+<summary>解答</summary>
+🇧。  
+說明：當「字串」與「數字」使用 `+` 號時，JavaScript 會進行「字串串接（Concatenation）」，將數字轉為字串後拼在一起。若要進行數學加法，需先用 `parseInt()` 將字串轉為數字。
 </details>
+
+---
 
 2️⃣ 關於相等比較子 `==` 與 `===` 的敘述，下列何者正確？
-
-🇦 `10 == "10"` 會回傳 `false`  🇧 `10 === "10"` 會回傳 `true`，因為兩者值相同  🇨 `===` 稱為嚴格相等，會同時檢查「數值」與「型別」是否一致  🇩 在現代開發中，為了方便自動轉型，應盡量使用 `==`
+- (A) `10 == "10"` 會回傳 `false`
+- (B) `10 === "10"` 會回傳 `true`，因為兩者值相同
+- (C) `===` 稱為嚴格相等，會同時檢查「數值」與「型別」是否一致
+- (D) 在現代開發中，為了方便自動轉型，應盡量使用 `==`
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇨**  
-解析：`==` 會自動轉型（Loose Equality），因此 `10 == "10"` 為 true。而 `===` 不會轉型，因此 `10 === "10"` 為 false。為了避免隱藏 bug，現代開發強烈建議使用 `===`。
+<summary>解答</summary>
+🇨。  
+說明：`==` 會自動轉型（Loose Equality），因此 `10 == "10"` 為 true。而 `===` 不會轉型，因此 `10 === "10"` 為 false。為了避免隱藏 bug，現代開發強烈建議使用 `===`。
 </details>
+
+---
 
 3️⃣ 在 JavaScript 中，字串具有「不可變性（Immutable）」。執行以下程式碼後：`let s = "hello"; s.toUpperCase();`，變數 `s` 的值為何？
-
-🇦 `"HELLO"`  🇧 `"hello"`  🇨 `undefined`  🇩 拋出錯誤
+- (A) `"HELLO"`
+- (B) `"hello"`
+- (C) `undefined`
+- (D) 拋出錯誤
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇧**  
-解析：字串方法如 `toUpperCase()` 會回傳一個「全新」的字串，而不會改變原本的變數。若要更新 `s`，必須寫成 `s = s.toUpperCase();`。
+<summary>解答</summary>
+🇧。  
+說明：字串方法如 `toUpperCase()` 會回傳一個「全新」的字串，而不會改變原本的變數。若要更新 `s`，必須寫成 `s = s.toUpperCase();`。
 </details>
 
-4️⃣ 使用樣板字串（Template Literals）時，應使用哪種符號包裹字串？
+---
 
-🇦 雙引號 `"`  🇧 單引號 `'`  🇨 反引號 `` ` ``  🇩 大括號 `{}`
+4️⃣ 使用樣板字串（Template Literals）時，應使用哪種符號包裹字串？
+- (A) 雙引號 `"`
+- (B) 單引號 `'`
+- (C) 反引號 `` ` ``
+- (D) 大括號 `{}`
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇨**  
-解析：樣板字串必須使用反引號（Backticks）包裹，才能在內部使用 `${}` 語法嵌入變數與表達式。
+<summary>解答</summary>
+🇨。  
+說明：樣板字串必須使用反引號（Backticks）包裹，才能在內部使用 `${}` 語法嵌入變數與表達式。
 </details>
 
 #### 📝 5.3 實作練習：Lab 5.3 字串加工與解構
@@ -461,43 +503,57 @@ for (let i = 1; i <= 5; i++) {
 #### 💡 5.4 隨堂測驗
 
 1️⃣ 在 `for` 或 `while` 迴圈中，若想在特定條件下「直接跳出並終止」整個迴圈，應使用哪個關鍵字？
-
-🇦 `continue`  🇧 `exit`  🇨 `break`  🇩 `stop`
+- (A) `continue`
+- (B) `exit`
+- (C) `break`
+- (D) `stop`
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇨**  
-解析：`break` 會立刻終止迴圈；`continue` 則是跳過本次回合，直接開始下一輪。
+<summary>解答</summary>
+🇨。  
+說明：`break` 會立刻終止迴圈；`continue` 則是跳過本次回合，直接開始下一輪。
 </details>
+
+---
 
 2️⃣ 判斷式 `if (0) { ... }` 裡面的程式碼會被執行嗎？
-
-🇦 會，因為 0 代表程式開始  🇧 不會，因為 0 在布林判定中被視為「假值（Falsy）」  🇨 會，只要有數字就會執行  🇩 不一定，視瀏覽器而定
+- (A) 會，因為 0 代表程式開始
+- (B) 不會，因為 0 在布林判定中被視為「假值（Falsy）」
+- (C) 會，只要有數字就會執行
+- (D) 不一定，視瀏覽器而定
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇧**  
-解析：在 JavaScript 中，數字 `0`、空字串 `""`、`null`、`undefined` 與 `NaN` 都會被視為 `false`。
+<summary>解答</summary>
+🇧。  
+說明：在 JavaScript 中，數字 `0`、空字串 `""`、`null`、`undefined` 與 `NaN` 都會被視為 `false`。
 </details>
+
+---
 
 3️⃣ 關於 `for` 迴圈的語法 `for (A; B; C)`，下列敘述何者正確？
-
-🇦 A 位置放置的是「迴圈繼續的條件」  🇧 B 位置放置的是「每回合結束後的變動」  🇨 C 位置放置的是「計數器的起始設定」  🇩 B 位置若條件為 `false`，迴圈就會停止
+- (A) A 位置放置的是「迴圈繼續的條件」
+- (B) B 位置放置的是「每回合結束後的變動」
+- (C) C 位置放置的是「計數器的起始設定」
+- (D) B 位置若條件為 `false`，迴圈就會停止
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇩**  
-解析：正確結構為 `for (起始設定; 繼續條件; 每回合變動)`。只有當條件 B 為 `true` 時，迴圈才會執行。
+<summary>解答</summary>
+🇩。  
+說明：正確結構為 `for (起始設定; 繼續條件; 每回合變動)`。只有當條件 B 為 `true` 時，迴圈才會執行。
 </details>
 
-4️⃣ 執行 `true && false` 的布林運算結果為何？
+---
 
-🇦 `true`  🇧 `false`  🇨 `undefined`  🇩 `error`
+4️⃣ 執行 `true && false` 的布林運算結果為何？
+- (A) `true`
+- (B) `false`
+- (C) `undefined`
+- (D) `error`
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇧**  
-解析：`&&` (AND) 運算必須兩邊皆為 `true` 結果才會是 `true`。
+<summary>解答</summary>
+🇧。  
+說明：`&&` (AND) 運算必須兩邊皆為 `true` 結果才會是 `true`。
 </details>
 
 #### 📝 5.4 實作練習：Lab 5.4 票價試算表
@@ -539,43 +595,57 @@ const addNumbers = (a, b) => a + b;
 #### 💡 5.5 隨堂測驗
 
 1️⃣ 若一個 JavaScript 函式在執行完畢後沒有撰寫 `return` 關鍵字，則呼叫該函式的回傳結果會是什麼？
-
-🇦 `null`  🇧 `0`  🇨 `undefined`  🇩 拋出語法錯誤
+- (A) `null`
+- (B) `0`
+- (C) `undefined`
+- (D) 拋出語法錯誤
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇨**  
-解析：JS 函式預設若無回傳值，會自動回傳 `undefined`。
+<summary>解答</summary>
+🇨。  
+說明：JS 函式預設若無回傳值，會自動回傳 `undefined`。
 </details>
+
+---
 
 2️⃣ 關於「箭頭函式 (Arrow Functions)」的語法，下列何者「錯誤」？
-
-🇦 `const greet = () => "Hello";` 是正確的簡寫  🇧 箭頭函式比傳統 `function` 語法更簡潔  🇨 如果只有一個參數，可以省略小括號  🇩 箭頭函式一定要寫 `return`，不能省略
+- (A) `const greet = () => "Hello";` 是正確的簡寫
+- (B) 箭頭函式比傳統 `function` 語法更簡潔
+- (C) 如果只有一個參數，可以省略小括號
+- (D) 箭頭函式一定要寫 `return`，不能省略
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇩**  
-解析：若箭頭函式內部只有一行運算式，可以省略大括號與 `return` 關鍵字，它會自動回傳運算結果。
+<summary>解答</summary>
+🇩。  
+說明：若箭頭函式內部只有一行運算式，可以省略大括號與 `return` 關鍵字，它會自動回傳運算結果。
 </details>
+
+---
 
 3️⃣ 為什麼要在程式中使用「函式」？
-
-🇦 為了讓程式跑得更快  🇧 為了封裝重複邏輯，增加程式碼的重用性（Reusable）與可讀性  🇨 為了強制瀏覽器使用特定的記憶體區塊  🇩 為了讓 HTML 檔案變大
+- (A) 為了讓程式跑得更快
+- (B) 為了封裝重複邏輯，增加程式碼的重用性（Reusable）與可讀性
+- (C) 為了強制瀏覽器使用特定的記憶體區塊
+- (D) 為了讓 HTML 檔案變大
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇧**  
-解析：函式能將一段特定的邏輯打包，未來只需呼叫函式名稱即可重複執行，方便維護。
+<summary>解答</summary>
+🇧。  
+說明：函式能將一段特定的邏輯打包，未來只需呼叫函式名稱即可重複執行，方便維護。
 </details>
 
-4️⃣ 呼叫函式時傳入的東西（例如 `addNumbers(5, 10)` 裡的 5 和 10）在術語上稱為什麼？
+---
 
-🇦 選項 (Options)  🇧 參數 (Parameters / Arguments)  🇨 指令 (Commands)  🇩 標籤 (Tags)
+4️⃣ 呼叫函式時傳入的東西（例如 `addNumbers(5, 10)` 裡的 5 和 10）在術語上稱為什麼？
+- (A) 選項 (Options)
+- (B) 參數 (Parameters / Arguments)
+- (C) 指令 (Commands)
+- (D) 標籤 (Tags)
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇧**  
-解析：傳入函式的數值稱為「參數」，函式內部會透過定義好的變數名來接收並運算這些值。
+<summary>解答</summary>
+🇧。  
+說明：傳入函式的數值稱為「參數」，函式內部會透過定義好的變數名來接收並運算這些值。
 </details>
 
 #### 📝 5.5 實作練習：Lab 5.5 折扣計算器函式
@@ -750,43 +820,57 @@ console.log(`總花費：${totalExpense} 元`); // 1030
 #### 💡 5.6 隨堂測驗
 
 1️⃣ 如何取得一個 JavaScript 陣列中總共包含多少個元素？
-
-🇦 `array.size()`  🇧 `array.count`  🇨 `array.length`  🇩 `array.index`
+- (A) `array.size()`
+- (B) `array.count`
+- (C) `array.length`
+- (D) `array.index`
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇨**  
-解析：`.length` 是陣列的內建屬性（注意不是方法，不用加括號），用來讀取陣列的長度。
+<summary>解答</summary>
+🇨。  
+說明：`.length` 是陣列的內建屬性（注意不是方法，不用加括號），用來讀取陣列的長度。
 </details>
+
+---
 
 2️⃣ 下列哪一個陣列運作會將新元素加入到陣列的「最後面」？
-
-🇦 `push()`  🇧 `pop()`  🇨 `shift()`  🇩 `unshift()`
+- (A) `push()`
+- (B) `pop()`
+- (C) `shift()`
+- (D) `unshift()`
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇦**  
-解析：`push()` 從後方推入元素；`pop()` 從後方拔出；`unshift()` 從前方塞入；`shift()` 從前方拔出。
+<summary>解答</summary>
+🇦。  
+說明：`push()` 從後方推入元素；`pop()` 從後方拔出；`unshift()` 從前方塞入；`shift()` 從前方拔出。
 </details>
+
+---
 
 3️⃣ 關於陣列的高階方法 `.map()`，下列敘述何者正確？
-
-🇦 它會直接更改原本的舊陣列，不產生新陣列  🇧 它會篩選掉不符合條件的元素  🇨 它會對每一個元素進行加工，並回傳一個長度相同的新陣列  🇩 它會將陣列收斂計算成一個單一的數值
+- (A) 它會直接更改原本的舊陣列，不產生新陣列
+- (B) 它會篩選掉不符合條件的元素
+- (C) 它會對每一個元素進行加工，並回傳一個長度相同的新陣列
+- (D) 它會將陣列收斂計算成一個單一的數值
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇨**  
-解析：`map()` 是對應加工；`filter()` 是條件篩選；`reduce()` 是收斂加總。這三者皆為非破壞性方法（回傳新結果）。
+<summary>解答</summary>
+🇨。  
+說明：`map()` 是對應加工；`filter()` 是條件篩選；`reduce()` 是收斂加總。這三者皆為非破壞性方法（回傳新結果）。
 </details>
 
-4️⃣ 想從一個包含 100 筆資料的陣列中，快速過濾出「分數大於 60 分」的資料建立新陣列，應優先使用哪種方法？
+---
 
-🇦 `forEach()`  🇧 `map()`  🇨 `filter()`  🇩 `sort()`
+4️⃣ 想從一個包含 100 筆資料的陣列中，快速過濾出「分數大於 60 分」的資料建立新陣列，應優先使用哪種方法？
+- (A) `forEach()`
+- (B) `map()`
+- (C) `filter()`
+- (D) `sort()`
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇨**  
-解析：`filter()` 專門用於篩選出符合條件的子集合。
+<summary>解答</summary>
+🇨。  
+說明：`filter()` 專門用於篩選出符合條件的子集合。
 </details>
 
 #### 📝 5.6 實作練習：Lab 5.6 簡易陣列操作
@@ -1055,43 +1139,57 @@ btnS.addEventListener('click', handleClick);
 #### 💡 5.7 隨堂測驗
 
 1️⃣ 如果要將 JavaScript 物件傳送給伺服器，通常會使用什麼方法將其轉為 JSON 字串？
-
-🇦 `JSON.parse()`  🇧 `JSON.toText()`  🇨 `JSON.stringify()`  🇩 `Object.toString()`
+- (A) `JSON.parse()`
+- (B) `JSON.toText()`
+- (C) `JSON.stringify()`
+- (D) `Object.toString()`
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇨**  
-解析：`JSON.stringify()` 將物件轉為字串（序列化）；`JSON.parse()` 則是將字串轉回物件。
+<summary>解答</summary>
+🇨。  
+說明：`JSON.stringify()` 將物件轉為字串（序列化）；`JSON.parse()` 則是將字串轉回物件。
 </details>
+
+---
 
 2️⃣ 關於 `for...of` 與 `for...in` 的敘述，下列何者正確？
-
-🇦 `for...of` 用來走訪物件的屬性名，`for...in` 用來走訪陣列的數值  🇧 `for...in` 適合用來取得物件的屬性名稱 (Keys)，`for...of` 則專用於陣列的數值內容 (Values)  🇨 兩者功能完全相同，可以隨意互換  🇩 `for...of` 被設計來取代所有的 `forEach` 語法
+- (A) `for...of` 用來走訪物件的屬性名，`for...in` 用來走訪陣列的數值
+- (B) `for...in` 適合用來取得物件的屬性名稱 (Keys)，`for...of` 則專用於陣列的數值內容 (Values)
+- (C) 兩者功能完全相同，可以隨意互換
+- (D) `for...of` 被設計來取代所有的 `forEach` 語法
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇧**  
-解析：`for...in` 抓取的是 Keys（或 Index）；`for...of` 抓取的是實際的元素 Value。對於物件建議使用 `for...in`。
+<summary>解答</summary>
+🇧。  
+說明：`for...in` 抓取的是 Keys（或 Index）；`for...of` 抓取的是實際的元素 Value。對於物件建議使用 `for...in`。
 </details>
+
+---
 
 3️⃣ 關於 `Set` 與 `Map` 的特性，下列哪一個敘述是「錯誤」的？
-
-🇦 `Set` 內部擁有極嚴格的管控，會自動剃除重複的元素  🇧 `Map` 允許你使用任何資料型態（包含 HTML 節點）作為 Key  🇨 物件 (Object) 的 Key 預設只能是字串，而 `Map` 則沒有此限制  🇩 `Set` 只能裝數字，不能裝字串 or 物件
+- (A) `Set` 內部擁有極嚴格的管控，會自動剃除重複的元素
+- (B) `Map` 允許你使用任何資料型態（包含 HTML 節點）作為 Key
+- (C) 物件 (Object) 的 Key 預設只能是字串，而 `Map` 則沒有此限制
+- (D) `Set` 只能裝數字，不能裝字串 or 物件
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇩**  
-解析：`Set` 可以存放任何型別的資料，不僅限於數字，只要內容不重複即可。
+<summary>解答</summary>
+🇩。  
+說明：`Set` 可以存放任何型別的資料，不僅限於數字，只要內容不重複即可。
 </details>
 
-4️⃣ 在物件的方法 (Method) 中，若要存取該物件自己內部的其他屬性，應使用哪個關鍵字？
+---
 
-🇦 `self`  🇧 `this`  🇨 `me`  🇩 `target`
+4️⃣ 在物件的方法 (Method) 中，若要存取該物件自己內部的其他屬性，應使用哪個關鍵字？
+- (A) `self`
+- (B) `this`
+- (C) `me`
+- (D) `target`
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇧**  
-解析：在物件方法中，`this` 指向當前調用該方法的物件實體。
+<summary>解答</summary>
+🇧。  
+說明：在物件方法中，`this` 指向當前調用該方法的物件實體。
 </details>
 
 #### 📝 5.7 實作練習：Lab 5.7 物件結構與現代資料操作
@@ -1185,43 +1283,57 @@ JavaScript 把整個網頁視作一棵樹，我們稱為 **DOM (Document Object 
 #### 💡 5.8 隨堂測驗
 
 1️⃣ 在 JavaScript 術語中，將整個網頁視為一棵可以被操控的樹狀結構，稱為什麼？
-
-🇦 CSS (Cascading Style Sheets)  🇧 DOM (Document Object Model)  🇨 JSON (JavaScript Object Notation)  🇩 API (Application Programming Interface)
+- (A) CSS (Cascading Style Sheets)
+- (B) DOM (Document Object Model)
+- (C) JSON (JavaScript Object Notation)
+- (D) API (Application Programming Interface)
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇧**  
-解析：DOM 是網頁的程式介面，讓 JS 能夠存取並改變 HTML 的內容與結構。
+<summary>解答</summary>
+🇧。  
+說明：DOM 是網頁的程式介面，讓 JS 能夠存取並改變 HTML 的內容與結構。
 </details>
+
+---
 
 2️⃣ 在現代開發中，若要使用 CSS 選擇器（如 `.btn`）來抓取畫面上「第一個」符合條件的元素，應優先使用哪種方法？
-
-🇦 `document.getElementById()`  🇧 `document.getElementsByClassName()`  🇨 `document.querySelector()`  🇩 `document.querySelectorAll()`
+- (A) `document.getElementById()`
+- (B) `document.getElementsByClassName()`
+- (C) `document.querySelector()`
+- (D) `document.querySelectorAll()`
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇨**  
-解析：`querySelector` 是一把終極武器，允許開發者直接套用熟悉的 CSS 選擇器語法來鎖定元素。
+<summary>解答</summary>
+🇨。  
+說明：`querySelector` 是一把終極武器，允許開發者直接套用熟悉的 CSS 選擇器語法來鎖定元素。
 </details>
+
+---
 
 3️⃣ 關於 `.innerHTML` 與 `.value` 的差異，下列論述何者正確？
-
-🇦 `.innerHTML` 專門拿來抓取 `<input>` 裡的文字內容  🇧 `.value` 用來替換標籤內的 HTML 語法（如 `<strong>`）  🇨 抓取輸入框（Input）內的資料應使用 `.value`，修改一般容器標籤內容應使用 `.innerHTML`  🇩 二者完全一樣，可以隨時互換
+- (A) `.innerHTML` 專門拿來抓取 `<input>` 裡的文字內容
+- (B) `.value` 用來替換標籤內的 HTML 語法（如 `<strong>`）
+- (C) 抓取輸入框（Input）內的資料應使用 `.value`，修改一般容器標籤內容應使用 `.innerHTML`
+- (D) 二者完全一樣，可以隨時互換
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇨**  
-解析：`.value` 僅限表單控制項使用；`.innerHTML` 則用於一般標籤的內部 HTML 內容。
+<summary>解答</summary>
+🇨。  
+說明：`.value` 僅限表單控制項使用；`.innerHTML` 則用於一般標籤的內部 HTML 內容。
 </details>
 
-4️⃣ 若想讓按鈕具有互動性，為其「安裝」一個事件監聽器的標準建議語法是什麼？
+---
 
-🇦 `btn.onclick = function() { ... }`  🇧 `btn.addEventListener("click", () => { ... })`  🇨 `btn.setEvent("click")`  🇩 `document.watch(btn)`
+4️⃣ 若想讓按鈕具有互動性，為其「安裝」一個事件監聽器的標準建議語法是什麼？
+- (A) `btn.onclick = function() { ... }`
+- (B) `btn.addEventListener("click", () => { ... })`
+- (C) `btn.setEvent("click")`
+- (D) `document.watch(btn)`
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇧**  
-解析：`addEventListener` 是標準作法，能讓同一個元素監聽多個事件，且程式結構更清晰。
+<summary>解答</summary>
+🇧。  
+說明：`addEventListener` 是標準作法，能讓同一個元素監聽多個事件，且程式結構更清晰。
 </details>
 
 ---

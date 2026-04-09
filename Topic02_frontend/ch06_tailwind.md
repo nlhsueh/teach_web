@@ -95,36 +95,46 @@ Tailwind 的核心是將 CSS 屬性映射到簡短的 Class 名稱。這不僅�
 
 1️⃣ 如何使用 Tailwind 指定一個精密的背景顏色 `#ff5733`？
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：使用任意值語法 `bg-[#ff5733]`**  
-解析：Tailwind 的任意值語法允許你直接在方括號內填入自定義數值或色碼。
+<summary>解答</summary>
+使用任意值語法 `bg-[#ff5733]`。  
+說明：Tailwind 的任意值語法允許你直接在方括號內填入自定義數值或色碼。
 </details>
+
+---
 
 2️⃣ `px-4 py-2` 代表的實際像素是多少？（假設預設 1 個單位 = 4px）
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：16px 水平內距，8px 垂直內距**  
-解析：`px-4` = 4 × 4px = 16px，`py-2` = 2 × 4px = 8px。
+<summary>解答</summary>
+16px 水平內距，8px 垂直內距。  
+說明：`px-4` = 4 × 4px = 16px，`py-2` = 2 × 4px = 8px。
 </details>
+
+---
 
 3️⃣ 下列哪一組 Tailwind class 能讓文字顯示為**深藍色且字體加粗**？
-
-🇦 `color-blue-800 weight-bold`  🇧 `text-blue-800 font-bold`  🇨 `fg-blue-800 text-bold`  🇩 `blue-800 bold`
+- (A) `color-blue-800 weight-bold`  
+- (B) `text-blue-800 font-bold`  
+- (C) `fg-blue-800 text-bold`  
+- (D) `blue-800 bold`
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇧**  
-解析：Tailwind 的文字顏色屬性前綴為 `text-`，字重屬性前綴為 `font-`。
+<summary>解答</summary>
+🇧。  
+說明：Tailwind 的文字顏色屬性前綴為 `text-`，字重屬性前綴為 `font-`。
 </details>
 
-4️⃣ 在 Tailwind 的間距系統中，`m-8` 代表多少像素的外距？（假設預設 1 單位 = 4px）
+---
 
-🇦 8px  🇧 16px  🇨 32px  🇩 64px
+4️⃣ 在 Tailwind 的間距系統中，`m-8` 代表多少像素的外距？（假設預設 1 單位 = 4px）
+- (A) 8px  
+- (B) 16px  
+- (C) 32px  
+- (D) 64px
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇨**  
-解析：`m-8` = 8 × 4px = 32px。
+<summary>解答</summary>
+🇨。  
+說明：`m-8` = 8 × 4px = 32px。
 </details>
 
 ### 6.2.4 動手做：Lab 6.2 旅遊網站標題修改
@@ -177,36 +187,46 @@ Tailwind 讓佈局變得極其直覺，通常透過最外層容器的 Class 就�
 
 1️⃣ `items-center` 和 `justify-center` 在 Flex 容器中的差別？
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：`items-center` 是垂直軸（交錯軸）居中，`justify-center` 是水平軸（主軸）居中**  
-解析：這兩者控制不同維度的對齊。
+<summary>解答</summary>
+`items-center` 是垂直軸（交錯軸）居中，`justify-center` 是水平軸（主軸）居中。  
+說明：這兩者控制不同維度的對齊。
 </details>
+
+---
 
 2️⃣ 想在 Grid 中設定各元素間距為 20px，應該用哪個 Class？
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：`gap-5`**  
-解析：5 × 4px = 20px。
+<summary>解答</summary>
+`gap-5`。  
+說明：5 × 4px = 20px。
 </details>
+
+---
 
 3️⃣ 下列哪一組設定可以讓某個子元素在 3 欄網格中**跨越 2 欄**？
-
-🇦 `grid-cols-2`  🇧 `col-span-2`  🇨 `span-cols-2`  🇩 `col-2`
+- (A) `grid-cols-2`  
+- (B) `col-span-2`  
+- (C) `span-cols-2`  
+- (D) `col-2`
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇧**  
-解析：`col-span-{n}` 用於定義子元素橫跨的欄位數量。
+<summary>解答</summary>
+🇧。  
+說明：`col-span-{n}` 用於定義子元素橫跨的欄位數量。
 </details>
 
-4️⃣ 在 Tailwind 的 Flexbox 中，`flex-col` 的效果等同於原生 CSS 的哪個屬性值？
+---
 
-🇦 `flex-direction: row`  🇧 `flex-wrap: wrap`  🇨 `flex-direction: column`  🇩 `align-items: flex-start`
+4️⃣ 在 Tailwind 的 Flexbox 中，`flex-col` 的效果等同於原生 CSS 的哪個屬性值？
+- (A) `flex-direction: row`  
+- (B) `flex-wrap: wrap`  
+- (C) `flex-direction: column`  
+- (D) `align-items: flex-start`
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇨**  
-解析：`flex-col` 即 `flex-direction: column`，使項目垂直排列。
+<summary>解答</summary>
+🇨。  
+說明：`flex-col` 即 `flex-direction: column`，使項目垂直排列。
 </details>
 
 ### 6.3.4 動手做：Lab 6.3 調整旅遊網站佈局
@@ -254,36 +274,46 @@ Tailwind 讓佈局變得極其直覺，通常透過最外層容器的 Class 就�
 
 1️⃣ 如何讓圖片永遠保持 16:9 比例？
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：使用 `aspect-video`**  
-解析：Tailwind 的 `aspect-ratio` 工具類別可以輕鬆維持元素的長寬比。
+<summary>解答</summary>
+使用 `aspect-video`。  
+說明：Tailwind 的 `aspect-ratio` 工具類別可以輕鬆維持元素的長寬比。
 </details>
+
+---
 
 2️⃣ 如何在滑鼠移入時讓陰影變大？
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：使用 `hover:shadow-2xl`**  
-解析：結合狀態修飾符 `hover:` 與陰影工具類別。
+<summary>解答</summary>
+使用 `hover:shadow-2xl`。  
+說明：結合狀態修飾符 `hover:` 與陰影工具類別。
 </details>
+
+---
 
 3️⃣ 下列哪個 Tailwind class 可以讓一張矩形圖片顯示為**完全圓形**？
-
-🇦 `rounded-xl`  🇧 `rounded-3xl`  🇨 `rounded-full`  🇩 `border-radius-circle`
+- (A) `rounded-xl`  
+- (B) `rounded-3xl`  
+- (C) `rounded-full`  
+- (D) `border-radius-circle`
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇨**  
-解析：`rounded-full` 會套用極大的圓角，在正方形元素上即呈現圓形。
+<summary>解答</summary>
+🇨。  
+說明：`rounded-full` 會套用極大的圓角，在正方形元素上即呈現圓形。
 </details>
 
-4️⃣ 在 Tailwind 中，`ring-2 ring-blue-500/50` 的 `/50` 代表什麼？
+---
 
-🇦 邊框寬度為 50px  🇧 藍色的色階為 50  🇨 顏色的透明度為 50%  🇩 元素的尺寸縮放為 50%
+4️⃣ 在 Tailwind 中，`ring-2 ring-blue-500/50` 的 `/50` 代表什麼？
+- (A) 邊框寬度為 50px  
+- (B) 藍色的色階為 50  
+- (C) 顏色的透明度為 50%  
+- (D) 元素的尺寸縮放為 50%
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇨**  
-解析：斜線後方的數字代表色彩的透明度值（Opacity）。
+<summary>解答</summary>
+🇨。  
+說明：斜線後方的數字代表色彩的透明度值（Opacity）。
 </details>
 
 ### 6.4.4 動手做：Lab 6.4 卡片視覺優化
@@ -350,23 +380,29 @@ Tailwind 讓佈局變得極其直覺，通常透過最外層容器的 Class 就�
 - `lg:grid-cols-3`: 大型螢幕顯示三欄。
 
 1️⃣ 在 Tailwind 的 Mobile First 設計中，`hidden md:block` 代表什麼行為？
-
-🇦 在所有裝置上都隱藏  🇧 只在手機上顯示，平板以上隱藏  🇨 在手機上隱藏，螢幕達 768px 以上才顯示  🇩 在桌機上隱藏，手機上顯示
+- (A) 在所有裝置上都隱藏  
+- (B) 只在手機上顯示，平板以上隱藏  
+- (C) 在手機上隱藏，螢幕達 768px 以上才顯示  
+- (D) 在桌機上隱藏，手機上顯示
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇨**  
-解析：預設為 `hidden`（隱藏），但當螢幕寬度達到 `md` 中型斷點時切換為 `block`（顯示）。
+<summary>解答</summary>
+🇨。  
+說明：預設為 `hidden`（隱藏），但當螢幕寬度達到 `md` 中型斷點時切換為 `block`（顯示）。
 </details>
 
-2️⃣ 以下哪一組 Tailwind class 能讓 Grid 佈局實現「手機 1 欄、平板 2 欄、桌機 4 欄」？
+---
 
-🇦 `grid-cols-1 md:grid-cols-2 lg:grid-cols-4`  🇧 `grid-1 tablet:grid-2 desktop:grid-4`  🇨 `cols-1 cols-md-2 cols-lg-4`  🇩 `grid grid-cols-4 sm:grid-cols-2 xs:grid-cols-1`
+2️⃣ 以下哪一組 Tailwind class 能讓 Grid 佈局實現「手機 1 欄、平板 2 欄、桌機 4 欄」？
+- (A) `grid-cols-1 md:grid-cols-2 lg:grid-cols-4`  
+- (B) `grid-1 tablet:grid-2 desktop:grid-4`  
+- (C) `cols-1 cols-md-2 cols-lg-4`  
+- (D) `grid grid-cols-4 sm:grid-cols-2 xs:grid-cols-1`
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇦**  
-解析：這是最標準的 Mobile First 寫法，從小到大依次覆蓋。
+<summary>解答</summary>
+🇦。  
+說明：這是最標準的 Mobile First 寫法，從小到大依次覆蓋。
 </details>
 
 ### 6.5.4 動手做：Lab 6.5 響應式導覽列
@@ -408,23 +444,29 @@ Tailwind 讓動態效果變得像靜態排版一樣簡單，透過「修飾符�
 - `group-hover:text-white`: 當父容器被 hover 時，標題會變白。這是製作互動卡片的標準做法。
 
 1️⃣ 若要讓「滑鼠懸停於父元素時，子元素的文字顏色改變」，應該在父元素加上哪個 class？
-
-🇦 `hover-group`  🇧 `parent`  🇨 `group`  🇩 `hover:children`
+- (A) `hover-group`  
+- (B) `parent`  
+- (C) `group`  
+- (D) `hover:children`
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇨**  
-解析：在父元素加上 `group`，子元素即可使用 `group-hover:` 修飾符來達成聯動效果。
+<summary>解答</summary>
+🇨。  
+說明：在父元素加上 `group`，子元素即可使用 `group-hover:` 修飾符來達成聯動效果。
 </details>
 
-2️⃣ 以下哪一組 class 可以讓按鈕在點擊（active）時輕微縮小，並有平滑過渡效果？
+---
 
-🇦 `click:scale-95 smooth`  🇧 `active:scale-95 transition-transform`  🇨 `pressed:scale-95 animation-smooth`  🇩 `active:shrink transition`
+2️⃣ 以下哪一組 class 可以讓按鈕在點擊（active）時輕微縮小，並有平滑過渡效果？
+- (A) `click:scale-95 smooth`  
+- (B) `active:scale-95 transition-transform`  
+- (C) `pressed:scale-95 animation-smooth`  
+- (D) `active:shrink transition`
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇧**  
-解析：`active:` 修飾符對應點擊狀態，`transition-transform` 確保動作平滑。
+<summary>解答</summary>
+🇧。  
+說明：`active:` 修飾符對應點擊狀態，`transition-transform` 確保動作平滑。
 </details>
 
 ### 6.6.4 動手做：Lab 6.6 按鈕 Group Hover 效果
@@ -470,8 +512,7 @@ Tailwind 讓動態效果變得像靜態排版一樣簡單，透過「修飾符�
 ### 6.7.3 觀念測驗
 1️⃣ 如果想在自己的 `.card` class 裡面加入 Tailwind 的 `shadow-xl` 和 `rounded-2xl`，應該在 CSS 裡寫什麼？
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：**
+<summary>解答</summary>
 ```css
 .card {
     @apply shadow-xl rounded-2xl;
@@ -479,24 +520,32 @@ Tailwind 讓動態效果變得像靜態排版一樣簡單，透過「修飾符�
 ```
 </details>
 
-2️⃣ 使用 `@apply` 時，`<style>` 標籤必須設定哪個 `type` 屬性，Tailwind CDN 才能正確解析？
+---
 
-🇦 `type="text/css"`  🇧 `type="tailwind/css"`  🇨 `type="text/tailwindcss"`  🇩 `type="application/tailwind"`
+2️⃣ 使用 `@apply` 時，`<style>` 標籤必須設定哪個 `type` 屬性，Tailwind CDN 才能正確解析？
+- (A) `type="text/css"`  
+- (B) `type="tailwind/css"`  
+- (C) `type="text/tailwindcss"`  
+- (D) `type="application/tailwind"`
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇨**  
-解析：使用 CDN 版本時，需指定 `type="text/tailwindcss"` 讓腳本捕捉並編譯自定義 CSS。
+<summary>解答</summary>
+🇨。  
+說明：使用 CDN 版本時，需指定 `type="text/tailwindcss"` 讓腳本捕捉並編譯自定義 CSS。
 </details>
 
-3️⃣ 下列哪種情況**最不適合**使用 `@apply` 抽取 class？
+---
 
-🇦 整個專案中有 10 個按鈕都用相同的樣式  🇧 一個只出現一次的頁面標題  🇨 表單中重複使用的輸入框樣式  🇩 導覽列中多處重複的連結樣式
+3️⃣ 下列哪種情況**最不適合**使用 `@apply` 抽取 class？
+- (A) 整個專案中有 10 個按鈕都用相同的樣式  
+- (B) 一個只出現一次的頁面標題  
+- (C) 表單中重複使用的輸入框樣式  
+- (D) 導覽列中多處重複的連結樣式
 
 <details>
-<summary>按此查看答案與解析</summary>
-**答案：🇧**  
-解析：`@apply` 主要用於減少重複性；若樣式只出現一次，直接寫在 HTML 內反而更好維護。
+<summary>解答</summary>
+🇧。  
+說明：`@apply` 主要用於減少重複性；若樣式只出現一次，直接寫在 HTML 內反而更好維護。
 </details>
 
 ### 6.7.4 動手做：Lab 6.7 新增自定義徽章
