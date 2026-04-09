@@ -499,45 +499,45 @@ Table 中 `border: 1px solid black;` 是一種縮寫，完整的寫法是：
 
 ## 3.6 自我測驗
 
-1. **哪一種標籤最適合用來建立網站的主要導覽列？**
-   <details>
-   <summary>點擊查看答案</summary>
+1. 哪一種標籤最適合用來建立網站的主要導覽列？
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：`<nav>`**  
+    > 解析：`<nav>` 標籤專門用於定義網頁的主要導覽連結區塊，這有利於搜尋引擎與輔助技術理解網頁結構。
+    > </details>
 
-   答案：`<nav>`
+2. 如果想要讓連結在新視窗開啟，應該加上什麼屬性？
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：`target="_blank"`**  
+    > 解析：`target="_blank"` 屬性會告訴瀏覽器在新的分頁或視窗中開啟連結目的地。
+    > </details>
 
-   </details>
+3. 如何讓 `<div>` 標籤在不換行的情況下設定寬高？
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：將其 CSS 設定為 `display: inline-block;`**  
+    > 解析：`inline-block` 結合了行內元素（不換行）與區塊元素（可設定寬高）的特性。
+    > </details>
 
-2. **如果想要讓連結在新視窗開啟，應該加上什麼屬性？**
-   <details>
-   <summary>點擊查看答案</summary>
+4. 在表單中，哪種輸入類型 (type) 適合用於「性別」這種單選題？
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：`radio`**  
+    > 解析：`radio`（單選按鈕）必須搭配相同的 `name` 屬性，才能在同一組選項中實現互斥選取。
+    > </details>
 
-   答案：`target="_blank"`
-
-   </details>
-
-3. **如何讓 `<div>` 標籤在不換行的情況下設定寬高？**
-   <details>
-   <summary>點擊查看答案</summary>
-
-   答案：將其 CSS 設定為 `display: inline-block;`。
-
-   </details>
-
-4. **在表單中，哪種輸入類型 (type) 適合用於「性別」這種單選題？**
-   <details>
-   <summary>點擊查看答案</summary>
-
-   答案：`radio` (需要搭配相同的 `name` 屬性)。
-
-   </details>
-
-5. **`<table>` 中用於標示「標題單元格」與「資料單元格」的標籤分別是？**
-   <details>
-   <summary>點擊查看答案</summary>
-
-   答案：標題為 `<th>`，資料為 `<td>`。
-
-   </details>
+5. `<table>` 中用於標示「標題單元格」與「資料單元格」的標籤分別是？
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：標題為 `<th>`，資料為 `<td>`**  
+    > 解析：`<th>` (Table Header) 預設會加粗且置中，具有檔案語意；`<td>` (Table Data) 用於存放一般數據。
+    > </details>
 
 ---
 

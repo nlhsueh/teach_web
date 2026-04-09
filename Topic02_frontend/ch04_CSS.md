@@ -421,46 +421,69 @@ CSS 提供多種選擇器，讓開發者能夠根據不同條件精確地選擇�
 ### 4.2 測驗題
 
 1. 哪個 CSS 選擇器會選擇所有 `<div>` 標籤的元素？
-   - A. `.div`
-   - B. `#div`
-   - C. `div`
-   - D. `*`
+* 🇦 `.div`
+* 🇧 `#div`
+* 🇨 `div`
+* 🇩 `*`
+
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇨**  
+    > 解析：元素選擇器直接使用標籤名來選取所有該類元素。
+    > </details>
 
 2. 如何選擇 `id="header"` 的元素？
-   - A. `header`
-   - B. `.header`
-   - C. `#header`
-   - D. `*header`
+* 🇦 `header`
+* 🇧 `.header`
+* 🇨 `#header`
+* 🇩 `*header`
+
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇨**  
+    > 解析：在 CSS 中，`#` 符號用於選取具有特定 ID 的元素。
+    > </details>
 
 3. `a:hover` 是哪種類型的選擇器？
-   - A. 簡單選擇器
-   - B. 組合選擇器
-   - C. 偽類選擇器
-   - D. 偽元素選擇器
+* 🇦 簡單選擇器
+* 🇧 組合選擇器
+* 🇨 偽類選擇器
+* 🇩 偽元素選擇器
+
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇨**  
+    > 解析：偽類選擇器用於描述元素的特定狀態（如滑鼠懸停）。
+    > </details>
 
 4. 以下哪一個選擇器會選擇父元素中的第三個 `<p>` 元素？
-   - A. `p:nth-child(3)`
-   - B. `p:nth-of-type(3)`
-   - C. `p:first-child`
-   - D. `p:last-child`
+* 🇦 `p:nth-child(3)`
+* 🇧 `p:nth-of-type(3)`
+* 🇨 `p:first-child`
+* 🇩 `p:last-child`
+
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇦**  
+    > 解析：`nth-child(n)` 會選取父元素中的第 n 個子元素。
+    > </details>
 
 5. 什麼 CSS 選擇器可以根據元素的 `type` 屬性選擇所有 `text` 類型的輸入框？
-   - A. `[type="text"]`
-   - B. `input[type="text"]`
-   - C. `.text`
-   - D. `input`
+* 🇦 `[type="text"]`
+* 🇧 `input[type="text"]`
+* 🇨 `.text`
+* 🇩 `input`
 
-**4.2 測驗題答案：**
-<details>
-<summary>點擊展開看解答</summary>
-
-1. **C** (元素選擇器直接使用標籤名)
-2. **C** (`#` 代表 ID)
-3. **C** (描述元素狀態的是偽類)
-4. **A** (`nth-child(n)` 選擇第 n 個子元素)
-5. **B** (結合元素與屬性選擇器最為精確)
-
-</details>
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇧**  
+    > 解析：結合元素名稱與屬性選擇器（`input[type="text"]`）是最精確的寫法。
+    > </details>
 
 ---
 
@@ -559,46 +582,69 @@ $$Target\ Px / Root\ Px = rem$$
 ### 測驗題
 
 1. 如果使用者在瀏覽器設定中調大字體大小，哪種單位會隨之縮放？
-   - A. `px`
-   - B. `rem`
-   - C. `cm`
-   - D. `pt`
+* 🇦 `px`
+* 🇧 `rem`
+* 🇨 `cm`
+* 🇩 `pt`
+
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇧**  
+    > 解析：`rem` 參考根元素字體大小，會隨系統或瀏覽器設定的縮放而調整。
+    > </details>
 
 2. `em` 單位是相對於誰的字體大小？
-   - A. 根元素 (`<html>`)
-   - B. 視窗高度
-   - C. 父元素
-   - D. 螢幕像素
+* 🇦 根元素 (`<html>`)
+* 🇧 視窗高度
+* 🇨 父元素
+* 🇩 螢幕像素
+
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇨**  
+    > 解析：`em` 的基準點是目前元素的父元素字體大小。
+    > </details>
 
 3. 在瀏覽器預設（16px）下，`2.5rem` 等於多少像素？
-   - A. 32px
-   - B. 40px
-   - C. 20px
-   - D. 48px
+* 🇦 32px
+* 🇧 40px
+* 🇨 20px
+* 🇩 48px
+
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇧**  
+    > 解析：計算公式為 16px × 2.5 = 40px。
+    > </details>
 
 4. 若想製作一個寬度佔滿視窗一半的元素，應使用哪個單位？
-   - A. `50vw`
-   - B. `50vh`
-   - C. `50rem`
-   - D. `50px`
+* 🇦 `50vw`
+* 🇧 `50vh`
+* 🇨 `50rem`
+* 🇩 `50px`
+
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇦**  
+    > 解析：`vw` (Viewport Width) 代表視窗寬度的百分比。
+    > </details>
 
 5. 以下關於 `px` 的敘述何者正確？
-   - A. 它是相對單位，具備高度彈性
-   - B. 它是製作響應式網頁（RWD）最推薦的文字單位
-   - C. 它能精確控制大小，但不利於無障礙設計
-   - D. 它的基準點是父元素的寬度
+* 🇦 它是相對單位，具備高度彈性
+* 🇧 它是製作響應式網頁（RWD）最推薦的文字單位
+* 🇨 它能精確控制大小，但不利於無障礙設計
+* 🇩 它的基準點是父元素的寬度
 
-**4.3 測驗題答案：**
-<details>
-<summary>點擊展開看解答</summary>
-
-1. **B** (`rem` 參考根元素，會隨系統設定縮放)
-2. **C** (`em` 的基準是父元素)
-3. **B** ($16 \times 2.5 = 40$)
-4. **A** (`vw` 代表視窗寬度)
-5. **C** (`px` 是絕對單位，固定不變)
-
-</details>
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇨**  
+    > 解析：`px` 是絕對單位，固定不變，因此無法隨使用者設定縮放文字。
+    > </details>
 
 ---
 
@@ -841,46 +887,69 @@ div {
 ### 測驗題
 
 1. 哪個 CSS 屬性用來設定元素的內邊距？
-   - A. `border`
-   - B. `padding`
-   - C. `margin`
-   - D. `width`
+* 🇦 `border`
+* 🇧 `padding`
+* 🇨 `margin`
+* 🇩 `width`
+
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇧**  
+    > 解析：`padding` 用於設定內容與邊框之間的內部間距。
+    > </details>
 
 2. 若一個元素有 `width: 100px`，`padding: 10px`，`border: 5px solid black`，那麼該元素的總寬度是多少？
-   - A. 100px
-   - B. 120px
-   - C. 130px
-   - D. 150px
+* 🇦 100px
+* 🇧 120px
+* 🇨 130px
+* 🇩 150px
+
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇨**  
+    > 解析：總寬度 = 100 + (10 × 2) + (5 × 2) = 130px。
+    > </details>
 
 3. 在 Flexbox 佈局中，哪個屬性用來設置元素之間的對齊方式？
-   - A. `justify-content`
-   - B. `align-items`
-   - C. `flex-wrap`
-   - D. `align-content`
+* 🇦 `justify-content`
+* 🇧 `align-items`
+* 🇨 `flex-wrap`
+* 🇩 `align-content`
+
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇦**  
+    > 解析：`justify-content` 用於控制彈性項目在主軸（水平方向）上的對齊與空間分配。
+    > </details>
 
 4. 當 CSS 屬性 `box-sizing` 設為 `border-box` 時，元素的總寬度會包含以下哪一項？
-   - A. 內容區域的寬度
-   - B. 內邊距和邊框的尺寸
-   - C. 內邊距和邊框的尺寸會被排除在外
-   - D. 僅內容區域的寬度，邊框會扣除
+* 🇦 內容區域的寬度
+* 🇧 內邊距和邊框的尺寸
+* 🇨 內邊距和邊框的尺寸會被排除在外
+* 🇩 僅內容區域的寬度，邊框會扣除
+
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇧**  
+    > 解析：在 `border-box` 模型下，寬高會包含內容、內距與邊框，使佈局計算更直覺。
+    > </details>
 
 5. Flexbox 佈局中，`flex-wrap: wrap` 的作用是？
-   - A. 隱藏超出容器的元素
-   - B. 強制所有元素在一行顯示
-   - C. 允許元素在容器寬度不足時自動換行
-   - D. 旋轉容器內容
+* 🇦 隱藏超出容器的元素
+* 🇧 強制所有元素在一行顯示
+* 🇨 允許元素在容器寬度不足時自動換行
+* 🇩 旋轉容器內容
 
-**4.4 測驗題答案：**
-<details>
-<summary>點擊展開看解答</summary>
-
-1. **B** (`padding` 設定內邊距，`margin` 是外邊距)
-2. **C** ($100 + 10 \times 2 + 5 \times 2 = 130$)
-3. **A** (`justify-content` 控制主軸對齊)
-4. **B** (`border-box` 將內距與邊框包進寬度內)
-5. **C** (`flex-wrap: wrap` 讓項目換行)
-
-</details>
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇨**  
+    > 解析：`flex-wrap: wrap` 允許當子元素總寬度超過容器時，自動換到下一行顯示。
+    > </details>
 
 ---
 
@@ -1069,46 +1138,69 @@ button:hover {
 ### 測驗題
 
 1. 以下哪個 CSS 屬性可以用來設定元素的背景顏色？
-   - A. `color`
-   - B. `background-color`
-   - C. `border-color`
-   - D. `font-color`
+* 🇦 `color`
+* 🇧 `background-color`
+* 🇨 `border-color`
+* 🇩 `font-color`
+
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇧**  
+    > 解析：`background-color` 屬性專門用於設定元素的背景底色。
+    > </details>
 
 2. 使用 `transition` 時，若希望元素背景顏色在 1 秒內平滑變化，應使用以下哪個屬性？
-   - A. `transition-duration`
-   - B. `transition-property`
-   - C. `transition-timing-function`
-   - D. `transition`
+* 🇦 `transition-duration`
+* 🇧 `transition-property`
+* 🇨 `transition-timing-function`
+* 🇩 `transition`
+
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇩**  
+    > 解析：`transition` 是縮寫屬性，可以一次定義屬性、時長、速度曲線與延遲。
+    > </details>
 
 3. 在 CSS 動畫中，`@keyframes` 用來設定：
-   - A. 動畫的持續時間
-   - B. 動畫的屬性
-   - C. 動畫的起始和結束狀態
-   - D. 動畫的方向
+* 🇦 動畫的持續時間
+* 🇧 動畫的屬性
+* 🇨 動畫的起始和結束狀態
+* 🇩 動畫的方向
+
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇨**  
+    > 解析：`@keyframes` 用於定義動畫在不同百分比（時間點）時的樣式變化。
+    > </details>
 
 4. 如何給文本添加陰影？
-   - A. `box-shadow`
-   - B. `text-shadow`
-   - C. `shadow`
-   - D. `color-shadow`
+* 🇦 `box-shadow`
+* 🇧 `text-shadow`
+* 🇨 `shadow`
+* 🇩 `color-shadow`
+
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇧**  
+    > 解析：針對文字的陰影應使用 `text-shadow`；`box-shadow` 則是用於區塊容器。
+    > </details>
 
 5. 在 `box-sizing: border-box` 佈局中，`width` 屬性會包括：
-   - A. 內容區域、內邊距和邊框
-   - B. 內容區域
-   - C. 內邊距和邊框
-   - D. 內容區域和內邊距
+* 🇦 內容區域、內邊距和邊框
+* 🇧 內容區域
+* 🇨 內邊距和邊框
+* 🇩 內容區域和內邊距
 
-**4.5 測驗題答案：**
-<details>
-<summary>點擊展開看解答</summary>
-
-1. **B** (`background-color` 設定背景顏色)
-2. **D** (`transition` 是包含屬性、時間、速度曲線的縮寫)
-3. **C** (`@keyframes` 定義動畫過程中的狀態)
-4. **B** (`text-shadow` 處理文字陰影)
-5. **A** (`border-box` 寬度 = 內容 + 內距 + 邊框)
-
-</details>
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇦**  
+    > 解析：`border-box` 模式下，設定的寬度即為元素最終的可視總寬度。
+    > </details>
 
 ---
 
@@ -1191,46 +1283,69 @@ button:hover {
 ### 4.6 測驗題
 
 1. 在 RWD 中，`<meta name="viewport">` 標籤的主要作用是什麼？
-   - A. 加快網頁載入速度
-   - B. 控制網頁在行動裝置上的顯示比例與寬度
-   - C. 設定網頁的背景顏色
-   - D. 用於 SEO 優化
+* 🇦 加快網頁載入速度
+* 🇧 控制網頁在行動裝置上的顯示比例與寬度
+* 🇨 設定網頁的背景顏色
+* 🇩 用于 SEO 優化
+
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇧**  
+    > 解析：Viewport 標籤確保瀏覽器根據裝置寬度縮放網頁，是響應式設計的起點。
+    > </details>
 
 2. 以下哪一個 `@media` 規則會選擇「螢幕寬度大於或等於 768px」的裝置？
-   - A. `@media (max-width: 768px)`
-   - B. `@media (width: 768px)`
-   - C. `@media (min-width: 768px)`
-   - D. `@media screen 768`
+* 🇦 `@media (max-width: 768px)`
+* 🇧 `@media (width: 768px)`
+* 🇨 `@media (min-width: 768px)`
+* 🇩 `@media screen 768`
+
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇨**  
+    > 解析：`min-width` 指定了樣式生效的最小寬度門檻。
+    > </details>
 
 3. 「Mobile First」設計模式通常建議使用哪種媒體查詢？
-   - A. `max-width`
-   - B. `min-width`
-   - C. `device-height`
-   - D. `orientation`
+* 🇦 `max-width`
+* 🇧 `min-width`
+* 🇨 `device-height`
+* 🇩 `orientation`
+
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇧**  
+    > 解析：行動優先策略會先寫基本樣式，再用 `min-width` 漸進式地為大螢幕添加規則。
+    > </details>
 
 4. 媒體查詢中的 `and` 關鍵字是用來？
-   - A. 排除特定條件
-   - B. 連接多個媒體特性
-   - C. 僅套用於列印模式
-   - D. 跳過錯誤的 CSS
+* 🇦 排除特定條件
+* 🇧 連接多個媒體特性
+* 🇨 僅套用於列印模式
+* 🇩 跳過錯誤的 CSS
+
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇧**  
+    > 解析：`and` 用於組合多個查詢條件，例如螢幕寬度且橫向。
+    > </details>
 
 5. 在 CSS 中，`100vw` 代表什麼意思？
-   - A. 100 個像素
-   - B. 父元素寬度的 100%
-   - C. 視窗（Viewport）寬度的 100%
-   - D. 字體大小的 100 倍
+* 🇦 100 個像素
+* 🇧 父元素寬度的 100%
+* 🇨 視窗（Viewport）寬度的 100%
+* 🇩 字體大小的 100 倍
 
-**4.6 測驗題答案：**
-<details>
-<summary>點擊展開看解答</summary>
-
-1. **B** (Viewport 確保行動裝置正確縮放)
-2. **C** (`min-width` 代表最小寬度起點)
-3. **B** (從小螢幕開始，用 `min-width` 往大螢幕擴展)
-4. **B** (用於組合條件)
-5. **C** (`vw` = Viewport Width)
-
-</details>
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇨**  
+    > 解析：`vw` 單位的基準點是整個覽視窗的寬度，`100vw` 即佔滿滿寬。
+    > </details>
 
 ---
 
@@ -1279,32 +1394,43 @@ button:hover {
 ### 4.7 測驗題
 
 1. 在 HTML 中使用 `<img src="https://picsum.photos/300/200">`，圖片的寬度是多少？
-   - A. 200px
-   - B. 300px
-   - C. 視窗寬度的 300%
-   - D. 隨機
+* 🇦 200px
+* 🇧 300px
+* 🇨 視窗寬度的 300%
+* 🇩 隨機
+
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇧**  
+    > 解析：Picsum 的 URL 格式預設為 `width/height`。
+    > </details>
 
 2. Lorem Ipsum 的主要用途是什麼？
-   - A. 正規的網頁文案
-   - B. 代碼註釋
-   - C. 填充排版用的假文字
-   - D. SEO 優化關鍵字
+* 🇦 正規的網頁文案
+* 🇧 代碼註釋
+* 🇨 填充排版用的假文字
+* 🇩 SEO 優化關鍵字
+
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇨**  
+    > 解析：Lorem Ipsum 是設計界的通用測試文字，用於在內容尚未定案前測試排版美觀。
+    > </details>
 
 3. 如果想產生 50 個中文字，使用 `ctlorem` 插件應輸入什麼關鍵字？
-   - A. `lorem50`
-   - B. `ctlorem50`
-   - C. `chineselorem50`
-   - D. `text50`
+* 🇦 `lorem50`
+* 🇧 `ctlorem50`
+* 🇨 `chineselorem50`
+* 🇩 `text50`
 
-**4.7 測驗題答案：**
-<details>
-<summary>點擊展開看解答</summary>
-
-1. **B** (Picsum 格式為 `width/height`)
-2. **C** (用於測試排版效果)
-3. **B** (`ctlorem` + 長度)
-
-</details>
+    > <details>
+    > <summary>按此查看答案與解析</summary>
+    >
+    > **答案：🇧**  
+    > 解析：`ctlorem` 是 VS Code 配合插件所使用的中文假文字產生關鍵字。
+    > </details>
 
 ---
 
