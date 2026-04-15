@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="category">
+    <category>
+      <text>$course$/examA/ch05</text>
+    </category>
+  </question>
+
+  <!-- Section 5.1 -->
+  <question type="multichoice">
+    <name><text>ch05_01_01</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，若想在不干擾使用者介面的情況下查看變數內容或進行除錯，最推薦使用哪種方法？ (In JavaScript, what is the best way to view variable content or debug without interfering with the user interface?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>alert()</text></answer>
+    <answer fraction="0"><text>prompt()</text></answer>
+    <answer fraction="100">
+      <text>console.log()</text>
+      <feedback><text>console.log() 會將訊息輸出至瀏覽器開發者工具（Console）中，不會彈出視窗干擾使用者流程。</text></feedback>
+    </answer>
+    <answer fraction="0"><text>document.write()</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>ch05_01_02</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，關於引入 JavaScript 的位置與方式，下列敘述何者正確？ (In JavaScript, which of the following is correct regarding the location and method of including JavaScript?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text><![CDATA[將 JS 寫在 <head> 中且不加任何屬性，能確保抓到所有 body 元素 (Writing JS in <head> without any attributes ensures all body elements are captured)]]></text></answer>
+    <answer fraction="0"><text>為了方便管理，應該將所有 JS 硬編碼（Hard-code）在 HTML 標籤內 (For easy management, all JS should be hard-coded within HTML tags)</text></answer>
+    <answer fraction="100">
+      <text><![CDATA[外部引入（External）如 <script src="app.js"></script> 能讓結構與邏輯分離，利於維護 (External linking like <script src="app.js"></script> separates structure and logic, facilitating maintenance)]]></text>
+      <feedback><text>外部引入是開發大型網站的標準做法，能讓 HTML 專注於結構，JS 專注於邏輯。</text></feedback>
+    </answer>
+    <answer fraction="0"><text>瀏覽器讀取 HTML 時是由下往上的，所以腳本應該放最上面 (The browser reads HTML from bottom to top, so scripts should be placed at the top)</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>ch05_01_03</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，現代開發中若要將 <script> 放在 <head> 卻又希望它在 HTML 解析完後才執行，應加上哪個屬性？ (In JavaScript, which attribute should be added to a <script> tag in the <head> to ensure it executes only after the HTML is parsed?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>async</text></answer>
+    <answer fraction="100">
+      <text>defer</text>
+      <feedback><text>defer 屬性會告訴瀏覽器在背景下載腳本，並等到整個 HTML 文件解析完成後才執行。</text></feedback>
+    </answer>
+    <answer fraction="0"><text>wait</text></answer>
+    <answer fraction="0"><text>hold</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>ch05_01_04</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 Node.js 中，安裝 Node.js 後主要能為網頁開發者帶來什麼便利？ (In Node.js, what is the primary benefit for web developers after installing Node.js?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>讓網頁可以在沒有網路的情況下運行 (Allows web pages to run without internet)</text></answer>
+    <answer fraction="100">
+      <text>提供 npm 套件管理工具，輕鬆下載各種開發工具與套件 (Provides npm package manager to easily download development tools and packages)</text>
+      <feedback><text>Node.js 讓我們能在本機環境執行 JS，其附帶的 npm 是全球最大的程式碼套件庫。</text></feedback>
+    </answer>
+    <answer fraction="0"><text>自動幫你把 HTML 轉換為 CSS (Automatically converts HTML to CSS)</text></answer>
+    <answer fraction="0"><text>強制瀏覽器使用更快的渲染引擎 (Forces the browser to use a faster rendering engine)</text></answer>
+  </question>
+
+  <!-- Section 5.2 -->
+  <question type="multichoice">
+    <name><text>ch05_02_01</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，關於 let 與 const 的宣告方式，下列敘述何者正確？ (In JavaScript, which of the following is correct regarding let and const declarations?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>const 宣告的變數可以隨時用等號重新賦值 (Variables declared with const can be reassigned values at any time using an equals sign)</text></answer>
+    <answer fraction="0"><text>let 用於宣告「常數」，一旦給定初始值就不能更改 (let is used to declare constants, which cannot be changed once assigned an initial value)</text></answer>
+    <answer fraction="100">
+      <text>圓周率 PI 或航空公司代號等不會變動的值，應優先使用 const 宣告 (Values that do not change, such as PI or airline codes, should be declared using const)</text>
+      <feedback><text>const 用於宣告不可變的常數，let 用於宣告可變的變數。</text></feedback>
+    </answer>
+    <answer fraction="0"><text>兩者功能完全一樣，在現代 JavaScript 中可以隨意互換 (Both have identical functions and can be used interchangeably in modern JavaScript)</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>ch05_02_02</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，執行以下程式碼後：`let x = 10; x += 5; x *= 2;`，變數 x 的最終數值為何？ (In JavaScript, what is the final value of x after executing: `let x = 10; x += 5; x *= 2;`?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>15</text></answer>
+    <answer fraction="100"><text>30</text></answer>
+    <answer fraction="0"><text>25</text></answer>
+    <answer fraction="0"><text>20</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>ch05_02_03</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，下列哪一個變數名稱是「合法」且符合規範的？ (In JavaScript, which of the following variable names is legal and follows standard conventions?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>1stPlace</text></answer>
+    <answer fraction="0"><text>my-variable</text></answer>
+    <answer fraction="100"><text>_userAge</text></answer>
+    <answer fraction="0"><text>let</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>ch05_02_04</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，運算式 10 % 3 的結果為何？ (In JavaScript, what is the result of the expression 10 % 3?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>3</text></answer>
+    <answer fraction="100"><text>1</text></answer>
+    <answer fraction="0"><text>0.33</text></answer>
+    <answer fraction="0"><text>3.33</text></answer>
+  </question>
+
+  <!-- Section 5.3 -->
+  <question type="multichoice">
+    <name><text>ch05_03_01</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，如果有變數 let a = "10"; let b = 20;，執行 a + b 的結果為何？ (In JavaScript, if there are variables let a = "10"; let b = 20;, what is the result of a + b?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>30</text></answer>
+    <answer fraction="100">
+      <text>"1020"</text>
+      <feedback><text>當字串與數字使用 + 號時，JavaScript 會進行字串串接。</text></feedback>
+    </answer>
+    <answer fraction="0"><text>NaN</text></answer>
+    <answer fraction="0"><text>Error</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>ch05_03_02</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，關於相等比較子 == 與 === 的敘述，下列何者正確？ (In JavaScript, which of the following is correct regarding the equality operators == and ===?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>10 == "10" 會回傳 false (10 == "10" returns false)</text></answer>
+    <answer fraction="0"><text>10 === "10" 會回傳 true，因為兩者值相同 (10 === "10" returns true because their values are identical)</text></answer>
+    <answer fraction="100">
+      <text>=== 稱為嚴格相等，會同時檢查「數值」與「型別」是否一致 (=== is known as strict equality, checking both value and data type for consistency)</text>
+      <feedback><text>== 會自動轉型，而 === 不會轉型，為了避免隱藏 bug，建議使用 ===。</text></feedback>
+    </answer>
+    <answer fraction="0"><text>在現代開發中，為了方便自動轉型，應盡量使用 == (In modern development, use == as much as possible to facilitate automatic type conversion)</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>ch05_03_03</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，字串具有「不可變性（Immutable）」。執行以下程式碼後：let s = "hello"; s.toUpperCase();，變數 s 的值為何？ (In JavaScript, strings are immutable. After executing: let s = "hello"; s.toUpperCase();, what is the value of variable s?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>"HELLO"</text></answer>
+    <answer fraction="100">
+      <text>"hello"</text>
+      <feedback><text>字串方法會回傳一個全新的字串，而不會改變原本的變數。</text></feedback>
+    </answer>
+    <answer fraction="0"><text>undefined</text></answer>
+    <answer fraction="0"><text>Error</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>ch05_03_04</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，使用樣板字串（Template Literals）時，應使用哪種符號包裹字串？ (In JavaScript, which symbol should be used to wrap a string when using Template Literals?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>雙引號 " (Double quotes ") </text></answer>
+    <answer fraction="0"><text>單引號 ' (Single quotes ') </text></answer>
+    <answer fraction="100">
+      <text>反引號 ` (Backticks `) </text>
+      <feedback><text>樣板字串必須使用反引號包裹，才能在內部使用 ${} 語法。</text></feedback>
+    </answer>
+    <answer fraction="0"><text>大括號 {} (Curly braces {}) </text></answer>
+  </question>
+
+  <!-- Section 5.4 -->
+  <question type="multichoice">
+    <name><text>ch05_04_01</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，在 for 或 while 迴圈中，若想在特定條件下「直接跳出並終止」整個迴圈，應使用哪個關鍵字？ (In JavaScript, which keyword is used to immediately exit and terminate a for or while loop under a specific condition?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>continue</text></answer>
+    <answer fraction="0"><text>exit</text></answer>
+    <answer fraction="100">
+      <text>break</text>
+      <feedback><text>break 會立刻終止迴圈；continue 則是跳過本次回合。</text></feedback>
+    </answer>
+    <answer fraction="0"><text>stop</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>ch05_04_02</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，判斷式 if (0) { ... } 裡面的程式碼會被執行嗎？ (In JavaScript, will the code inside the conditional if (0) { ... } be executed?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>會，因為 0 代表程式開始 (Yes, because 0 represents the start of the program)</text></answer>
+    <answer fraction="100">
+      <text>不會，因為 0 在布林判定中被視為「假值（Falsy）」 (No, because 0 is treated as a Falsy value in Boolean evaluation)</text>
+      <feedback><text>在 JavaScript 中，數字 0、空字串、null、undefined 與 NaN 都會被視為 false。</text></feedback>
+    </answer>
+    <answer fraction="0"><text>會，只要有數字就會執行 (Yes, it executes as long as there is a number)</text></answer>
+    <answer fraction="0"><text>不一定，視瀏覽器而定 (Not necessarily, it depends on the browser)</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>ch05_04_03</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，關於 for 迴圈的語法 for (A; B; C)，下列敘述何者正確？ (In JavaScript, which of the following is correct regarding the for loop syntax for (A; B; C)?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>A 位置放置的是「迴圈繼續的條件」 (Position A is for the loop continuation condition)</text></answer>
+    <answer fraction="0"><text>B 位置放置的是「每回合結束後的變動」 (Position B is for changes after each iteration)</text></answer>
+    <answer fraction="0"><text>C 位置放置的是「計數器的起始設定」 (Position C is for initial counter settings)</text></answer>
+    <answer fraction="100">
+      <text>B 位置若條件為 false，迴圈就會停止 (If the condition at position B is false, the loop will stop)</text>
+      <feedback><text>正確結構為 for (起始設定; 繼續條件; 每回合變動)。</text></feedback>
+    </answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>ch05_04_04</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，執行 true && false 的布林運算結果為何？ (In JavaScript, what is the result of the boolean operation true && false?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>true</text></answer>
+    <answer fraction="100"><text>false</text></answer>
+    <answer fraction="0"><text>undefined</text></answer>
+    <answer fraction="0"><text>error</text></answer>
+  </question>
+
+  <!-- Section 5.5 -->
+  <question type="multichoice">
+    <name><text>ch05_05_01</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，若一個 JavaScript 函式在執行完畢後沒有撰寫 return 關鍵字，則呼叫該函式的回傳結果會是什麼？ (In JavaScript, if a function does not have a return keyword after execution, what will be the returned result of calling that function?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>null</text></answer>
+    <answer fraction="0"><text>0</text></answer>
+    <answer fraction="100">
+      <text>undefined</text>
+      <feedback><text>JS 函式預設若無回傳值，會自動回傳 undefined。</text></feedback>
+    </answer>
+    <answer fraction="0"><text>error</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>ch05_05_02</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，關於「箭頭函式 (Arrow Functions)」的語法，下列何者「錯誤」？ (In JavaScript, which of the following is INCORRECT regarding Arrow Function syntax?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>const greet = () => "Hello"; 是正確的簡寫 (const greet = () => "Hello"; is a correct shorthand)</text></answer>
+    <answer fraction="0"><text>箭頭函式比傳統 function 語法更簡潔 (Arrow functions are more concise than traditional function syntax)</text></answer>
+    <answer fraction="0"><text>如果只有一個參數，可以省略小括號 (Parentheses can be omitted if there is only one parameter)</text></answer>
+    <answer fraction="100">
+      <text>箭頭函式一定要寫 return，不能省略 (Arrow functions must always include return and cannot omit it)</text>
+      <feedback><text>若箭頭函式內部只有一行運算式，可以省略大括號與 return 關鍵字。</text></feedback>
+    </answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>ch05_05_03</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，為什麼要在程式中使用「函式」？ (In JavaScript, why should "functions" be used in a program?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>為了讓程式跑得更快 (To make the program run faster)</text></answer>
+    <answer fraction="100">
+      <text>為了封裝重複邏輯，增加程式碼的重用性（Reusable）與可讀性 (To encapsulate repetitive logic and increase code reusability and readability)</text>
+      <feedback><text>函式能將一段特定的邏輯打包，未來只需呼叫函式名稱即可重複執行。</text></feedback>
+    </answer>
+    <answer fraction="0"><text>為了強制瀏覽器使用特定的記憶體區塊 (To force the browser to use specific memory blocks)</text></answer>
+    <answer fraction="0"><text>為了讓 HTML 檔案變大 (To increase the size of the HTML file)</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>ch05_05_04</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，呼叫函式時傳入的東西在術語上稱為什麼？ (In JavaScript, what is the technical term for the items passed during a function call?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>選項 (Options)</text></answer>
+    <answer fraction="100">
+      <text>參數 (Parameters / Arguments)</text>
+      <feedback><text>傳入函式的數值稱為「參數」，函式內部會透過定義好的變數名來接收。</text></feedback>
+    </answer>
+    <answer fraction="0"><text>指令 (Commands)</text></answer>
+    <answer fraction="0"><text>標籤 (Tags)</text></answer>
+  </question>
+
+  <!-- Section 5.6 -->
+  <question type="multichoice">
+    <name><text>ch05_06_01</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，如何取得一個 JavaScript 陣列中總共包含多少個元素？ (In JavaScript, how do you get the total number of elements contained in an array?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>array.size()</text></answer>
+    <answer fraction="0"><text>array.count</text></answer>
+    <answer fraction="100">
+      <text>array.length</text>
+      <feedback><text>.length 是陣列的內建屬性，用來讀取陣列的長度。</text></feedback>
+    </answer>
+    <answer fraction="0"><text>array.index</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>ch05_06_02</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，下列哪一個陣列運作會將新元素加入到陣列的「最後面」？ (In JavaScript, which array operation will add a new element to the end of an array?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="100">
+      <text>push()</text>
+      <feedback><text>push() 從後方推入元素；pop() 從後方拔出；unshift() 從前方塞入；shift() 從前方拔出。</text></feedback>
+    </answer>
+    <answer fraction="0"><text>pop()</text></answer>
+    <answer fraction="0"><text>shift()</text></answer>
+    <answer fraction="0"><text>unshift()</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>ch05_06_03</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，關於陣列的高階方法 .map()，下列敘述何者正確？ (In JavaScript, which of the following is correct regarding the high-order array method .map()?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>它會直接更改原本的舊陣列，不產生新陣列 (It directly modifies the original array and does not produce a new one)</text></answer>
+    <answer fraction="0"><text>它會篩選掉不符合條件的元素 (It filters out elements that do not match the conditions)</text></answer>
+    <answer fraction="100">
+      <text>它會對每一個元素進行加工，並回傳一個長度相同的新陣列 (It processes each element and returns a new array of the same length)</text>
+      <feedback><text>map() 是對應加工；filter() 是條件篩選；reduce() 是收斂加總。</text></feedback>
+    </answer>
+    <answer fraction="0"><text>它會將陣列收斂計算成一個單一的數值 (It condenses the array into a single calculated value)</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>ch05_06_04</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，想從一個包含 100 筆資料的陣列中，快速過濾出「分數大於 60 分」的資料建立新陣列，應優先使用哪種方法？ (In JavaScript, to quickly filter a 100-item array for scores greater than 60 and create a new array, which method should be used?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>forEach()</text></answer>
+    <answer fraction="0"><text>map()</text></answer>
+    <answer fraction="100">
+      <text>filter()</text>
+      <feedback><text>filter() 專門用於篩選出符合條件的子集合。</text></feedback>
+    </answer>
+    <answer fraction="0"><text>sort()</text></answer>
+  </question>
+
+  <!-- Section 5.7 -->
+  <question type="multichoice">
+    <name><text>ch05_07_01</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，如果要將 JavaScript 物件傳送給伺服器，通常會使用什麼方法將其轉為 JSON 字串？ (In JavaScript, what method is commonly used to convert a JavaScript object into a JSON string for transmission to a server?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>JSON.parse()</text></answer>
+    <answer fraction="0"><text>JSON.toText()</text></answer>
+    <answer fraction="100">
+      <text>JSON.stringify()</text>
+      <feedback><text>JSON.stringify() 將物件轉為字串；JSON.parse() 則是將字串轉回物件。</text></feedback>
+    </answer>
+    <answer fraction="0"><text>Object.toString()</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>ch05_07_02</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，關於 for...of 與 for...in 的敘述，下列何者正確？ (In JavaScript, which of the following is correct regarding for...of and for...in?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>for...of 用來走訪物件的屬性名，for...in 用來走訪陣列的數值 (for...of is for object keys, while for...in is for array values)</text></answer>
+    <answer fraction="100">
+      <text>for...in 適合用來取得物件的屬性名稱 (Keys)，for...of 則專用於陣列的數值內容 (Values) (for...in is suitable for obtaining object property keys, while for...of is dedicated to array values)</text>
+      <feedback><text>for...in 抓取的是 Keys（或 Index）；for...of 抓取的是實際的元素 Value。</text></feedback>
+    </answer>
+    <answer fraction="0"><text>兩者功能完全相同，可以隨意互換 (Both are identical and can be used interchangeably)</text></answer>
+    <answer fraction="0"><text>for...of 被設計來取代所有的 forEach 語法 (for...of was designed to replace all forEach syntax)</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>ch05_07_03</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，關於 Set 與 Map 的特性，下列哪一個敘述是「錯誤」的？ (In JavaScript, which of the following is incorrect regarding the features of Set and Map?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>Set 內部擁有極嚴格的管控，會自動剃除重複的元素 (Set automatically removes duplicate elements)</text></answer>
+    <answer fraction="0"><text>Map 允許你使用任何資料型態（包含 HTML 節點）作為 Key (Map allows any data type, including HTML nodes, as keys)</text></answer>
+    <answer fraction="0"><text>物件 (Object) 的 Key 預設只能是字串，而 Map 則沒有此限制 (Object keys are strings by default, whereas Map has no such restriction)</text></answer>
+    <answer fraction="100">
+      <text>Set 只能裝數字，不能裝字串 or 物件 (Set only stores numbers and cannot store strings or objects)</text>
+      <feedback><text>Set 可以存放任何型別的資料，只要內容不重複即可。</text></feedback>
+    </answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>ch05_07_04</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，在物件的方法 (Method) 中，若要存取該物件自己內部的其他屬性，應使用哪個關鍵字？ (In JavaScript, which keyword should be used within an object method to access other properties belonging to that same object?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>self</text></answer>
+    <answer fraction="100">
+      <text>this</text>
+      <feedback><text>在物件方法中，this 指向當前調用該方法的物件實體。</text></feedback>
+    </answer>
+    <answer fraction="0"><text>me</text></answer>
+    <answer fraction="0"><text>target</text></answer>
+  </question>
+
+  <!-- Section 5.8 -->
+  <question type="multichoice">
+    <name><text>ch05_08_01</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，將整個網頁視為一棵可以被操控的樹狀結構，稱為什麼？ (In JavaScript, what is the term for viewing the entire web page as a controllable tree structure?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>CSS (Cascading Style Sheets)</text></answer>
+    <answer fraction="100">
+      <text>DOM (Document Object Model)</text>
+      <feedback><text>DOM 是網頁的程式介面，讓 JS 能夠存取並改變 HTML 的內容與結構。</text></feedback>
+    </answer>
+    <answer fraction="0"><text>JSON (JavaScript Object Notation)</text></answer>
+    <answer fraction="0"><text>API (Application Programming Interface)</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>ch05_08_02</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，現代開發中若要使用 CSS 選擇器（如 .btn）來抓取畫面上「第一個」符合條件的元素，應優先使用哪種方法？ (In JavaScript, which method is prioritized in modern development to capture the first matching element using a CSS selector such as .btn?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>document.getElementById()</text></answer>
+    <answer fraction="0"><text>document.getElementsByClassName()</text></answer>
+    <answer fraction="100">
+      <text>document.querySelector()</text>
+      <feedback><text>querySelector 是一把終極武器，允許開發者直接套用 CSS 選擇器語法。</text></feedback>
+    </answer>
+    <answer fraction="0"><text>document.querySelectorAll()</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>ch05_08_03</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，關於 .innerHTML 與 .value 的差異，下列論述何者正確？ (In JavaScript, which statement is correct regarding the difference between .innerHTML and .value?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>.innerHTML 專門拿來抓取 <input> 裡的文字內容 (.innerHTML is specifically for getting text from an <input>)</text></answer>
+    <answer fraction="0"><text>.value 用來替換標籤內的 HTML 語法（如 <strong>） (.value is used to replace HTML syntax inside tags like <strong>)</text></answer>
+    <answer fraction="100">
+      <text>抓取輸入框（Input）內的資料應使用 .value，修改一般容器標籤內容應使用 .innerHTML (Use .value to get data from an input box, and .innerHTML to modify general container tag content)</text>
+      <feedback><text>.value 僅限表單控制項使用；.innerHTML 則用於一般標籤的內部 HTML 內容。</text></feedback>
+    </answer>
+    <answer fraction="0"><text>二者完全一樣，可以隨時互換 (Both are identical and can be used interchangeably)</text></answer>
+  </question>
+
+  <question type="multichoice">
+    <name><text>ch05_08_04</text></name>
+    <questiontext format="html">
+      <text><![CDATA[在 JavaScript 中，若想讓按鈕具有互動性，為其「安裝」一個事件監聽器的標準建議語法是什麼？ (In JavaScript, what is the standard recommended syntax for "installing" an event listener to make a button interactive?)]]></text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <answer fraction="0"><text>btn.onclick = function() { ... }</text></answer>
+    <answer fraction="100">
+      <text>btn.addEventListener("click", () => { ... })</text>
+      <feedback><text>addEventListener 是標準作法，能讓同一個元素監聽多個事件。</text></feedback>
+    </answer>
+    <answer fraction="0"><text>btn.setEvent("click")</text></answer>
+    <answer fraction="0"><text>document.watch(btn)</text></answer>
+  </question>
+</quiz>
