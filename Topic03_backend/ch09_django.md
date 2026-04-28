@@ -26,59 +26,84 @@ pwd
 dir
 ```
 
-版本控制
 
-把專案複製到你的電腦
-```
-git clone https://github.com/nlhsueh/nlh_tennis_club.git
-```
-檢查一下目前在的分支
-```
-git branch
-```
-切換到 b01 分支
-```
-git checkout b01
-```
-強制切換到 b01 分支，忽略目前的修改
-```
-git checkout -f b01
-```
-強制清除目前所新增的
-```
-git clearn -fd
-```
 
 ### 9.2.2 Lab01: 安裝與啟動
+
 > [!NOTE]
 > 🏈 You will learn
-> * 如何建立一個虛擬的環境來安裝、執行 django
-> * 如何建立一個 django 的專案
-> * 如何開啟一個 django 的網頁伺服器
+> * 如何建立虛擬環境與安裝 Django
+> * 方法 A：從零開始建立全新專案 (proj101)
+> * 方法 B：從 GitHub 複製現有專案 (nick_tennis_club)
+> * 如何啟動 Django 開發伺服器
 
-See [w3school- django install](https://www.w3schools.com/django/django_getstarted.php)
+---
 
-以下是精簡指令大全：
-建立虛擬環境
+#### 方法 A：建立全新專案 (proj101)
+
+適合想要從頭開始學習配置的同學。
+
+1. **建立並啟動虛擬環境**
+```bash
+# 建立環境
+py -m venv venv101
+
+# 啟動環境 (Windows)
+venv101\Scripts\activate
+# 啟動環境 (Mac/Linux)
+source venv101/bin/activate
 ```
-py -m venv myworld
+
+2. **安裝 Django**
+```bash
+pip install django
 ```
-啟動虛擬環境
+
+3. **建立專案**
+```bash
+django-admin startproject proj101
 ```
-myworld\Scripts\activate.bat
+
+4. **啟動伺服器**
+```bash
+cd proj101
+python manage.py runserver
 ```
-安裝 Django
+
+---
+
+#### 方法 B：複製現有專案 (nick_tennis_club)
+
+適合想要直接執行現成範例進行修改的同學。
+
+1. **複製專案 (Clone)**
+```bash
+git clone https://github.com/nlhsueh/nlh_tennis_club.git
+cd nlh_tennis_club
 ```
-py -m pip install Django
+
+2. **建立並啟動虛擬環境**
+```bash
+# 建立環境
+py -m venv venv
+
+# 啟動環境 (Windows)
+venv\Scripts\activate
+# 啟動環境 (Mac/Linux)
+source venv/bin/activate
 ```
-建立專案
+
+3. **安裝必要套件**
+```bash
+pip install -r requirements.txt
 ```
-django-admin startproject my_tennis_club
+
+4. **啟動伺服器**
+```bash
+python manage.py runserver
 ```
-啟動伺服器
-```
-py manage.py runserver
-```
+
+---
 
 這時候到 `http://127.0.0.1:8000` 就會看到一個被啟動的系統（一個火箭）。表示安裝成功。
 

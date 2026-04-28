@@ -72,3 +72,7 @@ htmlcov/
 
 # Agent
 .agent/
+
+# 排除教學用巢狀 Git 專案
+Topic03_backend/nlh_tennis_club/
+Topic03_backend/tennis_old/
