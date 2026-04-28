@@ -1,16 +1,15 @@
-###### tags: `Web`
 
-# Ch08 Django Application
+# Ch09 Django Application
 
-## Reference
+## 9.1 Reference
 
 * [W3school tutorials- Tennis example](https://www.w3schools.com/django/index.php)
 * [Nienlin Hsueh 投影片](https://docs.google.com/presentation/d/1N1aFjWdkCn0jMXeHF6Af6xw18bIkG-UjRMDRGVtN0IE/edit?usp=sharing)
 * [django docs](https://docs.djangoproject.com/en/5.0/)
 
-## 網球俱樂部 (I)
+## 9.2 網球俱樂部 (I)
 
-#### 基礎
+### 9.2.1 基礎操作
 
 常用目錄相關指令 (windows, cmd terminal)
 ```
@@ -45,7 +44,7 @@ git checkout -f b01
 git clearn -fd
 ```
 
-### Lab01: 安裝與啟動
+### 9.2.2 Lab01: 安裝與啟動
 > [!NOTE]
 > 🏈 You will learn
 > * 如何建立一個虛擬的環境來安裝、執行 django
@@ -74,7 +73,7 @@ py manage.py runserver
 
 這時候到 `http://127.0.0.1:8000` 就會看到一個被啟動的系統（一個火箭）。表示安裝成功。
 
-### Lab02: 用 View-Template say Hello
+### 9.2.3 Lab02: 使用 View-Template
 > [!NOTE]
 > 🏈 You will learn
 > * 使用 django 中的 ulrs, View 和 Template
@@ -99,7 +98,7 @@ py manage.py startapp members
 到 `my_tennis_club/my_tennis_club/settings.py:
 ` 加上新的 app：（**注意**：一定要先執行 startapp 後才能改設定）
 
-```python=
+```python
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -127,7 +126,7 @@ INSTALLED_APPS = [
 
 > my_tennis_club/members/views.py:
 
-```python=
+```python
 from django.http import HttpResponse
 
 def members(request):
@@ -136,7 +135,7 @@ def members(request):
 
 ❓ request 物件提供了哪些資訊？透過 print() 列印出來看看吧
 
-```python=
+```python
 for attr_name in dir(request):
     if not attr_name.startswith('__'):
         attr_value = getattr(request, attr_name)
@@ -154,7 +153,7 @@ for attr_name in dir(request):
 
 > my_tennis_club/my_tennis_club/urls.py:
 
-```python=
+```python
 from django.contrib import admin
 from django.urls import include, path
 
@@ -169,7 +168,7 @@ urlpatterns = [
 > my_tennis_club/members/urls.py: 
 
 **注意**：此 `urls.py` 須自己建立
-```python=
+```python
 from django.urls import path
 from . import views
 
@@ -194,7 +193,7 @@ urlpatterns = [
 
 > my_tennis_club/members/views.py:
 
-```python=
+```python
 from django.http import HttpResponse
 from django.template import loader
 
@@ -217,7 +216,7 @@ def members(request):
 </html>
 ```
 
-### Lab03: 用 MVT 管理與呈現資料
+### 9.2.4 Lab03: MVT 管理與呈現資料
 
 > [!NOTE]
 > 🏈 You will learn
@@ -241,7 +240,7 @@ def members(request):
 * `__str__()` 用來設計該資料被要求顯示時，該如何顯示
 
 
-```python=
+```python
 from django.db import models
 
 class Member(models.Model):
@@ -272,7 +271,7 @@ python manage.py shell
 
 查看資料
 
-```python=
+```python
 from members.models import Member
 Member.objects.all() # check all members
 nick = Member(lastname='Hsueh',
@@ -291,7 +290,7 @@ exec(open('path/to/your/file.py').read())
 
 #### 4. 修改視界回應
 
-```python=
+```python
 from django.http import HttpResponse
 from django.template import loader
 from .models import Member
@@ -310,7 +309,7 @@ def members(request):
 #### 讀取與呈現資料
 
 
-```html=
+```html
 <!DOCTYPE html>
 <html>
 <body>
@@ -334,8 +333,8 @@ def members(request):
 
 See branch **[member](https://github.com/nlhsueh/nlh_tennis_club/tree/member)**
 
-## 網球俱樂部 (II)
-### 資料庫限制
+## 9.3 網球俱樂部 (II)
+### 9.3.1 資料庫限制
 
 在設計資料庫時，為了確保資料的**完整性 (Integrity)** 和**有效性 (Validity)**，我們需要定義各種限制 (Constraints)。這些限制會在資料庫層級強制執行，防止不符合規則的資料被寫入。
 
@@ -503,7 +502,7 @@ See branch **[member](https://github.com/nlhsueh/nlh_tennis_club/tree/member)**
 
 合理地使用資料庫的各種限制對於建立一個健壯、可靠的應用程式至關重要。它們有助於確保資料的準確性、一致性和完整性。Django 的模型定義提供了方便的方式來聲明這些限制，並且 Django 的 ORM 會在與資料庫互動時考慮這些限制。在設計模型時，仔細思考每個欄位的限制，將有助於避免後續的資料問題。
 
-### Lab04: 管理者與欄位設定
+### 9.3.2 Lab04: 管理者與欄位設定
 > [!NOTE]
 > 🏈 You will learn
 > * 如何建立一個管理者 (admin) 的帳號和密碼
@@ -534,7 +533,7 @@ admin.site.register(Member)
 * `IntegerField`
 * `DateField`
 
-```python=
+```python
 class Member(models.Model):
    firstname = models.CharField(max_length=255)
    lastname = models.CharField(max_length=255)
@@ -543,7 +542,7 @@ class Member(models.Model):
 ```
 
 `DateField` 的生成方法- 透過字串
-```python=
+```python
 from members.models import Member
 x = Member.objects.all()[0]
 x.phone = 5551234
@@ -556,13 +555,13 @@ x.save()
 2. 設定一個預設值
 3. 先改為可以 null, 增加欄位資料後再改回來
 
-:point_right: [See w3school- django update model](https://www.w3schools.com/django/django_update_model.php)
+👉 [See w3school- django update model](https://www.w3schools.com/django/django_update_model.php)
 
-:point_right: [See django doc- more data types](https://docs.djangoproject.com/en/5.0/ref/models/fields/)
+👉 [See django doc- more data types](https://docs.djangoproject.com/en/5.0/ref/models/fields/)
 
 #### 資料欄位的延伸設定
 
-```python=
+```python
 firstname = models.CharField(max_length=255,
                             null=True,
                             blank=True)
@@ -584,12 +583,12 @@ firstname = models.CharField(max_length=255,
 | editable       | 表示字串是否可以在管理界面中編輯。預設為 True。              |
 | error_messages | 定義自定義錯誤消息的字典，用於定義錯誤的顯示。               |
 
-:point_right: [See geeksforgeeks- CharField](https://www.geeksforgeeks.org/charfield-django-models/)
+👉 [See geeksforgeeks- CharField](https://www.geeksforgeeks.org/charfield-django-models/)
 
 🏀 在資料庫 model 中，加上 `unique`, `verbose_name`, `help_text`, `error_message` 等參數，觀察在 admin 頁面的變化。 
 
 ❓ 說明以下含義：
-```python=
+```python
 phone = models.IntegerField(null=True, 
                             blank=True,
                             verbose_name='電話')
@@ -604,7 +603,7 @@ joined_date = models.DateField(null=True,
 
 See branch **[admin](https://github.com/nlhsueh/nlh_tennis_club/tree/admin)**
 
-### Lab05: 細節資料與擴充頁面
+### 9.3.3 Lab05: 細節資料與擴充頁面
 
 > [!NOTE]
 > 🏈 You will learn
@@ -621,7 +620,7 @@ Template:
 > `my_tennis_club/members/templates/details.html`:
 
 呈現某一個會員的資料
-```html=
+```html
 <!DOCTYPE html>
 <html>
 <body>
@@ -639,7 +638,7 @@ View:
 
 透過 `Member.objects.get(id = id)` 來獲得`id` 的資訊，然後傳過去`details.html`。注意 `details` 有兩個參數，第二個是 `id`:
 
-```python=
+```python
 def details(request, id):
   mymember = Member.objects.get(id = id)
   template = loader.get_template('details.html')
@@ -653,7 +652,7 @@ def details(request, id):
 
 > `my_tennis_club/members/urls.py:`
 
-```python=
+```python
 from django.urls import path
 from . import views
 
@@ -670,8 +669,8 @@ urlpatterns = [
 修改 `all_member.html`, 添加 `a` 標記，做出連接：
 > `my_tennis_club/members/templates/all_members.html:`
 
-:point_right: 重點在第 9 行的 `a` 標記
-```html=
+👉 重點在第 9 行的 `a` 標記
+```html
 <!DOCTYPE html>
 <html>
 <body>
@@ -694,7 +693,7 @@ urlpatterns = [
 
 > my_tennis_club/members/templates/master.html:
 
-```html=
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -715,7 +714,7 @@ urlpatterns = [
 
 > `my_tennis_club/members/templates/all_members.html:`
 
-```html=
+```html
 {% extends "master.html" %}
 
 {% block title %}
@@ -740,7 +739,7 @@ urlpatterns = [
 
 > `my_tennis_club/members/templates/details.html:`
 
-```html=
+```html
 {% extends "master.html" %}
 
 {% block title %}
@@ -761,21 +760,21 @@ urlpatterns = [
 
 下圖是一個結構的示意（S在此表示一個頁面)，三角形的符號表示一個擴充。
 
-```plantuml
-struct master.html {
-    - {abstract} title
-    - {abstract} content
-}
-
-struct all_members.html extends master.html
-struct details.html extends master.html
-all_members.html .>  details.html
-
+```mermaid
+classDiagram
+    class `master.html` {
+        <<abstract>>
+        title
+        content
+    }
+    `all_members.html` --|> `master.html`
+    `details.html` --|> `master.html`
+    `all_members.html` ..> `details.html`
 ```
 
 See branch **[details](https://github.com/nlhsueh/nlh_tennis_club/tree/details)**
 
-### Lab06: 主畫面
+### 9.3.4 Lab06: 主畫面
 
 > [!NOTE]
 > 🏈 You will do
@@ -794,7 +793,7 @@ See branch **[index](https://github.com/nlhsueh/nlh_tennis_club/tree/index)**
 
 ❓ 如果不想用預設的 404.html, 該如何設定？ (Ans: see [here](https://www.geeksforgeeks.org/how-to-fix-page-not-found-404-django/))
 
-### Lab07: 查詢會員
+### 9.3.5 Lab07: 查詢會員
 > [!NOTE]
 > 🏈 You will learn
 > * 如何設計一個輸入表單，和後端的 django 互動
@@ -805,7 +804,7 @@ See branch **[index](https://github.com/nlhsueh/nlh_tennis_club/tree/index)**
 #### lab7.1 查詢頁面
 > check_member.html: 
 
-```html=
+```html
 <form action="" method="GET">
   <label for="last_name">Last name:</label><br>
   <input type="text" id="last_name" name="last_name"><br><br>
@@ -813,7 +812,8 @@ See branch **[index](https://github.com/nlhsueh/nlh_tennis_club/tree/index)**
 </form> 
 ```
 或是由後端來做，設計一個 [CheckMemberForm](https://github.com/nlhsueh/nlh_tennis_club/blob/form_get/members/forms.py) - 它是 `forms.Form` 的子類別：
-```html=
+
+```html
 <form action = "" method = "GET">
     {{ form.as_p }}
     <input type="submit" value='Submit'>
@@ -821,29 +821,24 @@ See branch **[index](https://github.com/nlhsueh/nlh_tennis_club/tree/index)**
 ```
 * `as_p` 是將 form 用 p 元件來呈現，其他還有 `as_table`, `as_list`
 
-```plantuml
-struct urls.py <<URL>>{
-    check_member
-}
+```mermaid
+graph LR
+    urls["urls.py (URL)"]
+    views["views (VIEW)"]
+    check_form["CheckMemberForm (forms.Form)"]
+    check_html["check_member.html (TEMPLATE)"]
+    checked_html["checked_member.html (TEMPLATE)"]
 
-struct views <<VIEW>> {
-    + check_member(request)
-}
-
-class CheckMemberForm extends forms.Form {
-    last_name: forms.CharField
-}
-struct check_member.html <<TEMPLATE>>
-struct checked_member.html <<TEMPLATE>>
-urls.py --> views: check_member
-
-views -> check_member.html:GET
-check_member.html -> views:submit
-views --> checked_member.html
-views ..> CheckMemberForm
-check_member.html ..> CheckMemberForm
+    urls -- check_member --> views
+    views -- GET --> check_html
+    check_html -- submit --> views
+    views --> checked_html
+    views -.-> check_form
+    check_html -.-> check_form
 ```
+
 #### lab7.2 路由設定
+
 加上新的路由到 [urls.py](https://github.com/nlhsueh/nlh_tennis_club/blob/form_get/members/urls.py)
 ```python
 path('members/check_member', views.check_member, name='check_member'),
@@ -855,7 +850,7 @@ path('members/check_member', views.check_member, name='check_member'),
 * 第一次呼叫 [views.check_member](https://github.com/nlhsueh/nlh_tennis_club/blob/form_get/members/views.py), 是由 urls 導向過來的，`request.method` 是 `GET`, 但 `request.GET` 是空的。此時我們引導到 [check_member.html](https://github.com/nlhsueh/nlh_tennis_club/blob/form_get/members/templates/check_member.html)
 * 當使用者在 `check_member.html` 中輸入 `last_name` 的值並提交後，會再次執行 `views.check_member`, 此時 `request.GET` 會包含使用者在 form 中所填寫的值。我們透過 `Member.objects.filter()` 來找到所有符合條件的物件，在引導到 [checked_members.html](https://github.com/nlhsueh/nlh_tennis_club/blob/form_get/members/templates/checked_members.html).
 
-### Lab08: 用表單新增會員
+### 9.3.6 Lab08: 用表單新增會員
 
 > [!NOTE]
 > 🏈 You will learn
@@ -873,48 +868,33 @@ path('members/check_member', views.check_member, name='check_member'),
     * 如果是 GET 請求，將之轉到 `new_member.html`
 5. 無論成功或失敗，都引導到 [new_member_result.html](https://github.com/nlhsueh/nlh_tennis_club/blob/form_post/members/templates/new_member_result.html)
 
-```plantuml
-struct urls.py {
-    new_member
-}
+```mermaid
+graph TD
+    urls["urls.py"]
+    views["views"]
+    form["NewMemberForm (ModelForm)"]
+    meta["Meta"]
+    member["Member (Model)"]
+    new_html["new_member.html"]
+    res_html["new_member_result.html"]
 
-struct views {
-    + new_member(request)
-}
-
-class NewMemberForm extends forms.ModelForm {}
-class Meta {
-    model
-    fields
-    widget
-    labels    
-}
-NewMemberForm *-> Meta
-class Member extends Model {
-    last_name: forms.CharField
-    first_name: forms.CharField
-    phone: forms.Integer
-    joined_date: forms.DateField    
-}
-Meta ..> Member
-struct new_member.html
-struct new_member_result.html
-urls.py --> views: new_member
-
-views -> new_member.html: GET
-new_member.html -> views: POST
-views --> new_member_result.html
-views ..> NewMemberForm
-new_member.html ..> NewMemberForm
+    urls -- new_member --> views
+    form -- contains --> meta
+    meta -.-> member
+    views -- GET --> new_html
+    new_html -- POST --> views
+    views --> res_html
+    views -.-> form
+    new_html -.-> form
 ```
 See [branch **form_post**](https://github.com/nlhsueh/nlh_tennis_club/tree/form_post)
 
 
 ❓ 輸入的時候如果要一些表單檢查的話該怎麼做？例如 joined_date 不可晚於今天。[Hint](https://www.geeksforgeeks.org/python-form-validation-using-django/)。
 
-## 網球俱樂部 (III)
+## 9.4 網球俱樂部 (III)
 
-### ex01_age: tag if
+### 9.4.1 ex01_age: tag if
 > [!NOTE]
 > 🏈 年齡分組
 > * 在 model 中為會員增加一個欄位 age
@@ -924,17 +904,18 @@ See [branch **form_post**](https://github.com/nlhsueh/nlh_tennis_club/tree/form_
 > * template tag: if
 > * `py manage.py makemigrations`; `py manage.py migrate`
 > 
-```plantuml
-class Member {
-    - lastname
-    - firstname
-    - phone
-    - joined_date
-    - age
-}
+```mermaid
+classDiagram
+    class Member {
+        lastname
+        firstname
+        phone
+        joined_date
+        age
+    }
 ```
 Code:
-```html=
+```html
 {% for x in mymembers %}
     {% if x.age < 20 %}
         <li><a href="details/{{ x.id }}">{{ x.firstname }} 
@@ -947,7 +928,7 @@ Code:
 
 See [branch **age**](https://github.com/nlhsueh/nlh_tennis_club/tree/age)
 
-### ex02_court: enum
+### 9.4.2 ex02_court: enum
 > [!NOTE]
 > 🏈 網球場
 > * 在 model 中增加一個資料球場: 球場名稱、球場型態（草地、硬地、泥地、地毯)，所在城市。
@@ -962,22 +943,22 @@ Hint
 * 參考 members app 的做法，加入對 courts 的程式
 * 使用 choices 來做列舉型態
 
-```plantuml
-package nlh_tennis_club {
-    package members {
-        
-    }
-    package courts {
-        struct models.py
-        struct urls.py
-        struct views.py
-        package templates {
-            struct all_courts.html
-            struct court_details.html
-            struct court_main.html
-        }
-    }
-}
+```mermaid
+graph TD
+    subgraph nlh_tennis_club
+        subgraph members
+        end
+        subgraph courts
+            models["models.py"]
+            urls["urls.py"]
+            views["views.py"]
+            subgraph templates
+                all["all_courts.html"]
+                details["court_details.html"]
+                main["court_main.html"]
+            end
+        end
+    end
 ```
 
 > See [Court](https://github.com/nlhsueh/nlh_tennis_club/blob/court/courts/models.py) model
@@ -988,7 +969,7 @@ package nlh_tennis_club {
 
 See [branch **court**](https://github.com/nlhsueh/nlh_tennis_club/tree/court)
 
-### ex03_web
+### 9.4.3 ex03_web
 
 > [!NOTE]
 > 🏈 我要預約
@@ -1004,64 +985,49 @@ See [branch **court**](https://github.com/nlhsueh/nlh_tennis_club/tree/court)
 
 See [branch **web**](https://github.com/nlhsueh/nlh_tennis_club/tree/web); [readme.md 解說](https://github.com/nlhsueh/nlh_tennis_club/blob/web/readme.md)
 #### Login process
-```plantuml
-package web{
-    struct urls.py {
-        /login
-        /logout
-    }
-    struct views.py {
-        +login(r)
-        +logout(r)
-    }
-    package templates {
-        struct login.html
-    }
-    class LoginForm {
-        - username
-        - password
-    }
-}
-struct main.html
+```mermaid
+graph TD
+    subgraph web
+        urls["urls.py (/login, /logout)"]
+        views["views.py (login, logout)"]
+        subgraph templates
+            login_html["login.html"]
+        end
+        login_form["LoginForm"]
+    end
+    main_html["main.html"]
 
-urls.py --> views.py
-login.html <-> views.py:GET/POST
-views.py --> main.html: [login ok]; /logout
-LoginForm <. views.py
-LoginForm <. login.html
+    urls --> views
+    login_html <--> views
+    views --> main_html
+    views -.-> login_form
+    login_html -.-> login_form
 ```
 #### Booking process:
-```plantuml
-class Booking <<Model>>{
-    court: Court
-    user: User
-    date: DateField
-}
+```mermaid
+graph TD
+    booking["Booking (Model)"]
+    form["BookingForm (ModelForm)"]
+    views["views (booking, mybooking)"]
+    user["User (Model)"]
+    b_html["booking.html"]
+    res_html["booking_result.html"]
+    urls["urls.py (url)"]
+    court["Court"]
 
-class BookingForm <<ModelForm>>
-
-struct views {
-    +booking(r,c)@login
-    +mybooking(r)@login
-}
-class User <<Model>>
-struct booking.html <<template>>
-struct booking_result.html <<template>>
-struct urls.py <<url>>
-urls.py --> views
-Court <--* Booking:foreign_key
-Booking *--> User:foreign_key
-views --> booking.html:GET
-booking.html --> views:POST
-views --> booking_result.html
-views .> BookingForm
-views .> Booking
-
-BookingForm .> Booking
+    urls --> views
+    court -- foreign_key --> booking
+    booking -- foreign_key --> user
+    views -- GET --> b_html
+    b_html -- POST --> views
+    views --> res_html
+    views -.-> form
+    views -.-> booking
+    form -.-> booking
 ```
 
 
-### ex04_static_files
+### 9.4.4 ex04_static_files
 
 > [!NOTE]
 > 🏈 css 與 images
@@ -1073,7 +1039,7 @@ See [branch **static**](https://github.com/nlhsueh/nlh_tennis_club/tree/static)
 
 * [readme.md 解說](https://github.com/nlhsueh/nlh_tennis_club/blob/static/readme.md)
 
-### ex05_bootstrap
+### 9.4.5 ex05_bootstrap
 
 > [!NOTE]
 > 🏈 bootstrap
@@ -1088,7 +1054,7 @@ See [branch **bs**](https://github.com/nlhsueh/nlh_tennis_club/tree/bs)
 <img src=https://hackmd.io/_uploads/rJ2krF0LT.png width=400>
 
 
-### ex06_validation
+### 9.4.6 ex06_validation
 > [!NOTE]
 > 🏈 輸入驗證
 > * 預借網球場時，需要寫理由，理由必須大於 10 個字。
@@ -1101,7 +1067,7 @@ See [branch **validation**](https://github.com/nlhsueh/nlh_tennis_club/tree/vali
 
 <img src="https://hackmd.io/_uploads/rkjBGi-Pp.png" width='350'>
 
-### ex07_img
+### 9.4.7 ex07_img
 > [!NOTE]
 > 🏈 多媒體欄位
 > * 在 admin 的介面，直接設定網球場的圖片; 並且之後可以顯示。
@@ -1115,7 +1081,7 @@ See [branch **img**](https://github.com/nlhsueh/nlh_tennis_club/tree/img)
 
 <img src="https://hackmd.io/_uploads/SyjVqofPp.png" width="300">
 
-### ex08_bind_user
+### 9.4.8 ex08_bind_user
 > [!NOTE]
 > 🏈 把 user 和 member 綁定
 > * Member 資料中增加 user 連接
@@ -1133,9 +1099,9 @@ See [branch **bind_user**](https://github.com/nlhsueh/nlh_tennis_club/tree/bind_
 我的預約：
 <img src="https://hackmd.io/_uploads/rJaD1sLw6.png" width="400">
 
-## HW/Quiz
+## 9.5 HW/Quiz
 
-### HW-Baseball
+### 9.5.1 HW-Baseball
 
 > [!NOTE]
 > 🏀 棒球網站
@@ -1147,7 +1113,7 @@ See [branch **bind_user**](https://github.com/nlhsueh/nlh_tennis_club/tree/bind_
 > * 要用網頁母版來做到頁面共享的功能
 
 
-### HW-BMI
+### 9.5.2 HW-BMI
 
 > [!NOTE]
 > 🏀 設計一個表單，可以輸入一群人的姓名、身高、體重。提交後會存到資料庫中，並進行下一筆資料的輸入。
@@ -1156,7 +1122,7 @@ See [branch **bind_user**](https://github.com/nlhsueh/nlh_tennis_club/tree/bind_
 > * 點選繼續編輯：會回到編輯表單繼續加入資料
 > * 點選隨機輸入：會隨機輸入10筆資料，包含姓名身高體重等，都透過亂數輸入一些合理的值。(建議設計姓與名的詞典，組合出有意義的名字)
 
-### Quiz-gender
+### 9.5.3 Quiz-gender
 > [!NOTE]
 > 🏀 下載並實作以下需求： 
 > * 下載 form_post 版本，安裝並啟動成功 (**50%**)
@@ -1169,7 +1135,7 @@ See [branch **bind_user**](https://github.com/nlhsueh/nlh_tennis_club/tree/bind_
 > * [完整題目](https://docs.google.com/document/d/1JPLj68nsLcJrFOJkfGcrby2FLoX5SVWPYsSSTYCzRoY/edit?usp=sharing)
 * [Hint solution](https://github.com/nlhsueh/nlh_tennis_club/tree/gender?tab=readme-ov-file)
 
-### Exam- Friends web
+### 9.5.4 Exam- Friends web
 > [!NOTE]
 > * 112-2 final exam- coding part
 >     * [題目](https://github.com/nlhsueh/friends_web/blob/exam_112_2/readme.md); [Github程式](https://github.com/nlhsueh/friends_web/tree/exam_112_2) (branch: **exam_112_2**)
@@ -1180,9 +1146,9 @@ See [branch **bind_user**](https://github.com/nlhsueh/nlh_tennis_club/tree/bind_
 >     * 同上，在 /episodes 出現每一集時，上方有一個 season 及 episode 的下拉選單，方便我們直接跳到某一季的某一集。
 
 
-## 其他
+## 9.6 其他
 
-### 五倍券 (VH5000) 實例 (略)
+### 9.6.1 五倍券 (VH5000) 實例 (略)
 
 * [Unit 1 App](https://docs.google.com/presentation/d/1f4gz1_qZsRjub5oxov3xKzgxlSeYa1zIrsuGGqPCxmQ/edit?usp=sharing)
 * [Unit 2 List view](https://docs.google.com/presentation/d/1-NXJa4RteGJrqExjBwGQMd7ZlAYrU0STjT871dxatuw/edit?usp=sharing)
@@ -1215,7 +1181,7 @@ python -m pip install Pillow
 python manage.py runserver
 ```
 
-### 112-1 web dev projects
+### 9.6.2 112-1 web dev projects
 - [in **DemoX**](https://demox.tw/curation/detail/?id=102)
 - [網球會員網](https://demox.tw/idea/detail/?id=408)- 簡單的範例
 - [打地鼠](https://demox.tw/idea/detail/?id=1322)- 透過Django建立一個打地鼠的遊戲網站。 具有註冊、登入、登出、排行榜功能。 透過滑鼠點擊方式打地鼠在有限時間內獲得分數，個人的最佳成績會顯示在排行榜上，可以查看自己的排名與分數。
