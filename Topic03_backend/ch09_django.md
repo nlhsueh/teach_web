@@ -27,20 +27,25 @@ dir
 ```
 
 版本控制
+
+把專案複製到你的電腦
 ```
-// 把專案複製到你的電腦
 git clone https://github.com/nlhsueh/nlh_tennis_club.git
-
-// 檢查一下目前在的分支
+```
+檢查一下目前在的分支
+```
 git branch
-
-// 切換到 b01 分支
+```
+切換到 b01 分支
+```
 git checkout b01
-
-// 強制切換到 b01 分支，忽略目前的修改
+```
+強制切換到 b01 分支，忽略目前的修改
+```
 git checkout -f b01
-
-// 強制清除目前所新增的
+```
+強制清除目前所新增的
+```
 git clearn -fd
 ```
 
@@ -54,20 +59,24 @@ git clearn -fd
 See [w3school- django install](https://www.w3schools.com/django/django_getstarted.php)
 
 以下是精簡指令大全：
+建立虛擬環境
 ```
-// 建立虛擬環境
 py -m venv myworld
-
-// 啟動虛擬環境
+```
+啟動虛擬環境
+```
 myworld\Scripts\activate.bat
-
-// 安裝 Django
+```
+安裝 Django
+```
 py -m pip install Django
-
-// 建立專案
+```
+建立專案
+```
 django-admin startproject my_tennis_club
-
-// 啟動伺服器
+```
+啟動伺服器
+```
 py manage.py runserver
 ```
 
