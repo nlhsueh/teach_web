@@ -1,11 +1,43 @@
 
-# Ch07 Python 快速入門
+# 第八章 Python 快速入門
+
+
+## 8.1. 安裝與執行 Python
+
+### 8.1.1 安裝 Python
+
+1.  **下載**: 到 [Python 官網](https://www.python.org/downloads/) 下載最新穩定版本的 Python。
+2.  **安裝**: 執行下載的安裝檔。
+    *   **Windows**: 務必勾選 **"Add Python to PATH"**。
+    *   **macOS**: 通常內建 Python 2，建議安裝最新的 Python 3。
+3.  **驗證**: 開啟終端機 (Terminal) 或命令提示字元 (CMD)，輸入以下指令：
+    ```bash
+    python --version
+    ```
+    (若安裝的是 Python 3，可能需要輸入 `python3 --version`)
+
+### 8.1.2 執行 Python
+
+1.  **互動式模式 (REPL)**:
+    在終端機輸入 `python` (或 `python3`) 進入互動式介面。這讓你可以在不建立檔案的情況下直接執行 Python 程式碼。輸入 `exit()` 或按 `Ctrl+D` 離開。
+    ```bash
+    $ python3
+    >>> print("Hello, Python!")
+    Hello, Python!
+    >>> exit()
+    ```
+
+2.  **執行腳本檔案**:
+    將程式碼存為 `.py` 檔案（例如 `hello.py`），然後在終端機執行：
+    ```bash
+    python3 hello.py
+    ```
 
 以下是針對已經學過 JavaScript 的人準備的 Python 講義，包含解說、程式碼和與 JavaScript 的比較：
 
-## 7.1. 基礎語法與資料型別
+## 8.2. 基礎語法與資料型別
 
-### 7.1.1 變數宣告
+### 8.2.1 變數宣告
 
 **Python:**
 
@@ -31,7 +63,7 @@ let height = 1.75;
 * Python 沒有 `const` 關鍵字來宣告不可變的變數，但有命名慣例（全大寫）表示常量。
 * Python 使用 `=` 進行賦值。
 
-### 7.1.2 資料型別
+### 8.2.2 資料型別
 
 **Python 主要資料型別:**
 
@@ -63,7 +95,7 @@ let height = 1.75;
 * Python 的字典與 JavaScript 的物件概念相似，但語法略有不同。
 * Python 有 `None`，類似於 JavaScript 的 `null` 和 `undefined`，但通常 `None` 更常用。
 
-### 7.1.3 註解
+### 8.2.3 註解
 
 **Python:**
 
@@ -92,9 +124,9 @@ let height = 1.75;
 * Python 使用 `#` 作為單行註解，使用三個雙引號 `"""` 或三個單引號 `'''` 作為多行註解。
 * JavaScript 使用 `//` 作為單行註解，使用 `/* ... */` 作為多行註解。
 
-## 7.2. 運算子
+## 8.3. 運算子
 
-### 5.2.1 算術運算子
+### 8.3.1 算術運算子
 
 | 運算子 | Python | JavaScript | 描述                |
 | :----- | :----- | :--------- | :------------------ |
@@ -110,7 +142,7 @@ let height = 1.75;
 
 * Python 提供了整除運算符 `//` 和冪運算符 `**`，JavaScript 沒有直接對應的運算符。
 
-### 5.2.2 比較運算子
+### 8.3.2 比較運算子
 
 | 運算子   | Python   | JavaScript    | 描述                              |
 | :------- | :------- | :------------ | :-------------------------------- |
@@ -127,7 +159,7 @@ let height = 1.75;
 
 * Python 的 `is` 和 `is not` 用於比較物件的身份（記憶體位址），而不是值。在 JavaScript 中，`===` 和 `!==` 除了比較值之外，還比較型別。Python 的 `==` 和 `!=` 只比較值。
 
-### 5.2.3 邏輯運算子
+### 8.3.3 邏輯運算子
 
 | 運算子 | Python | JavaScript | 描述   |
 | :----- | :----- | :--------- | :----- |
@@ -142,7 +174,7 @@ let height = 1.75;
 好的，這份講義將延續之前的內容，專門介紹 Python 的字串處理，並與 JavaScript 進行比較：
 
 
-### 5.2.4 字串的基本操作
+### 8.3.4 字串的基本操作
 
 **Python:**
 
@@ -172,7 +204,7 @@ template literals.`;
 * JavaScript 除了單引號和雙引號外，還提供了模板字面量 (backticks ``)，可以更方便地進行字串插值和創建多行字串。
 
 
-#### 5.2.4.1 字串長度
+**8.3.4.1 字串長度**
 
 **Python:**
 
@@ -195,7 +227,7 @@ console.log(length); // 輸出: 10
 * Python 使用內建函數 `len()` 來獲取字串的長度。
 * JavaScript 的字串物件有一個 `length` 屬性。
 
-#### 5.2.4.2 字串連接
+**8.3.4.2 字串連接**
 
 **Python:**
 
@@ -230,7 +262,7 @@ console.log(greeting); // 輸出: Hello, Alice!
 * Python 和 JavaScript 都使用 `+` 運算符來連接字串。
 * Python 的 f-string (formatted string literals) 提供了更簡潔的字串插值方式，類似於 JavaScript 的模板字面量。
 
-#### 5.2.4.3 字串索引
+**8.3.4.3 字串索引**
 
 **Python:**
 
@@ -257,7 +289,7 @@ console.log(lastChar);  // 輸出: t
 * Python 和 JavaScript 都使用方括號 `[]` 來存取字串中的字元，索引都從 0 開始。
 * Python 支援負索引，可以方便地從字串的尾部開始存取字元。
 
-#### 5.2.4.4 字串切片
+**8.3.4.4 字串切片**
 
 **Python:**
 
@@ -297,7 +329,7 @@ console.log(substring4); // 輸出: JavaScript
 * Python 的字串切片功能非常強大，可以指定起始索引、結束索引和步長。
 * JavaScript 使用 `slice()` 方法來實現類似的功能，但不直接支援步長。要實現類似步長或反轉的效果，通常需要結合其他方法（例如 `split()`, `reverse()`, `join()`）。
 
-#### 5.2.7 常用的字串方法
+**8.3.7 常用的字串方法**
 
 Python 的字串物件提供了許多內建方法來進行各種操作。以下是一些常用的方法，並與 JavaScript 的類似方法進行比較：
 
@@ -407,9 +439,9 @@ console.log(/^[a-zA-Z]+$/.test(alphaStr)); // 輸出: true
 * Python 在字串處理方面提供了更多內建的便利方法，例如 `count`, `isdigit`, `isalpha`, `isalnum` 等。
 
 ---
-### 5.2.5 Exercise
+### 8.3.5 Exercise
 
-####  5.2.5.1 長打率
+**8.3.5.1 長打率**
 
 **基礎運算練習題：計算球員的長打率 (Slugging Percentage)**
 
@@ -448,7 +480,7 @@ print(f"這位球員的長打率為: {slugging_percentage:.3f}")
 ```
 
 ---
-#### 5.2.5.2 先發投手
+**8.3.5.2 先發投手**
 
 ```python
 # 提示使用者輸入投球局數
@@ -480,9 +512,9 @@ else:
             print("這場表現為非合格先發。")
 ```            
 
-## 7.3. 邏輯控制
+## 8.4. 邏輯控制
 
-### 5.3.1 條件語句 (if, elif, else)
+### 8.4.1 條件語句 (if, elif, else)
 
 **Python:**
 
@@ -515,7 +547,7 @@ if (age >= 18) {
 * Python 沒有像 JavaScript 那樣使用花括號 `{}` 來包圍程式碼塊，而是使用**縮排**來表示程式碼塊的層次。這是 Python 語法中非常重要的一部分。
 * 條件判斷後的冒號 `:` 是 Python 語法的一部分。
 
-### 5.3.2 迴圈語句 (for, while)
+### 8.4.2 迴圈語句 (for, while)
 
 **Python - for 迴圈 (迭代):**
 
@@ -580,9 +612,9 @@ while (count < 5) {
 
 * Python 和 JavaScript 的 `while` 迴圈語法結構相似，但 Python 仍然使用縮排來定義程式碼塊。
 
-## 7.4. 資料結構
+## 8.5. 資料結構
 
-### 5.4.1 列表 (list)
+### 8.5.1 列表 (list)
 
 **Python:**
 
@@ -616,7 +648,7 @@ console.log(myArray.length); // 取得陣列長度
 * Python 提供了許多內建的方法來操作列表，例如 `append`, `insert`, `del`, `remove`, `len` 等。JavaScript 的陣列也有類似的方法，但語法可能不同。
 
 
-### 5.4.2 元組 (tuple)
+### 8.5.2 元組 (tuple)
 
 **Python:**
 
@@ -634,7 +666,7 @@ print(my_tuple[0])
 
 * Python 的元組是一個不可變的序列，一旦創建就不能修改。這在需要保護資料不被意外修改時很有用。
 
-### 5.4.3 集合 (set)
+### 8.5.3 集合 (set)
 
 **Python:**
 
@@ -660,7 +692,7 @@ console.log(mySet.has(3)); // 檢查元素是否存在
 
 * Python 的集合和 JavaScript 的 `Set` 都用於儲存不重複的元素。它們都提供了類似的方法來添加、刪除和檢查元素。
 
-### 5.4.4 字典 (dict)
+### 8.5.4 字典 (dict)
 
 **Python:**
 
@@ -694,142 +726,186 @@ console.log(Object.entries(myObject)); // 取得所有鍵值對
 
 好的，這是一份關於 Python 列舉型態 (Enumeration Type) 的介紹：
 
-### 5.4.5 Check
+### 8.5.5 隨堂測驗
 
-1.  下列哪一個敘述 **錯誤**？
-    A) `list` 是可變的序列，可以使用索引進行存取和修改。
-    B) `tuple` 是不可變的序列，一旦創建後就不能修改其元素。
-    C) `set` 是無序且元素唯一的集合，支援索引存取其元素。
-    D) `dict` 是鍵值對應的資料結構，可以使用鍵來存取值。
+1️⃣ 下列哪一個敘述 **錯誤**？
+- (A) `list` 是可變的序列，可以使用索引進行存取和修改。
+- (B) `tuple` 是不可變的序列，一旦創建後就不能修改其元素。
+- (C) `set` 是無序且元素唯一的集合，支援索引存取其元素。
+- (D) `dict` 是鍵值對應的資料結構，可以使用鍵來存取值。
 
-2.  給定兩個 `set` 如下：
-    ```python
-    set1 = {1, 2, 3, 4}
-    set2 = {3, 4, 5, 6}
-    ```
-    下列哪個運算式會產生 `{1, 2}` 這個結果？
-    A) `set1 & set2`
-    B) `set1 | set2`
-    C) `set1 - set2`
-    D) `set2 - set1`
-
-3.  考慮以下程式碼片段：
-    ```python
-    my_tuple = (10, 20, [30, 40])
-    my_tuple[2].append(50)
-    ```
-    執行完這段程式碼後，`my_tuple` 的值會是什麼？
-    A) `(10, 20, [30, 40])`
-    B) `(10, 20, [30, 40, 50])`
-    C) 會因為 `tuple` 不可變而產生錯誤。
-    D) `(10, 50, [30, 40])`
-
-4.  下列哪個操作對於 `dict` 是 **不允許** 的或會導致錯誤？
-    A) 使用一個 `tuple` 作為鍵。
-    B) 使用一個 `list` 作為鍵。
-    C) 使用一個字串作為鍵。
-    D) 使用一個整數作為鍵。
-
-5.  給定一個 `list` 如下：
-    ```python
-    data = [('Alice', 25), ('Bob', 30), ('Charlie', 20)]
-    ```
-    下列哪個程式碼片段可以將這個 `list` 轉換為一個 `dict`，其中鍵是人名，值是年齡？
-    A) `dict(data)`
-    B) `{name: age for name, age in data}`
-    C) `{item[0]: item[1] for item in data}`
-    D) 以上皆是。
+<details>
+<summary>解答</summary>
+(C)。
+說明：`set` 是無序且元素唯一的集合，**不支援** 索引存取其元素。
+</details>
 
 ---
 
-**答案與解析：**
+2️⃣ 給定兩個 `set` 如下：
+```python
+set1 = {1, 2, 3, 4}
+set2 = {3, 4, 5, 6}
+```
+下列哪個運算式會產生 `{1, 2}` 這個結果？
+- (A) `set1 & set2`
+- (B) `set1 | set2`
+- (C) `set1 - set2`
+- (D) `set2 - set1`
 
-1.  **C)** 錯誤。`set` 是無序且元素唯一的集合，**不支援** 索引存取其元素。
-
-2.  **C)** `set1 - set2` 會回傳存在於 `set1` 但不存在於 `set2` 的元素，即 `{1, 2}`。
-    * `A)` `set1 & set2` (交集) 會產生 `{3, 4}`。
-    * `B)` `set1 | set2` (聯集) 會產生 `{1, 2, 3, 4, 5, 6}`。
-    * `D)` `set2 - set1` 會產生 `{5, 6}`。
-
-3.  **B)** `(10, 20, [30, 40, 50])`。雖然 `tuple` 本身是不可變的，但如果 `tuple` 內的元素是可變的（例如 `list`），則可以修改該可變元素內部的內容。
-
-4.  **B)** 使用一個 `list` 作為鍵。`dict` 的鍵必須是不可變的 (immutable) 型別，例如 `int`, `float`, `str`, `tuple` (且 `tuple` 的元素也必須是不可變的)。`list` 是可變的 (mutable)，因此不能作為 `dict` 的鍵。
-
-5.  **D)** 以上皆是。
-    * `A)` `dict(data)` 可以直接將包含鍵值對的 `list` 轉換為 `dict`。
-    * `B)` `{name: age for name, age in data}` 是一個字典推導式，可以有效地創建所需的 `dict`。
-    * `C)` `{item[0]: item[1] for item in data}` 也是一個字典推導式，透過索引存取 `tuple` 中的姓名和年齡來創建 `dict`。
-
----
-
-6.  考慮以下程式碼片段：
-    ```python
-    my_list = [1, 2, 2, 3, 4, 4, 5]
-    result_set = set(my_list)
-    result_list = list(result_set)
-    ```
-    執行完這段程式碼後，`result_list` 的元素個數會是多少？
-    A) 7
-    B) 5
-    C) 4
-    D) 3
-
-7.  下列哪個方法可以用於在 `list` 的指定索引位置插入一個元素？
-    A) `append()`
-    B) `extend()`
-    C) `insert()`
-    D) `add()`
-
-8.  給定一個字典 `inventory = {'apples': 10, 'bananas': 20, 'cherries': 15}`。下列哪個程式碼片段可以正確地將 'bananas' 的數量減少 5？
-    A) `inventory['bananas'] -= 5`
-    B) `inventory.remove('bananas', 5)`
-    C) `inventory['bananas'] = inventory['bananas'] - 5`
-    D) A) 和 C) 都是正確的。
-
-9.  假設你有兩個 `tuple`：`tuple1 = (1, 2, 3)` 和 `tuple2 = (4, 5)`。下列哪個運算式會產生 `(1, 2, 3, 4, 5)` 這個新的 `tuple`？
-    A) `tuple1.append(tuple2)`
-    B) `tuple1 + tuple2`
-    C) `tuple1.extend(tuple2)`
-    D) `tuple1.union(tuple2)`
-
-10. 考慮以下程式碼片段：
-    ```python
-    data = ['a', 'b', 'c', 'b', 'd', 'a']
-    frequency = {}
-    for item in data:
-        frequency[item] = frequency.get(item, 0) + 1
-    ```
-    執行完這段程式碼後，`frequency` 字典的內容會是什麼？
-    A) `{'a': 1, 'b': 1, 'c': 1, 'd': 1}`
-    B) `{'a': 2, 'b': 2, 'c': 1, 'd': 1}`
-    C) `{'a': 2, 'b': 2, 'c': 1, 'd': 1, None: 0}`
-    D) 會因為重複的鍵而產生錯誤。
+<details>
+<summary>解答</summary>
+(C)。
+說明：`set1 - set2` 會回傳存在於 `set1` 但不存在於 `set2` 的元素，即 `{1, 2}`。
+- `A)` `set1 & set2` (交集) 會產生 `{3, 4}`。
+- `B)` `set1 | set2` (聯集) 會產生 `{1, 2, 3, 4, 5, 6}`。
+- `D)` `set2 - set1` 會產生 `{5, 6}`。
+</details>
 
 ---
 
-**答案與解析：**
+3️⃣ 考慮以下程式碼片段：
+```python
+my_tuple = (10, 20, [30, 40])
+my_tuple[2].append(50)
+```
+執行完這段程式碼後，`my_tuple` 的值會是什麼？
+- (A) `(10, 20, [30, 40])`
+- (B) `(10, 20, [30, 40, 50])`
+- (C) 會因為 `tuple` 不可變而產生錯誤。
+- (D) `(10, 50, [30, 40])`
 
-6.  **B)** 5。
-    * `set(my_list)` 會移除重複元素，產生 `{1, 2, 3, 4, 5}`。
-    * `list(result_set)` 將這個 `set` 轉換為 `list`，其元素個數為 5。
+<details>
+<summary>解答</summary>
+(B)。
+說明：雖然 `tuple` 本身是不可變的，但如果 `tuple` 內的元素是可變的（例如 `list`），則可以修改該可變元素內部的內容。
+</details>
 
-7.  **C)** `insert()`。
-    * `append()` 用於在列表末尾添加元素。
-    * `extend()` 用於將另一個可迭代對象的元素添加到列表末尾。
-    * `add()` 是 `set` 的方法，用於添加元素。
+---
 
-8.  **D)** A) 和 C) 都是正確的。這兩種寫法都實現了將字典中 'bananas' 鍵對應的值減少 5 的操作。
+4️⃣ 下列哪個操作對於 `dict` 是 **不允許** 的或會導致錯誤？
+- (A) 使用一個 `tuple` 作為鍵。
+- (B) 使用一個 `list` 作為鍵。
+- (C) 使用一個字串作為鍵。
+- (D) 使用一個整數作為鍵。
 
-9.  **B)** `tuple1 + tuple2`。`tuple` 是不可變的，不能使用 `append()` 或 `extend()` 直接添加元素。可以使用 `+` 運算符將兩個 `tuple` 連接成一個新的 `tuple`。`union()` 是 `set` 的方法，不適用於 `tuple`。
+<details>
+<summary>解答</summary>
+(B)。
+說明：`dict` 的鍵必須是不可變的 (immutable) 型別，例如 `int`, `float`, `str`, `tuple` (且 `tuple` 的元素也必須是不可變的)。`list` 是可變的 (mutable)，因此不能作為 `dict` 的鍵。
+</details>
 
-10. **B)** `{'a': 2, 'b': 2, 'c': 1, 'd': 1}`。這段程式碼用於統計列表中每個元素的出現次數。
-    * `frequency.get(item, 0)` 會檢查 `item` 是否已存在於 `frequency` 中，如果存在則返回其值，否則返回預設值 0。
-    * 然後將該值加 1 並賦值給 `frequency[item]`，從而實現計數。
+---
+
+5️⃣ 給定一個 `list` 如下：
+```python
+data = [('Alice', 25), ('Bob', 30), ('Charlie', 20)]
+```
+下列哪個程式碼片段可以將這個 `list` 轉換為一個 `dict`，其中鍵是人名，值是年齡？
+- (A) `dict(data)`
+- (B) `{name: age for name, age in data}`
+- (C) `{item[0]: item[1] for item in data}`
+- (D) 以上皆是。
+
+<details>
+<summary>解答</summary>
+(D)。
+說明：以上皆是。
+- `A)` `dict(data)` 可以直接將包含鍵值對的 `list` 轉換為 `dict`。
+- `B)` `{name: age for name, age in data}` 是一個字典推導式，可以有效地創建所需的 `dict`。
+- `C)` `{item[0]: item[1] for item in data}` 也是一個字典推導式，透過索引存取 `tuple` 中的姓名 and 年齡來創建 `dict`。
+</details>
+
+---
+
+6️⃣ 考慮以下程式碼片段：
+```python
+my_list = [1, 2, 2, 3, 4, 4, 5]
+result_set = set(my_list)
+result_list = list(result_set)
+```
+執行完這段程式碼後，`result_list` 的元素個數會是多少？
+- (A) 7
+- (B) 5
+- (C) 4
+- (D) 3
+
+<details>
+<summary>解答</summary>
+(B)。
+說明：`set(my_list)` 會移除重複元素，產生 `{1, 2, 3, 4, 5}`。`list(result_set)` 將這個 `set` 轉換為 `list`，其元素個數為 5。
+</details>
+
+---
+
+7️⃣ 下列哪個方法可以用於在 `list` 的指定索引位置插入一個元素？
+- (A) `append()`
+- (B) `extend()`
+- (C) `insert()`
+- (D) `add()`
+
+<details>
+<summary>解答</summary>
+(C)。
+說明：`insert()` 用於在指定索引位置插入元素。
+- `append()` 用於在列表末尾添加元素。
+- `extend()` 用於將另一個可迭代對象的元素添加到列表末尾。
+- `add()` 是 `set` 的方法，不適用於 `list`。
+</details>
+
+---
+
+8️⃣ 給定一個字典 `inventory = {'apples': 10, 'bananas': 20, 'cherries': 15}`。下列哪個程式碼片段可以正確地將 'bananas' 的數量減少 5？
+- (A) `inventory['bananas'] -= 5`
+- (B) `inventory.remove('bananas', 5)`
+- (C) `inventory['bananas'] = inventory['bananas'] - 5`
+- (D) A) 和 C) 都是正確的。
+
+<details>
+<summary>解答</summary>
+(D)。
+說明：A) 和 C) 都是正確的。這兩種寫法都實現了將字典中 'bananas' 鍵對應的值減少 5 的操作。
+</details>
+
+---
+
+9️⃣ 假設你有兩個 `tuple`：`tuple1 = (1, 2, 3)` 和 `tuple2 = (4, 5)`。下列哪個運算式會產生 `(1, 2, 3, 4, 5)` 這個新的 `tuple`？
+- (A) `tuple1.append(tuple2)`
+- (B) `tuple1 + tuple2`
+- (C) `tuple1.extend(tuple2)`
+- (D) `tuple1.union(tuple2)`
+
+<details>
+<summary>解答</summary>
+(B)。
+說明：`tuple` 是不可變的，不能使用 `append()` 或 `extend()` 直接添加元素。可以使用 `+` 運算符將兩個 `tuple` 連接成一個新的 `tuple`。`union()` 是 `set` 的方法，不適用於 `tuple`。
+</details>
+
+---
+
+🔟 考慮以下程式碼片段：
+```python
+data = ['a', 'b', 'c', 'b', 'd', 'a']
+frequency = {}
+for item in data:
+    frequency[item] = frequency.get(item, 0) + 1
+```
+執行完這段程式碼後，`frequency` 字典的內容會是什麼？
+- (A) `{'a': 1, 'b': 1, 'c': 1, 'd': 1}`
+- (B) `{'a': 2, 'b': 2, 'c': 1, 'd': 1}`
+- (C) `{'a': 2, 'b': 2, 'c': 1, 'd': 1, None: 0}`
+- (D) 會因為重複的鍵而產生錯誤。
+
+<details>
+<summary>解答</summary>
+(B)。
+說明：這段程式碼用於統計列表中每個元素的出現次數。`frequency.get(item, 0)` 會檢查 `item` 是否已存在於 `frequency` 中，如果存在則返回其值，否則返回預設值 0。然後將該值加 1 並賦值給 `frequency[item]`，從而實現計數。
+</details>
 
 
-### 5.4.6 Exercise
+### 8.5.6 Exercise
 
-#### 5.4.6.1 List 練習題：球員單場得分統計
+**8.5.6.1 List 練習題：球員單場得分統計**
 
 **題目：**
 
@@ -885,7 +961,7 @@ print(f"第五場得分: {fifth_game_score}")
 
 ---
 
-#### 4.6.2 Dict 練習題：球員打擊數據分析
+**8.5.6.2 Dict 練習題：球員打擊數據分析**
 
 **題目：**
 
@@ -949,7 +1025,7 @@ print(f"更新後全壘打數: {player_stats['全壘打']}")
 ---
 
 
-## 5.5. 函式 (Function)
+## 8.6. 函式 (Function)
 
 **Python:**
 
@@ -998,7 +1074,7 @@ console.log(product);
 * Python 的函式可以使用文檔字串 (docstring，用三個引號包圍) 來描述函式的功能。
 * JavaScript 有傳統的 `function` 關鍵字和 ES6 引入的箭頭函式。Python 沒有類似的簡潔箭頭函式語法。
 
-### 5.5.1 函式的定義與呼叫
+### 8.6.1 函式的定義與呼叫
 
 **定義:**
 
@@ -1036,11 +1112,11 @@ sum_result = add(5, 3)  # 呼叫 add 函式，接收回傳值
 print(sum_result)      # 輸出: 8
 ```
 
-### 5.5.2 函式的參數
+### 8.6.2 函式的參數
 
 Python 提供了非常靈活的參數處理機制，包括以下幾種類型：
 
-#### 5.5.2.1 必要參數 (Positional Arguments)
+**8.6.2.1 必要參數 (Positional Arguments)**
 
 這些參數在函式定義中指定了順序，並且在呼叫函式時必須按照相同的順序提供對應的值。
 
@@ -1053,7 +1129,7 @@ describe_pet("dog", "Buddy")    # 正確的呼叫方式
 # describe_pet("Buddy", "dog")  # 錯誤！參數順序不對
 ```
 
-#### 5.5.2.2 關鍵字參數 (Keyword Arguments)
+**8.6.2.2 關鍵字參數 (Keyword Arguments)**
 
 在呼叫函式時，可以通過 `parameter_name=value` 的形式指定參數的值，這樣可以不按照參數定義的順序傳遞值，並且可以使函式呼叫更具可讀性。
 
@@ -1076,7 +1152,7 @@ greet("Hello", name="Bob")  # 正確
 # greet(name="Alice", "Hi")  # 錯誤！必要參數在關鍵字參數之後
 ```
 
-#### 5.5.2.3 預設參數值 (Default Argument Values)
+**8.6.2.3 預設參數值 (Default Argument Values)**
 
 在函式定義時，可以為參數指定預設值。如果在呼叫函式時沒有提供該參數的值，則會使用預設值。
 
@@ -1099,7 +1175,7 @@ def valid_function(b, a=1):
     pass
 ```
 
-#### 5.5.2.4 可變長度參數 (*args)
+**8.6.2.4 可變長度參數 (*args)**
 
 如果你不確定函式最終需要多少個參數，可以使用 `*args` 來接收任意數量的**位置參數**。這些參數會被收集到一個元組 (tuple) 中。
 
@@ -1116,7 +1192,7 @@ print(sum_all(10, 20, 30, 40)) # 輸出: 100
 print(sum_all())             # 輸出: 0 (空元組)
 ```
 
-#### 5.5.2.5 可變長度關鍵字參數 (**kwargs)
+**8.6.2.5 可變長度關鍵字參數 (**kwargs)**
 
 如果你需要接收任意數量的**關鍵字參數**，可以使用 `**kwargs`。這些參數會被收集到一個字典 (dictionary) 中，其中鍵是參數名，值是參數值。
 
@@ -1133,7 +1209,7 @@ print_info(name="Charlie", age=35, city="New York")
 # city: New York
 ```
 
-#### 5.5.2.6 強制關鍵字參數 (Keyword-Only Arguments) (Python 3+)
+**8.6.2.6 強制關鍵字參數 (Keyword-Only Arguments) (Python 3+)**
 
 在參數列表中，可以將某些參數放在 `*` 之後，這樣這些參數就必須在呼叫時使用關鍵字參數的形式傳遞。
 
@@ -1149,7 +1225,7 @@ process_data(1, 2, output_file='data.txt') # 正確
 # process_data(1, 2, 'WARNING')        # 錯誤！'WARNING' 只能作為關鍵字參數傳遞
 ```
 
-### 5.5.3 參數的傳遞
+### 8.6.3 參數的傳遞
 
 在 Python 中，參數的傳遞方式既不是完全的值傳遞 (pass-by-value)，也不是完全的引用傳遞 (pass-by-reference)。Python 使用的是所謂的 **"call-by-object-reference"** 或 **"pass-by-assignment"**。理解這一點對於預測函式內對參數的修改是否會影響到函式外部的變數非常重要。
 
@@ -1208,9 +1284,9 @@ print(f"Outside function, after call: {data}")
 # 輸出結果會顯示外部 data 的列表沒有被修改
 ```
 
-### 5.5.4 lambda function
+### 8.6.4 lambda function
 
-### 5.5.4.1 lambda 函式簡介
+### 8.6.4.1 lambda 函式簡介
 
 `lambda` 函式是一種匿名的小型函式。它可以在需要一個簡單函式作為參數的地方使用，而無需顯式地定義一個具名的函式。
 
@@ -1247,7 +1323,7 @@ arguments => expression // 如果只有一個參數，括號可以省略
 
 JavaScript 的箭頭函式也提供了一種更簡潔的方式來定義小型匿名函式。
 
-### 5.5.4.2 在 `sort()` 方法中使用 lambda 函式
+### 8.6.4.2 在 `sort()` 方法中使用 lambda 函式
 
 `list.sort(key=None, reverse=False)` 方法用於對列表進行原地排序。`key` 參數可以接收一個函式，該函式會應用於列表中的每個元素，並根據函式返回的值進行排序。`lambda` 函式非常適合在這裡提供一個簡單的排序依據。
 
@@ -1303,7 +1379,7 @@ console.log(people);
 // 輸出: [ { name: 'Bob', age: 25 }, { name: 'Alice', age: 30 }, { name: 'Charlie', age: 35 } ]
 ```
 
-### 5.5.4.3 在 `filter()` 函數中使用 lambda 函式
+### 8.6.4.3 在 `filter()` 函數中使用 lambda 函式
 
 `filter(function, iterable)` 函數用於過濾序列，返回一個迭代器，其中包含使 `function` 返回 `True` 的所有元素。`lambda` 函式非常適合在這裡提供一個簡單的過濾條件。
 
@@ -1347,7 +1423,7 @@ const longWords = words.filter(word => word.length > 5);
 console.log(longWords); // 輸出: [ 'banana', 'strawberry' ]
 ```
 
-### 5.5.4.4 在 `map()` 函數中使用 lambda 函式
+### 8.6.4.4 在 `map()` 函數中使用 lambda 函式
 
 `map(function, iterable, ...)` 函數用於將 `function` 應用於 `iterable` 中的每一個元素，並返回一個迭代器，其中包含應用後的結果。`lambda` 函式非常適合在這裡提供一個簡單的轉換邏輯。
 
@@ -1391,7 +1467,7 @@ const upperWords = words.map(word => word.toUpperCase());
 console.log(upperWords); // 輸出: [ 'APPLE', 'BANANA', 'KIWI' ]
 ```
 
-### 5.5.4.5 組合使用 `lambda`, `map`, 和 `filter`
+### 8.6.4.5 組合使用 `lambda`, `map`, 和 `filter`
 
 `lambda` 函式可以與 `map()` 和 `filter()` 組合使用，以實現更複雜的列表處理邏輯。
 
@@ -1417,7 +1493,7 @@ console.log(result); // 輸出: [ 4, 16, 36 ]
 
 JavaScript 中可以通過鏈式調用 `filter()` 和 `map()` 方法來實現相同的效果，語法上可能更為直觀。
 
-### 5.5.5 與 JavaScript 的比較
+### 8.6.5 與 JavaScript 的比較
 
 JavaScript 的參數傳遞方式通常被描述為 "pass-by-value" for primitive types (例如 number, string, boolean, null, undefined, symbol, bigint) 和 "pass-by-reference" for objects (包括 arrays 和 functions)。
 
@@ -1429,111 +1505,170 @@ JavaScript 的參數傳遞方式通常被描述為 "pass-by-value" for primitive
 
 Python 的 "call-by-object-reference" 行為在概念上與 JavaScript 的參數傳遞方式有相似之處，但需要更精確地理解可變和不可變物件的區別，以及函式內部對這些物件的操作如何影響外部變數。理解這些細節對於編寫可靠且易於理解的 Python 程式至關重要。
 
-### 5.6 Check
+### 8.6.6 隨堂測驗
 
-1.  下列哪個關於 Python 函式參數的敘述是**錯誤**的？
-    A) 函式可以沒有任何參數。
-    B) 函式可以有多個必要參數（positional arguments）。
-    C) 函式定義中，帶有預設值的參數必須放在沒有預設值的參數前面。
-    D) 函式可以使用 `*args` 接收任意數量的位置參數。
+1️⃣ 下列哪個關於 Python 函式參數的敘述是**錯誤**的？
+- (A) 函式可以沒有任何參數。
+- (B) 函式可以有多個必要參數（positional arguments）。
+- (C) 函式定義中，帶有預設值的參數必須放在沒有預設值的參數前面。
+- (D) 函式可以使用 `*args` 接收任意數量的位置參數。
 
-2.  考慮以下函式定義：
-    ```python
-    def greet(name, greeting="Hello"):
-        return f"{greeting}, {name}!"
-    ```
-    下列哪個函式呼叫會產生錯誤？
-    A) `greet("Alice")`
-    B) `greet(name="Bob")`
-    C) `greet("Charlie", greeting="Hi")`
-    D) `greet(greeting="Welcome", "David")`
-
-3.  關於 Python 函式的參數傳遞，下列敘述何者正確？
-    A) 不可變物件（如整數、字串）總是通過引用傳遞。
-    B) 可變物件（如列表、字典）總是通過值傳遞。
-    C) Python 使用的是 "call-by-object-reference" 或 "pass-by-assignment"。
-    D) 函式內部對參數的修改永遠不會影響到函式外部的原始變數。
-
-4.  下列哪個是有效的 Python `lambda` 函式定義？
-    A) `lambda x where x > 5: x * 2`
-    B) `def lambda(x): return x + 1`
-    C) `(x) => x ** 2`
-    D) `lambda x: x % 2 == 0`
-
-5.  給定一個列表 `numbers = [3, 1, 4, 1, 5, 9, 2, 6]`，下列哪個程式碼片段會使用 `lambda` 函式將其排序為降序？
-    A) `numbers.sort()`
-    B) `sorted(numbers)`
-    C) `numbers.sort(key=lambda x: -x)`
-    D) `sorted(numbers, key=lambda x: x, reverse=False)`
-
-6.  給定一個列表 `words = ["apple", "banana", "kiwi", "strawberry"]`，下列哪個程式碼片段會使用 `filter` 和 `lambda` 函式篩選出長度大於 5 的單字？
-    A) `filter(lambda w: len(w) > 5, words)`
-    B) `words.filter(lambda w: len(w) > 5)`
-    C) `[w for w in words if len(w) > 5]`
-    D) A) 和 C) 都是正確的。
-
-7.  考慮以下函式定義：
-    ```python
-    def process_data(a, b, *args, **kwargs):
-        return f"a={a}, b={b}, args={args}, kwargs={kwargs}"
-    ```
-    下列哪個函式呼叫會產生 `a=1, b=2, args=(3, 4), kwargs={'x': 5, 'y': 6}` 的輸出？
-    A) `process_data(1, 2, 3, 4, x=5, y=6)`
-    B) `process_data(a=1, b=2, 3, 4, x=5, y=6)`
-    C) `process_data(1, b=2, args=[3, 4], kwargs={'x': 5, 'y': 6})`
-    D) `process_data(1, 2, (3, 4), {'x': 5, 'y': 6})`
-
-8.  關於 Python 函式的回傳值，下列敘述何者正確？
-    A) 函式只能回傳一個值。
-    B) 如果函式沒有 `return` 語句，它會隱式地回傳 `None`。
-    C) 使用 `return a, b` 可以回傳多個值，這些值會被封裝成一個列表。
-    D) 函式中 `return` 語句後的程式碼一定會被執行。
-
-9.  給定一個列表 `items = [{'name': 'apple', 'price': 2}, {'name': 'banana', 'price': 1}, {'name': 'cherry', 'price': 3}]`，下列哪個程式碼片段會使用 `sort` 和 `lambda` 函式根據價格降序排序這個列表？
-    A) `items.sort(key=lambda item: item['price'])`
-    B) `sorted(items, key=lambda item: item['price'], reverse=True)`
-    C) `items.sort(key=lambda item: -item['price'])`
-    D) B) 和 C) 都是正確的。
-
-10. 考慮以下函式定義：
-    ```python
-    def apply_operation(func, x):
-        return func(x)
-    ```
-    下列哪個呼叫會將 `y` 的值設為 25？
-    A) `y = apply_operation(def square(z): return z * z, 5)`
-    B) `y = apply_operation(square(5))`
-    C) `y = apply_operation(lambda z: z * z, 5)`
-    D) `y = apply_operation((z) => z * z, 5)`
+<details>
+<summary>解答</summary>
+(C)。
+說明：帶有預設值的參數**必須**放在沒有預設值的參數**後面**。
+</details>
 
 ---
 
-**答案與解析：**
+2️⃣ 考慮以下函式定義：
+```python
+def greet(name, greeting="Hello"):
+    return f"{greeting}, {name}!"
+```
+下列哪個函式呼叫會產生錯誤？
+- (A) `greet("Alice")`
+- (B) `greet(name="Bob")`
+- (C) `greet("Charlie", greeting="Hi")`
+- (D) `greet(greeting="Welcome", "David")`
 
-1.  **C)** 錯誤。帶有預設值的參數**必須**放在沒有預設值的參數**後面**。
+<details>
+<summary>解答</summary>
+(D)。
+說明：`greet(greeting="Welcome", "David")` 會產生錯誤，因為在關鍵字參數之後不能再有位置參數。
+</details>
 
-2.  **D)** `greet(greeting="Welcome", "David")` 會產生錯誤，因為在關鍵字參數之後不能再有位置參數。
+---
 
-3.  **C)** 正確。Python 使用 "call-by-object-reference" 或 "pass-by-assignment"。對於可變物件，函式內部的修改可能會影響到外部的原始物件。
+3️⃣ 關於 Python 函式的參數傳遞，下列敘述何者正確？
+- (A) 不可變物件（如整數、字串）總是通過引用傳遞。
+- (B) 可變物件（如列表、字典）總是通過值傳遞。
+- (C) Python 使用的是 "call-by-object-reference" 或 "pass-by-assignment"。
+- (D) 函式內部對參數的修改永遠不會影響到函式外部的原始變數。
 
-4.  **D)** `lambda x: x % 2 == 0` 是有效的 `lambda` 函式定義。A) 使用了 `where` 關鍵字，這是不正確的 `lambda` 語法。B) 使用了 `def` 關鍵字，這不是匿名函式。C) 是 JavaScript 的箭頭函式語法。
+<details>
+<summary>解答</summary>
+(C)。
+說明：Python 使用 "call-by-object-reference" 或 "pass-by-assignment"。對於可變物件，函式內部的修改可能會影響到外部的原始物件。
+</details>
 
-5.  **C)** `numbers.sort(key=lambda x: -x)` 會使用 `lambda` 函式返回元素的負值作為排序的依據，從而實現降序排序（直接修改原列表）。B) 的 `sorted()` 函式也可用，但 C) 是直接使用 `sort()` 方法實現降序。
+---
 
-6.  **D)** A) 和 C) 都是正確的。A) 使用 `filter` 函式搭配 `lambda` 函式返回一個迭代器，包含長度大於 5 的單字。C) 使用列表推導式實現了相同的篩選功能。
+4️⃣ 下列哪個是有效的 Python `lambda` 函式定義？
+- (A) `lambda x where x > 5: x * 2`
+- (B) `def lambda(x): return x + 1`
+- (C) `(x) => x ** 2`
+- (D) `lambda x: x % 2 == 0`
 
-7.  **A)** `process_data(1, 2, 3, 4, x=5, y=6)` 會將 `1` 賦值給 `a`，`2` 賦值給 `b`，`3` 和 `4` 收集到 `args` 元組中，`x=5` 和 `y=6` 收集到 `kwargs` 字典中。
+<details>
+<summary>解答</summary>
+(D)。
+說明：`lambda x: x % 2 == 0` 是有效的 `lambda` 函式定義。
+- `A)` 使用了 `where` 關鍵字，這是不正確的 `lambda` 語法。
+- `B)` 使用了 `def` 關鍵字，這不是匿名函式。
+- `C)` 是 JavaScript 的箭頭函式語法。
+</details>
 
-8.  **B)** 正確。如果函式沒有顯式的 `return` 語句，Python 會隱式地回傳 `None`。A) 函式可以使用 `return a, b` 回傳多個值，這些值會被封裝成一個元組。D) `return` 語句會終止函式的執行，其後的程式碼不會被執行。
+---
 
-9.  **D)** B) 和 C) 都是正確的。B) 使用 `sorted()` 函式搭配 `lambda` 函式和 `reverse=True` 實現降序排序並返回一個新的列表。C) 使用 `sort()` 方法搭配 `lambda` 函式返回價格的負值作為鍵，直接對原列表進行降序排序。
+5️⃣ 給定一個列表 `numbers = [3, 1, 4, 1, 5, 9, 2, 6]`，下列哪個程式碼片段會使用 `lambda` 函式將其排序為降序？
+- (A) `numbers.sort()`
+- (B) `sorted(numbers)`
+- (C) `numbers.sort(key=lambda x: -x)`
+- (D) `sorted(numbers, key=lambda x: x, reverse=False)`
 
-10. **C)** `y = apply_operation(lambda z: z * z, 5)` 是正確的。`apply_operation` 接收一個函式和一個參數，然後呼叫該函式並傳遞參數。`lambda z: z * z` 定義了一個計算平方的匿名函式，傳遞給 `apply_operation` 後，會計算 `5` 的平方。
+<details>
+<summary>解答</summary>
+(C)。
+說明：`numbers.sort(key=lambda x: -x)` 會使用 `lambda` 函式返回元素的負值作為排序的依據，從而實現降序排序（直接修改原列表）。
+</details>
+
+---
+
+6️⃣ 給定一個列表 `words = ["apple", "banana", "kiwi", "strawberry"]`，下列哪個程式碼片段會使用 `filter` 和 `lambda` 函式篩選出長度大於 5 的單字？
+- (A) `filter(lambda w: len(w) > 5, words)`
+- (B) `words.filter(lambda w: len(w) > 5)`
+- (C) `[w for w in words if len(w) > 5]`
+- (D) A) 和 C) 都是正確的。
+
+<details>
+<summary>解答</summary>
+(D)。
+說明：A) 和 C) 都是正確的。A) 使用 `filter` 函式搭配 `lambda` 函式返回一個迭代器，包含長度大於 5 的單字。C) 使用列表推導式實現了相同的篩選功能。
+</details>
+
+---
+
+7️⃣ 考慮以下函式定義：
+```python
+def process_data(a, b, *args, **kwargs):
+    return f"a={a}, b={b}, args={args}, kwargs={kwargs}"
+```
+下列哪個函式呼叫會產生 `a=1, b=2, args=(3, 4), kwargs={'x': 5, 'y': 6}` 的輸出？
+- (A) `process_data(1, 2, 3, 4, x=5, y=6)`
+- (B) `process_data(a=1, b=2, 3, 4, x=5, y=6)`
+- (C) `process_data(1, b=2, args=[3, 4], kwargs={'x': 5, 'y': 6})`
+- (D) `process_data(1, 2, (3, 4), {'x': 5, 'y': 6})`
+
+<details>
+<summary>解答</summary>
+(A)。
+說明：`process_data(1, 2, 3, 4, x=5, y=6)` 會將 `1` 賦值給 `a`，`2` 賦值給 `b`，`3` 和 `4` 收集到 `args` 元組中，`x=5` 和 `y=6` 收集到 `kwargs` 字典中。
+</details>
+
+---
+
+8️⃣ 關於 Python 函式的回傳值，下列敘述何者正確？
+- (A) 函式只能回傳一個值。
+- (B) 如果函式沒有 `return` 語句，它會隱式地回傳 `None`。
+- (C) 使用 `return a, b` 可以回傳多個值，這些值會被封裝成一個列表。
+- (D) 函式中 `return` 語句後的程式碼一定會被執行。
+
+<details>
+<summary>解答</summary>
+(B)。
+說明：如果函式沒有顯式的 `return` 語句，Python 會隱式地回傳 `None`。
+- `A)` 函式可以使用 `return a, b` 回傳多個值，這些值會被封裝成一個元組。
+- `D)` `return` 語句會終止函式的執行，其後的程式碼不會被執行。
+</details>
+
+---
+
+9️⃣ 給定一個列表 `items = [{'name': 'apple', 'price': 2}, {'name': 'banana', 'price': 1}, {'name': 'cherry', 'price': 3}]`，下列哪個程式碼片段會使用 `sort` 和 `lambda` 函式根據價格降序排序這個列表？
+- (A) `items.sort(key=lambda item: item['price'])`
+- (B) `sorted(items, key=lambda item: item['price'], reverse=True)`
+- (C) `items.sort(key=lambda item: -item['price'])`
+- (D) B) 和 C) 都是正確的。
+
+<details>
+<summary>解答</summary>
+(D)。
+說明：B) 和 C) 都是正確的。B) 使用 `sorted()` 函式搭配 `lambda` 函式和 `reverse=True` 實現降序排序並返回一個新的列表。C) 使用 `sort()` 方法搭配 `lambda` 函式返回價格的負值作為鍵，直接對原列表進行降序排序。
+</details>
+
+---
+
+🔟 考慮以下函式定義：
+```python
+def apply_operation(func, x):
+    return func(x)
+```
+下列哪個呼叫會將 `y` 的值設為 25？
+- (A) `y = apply_operation(def square(z): return z * z, 5)`
+- (B) `y = apply_operation(square(5))`
+- (C) `y = apply_operation(lambda z: z * z, 5)`
+- (D) `y = apply_operation((z) => z * z, 5)`
+
+<details>
+<summary>解答</summary>
+(C)。
+說明：`apply_operation(lambda z: z * z, 5)` 是正確的。`apply_operation` 接收一個函式和一個參數，然後呼叫該函式並傳遞參數。`lambda z: z * z` 定義了一個計算平方的匿名函式。
+</details>
 
 
-### 5.5.7 Exercise
+### 8.6.7 Exercise
 
-#### 5.5.7.1 函式練習題 (一)：計算投手勝敗投
+**8.6.7.1 函式練習題 (一)：計算投手勝敗投**
 
 **題目：**
 
@@ -1565,7 +1700,7 @@ print(determine_pitcher_result(4.2, 0, 2, True))   # 預期輸出: 中繼
 print(determine_pitcher_result(3.0, 3, 1, False))  # 預期輸出: 中繼
 ```
 
-#### 5.5.7.2 函式練習題 (二)：格式化球員打擊數據
+**8.6.7.2 函式練習題 (二)：格式化球員打擊數據**
 
 **題目：**
 
@@ -1607,11 +1742,11 @@ print(stats)
 # 打擊率: 0.333
 ```
 
-## 5.6. Python 物件導向設計 (Object-Oriented Design)
+## 8.7. Python 物件導向設計 (Object-Oriented Design)
 
 物件導向程式設計 (OOP) 是一種強大的程式設計範式，它基於「物件」的概念，將資料（屬性）和操作資料的程式碼（方法）組織在一起。Python 是一門支援物件導向的語言，本講義將深入探討 Python 中的物件設計。
 
-### 5.6.1. 物件導向的基本概念
+### 8.7.1. 物件導向的基本概念
 
 物件導向程式設計的核心思想是將程式中的一切都視為物件。每個物件都具有：
 
@@ -1626,7 +1761,7 @@ print(stats)
 * **繼承 (Inheritance):** 允許一個類別（子類別）繼承另一個類別（父類別）的屬性和方法，實現程式碼重用和擴展。
 * **多型 (Polymorphism):** 允許不同類別的物件對相同的方法呼叫做出不同的響應，提高了程式碼的靈活性和可擴展性。
 
-### 5.6.2. 類別 (Class) 的定義
+### 8.7.2. 類別 (Class) 的定義
 
 在 Python 中，使用 `class` 關鍵字來定義類別。
 
@@ -1682,7 +1817,7 @@ print(MyClass.static_method()) # 輸出: 我是一個靜態方法
 * **類別方法 (Class Method):** 使用 `@classmethod` 裝飾器標記的方法。它的第一個參數是 `cls`，指向類別本身，而不是實例。類別方法可以存取和修改類別屬性。
 * **靜態方法 (Static Method):** 使用 `@staticmethod` 裝飾器標記的方法。它沒有 `self` 或 `cls` 參數，它只是在類別的命名空間中組織的普通函式，與類別或實例的狀態沒有直接關聯。
 
-### 5.6.3. 物件屬性的取得與修改
+### 8.7.3. 物件屬性的取得與修改
 
 創建物件後，可以使用點號 `.` 來存取和修改其屬性。
 
@@ -1708,7 +1843,7 @@ print(my_object.class_attribute)  # 輸出: 修改後的類別屬性 (所有實�
 
 * 直接存取和修改屬性有時可能違反封裝原則。為了更好地控制屬性的存取和修改，可以使用 `property`。
 
-### 5.6.4. 使用 `property` 控制屬性存取
+### 8.7.4. 使用 `property` 控制屬性存取
 
 `property` 是一種內建的函式，用於創建**受管理的屬性 (Managed Attributes)**。它可以讓我們在存取、修改或刪除物件屬性時執行額外的程式碼（例如驗證、計算等），同時保持使用點號 `.` 存取屬性的語法不變。
 
@@ -1815,7 +1950,7 @@ except ValueError as e:
 
 使用 `property` 可以更好地實現封裝，並在屬性存取時添加額外的邏輯，而不會改變使用者存取屬性的方式。
 
-### 5.6.5. 繼承 (Inheritance)
+### 8.7.5. 繼承 (Inheritance)
 
 繼承是一種機制，允許一個類別（子類別或衍生類別）繼承另一個類別（父類別或基底類別）的屬性和方法。子類別可以重用父類別的程式碼，並可以擴展或修改父類別的功能。
 
@@ -1884,7 +2019,7 @@ child.say_hi()    # 輸出: Hi from Father
 
 多重繼承需要謹慎使用，因為它可能導致命名衝突（當多個父類別具有相同名稱的屬性或方法時）和複雜的繼承關係。Python 使用方法解析順序 (Method Resolution Order, MRO) 來決定當呼叫一個繼承自多個父類別的方法時，應該執行哪個父類別的方法。可以使用 `Child.mro()` 來查看 MRO。
 
-### 5.6.6. 物件導向設計的應用
+### 8.7.6. 物件導向設計的應用
 
 物件導向設計廣泛應用於各種軟體開發領域：
 
@@ -1896,110 +2031,166 @@ child.say_hi()    # 輸出: Hi from Father
 
 總之，掌握 Python 的物件導向設計對於編寫組織良好、可重用、易於維護和擴展的程式碼至關重要。理解類別、物件、屬性、方法、`property` 和繼承等概念是成為一名高效 Python 開發者的基礎。
 
-### 5.6.7 Check
+### 8.7.7 隨堂測驗
 
-**Python 物件設計選擇題**
+1️⃣ 下列關於 Python 類別定義的敘述，何者正確？
+- (A) 類別使用關鍵字 `struct` 定義。
+- (B) 類別中定義的變數一定是物件屬性。
+- (C) 類別可以使用 `pass` 關鍵字來定義一個空類別。
+- (D) 類別名稱必須以小寫字母開頭。
 
-1.  下列關於 Python 類別定義的敘述，何者正確？
-    A) 類別使用關鍵字 `struct` 定義。
-    B) 類別中定義的變數一定是物件屬性。
-    C) 類別可以使用 `pass` 關鍵字來定義一個空類別。
-    D) 類別名稱必須以小寫字母開頭。
-
-2.  關於類別屬性 (Class Attribute) 和物件屬性 (Instance Attribute) 的差異，下列敘述何者正確？
-    A) 類別屬性在每個物件實例中都是不同的，而物件屬性在所有實例中共享相同的值。
-    B) 類別屬性屬於類別本身，而物件屬性屬於物件實例。
-    C) 物件屬性在類別定義時被賦值，而類別屬性在物件創建時被賦值。
-    D) 兩者在使用上沒有本質區別，只是定義的位置不同。
-
-3.  在 Python 中，如何存取物件的屬性？
-    A) 使用 `object->attribute` 的箭頭符號。
-    B) 直接使用屬性名稱。
-    C) 使用點號 `.` 後跟屬性名稱。
-    D) 將屬性名稱作為字串傳遞給物件的 `get()` 方法。
-
-4.  關於 Python 類別的建構方法 `__init__(self, ...)`，下列敘述何者正確？
-    A) 它是一個可選的方法，類別不一定需要定義。
-    B) 它在創建類別時自動被呼叫。
-    C) 它的主要作用是定義類別的方法。
-    D) 它的第一個參數 `self` 可以被替換為其他名稱。
-
-5.  `self` 參數在 Python 的類別方法中代表什麼？
-    A) 代表類別本身。
-    B) 代表呼叫該方法的物件實例。
-    C) 代表父類別。
-    D) 代表模組的全域命名空間。
-
-6.  `property` 在 Python 物件設計中的主要作用是什麼？
-    A) 用於定義類別的靜態方法。
-    B) 用於實現多重繼承。
-    C) 用於控制對物件屬性的存取和修改。
-    D) 用於定義類別的建構子。
-
-7.  考慮以下程式碼片段：
-    ```python
-    class Parent:
-        def method(self):
-            print("Parent method")
-
-    class Child(Parent):
-        def method(self):
-            print("Child method")
-
-    obj = Child()
-    obj.method()
-    ```
-    程式碼的輸出將會是什麼？
-    A) `Parent method`
-    B) `Child method`
-    C) `Parent method` 和 `Child method` 都會被印出。
-    D) 會產生錯誤。
-
-8.  在 Python 的繼承中，如果子類別想要呼叫父類別中被覆寫的方法，應該使用哪個函數？
-    A) `super()`
-    B) `self()`
-    C) `parent()`
-    D) `base()`
-
-9. 下列哪個關於 Python 物件設計的原則最能提高程式碼的重用性？
-    A) 封裝 (Encapsulation)
-    B) 抽象化 (Abstraction)
-    C) 繼承 (Inheritance)
-    D) 多型 (Polymorphism)
-
-10. 在 Python 中，使用雙底線開頭的屬性名稱 (例如 `__private_attribute`) 具有什麼特殊意義？
-    A) 它表示該屬性是唯讀的，不能在類別外部修改。
-    B) 它會觸發 Python 的名稱修飾 (name mangling) 機制，使其難以在類別外部直接存取。
-    C) 它表示該屬性是類別屬性，而不是物件屬性。
-    D) 它會使該屬性在繼承時不會被子類別繼承。
+<details>
+<summary>解答</summary>
+(C)。
+說明：可以使用 `pass` 關鍵字定義一個不包含任何屬性和方法的空類別。
+- `A)` 類別使用 `class` 關鍵字定義。
+- `B)` 在類別中定義的變數可以是類別屬性或在方法中定義的局部變數。
+- `D)` 類別名稱通常遵循駝峰命名法，首字母大寫。
+</details>
 
 ---
 
-**答案與解析：**
+2️⃣ 關於類別屬性 (Class Attribute) 和物件屬性 (Instance Attribute) 的差異，下列敘述何者正確？
+- (A) 類別屬性在每個物件實例中都是不同的，而物件屬性在所有實例中共享相同的值。
+- (B) 類別屬性屬於類別本身，而物件屬性屬於物件實例。
+- (C) 物件屬性在類別定義時被賦值，而類別屬性在物件創建時被賦值。
+- (D) 兩者在使用上沒有本質區別，只是定義的位置不同。
 
-1.  **C)** 正確。可以使用 `pass` 關鍵字定義一個不包含任何屬性和方法的空類別。A) 類別使用 `class` 關鍵字定義。B) 在類別中定義的變數可以是類別屬性或在方法中定義的局部變數。D) 類別名稱通常遵循駝峰命名法，首字母大寫。
+<details>
+<summary>解答</summary>
+(B)。
+說明：類別屬性是屬於類別本身的，所有實例共享；物件屬性是屬於每個物件實例的，每個實例可以有不同的值。
+</details>
 
-2.  **B)** 正確。類別屬性是屬於類別本身的，所有實例共享；物件屬性是屬於每個物件實例的，每個實例可以有不同的值。
+---
 
-3.  **C)** 正確。使用點號 `.` 後跟屬性名稱來存取物件的屬性。
+3️⃣ 在 Python 中，如何存取物件的屬性？
+- (A) 使用 `object->attribute` 的箭頭符號。
+- (B) 直接使用屬性名稱。
+- (C) 使用點號 `.` 後跟屬性名稱。
+- (D) 將屬性名稱作為字串傳遞給物件的 `get()` 方法。
 
-4.  **B)** 正確。`__init__` 是建構子，在物件創建後會自動被呼叫以初始化物件。A) 如果沒有定義 `__init__`，物件會使用預設的建構行為。C) `__init__` 的主要作用是初始化屬性。D) `self` 是慣例名稱，雖然可以替換，但不建議。
+<details>
+<summary>解答</summary>
+(C)。
+說明：使用點號 `.` 後跟屬性名稱來存取物件的屬性。
+</details>
 
-5.  **B)** 正確。`self` 指向呼叫該方法的物件實例。
+---
 
-6.  **C)** 正確。`property` 用於創建受管理的屬性，可以控制屬性的讀取、設定和刪除行為。
+4️⃣ 關於 Python 類別的建構方法 `__init__(self, ...)`，下列敘述何者正確？
+- (A) 它是一個可選的方法，類別不一定需要定義。
+- (B) 它在創建類別時自動被呼叫。
+- (C) 它的主要作用是定義類別的方法。
+- (D) 它的第一個參數 `self` 可以被替換為其他名稱。
 
-7.  **B)** `Child method`。子類別 `Child` 覆寫了父類別 `Parent` 的 `method`，當呼叫子類別物件的 `method` 時，會執行子類別的版本。
+<details>
+<summary>解答</summary>
+(B)。
+說明：`__init__` 是建構子，在物件創建後會自動被呼叫以初始化物件。
+</details>
 
-8.  **A)** `super()`。`super()` 函數用於呼叫父類別的方法。
+---
 
-9. **C)** 繼承允許子類別重用父類別的程式碼，從而提高程式碼的重用性。
+5️⃣ `self` 參數在 Python 的類別方法中代表什麼？
+- (A) 代表類別本身。
+- (B) 代表呼叫該方法的物件實例。
+- (C) 代表父類別。
+- (D) 代表模組的全域命名空間。
 
-10. **B)** 正確。以雙底線開頭的屬性名稱會觸發 Python 的名稱修飾機制，將屬性名稱改為 `_ClassName__attributeName` 的形式，使其在類別外部難以直接存取，但並非完全不能存取。
+<details>
+<summary>解答</summary>
+(B)。
+說明：`self` 指向呼叫該方法的物件實例。
+</details>
 
-### 5.6.8 Exercise
+---
 
-#### 5.6.8.1 棒球員
+6️⃣ `property` 在 Python 物件設計中的主要作用是什麼？
+- (A) 用於定義類別的靜態方法。
+- (B) 用於實現多重繼承。
+- (C) 用於控制對物件屬性的存取和修改。
+- (D) 用於定義類別的建構子。
+
+<details>
+<summary>解答</summary>
+(C)。
+說明：`property` 用於創建受管理的屬性，可以控制屬性的讀取、設定和刪除行為。
+</details>
+
+---
+
+7️⃣ 考慮以下程式碼片段：
+```python
+class Parent:
+    def method(self):
+        print("Parent method")
+
+class Child(Parent):
+    def method(self):
+        print("Child method")
+
+obj = Child()
+obj.method()
+```
+程式碼的輸出將會是什麼？
+- (A) `Parent method`
+- (B) `Child method`
+- (C) `Parent method` 和 `Child method` 都會被印出。
+- (D) 會產生錯誤。
+
+<details>
+<summary>解答</summary>
+(B)。
+說明：子類別 `Child` 覆寫了父類別 `Parent` 的 `method`，當呼叫子類別物件의 `method` 時，會執行子類別的版本。
+</details>
+
+---
+
+8️⃣ 在 Python 的繼承中，如果子類別想要呼叫父類別中被覆寫的方法，應該使用哪個函數？
+- (A) `super()`
+- (B) `self()`
+- (C) `parent()`
+- (D) `base()`
+
+<details>
+<summary>解答</summary>
+(A)。
+說明：`super()` 函數用於呼叫父類別的方法。
+</details>
+
+---
+
+9️⃣ 下列哪個關於 Python 物件設計的原則最能提高程式碼的重用性？
+- (A) 封裝 (Encapsulation)
+- (B) 抽象化 (Abstraction)
+- (C) 繼承 (Inheritance)
+- (D) 多型 (Polymorphism)
+
+<details>
+<summary>解答</summary>
+(C)。
+說明：繼承允許子類別重用父類別的程式碼，從而提高程式碼的重用性。
+</details>
+
+---
+
+1️⃣0️⃣ 在 Python 中，使用雙底線開頭的屬性名稱 (例如 `__private_attribute`) 具有什麼特殊意義？
+- (A) 它表示該屬性是唯讀的，不能在類別外部修改。
+- (B) 它會觸發 Python 的名稱修飾 (name mangling) 機制，使其難以在類別外部直接存取。
+- (C) 它表示該屬性是類別屬性，而不是物件屬性。
+- (D) 它會使該屬性在繼承時不會被子類別繼承。
+
+<details>
+<summary>解答</summary>
+(B)。
+說明：以雙底線開頭的屬性名稱會觸發 Python 的名稱修飾機制，將屬性名稱改為 `_ClassName__attributeName` 的形式，使其在類別外部難以直接存取。
+</details>
+
+
+### 8.7.8 Exercise
+
+**8.7.8.1 棒球員**
 請設計一個名為 `BaseballPlayer` 的類別，用於表示一位棒球員。這個類別應該包含以下屬性：
 
 * `name` (字串)：球員的姓名。
@@ -2030,11 +2221,11 @@ child.say_hi()    # 輸出: Hi from Father
 * 為 `BaseballPlayer` 類別添加一個 `__str__(self)` 方法，使其在使用 `print()` 函數列印球員物件時，能以更友好的格式顯示球員資訊。
 * 創建一個球隊 (Team) 類別，該類別可以儲存多個 `BaseballPlayer` 物件，並提供方法來新增球員、顯示球隊所有球員資訊，以及計算球隊的平均打擊率。
 
-## 5.7 列舉型態
+## 8.8 列舉型態
 
 列舉 (Enumeration) 是一種將一組具名的常數綁定在一起的方式。它可以使程式碼更具可讀性和可維護性，因為它使用有意義的名稱來代替隨機的數值或字串。Python 從 3.4 版本開始引入了 `enum` 模組來支援列舉型態。
 
-### 5.7.1 為什麼需要列舉型態？
+### 8.8.1 為什麼需要列舉型態？
 
 在沒有列舉型態的情況下，我們可能會使用常數變數來表示一組相關的值：
 
@@ -2065,7 +2256,7 @@ def process_order(status):
 
 列舉型態可以有效地解決這些問題。
 
-### 5.7.2 定義列舉型態
+### 8.8.2 定義列舉型態
 
 要使用列舉型態，首先需要導入 `enum` 模組中的 `Enum` 類別，然後通過繼承 `Enum` 來創建自己的列舉類別。
 
@@ -2089,7 +2280,7 @@ class Color(Enum):
 * `PENDING`, `PROCESSING`, `COMPLETED`, `FAILED`, `RED`, `GREEN`, `BLUE` 是列舉的成員 (members)，它們是 `Status` 和 `Color` 的實例。
 * 等號右邊的值是與每個成員關聯的值。這些值可以是整數、字串或其他不可變的型別。
 
-### 5.7.3 存取列舉成員和值
+### 8.8.3 存取列舉成員和值
 
 可以使用點號 `.` 來存取列舉的成員：
 
@@ -2112,7 +2303,7 @@ print(Status['PROCESSING'])  # 輸出: Status.PROCESSING
 print(Color['BLUE'])        # 輸出: Color.BLUE
 ```
 
-### 5.7.4 列舉成員的特性
+### 8.8.4 列舉成員的特性
 
 * **唯一性:** 在同一個列舉中，成員的名稱必須是唯一的。
 * **不可變性:** 列舉成員是常數，一旦定義就不能修改它們的值。
@@ -2142,7 +2333,7 @@ if Status.PENDING != Status.PROCESSING:
 #     pass
 ```
 
-### 5.7.5 別名 (Aliases)
+### 8.8.5 別名 (Aliases)
 
 預設情況下，如果多個成員具有相同的值，那麼只有第一個定義的成員會被視為主要的成員，其他的會成為它的別名。當迭代列舉時，別名不會被包含在內。
 
@@ -2178,7 +2369,7 @@ class UniqueErrorCode(Enum):
     ERROR = 2
 ```
 
-### 5.7.6 在程式中使用列舉
+### 8.8.6 在程式中使用列舉
 
 使用列舉可以使程式碼更清晰和安全：
 
@@ -2200,7 +2391,7 @@ process_order_with_enum(Status.PROCESSING)  # 安全且易讀
 # process_order_with_enum("PROCESSING")     # 會觸發類型提示警告
 ```
 
-### 5.7.7 與 JavaScript 的比較
+### 8.8.7 與 JavaScript 的比較
 
 JavaScript 在語言核心中沒有內建的列舉型態。在 JavaScript 中，通常會使用物件來模擬列舉：
 
@@ -2242,64 +2433,76 @@ console.log(Color.RED);
 * JavaScript 需要使用物件或函數來模擬列舉，缺乏語言層面的直接支援。雖然可以實現類似的功能，但可能不如 Python 的 `enum` 模組那麼方便和安全。
 * TypeScript 是 JavaScript 的一個超集，它引入了 `enum` 關鍵字，提供了與 Python 列舉型態更接近的功能。
 
-### 5.7.8 Check
+### 8.8.8 隨堂測驗
 
-1.  下列關於 Python 列舉型態 (`enum`) 的敘述，何者正確？
-    A) 列舉成員的值必須是唯一的整數。
-    B) 可以使用比較運算符（如 `>`、`<`）直接比較不同列舉的成員。
-    C) 列舉類別是可迭代的，可以遍歷其所有成員。
-    D) 列舉成員的名稱在定義後可以被修改。
+1️⃣ 下列關於 Python 列舉型態 (`enum`) 的敘述，何者正確？
+- (A) 列舉成員的值必須是唯一的整數。
+- (B) 可以使用比較運算符（如 `>`、`<`）直接比較不同列舉的成員。
+- (C) 列舉類別是可迭代的，可以遍歷其所有成員。
+- (D) 列舉成員的名稱在定義後可以被修改。
 
-2.  考慮以下列舉定義：
-    ```python
-    from enum import Enum
-
-    class Status(Enum):
-        PENDING = 1
-        RUNNING = 2
-        COMPLETED = 1
-    ```
-    當執行 `print(Status.PENDING is Status.COMPLETED)` 時，輸出會是什麼？
-    A) `True`
-    B) `False`
-    C) 會因為重複的值而產生 `ValueError`。
-    D) 無法預測。
-
-3.  給定以下列舉定義：
-    ```python
-    from enum import Enum
-
-    class Color(Enum):
-        RED = "red"
-        GREEN = "green"
-        BLUE = "blue"
-    ```
-    下列哪個存取列舉成員的方式是正確的？
-    A) `Color[0]`
-    B) `Color.1`
-    C) `Color('red')`
-    D) `Color.RED.name`
+<details>
+<summary>解答</summary>
+(C)。
+說明：列舉類別是可迭代的，可以遍歷其所有成員。
+- `A)` 列舉成員的值可以是整數、字串或其他不可變的型別。
+- `B)` 不建議直接比較不同列舉的成員，通常只比較相同列舉內的成員是否相等。
+- `D)` 列舉成員的名稱在定義後是不可修改的。
+</details>
 
 ---
 
-**答案與解析：**
+2️⃣ 考慮以下列舉定義：
+```python
+from enum import Enum
 
-1.  **C)** 正確。列舉類別是可迭代的，可以遍歷其所有成員。
-    * A) 列舉成員的值可以是整數、字串或其他不可變的型別。
-    * B) 不建議直接比較不同列舉的成員，通常只比較相同列舉內的成員是否相等。
-    * D) 列舉成員的名稱在定義後是不可修改的。
+class Status(Enum):
+    PENDING = 1
+    RUNNING = 2
+    COMPLETED = 1
+```
+當執行 `print(Status.PENDING is Status.COMPLETED)` 時，輸出會是什麼？
+- (A) `True`
+- (B) `False`
+- (C) 會因為重複的值而產生 `ValueError`。
+- (D) 無法預測。
 
-2.  **A)** `True`。在預設情況下，如果多個列舉成員具有相同的值，那麼它們會被視為彼此的別名，`is` 運算符會判斷它們是否是同一個物件。因此，`Status.PENDING` 和 `Status.COMPLETED` 在這個例子中指向同一個成員。**注意：** 如果在定義列舉時使用了 `@enum.unique` 裝飾器，則會因為重複的值而拋出 `ValueError`。
+<details>
+<summary>解答</summary>
+(A)。
+說明：在預設情況下，如果多個列舉成員具有相同的值，那麼它們會被視為彼此的別名，`is` 運算符會判斷它們是否是同一個物件。因此，`Status.PENDING` 和 `Status.COMPLETED` 在這個例子中指向同一個成員。
+</details>
 
-3.  **D)** `Color.RED.name` 是正確的。
-    * A) 列舉不支援像列表一樣的數字索引存取。
-    * B) 列舉成員名稱不能以數字開頭。
-    * C) 可以使用列舉值來存取成員，例如 `Color("red")` 會回傳 `Color.RED`。`Color.RED.name` 則會回傳成員的名稱字串 `"RED"`。
+---
+
+3️⃣ 給定以下列舉定義：
+```python
+from enum import Enum
+
+class Color(Enum):
+    RED = "red"
+    GREEN = "green"
+    BLUE = "blue"
+```
+下列哪個存取列舉成員的方式是正確的？
+- (A) `Color[0]`
+- (B) `Color.1`
+- (C) `Color('red')`
+- (D) `Color.RED.name`
+
+<details>
+<summary>解答</summary>
+(D)。
+說明：`Color.RED.name` 是正確的。
+- `A)` 列舉不支援像列表一樣的數字索引存取。
+- `B)` 列舉成員名稱不能以數字開頭。
+- `C)` 可以使用列舉值來存取成員，例如 `Color("red")` 會回傳 `Color.RED`。
+</details>
 
 
-## 5.8. 模組的引入
+## 8.9. 模組的引入
 
-### 5.8.1 引入模組（Module）
+### 8.9.1 引入模組（Module）
 
 在 Python 中，模組是一個包含 Python 定義和語句的文件，通常以 `.py` 結尾。引入模組可以讓你使用該模組中定義的函式、類別和變數。以下是常見的引入模組的方法：
 
@@ -2367,7 +2570,7 @@ result = sqrt(25)
 print(result)  # 輸出: 5.0
 ```
 
-### 5.8.2 引入類別（Class）
+### 8.9.2 引入類別（Class）
 
 類別通常定義在模組中，所以引入類別的方法與引入模組中的其他名稱（如函式）相同。
 
@@ -2401,7 +2604,7 @@ obj = MC()
 obj.some_method()
 ```
 
-### 5.8.3 整理
+### 8.9.3 整理
 
 | 引入方式                                    | 描述                                 | 優點                                       | 缺點                                                 | 適用場景                                                                 |
 | ------------------------------------------- | ------------------------------------ | ------------------------------------------ | ---------------------------------------------------- | ------------------------------------------------------------------------ |
