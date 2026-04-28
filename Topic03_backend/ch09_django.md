@@ -46,12 +46,11 @@ git clearn -fd
 ```
 
 ### Lab01: 安裝與啟動
-:::success
-:football: You will learn
-* 如何建立一個虛擬的環境來安裝、執行 django
-* 如何建立一個 django 的專案
-* 如何開啟一個 django 的網頁伺服器
-:::
+> [!NOTE]
+> 🏈 You will learn
+> * 如何建立一個虛擬的環境來安裝、執行 django
+> * 如何建立一個 django 的專案
+> * 如何開啟一個 django 的網頁伺服器
 
 See [w3school- django install](https://www.w3schools.com/django/django_getstarted.php)
 
@@ -76,10 +75,9 @@ py manage.py runserver
 這時候到 `http://127.0.0.1:8000` 就會看到一個被啟動的系統（一個火箭）。表示安裝成功。
 
 ### Lab02: 用 View-Template say Hello
-:::success
-:football: You will learn
-* 使用 django 中的 ulrs, View 和 Template
-:::
+> [!NOTE]
+> 🏈 You will learn
+> * 使用 django 中的 ulrs, View 和 Template
 
 
 Reference to [W3School- create App](https://www.w3schools.com/django/django_create_app.php)
@@ -136,7 +134,7 @@ def members(request):
     return HttpResponse("Hello world!")
 ```
 
-:question: request 物件提供了哪些資訊？透過 print() 列印出來看看吧
+❓ request 物件提供了哪些資訊？透過 print() 列印出來看看吧
 
 ```python=
 for attr_name in dir(request):
@@ -184,9 +182,9 @@ urlpatterns = [
 設定好後，重新啟動伺服器 (
 `py manage.py runserver`); 開啟 [http://127.0.0.1:8000](http://127.0.0.1:8000) 和 [http://127.0.0.1:8000/members](http://127.0.0.1:8000/members)，應該會看到 Hello World 的字樣。
 
-:question: 把專案路由的預設路徑改為`tennis`, 試試網頁如何輸出？
+❓ 把專案路由的預設路徑改為`tennis`, 試試網頁如何輸出？
 
-:question: 在 `urls.py` 中，加上 `print()` 的指令，印出 `urlspatterns` 的內容
+❓ 在 `urls.py` 中，加上 `print()` 的指令，印出 `urlspatterns` 的內容
 
 #### lab2.4 設計網頁樣板
 
@@ -221,14 +219,13 @@ def members(request):
 
 ### Lab03: 用 MVT 管理與呈現資料
 
-:::success
-:football: You will learn
-* 如何建立資料庫的資料
-    * model 與 makemigrations, migrate
-* 如何透過 shell 新增資料
-* 如何讀取資料，並將之呈現在網頁中
-    * 網頁樣板標籤與樣板變數的意義
-:::
+> [!NOTE]
+> 🏈 You will learn
+> * 如何建立資料庫的資料
+>     * model 與 makemigrations, migrate
+> * 如何透過 shell 新增資料
+> * 如何讀取資料，並將之呈現在網頁中
+>     * 網頁樣板標籤與樣板變數的意義
 
 這個 lab 中，我們設計一個會員資料庫，並呈現之。
 
@@ -284,9 +281,9 @@ nick.save()
 Member.objects.all() # check again
 Member.objects.all().values() # check detail values
 ```
-:question: check the type of `Member.objects.all().values()`
+❓ check the type of `Member.objects.all().values()`
 
-:question: 如何在 shell 中直接執行一個 .py 檔來新增一群資料？
+❓ 如何在 shell 中直接執行一個 .py 檔來新增一群資料？
 
 ```
 exec(open('path/to/your/file.py').read())
@@ -507,12 +504,11 @@ See branch **[member](https://github.com/nlhsueh/nlh_tennis_club/tree/member)**
 合理地使用資料庫的各種限制對於建立一個健壯、可靠的應用程式至關重要。它們有助於確保資料的準確性、一致性和完整性。Django 的模型定義提供了方便的方式來聲明這些限制，並且 Django 的 ORM 會在與資料庫互動時考慮這些限制。在設計模型時，仔細思考每個欄位的限制，將有助於避免後續的資料問題。
 
 ### Lab04: 管理者與欄位設定
-:::success
-:football: You will learn
-* 如何建立一個管理者 (admin) 的帳號和密碼
-* 如何修改資料庫的資料表，需要注意哪些設定
-* 建立資料表時，額外的參數設定
-:::
+> [!NOTE]
+> 🏈 You will learn
+> * 如何建立一個管理者 (admin) 的帳號和密碼
+> * 如何修改資料庫的資料表，需要注意哪些設定
+> * 建立資料表時，額外的參數設定
 
 
 #### 建立管理者
@@ -590,9 +586,9 @@ firstname = models.CharField(max_length=255,
 
 :point_right: [See geeksforgeeks- CharField](https://www.geeksforgeeks.org/charfield-django-models/)
 
-:basketball: 在資料庫 model 中，加上 `unique`, `verbose_name`, `help_text`, `error_message` 等參數，觀察在 admin 頁面的變化。 
+🏀 在資料庫 model 中，加上 `unique`, `verbose_name`, `help_text`, `error_message` 等參數，觀察在 admin 頁面的變化。 
 
-:question: 說明以下含義：
+❓ 說明以下含義：
 ```python=
 phone = models.IntegerField(null=True, 
                             blank=True,
@@ -610,11 +606,10 @@ See branch **[admin](https://github.com/nlhsueh/nlh_tennis_club/tree/admin)**
 
 ### Lab05: 細節資料與擴充頁面
 
-:::success
-:football: You will learn
-* 細節資料的頁面設計
-* 主頁面與擴充頁面的設計，以提升主頁面設計的可重用性，將地程式開發的複雜度。
-:::
+> [!NOTE]
+> 🏈 You will learn
+> * 細節資料的頁面設計
+> * 主頁面與擴充頁面的設計，以提升主頁面設計的可重用性，將地程式開發的複雜度。
 
 <概述資料-細節資料>的呈現常常在資訊系統中出現：在概述資料中，我們呈現「一群」資料的概述，當我們點擊某一筆資料的時候，就會出現細節(detail)資料的全貌。
 * members 是一個集合物件，透過 `id` 指定明確物件，近一步呈現某會員的細節資料。
@@ -782,12 +777,11 @@ See branch **[details](https://github.com/nlhsueh/nlh_tennis_club/tree/details)*
 
 ### Lab06: 主畫面
 
-:::success
-:football: You will do
-* 一個系統的首頁，並且讓其他分頁可以快速回到首頁
-* 如何關閉與開啟除錯模式
-* 當除錯模式關閉時，如何將系統錯誤引導到錯誤說明頁面。
-:::
+> [!NOTE]
+> 🏈 You will do
+> * 一個系統的首頁，並且讓其他分頁可以快速回到首頁
+> * 如何關閉與開啟除錯模式
+> * 當除錯模式關閉時，如何將系統錯誤引導到錯誤說明頁面。
 
 * 做一個系統的 主畫面- [main.html](https://github.com/nlhsueh/nlh_tennis_club/blob/index/members/templates/main.html); 路由要記得設定 ([urls.py](https://github.com/nlhsueh/nlh_tennis_club/blob/index/members/urls.py))
 * 再設定檔 [setting.py](https://github.com/nlhsueh/nlh_tennis_club/blob/index/my_tennis_club/settings.py) 關閉除錯模式 -- 也就是設定 `default=False`。系統出錯時，就不會出現除錯資訊，會自動轉到 `404.html`。
@@ -798,14 +792,13 @@ See branch **[details](https://github.com/nlhsueh/nlh_tennis_club/tree/details)*
 
 See branch **[index](https://github.com/nlhsueh/nlh_tennis_club/tree/index)**
 
-:question: 如果不想用預設的 404.html, 該如何設定？ (Ans: see [here](https://www.geeksforgeeks.org/how-to-fix-page-not-found-404-django/))
+❓ 如果不想用預設的 404.html, 該如何設定？ (Ans: see [here](https://www.geeksforgeeks.org/how-to-fix-page-not-found-404-django/))
 
 ### Lab07: 查詢會員
-:::success
-:football: You will learn
-* 如何設計一個輸入表單，和後端的 django 互動
-* form GET 和 POST 的差異
-:::
+> [!NOTE]
+> 🏈 You will learn
+> * 如何設計一個輸入表單，和後端的 django 互動
+> * form GET 和 POST 的差異
 
 * 做一個輸入表單，透過 lastname 來查詢會員
 
@@ -864,11 +857,10 @@ path('members/check_member', views.check_member, name='check_member'),
 
 ### Lab08: 用表單新增會員
 
-:::success
-:football: You will learn
-* POST request 如何被處理，如何將使用者輸入的資料存到資料庫
-* ModelForm 的設計與應用
-:::
+> [!NOTE]
+> 🏈 You will learn
+> * POST request 如何被處理，如何將使用者輸入的資料存到資料庫
+> * ModelForm 的設計與應用
 1. 設計一個資料表單 [NewMemberForm](https://github.com/nlhsueh/nlh_tennis_club/blob/form_post/members/forms.py), 可以用來呈現介面，同時儲存到資料庫。記得是繼承 `ModelForm`。
 2. 新增路由到 [urls.py](https://github.com/nlhsueh/nlh_tennis_club/blob/form_post/members/urls.py)
 3. 設計 [new_member.html](https://github.com/nlhsueh/nlh_tennis_club/blob/form_post/members/templates/new_member.html): 透過 POST 方式，將提交的資料存到資料庫。注意我們是用資料表單來產生介面表單(`form.as_p()`)。
@@ -918,21 +910,20 @@ new_member.html ..> NewMemberForm
 See [branch **form_post**](https://github.com/nlhsueh/nlh_tennis_club/tree/form_post)
 
 
-:question: 輸入的時候如果要一些表單檢查的話該怎麼做？例如 joined_date 不可晚於今天。[Hint](https://www.geeksforgeeks.org/python-form-validation-using-django/)。
+❓ 輸入的時候如果要一些表單檢查的話該怎麼做？例如 joined_date 不可晚於今天。[Hint](https://www.geeksforgeeks.org/python-form-validation-using-django/)。
 
 ## 網球俱樂部 (III)
 
 ### ex01_age: tag if
-:::success
-:football: 年齡分組
-* 在 model 中為會員增加一個欄位 age
-* 修改 all members, 會分兩個區塊，一個是小於 20 歲的青少年組，一個是超過 20 歲的成人組。
-
-學習重點
-* template tag: if
-* `py manage.py makemigrations`; `py manage.py migrate`
-
-:::
+> [!NOTE]
+> 🏈 年齡分組
+> * 在 model 中為會員增加一個欄位 age
+> * 修改 all members, 會分兩個區塊，一個是小於 20 歲的青少年組，一個是超過 20 歲的成人組。
+> 
+> 學習重點
+> * template tag: if
+> * `py manage.py makemigrations`; `py manage.py migrate`
+> 
 ```plantuml
 class Member {
     - lastname
@@ -957,15 +948,14 @@ Code:
 See [branch **age**](https://github.com/nlhsueh/nlh_tennis_club/tree/age)
 
 ### ex02_court: enum
-:::success
-:football: 網球場
-* 在 model 中增加一個資料球場: 球場名稱、球場型態（草地、硬地、泥地、地毯)，所在城市。
-* 修改系統，可以透過 /courts 列出所有的球場，點擊該球場可以看到球場細部資料。
-
-學習重點
-* 一個系統可以有多個 app (子系統)
-* 資料庫中列舉性的資料型態處理
-:::
+> [!NOTE]
+> 🏈 網球場
+> * 在 model 中增加一個資料球場: 球場名稱、球場型態（草地、硬地、泥地、地毯)，所在城市。
+> * 修改系統，可以透過 /courts 列出所有的球場，點擊該球場可以看到球場細部資料。
+> 
+> 學習重點
+> * 一個系統可以有多個 app (子系統)
+> * 資料庫中列舉性的資料型態處理
 Hint
 * 建立 courts 的 App (`py manage.py startapp courts`)
 * 建立一個 Courts 的 model
@@ -1000,18 +990,17 @@ See [branch **court**](https://github.com/nlhsueh/nlh_tennis_club/tree/court)
 
 ### ex03_web
 
-:::success
-:football: 我要預約
-* 使用者可以輸入帳號密碼登入
-* 登入後每個球場後面有個"預約"的按鈕，點擊後會進入到預約頁面：包含預約日期、時間及長度。
-* 可以看到預約的狀況：預約者、日期、地點。
-
-學習重點:
-* 登入表單的製作; 帳號認證的執行與檢查
-* 表單輸入對於防呆的處理 (clean data)
-* 需登入才能執行動作處理及導向
-* 資料庫外鍵 (foreign key) 的設定
-:::
+> [!NOTE]
+> 🏈 我要預約
+> * 使用者可以輸入帳號密碼登入
+> * 登入後每個球場後面有個"預約"的按鈕，點擊後會進入到預約頁面：包含預約日期、時間及長度。
+> * 可以看到預約的狀況：預約者、日期、地點。
+> 
+> 學習重點:
+> * 登入表單的製作; 帳號認證的執行與檢查
+> * 表單輸入對於防呆的處理 (clean data)
+> * 需登入才能執行動作處理及導向
+> * 資料庫外鍵 (foreign key) 的設定
 
 See [branch **web**](https://github.com/nlhsueh/nlh_tennis_club/tree/web); [readme.md 解說](https://github.com/nlhsueh/nlh_tennis_club/blob/web/readme.md)
 #### Login process
@@ -1074,26 +1063,24 @@ BookingForm .> Booking
 
 ### ex04_static_files
 
-:::success
-:football: css 與 images
-* 用 CSS 和圖片美化網頁
-
-學習重點
-* 與 CSS 的合用
-:::
+> [!NOTE]
+> 🏈 css 與 images
+> * 用 CSS 和圖片美化網頁
+> 
+> 學習重點
+> * 與 CSS 的合用
 See [branch **static**](https://github.com/nlhsueh/nlh_tennis_club/tree/static)
 
 * [readme.md 解說](https://github.com/nlhsueh/nlh_tennis_club/blob/static/readme.md)
 
 ### ex05_bootstrap
 
-:::success
-:football: bootstrap
-* 使用 bootstrap 美化
-
-學習重點
-* bootstrap 的合用
-:::
+> [!NOTE]
+> 🏈 bootstrap
+> * 使用 bootstrap 美化
+> 
+> 學習重點
+> * bootstrap 的合用
 See [branch **bs**](https://github.com/nlhsueh/nlh_tennis_club/tree/bs)
 
 * [readme.md 解說](https://github.com/nlhsueh/nlh_tennis_club/blob/bs/readme.md)
@@ -1102,13 +1089,12 @@ See [branch **bs**](https://github.com/nlhsueh/nlh_tennis_club/tree/bs)
 
 
 ### ex06_validation
-:::success
-:football: 輸入驗證
-* 預借網球場時，需要寫理由，理由必須大於 10 個字。
-
-學習重點：
-* 如何在 form 中宣告方法，撰寫表單輸入時的驗證邏輯。
-:::
+> [!NOTE]
+> 🏈 輸入驗證
+> * 預借網球場時，需要寫理由，理由必須大於 10 個字。
+> 
+> 學習重點：
+> * 如何在 form 中宣告方法，撰寫表單輸入時的驗證邏輯。
 See [branch **validation**](https://github.com/nlhsueh/nlh_tennis_club/tree/validation)
 
 * [readme.md 解說](https://github.com/nlhsueh/nlh_tennis_club/blob/validation/readme.md)
@@ -1116,13 +1102,12 @@ See [branch **validation**](https://github.com/nlhsueh/nlh_tennis_club/tree/vali
 <img src="https://hackmd.io/_uploads/rkjBGi-Pp.png" width='350'>
 
 ### ex07_img
-:::success
-:football: 多媒體欄位
-* 在 admin 的介面，直接設定網球場的圖片; 並且之後可以顯示。
-
-學習重點：
-* 如何宣告圖形檔的資料欄位 ImageField; 
-:::
+> [!NOTE]
+> 🏈 多媒體欄位
+> * 在 admin 的介面，直接設定網球場的圖片; 並且之後可以顯示。
+> 
+> 學習重點：
+> * 如何宣告圖形檔的資料欄位 ImageField; 
 See [branch **img**](https://github.com/nlhsueh/nlh_tennis_club/tree/img)
 
 * 此版本需要安裝 pillow `py -m pip install pillow` 
@@ -1131,14 +1116,13 @@ See [branch **img**](https://github.com/nlhsueh/nlh_tennis_club/tree/img)
 <img src="https://hackmd.io/_uploads/SyjVqofPp.png" width="300">
 
 ### ex08_bind_user
-:::success
-:football: 把 user 和 member 綁定
-* Member 資料中增加 user 連接
-* user 登入後可以查看我的預約
-
-學習重點
-* 資料庫設計的資料表如何與系統的 user 做綁定
-:::
+> [!NOTE]
+> 🏈 把 user 和 member 綁定
+> * Member 資料中增加 user 連接
+> * user 登入後可以查看我的預約
+> 
+> 學習重點
+> * 資料庫設計的資料表如何與系統的 user 做綁定
 See [branch **bind_user**](https://github.com/nlhsueh/nlh_tennis_club/tree/bind_user)
 
 * [readme.md 解說](https://github.com/nlhsueh/nlh_tennis_club/blob/bind_user/readme.md)
@@ -1153,51 +1137,47 @@ See [branch **bind_user**](https://github.com/nlhsueh/nlh_tennis_club/tree/bind_
 
 ### HW-Baseball
 
-:::success
-:basketball: 棒球網站
-
-* 呈現球隊的所有球員，包含姓名、身高體重等基本資料，以及守備位置
-* 如果是野手，呈現打擊率、全壘打個數、被三振率等。
-* 如果是投手，呈現勝敗場數，以及失分率（）
-* 首頁可以選擇(1) 列出所有球員 (2) 點選後觀看球員資料 (3) 查詢球員資料 (4) 新增球員資料
-* 要用網頁母版來做到頁面共享的功能
-:::
+> [!NOTE]
+> 🏀 棒球網站
+> 
+> * 呈現球隊的所有球員，包含姓名、身高體重等基本資料，以及守備位置
+> * 如果是野手，呈現打擊率、全壘打個數、被三振率等。
+> * 如果是投手，呈現勝敗場數，以及失分率（）
+> * 首頁可以選擇(1) 列出所有球員 (2) 點選後觀看球員資料 (3) 查詢球員資料 (4) 新增球員資料
+> * 要用網頁母版來做到頁面共享的功能
 
 
 ### HW-BMI
 
-:::success
-:basketball: 設計一個表單，可以輸入一群人的姓名、身高、體重。提交後會存到資料庫中，並進行下一筆資料的輸入。
-
-* 點選統計：會呈現 BMI 過高的人、過低的人、以及正常的人的資訊。
-* 點選繼續編輯：會回到編輯表單繼續加入資料
-* 點選隨機輸入：會隨機輸入10筆資料，包含姓名身高體重等，都透過亂數輸入一些合理的值。(建議設計姓與名的詞典，組合出有意義的名字)
-:::
+> [!NOTE]
+> 🏀 設計一個表單，可以輸入一群人的姓名、身高、體重。提交後會存到資料庫中，並進行下一筆資料的輸入。
+> 
+> * 點選統計：會呈現 BMI 過高的人、過低的人、以及正常的人的資訊。
+> * 點選繼續編輯：會回到編輯表單繼續加入資料
+> * 點選隨機輸入：會隨機輸入10筆資料，包含姓名身高體重等，都透過亂數輸入一些合理的值。(建議設計姓與名的詞典，組合出有意義的名字)
 
 ### Quiz-gender
-:::success
-:basketball: 下載並實作以下需求： 
-* 下載 form_post 版本，安裝並啟動成功 (**50%**)
-* 加上並呈現性別 (**20%**)
-  * 將 member 加上 gender 的性別屬性，其型態是列舉型態的：男、女。現有資料中，設定至少兩人是男，兩人是女。
-  * 修改 http://127.0.0.1:8000/members/, 點擊後會出現男女的分類，而非年齡的分類。
-* 查詢性別 (**20%**)
-  * 首頁 Member 下，加上一個 Query 的連結，點擊後出現可以依據男女查詢畫面，用下拉式，或是 radio 的方式選擇，按下提交後出現對應的會員。
-* 透過修改 master.html 改變整體版面（如下方畫面）(**10%**)
-* [完整題目](https://docs.google.com/document/d/1JPLj68nsLcJrFOJkfGcrby2FLoX5SVWPYsSSTYCzRoY/edit?usp=sharing)
-:::
+> [!NOTE]
+> 🏀 下載並實作以下需求： 
+> * 下載 form_post 版本，安裝並啟動成功 (**50%**)
+> * 加上並呈現性別 (**20%**)
+>   * 將 member 加上 gender 的性別屬性，其型態是列舉型態的：男、女。現有資料中，設定至少兩人是男，兩人是女。
+>   * 修改 http://127.0.0.1:8000/members/, 點擊後會出現男女的分類，而非年齡的分類。
+> * 查詢性別 (**20%**)
+>   * 首頁 Member 下，加上一個 Query 的連結，點擊後出現可以依據男女查詢畫面，用下拉式，或是 radio 的方式選擇，按下提交後出現對應的會員。
+> * 透過修改 master.html 改變整體版面（如下方畫面）(**10%**)
+> * [完整題目](https://docs.google.com/document/d/1JPLj68nsLcJrFOJkfGcrby2FLoX5SVWPYsSSTYCzRoY/edit?usp=sharing)
 * [Hint solution](https://github.com/nlhsueh/nlh_tennis_club/tree/gender?tab=readme-ov-file)
 
 ### Exam- Friends web
-:::success
-* 112-2 final exam- coding part
-    * [題目](https://github.com/nlhsueh/friends_web/blob/exam_112_2/readme.md); [Github程式](https://github.com/nlhsueh/friends_web/tree/exam_112_2) (branch: **exam_112_2**)
-    * [解答](https://github.com/nlhsueh/friends_web/tree/solution_more) (branch: **solution_more**)
-* Extension:
-    * 修改 /seasons 頁面，始之一頁只呈現一季的內容，有 prev 及 next 的連接，可以到上一季、下一季的內容。需處理到頭尾的問題（出現錯誤訊息）
-    * 可以登入/登出。登入後可以在逛每一集 (/episodes) 時加上我的最愛的註記。加上一個 My Favorate 呈現我喜歡的頁面。
-    * 同上，在 /episodes 出現每一集時，上方有一個 season 及 episode 的下拉選單，方便我們直接跳到某一季的某一集。
-:::
+> [!NOTE]
+> * 112-2 final exam- coding part
+>     * [題目](https://github.com/nlhsueh/friends_web/blob/exam_112_2/readme.md); [Github程式](https://github.com/nlhsueh/friends_web/tree/exam_112_2) (branch: **exam_112_2**)
+>     * [解答](https://github.com/nlhsueh/friends_web/tree/solution_more) (branch: **solution_more**)
+> * Extension:
+>     * 修改 /seasons 頁面，始之一頁只呈現一季的內容，有 prev 及 next 的連接，可以到上一季、下一季的內容。需處理到頭尾的問題（出現錯誤訊息）
+>     * 可以登入/登出。登入後可以在逛每一集 (/episodes) 時加上我的最愛的註記。加上一個 My Favorate 呈現我喜歡的頁面。
+>     * 同上，在 /episodes 出現每一集時，上方有一個 season 及 episode 的下拉選單，方便我們直接跳到某一季的某一集。
 
 
 ## 其他
