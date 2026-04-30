@@ -54,6 +54,9 @@ venv101\Scripts\activate
 source venv101/bin/activate
 ```
 
+> ps. 如果有成功，前面會多出 `(venv101)` 的標誌，或是用 which python 來檢查，如果顯示的路徑中有 `venv101`，就表示成功了。
+> ps. 為什麼要建立虛擬環境？不同的系統可能用到的 python 版本不同，也可能用到的套件版本不同，建立虛擬環境可以避免這些問題。
+
 2. **安裝 Django**
 ```bash
 pip install django
@@ -70,6 +73,8 @@ cd proj101
 python manage.py runserver
 ```
 
+這時候進入 `http://127.0.0.1:8000` 可以看到火箭，表示安裝成功。
+
 ---
 
 #### 方法 B：複製現有專案 (nick_tennis_club)
@@ -85,13 +90,16 @@ cd nlh_tennis_club
 2. **建立並啟動虛擬環境**
 ```bash
 # 建立環境
-py -m venv venv
+py -m venv venv101
 
 # 啟動環境 (Windows)
-venv\Scripts\activate
+venv101\Scripts\activate
 # 啟動環境 (Mac/Linux)
 source venv/bin/activate
 ```
+
+> ps.如果有成功，前面會多出 `(venv101)` 的標誌，或是用 which python 來檢查，如果顯示的路徑中有 `venv101`，就表示成功了。
+
 
 3. **安裝必要套件**
 ```bash
@@ -103,9 +111,9 @@ pip install -r requirements.txt
 python manage.py runserver
 ```
 
----
+`nick_tennis_club` 這個專案的預設首頁被設為 `/members`，所以必須輸入 `http://127.0.0.1:8000/members` 才能看到網頁。會看到一些會員資料。
 
-這時候到 `http://127.0.0.1:8000` 就會看到一個被啟動的系統（一個火箭）。表示安裝成功。
+---
 
 ### 9.2.3 Lab02: 使用 View-Template
 > [!NOTE]
