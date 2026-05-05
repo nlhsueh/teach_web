@@ -1,5 +1,3 @@
-exam/
-
 # OS generated files
 .DS_Store
 .DS_Store?
@@ -72,6 +70,9 @@ htmlcov/
 
 # Agent
 .agent/
+
+# Exam files
+exam/
 
 # 排除教學用巢狀 Git 專案
 Topic03_backend/nlh_tennis_club/
