@@ -123,12 +123,12 @@ python manage.py runserver
 
 Reference to [W3School- create App](https://www.w3schools.com/django/django_create_app.php)
 
-1. [建立子系統](#lab2.1-建立子系統)
-2. [設計視界回應 (VIEW)](#2-設計視界回應)
-3. [設定網址路由](#3-設定網址路由)
+1. 建立子系統
+2. 設計視界回應 (VIEW)
+3. 設定網址路由
     * 專案路由 `urls.py`
     * 子系統路由 `urls.py`
-4. [設計頁面樣板 (TEMPLATE)](#4-設計頁面樣板)
+4. 設計頁面樣板 (TEMPLATE)
 
 #### lab2.1 建立子系統
 
@@ -152,7 +152,7 @@ INSTALLED_APPS = [
 ]
 ```
 第 2-7 行為預設已加入的 app
-這些是 Django 預設安裝的應用程式（apps），它們提供了一系列常用的功能和服務，以協助開發 Web 應用程式。讓我來簡述一下每個應用程式的作用：
+這些是 Django 預設安裝的應用程式（apps），它們提供了一系列常用的功能和服務，以協助開發 Web 應用程式。以下簡述一下每個應用程式的作用：
 
 1. `django.contrib.admin`: 提供一個自動生成管理介面的框架，讓開發者可以輕鬆地管理網站的後台資料，包括用戶、群組、資料庫內容等。
 2. `django.contrib.auth`: 提供用戶身份驗證和權限管理的功能，包括用戶登錄、登出、註冊、密碼重置等功能，並且支持多種身份驗證方式。
@@ -231,7 +231,7 @@ urlpatterns = [
 
 修改步驟 2 的「設計視界回應」，讓輸出套用網頁樣板
 * 生成樣板物件
-* 由樣辦物件做回應 (HttpResponse)
+* 由樣板物件做回應 (HttpResponse)
 
 > my_tennis_club/members/views.py:
 
@@ -299,7 +299,7 @@ class Member(models.Model):
 1. 產生資料遷移檔 (makemigration)
 2. 執行遷移 (migrate)
 
-```
+```shell
 python manage.py makemigrations
 python manage.py migrate
 ```
@@ -326,7 +326,7 @@ Member.objects.all().values() # check detail values
 
 ❓ 如何在 shell 中直接執行一個 .py 檔來新增一群資料？
 
-```
+```shell
 exec(open('path/to/your/file.py').read())
 ```
 
