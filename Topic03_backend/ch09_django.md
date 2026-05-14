@@ -904,11 +904,21 @@ path('members/check_member', views.check_member, name='check_member'),
     * `as_p`: as paragraph
     * `as_table`: table
     * `as_ul`: list
-    * 資安考量，POST 請求都必須加上 `{% csrf_token %}`
+    * 資安考量，POST 請求都必須加上 `{% csrf_token %}`。
+        * **目的**：防止跨站請求偽造 (Cross-Site Request Forgery, CSRF) 攻擊，確保 POST 請求是來自網站本身的表單，而非惡意網站的偽造請求。
+        * **原理**：Django 會在表單中插入一個隱藏的 `<input>` 欄位，內含隨機生成的 token 字串，同時在瀏覽器 Cookie 中也會記錄對應的 token。當表單提交時，Django 伺服器會比對請求中的 token 與 Cookie 中的 token 是否相符，若不符則會拒絕該請求 (回傳 403 Forbidden 錯誤)。
 4. 在 [view.py](https://github.com/nlhsueh/nlh_tennis_club/blob/form_post/members/views.py) 中加上 `new_member(request)`: 判斷是 `POST` 請求後，依據取得的資料(`request.POST`)生成一個 `NewMemberForm` 物件，檢查此提交的表單是否正確 (`is_valid`)，確認正確後直接呼叫 `save()` 儲存。
     * 若無法儲存，可以透過 `form.error` 取得錯誤資訊。
     * 如果是 GET 請求，將之轉到 `new_member.html`
 5. 無論成功或失敗，都引導到 [new_member_result.html](https://github.com/nlhsueh/nlh_tennis_club/blob/form_post/members/templates/new_member_result.html)
+
+
+> CSRF 攻擊（Cross-Site Request Forgery，跨站請求偽造）是一種挾制使用者在當前已登入的 Web 應用程式上執行非本意操作的網路攻擊手法。攻擊者會利用瀏覽器自動夾帶 Cookie 的機制，盜用使用者在目標網站的身分憑證來發送惡意請求。CSRF 攻擊之首要條件是使用者必須先通過目標網站的身分驗證。其典型攻擊流程如下：
+1. 登入網站：使用者登入信任的銀行網站 A.com，瀏覽器在儲存認證 Cookie 後未登出。
+2. 點擊惡意連結：使用者在未登出的情況下，點擊了駭客佈署的惡意網站 B.com。
+3. 觸發偽造請求：惡意網站 B.com 隱藏了針對 A.com 的轉帳或修改密碼表單，並在背景自動提交。
+4. 瀏覽器發送憑證：瀏覽器處理該請求時，會自動帶上使用者在 A.com 的 Cookie 憑證。
+5. 目標網站誤信：A.com 收到帶有正確 Cookie 的請求，誤以為是使用者的自主操作而執行。
 
 ```mermaid
 graph TD
@@ -1187,70 +1197,4 @@ See [branch **bind_user**](https://github.com/nlhsueh/nlh_tennis_club/tree/bind_
 >     * 可以登入/登出。登入後可以在逛每一集 (/episodes) 時加上我的最愛的註記。加上一個 My Favorate 呈現我喜歡的頁面。
 >     * 同上，在 /episodes 出現每一集時，上方有一個 season 及 episode 的下拉選單，方便我們直接跳到某一季的某一集。
 
-
-## 9.6 其他
-
-### 9.6.1 五倍券 (VH5000) 實例 (略)
-
-* [Unit 1 App](https://docs.google.com/presentation/d/1f4gz1_qZsRjub5oxov3xKzgxlSeYa1zIrsuGGqPCxmQ/edit?usp=sharing)
-* [Unit 2 List view](https://docs.google.com/presentation/d/1-NXJa4RteGJrqExjBwGQMd7ZlAYrU0STjT871dxatuw/edit?usp=sharing)
-* [Unit 3 Form](https://docs.google.com/presentation/d/1-NXJa4RteGJrqExjBwGQMd7ZlAYrU0STjT871dxatuw/edit?usp=sharing)
-* [Unit 4 Auth](https://docs.google.com/presentation/d/1K1Y1Yd6hafMwE8Q7o79PJPSPZHIVUyWyTfNUXrYcL58/edit?usp=sharing)
-
-VH5000 on GitHub:
-* https://github.com/nienlinh/vh5000
-
-```
-// 把專案複製到你的電腦
-git clone https://github.com/nienlinh/vh5000.git
-
-// 檢查一下目前在的版本
-git branch
-
-// 切換到 dj01a 版本
-git checkout dj01a
-
-// 啟動伺服器
-python manage.py runserver
-
-// 切換到 dj03 版本
-git checkout dj03
-
-// 安裝 Pillow 套件
-python -m pip install Pillow
-
-// 啟動伺服器
-python manage.py runserver
-```
-
-### 9.6.2 112-1 web dev projects
-- [in **DemoX**](https://demox.tw/curation/detail/?id=102)
-- [網球會員網](https://demox.tw/idea/detail/?id=408)- 簡單的範例
-- [打地鼠](https://demox.tw/idea/detail/?id=1322)- 透過Django建立一個打地鼠的遊戲網站。 具有註冊、登入、登出、排行榜功能。 透過滑鼠點擊方式打地鼠在有限時間內獲得分數，個人的最佳成績會顯示在排行榜上，可以查看自己的排名與分數。
-- [記帳行事曆](https://demox.tw/idea/detail/?id=1327)- 帶有記帳功能的行事曆，能夠展示事件，還能將重要的事件標註，將在一跑馬燈中列出以提醒使用者，記帳會顯示出收入支出與總額，也會將細項一一列出，有著深淺主題，在切換不同的頁面時，主題會同步變更。
-- [小說倉庫](https://demox.tw/idea/detail/?id=1320)- 小說網站，可以觀看小說，寫小說，評論小說
-- [IP 設備控管](https://demox.tw/idea/detail/?id=1324)- 蒐集各個 IP 對應的裝置、軟體、系統、擁有者並分類，以方便裝置管理
-- [ChuChat](https://demox.tw/idea/detail/?id=1329)- 為了打破傳統聊天應用的界限，結合多個 AI 聊天機器人 API，讓使用者能夠在單一平台上與不同的聊天機器人互動，獲取更全面、多元的資訊，同時創造一個輕鬆、趣味且高效的聊天體驗。
-- 電影院訂位- 查詢電影院訂位狀況並進行訂位
-- 漫畫書購物網- 查詢並購買漫畫書
-- 百搭衣物販售網頁- 購衣網
-- 台灣旅遊網- 旅遊景點
-- 簡單的縮網址
-- Bloggin Platform 
-- 副業投資
-- 租相機系統
-- 美味吐司到你家
-- 遊戲地獄
-- 圖書館借閱還書系統
-- 食譜網站創建
-- 預訂飯店網站
-
-
-Reference web books
-- [Web dev with django by **Ben Shaw**](https://github.com/PacktPublishing/Web-Development-with-Django-Second-Edition)
-    - github code
-- [Three Django books by **William Vincent**](https://www.amazon.com/stores/William-S.-Vincent/author/B07B38Y8SG?language=zh_TW&ref=sr_ntt_srch_lnk_1&qid=1706505875&sr=1-1&isDramIntegrated=true&shoppingPortalEnabled=true)
-    - [for *beginners*](https://www.amazon.com/William-S-Vincent/dp/1735467200/?_encoding=UTF8&pd_rd_w=pgO4G&content-id=amzn1.sym.cf86ec3a-68a6-43e9-8115-04171136930a&pf_rd_p=cf86ec3a-68a6-43e9-8115-04171136930a&pf_rd_r=147-0863838-6848330&pd_rd_wg=NdQpw&pd_rd_r=9635f6ae-7835-4e3f-8e09-10d66d4075a0&ref_=aufs_ap_sc_dsk)
-    - [for *professionals*](https://www.amazon.com/William-S-Vincent/dp/1735467235/?_encoding=UTF8&pd_rd_w=pgO4G&content-id=amzn1.sym.cf86ec3a-68a6-43e9-8115-04171136930a&pf_rd_p=cf86ec3a-68a6-43e9-8115-04171136930a&pf_rd_r=147-0863838-6848330&pd_rd_wg=NdQpw&pd_rd_r=9635f6ae-7835-4e3f-8e09-10d66d4075a0&ref_=aufs_ap_sc_dsk)
-    - [for *API*](https://www.amazon.com/William-S-Vincent/dp/1735467227/?_encoding=UTF8&pd_rd_w=pgO4G&content-id=amzn1.sym.cf86ec3a-68a6-43e9-8115-04171136930a&pf_rd_p=cf86ec3a-68a6-43e9-8115-04171136930a&pf_rd_r=147-0863838-6848330&pd_rd_wg=NdQpw&pd_rd_r=9635f6ae-7835-4e3f-8e09-10d66d4075a0&ref_=aufs_ap_sc_dsk)
 
