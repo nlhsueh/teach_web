@@ -258,7 +258,7 @@ def members(request):
 </html>
 ```
 
-### 9.2.4 Lab03: MVT 管理與呈現資料
+### 9.2.4 Lab03: MVT 管理與呈現資料 (`member`)
 
 > [!NOTE]
 > 🏈 You will learn
@@ -267,6 +267,7 @@ def members(request):
 > * 如何透過 shell 新增資料
 > * 如何讀取資料，並將之呈現在網頁中
 >     * 網頁樣板標籤與樣板變數的意義
+> See branch **[member](https://github.com/nlhsueh/nlh_tennis_club/tree/member)**
 
 這個 lab 中，我們設計一個會員資料庫，並呈現之。
 
@@ -373,183 +374,186 @@ def members(request):
     * `{% for %}`, `{% endfor %}`
     * see [all template tag](https://docs.djangoproject.com/en/5.0/ref/templates/builtins/)
 
-See branch **[member](https://github.com/nlhsueh/nlh_tennis_club/tree/member)**
 
 ## 9.3 網球俱樂部 (II)
-### 9.3.1 資料庫限制
+### 9.3.1 資料庫限制 (`main`)
+
+> See branch **[main](https://github.com/nlhsueh/nlh_tennis_club/tree/main)**
+* 新增 `phone`, `joined_date` 欄位
 
 在設計資料庫時，為了確保資料的**完整性 (Integrity)** 和**有效性 (Validity)**，我們需要定義各種限制 (Constraints)。這些限制會在資料庫層級強制執行，防止不符合規則的資料被寫入。
 
 以下是一些常見的資料庫限制及其在 Django 模型中的對應方式：
 
-#### 1. 資料類型限制 (Data Type Constraints)
+* **1. 資料類型限制 (Data Type Constraints)**
 
-* **定義：** 每個欄位都必須儲存特定類型 (例如：整數、字串、日期等) 的資料。這是最基本的限制。
-* **Django 範例：** Django 模型中的每個欄位都必須指定一個 Field 類型，例如 `IntegerField`, `CharField`, `DateField`, `EmailField` 等。
+  * **定義：** 每個欄位都必須儲存特定類型 (例如：整數、字串、日期等) 的資料。這是最基本的限制。
+  * **Django 範例：** Django 模型中的每個欄位都必須指定一個 Field 類型，例如 `IntegerField`, `CharField`, `DateField`, `EmailField` 等。
 
-    ```python
-    from django.db import models
+      ```python
+      from django.db import models
 
-    class Product(models.Model):
-        name = models.CharField(max_length=100)  # 字串類型，限制最大長度
-        price = models.DecimalField(max_digits=10, decimal_places=2)  # 十進位類型，限制總位數和小數位數
-        quantity = models.IntegerField()  # 整數類型
-        is_available = models.BooleanField(default=True)  # 布林類型
-        created_at = models.DateTimeField(auto_now_add=True)  # 日期時間類型
-    ```
+      class Product(models.Model):
+          name = models.CharField(max_length=100)  # 字串類型，限制最大長度
+          price = models.DecimalField(max_digits=10, decimal_places=2)  # 十進位類型，限制總位數和小數位數
+          quantity = models.IntegerField()  # 整數類型
+          is_available = models.BooleanField(default=True)  # 布林類型
+          created_at = models.DateTimeField(auto_now_add=True)  # 日期時間類型
+      ```
 
-#### 2. 非空限制 (NOT NULL Constraint)
+* **2. 非空限制 (NOT NULL Constraint)**
 
-* **定義：** 確保欄位的值不能為 `NULL`。
-* **Django 範例：** 在 Django 模型中，預設情況下欄位允許 `NULL` 值。要設定非空限制，需要將 `null` 參數設為 `False`。
+  * **定義：** 確保欄位的值不能為 `NULL`。
+  * **Django 範例：** 在 Django 模型中，預設情況下欄位允許 `NULL` 值。要設定非空限制，需要將 `null` 參數設為 `False`。
 
-    ```python
-    class Category(models.Model):
-        name = models.CharField(max_length=50, null=False)  # name 欄位不能為 NULL
-    ```
+      ```python
+      class Category(models.Model):
+          name = models.CharField(max_length=50, null=False)  # name 欄位不能為 NULL
+      ```
 
-##### null 與 blank
+**null 與 blank**
 
-`null` 和 `blank` 常常搞混，前者是**資料庫限制**，後者是**表單限制**。基於 `phone = models.CharField(max_length=20, null=False, blank=True)` 對應 TT, TF, FT, FF 四種狀況，說明了 `null` 和 `blank` 的組合及其含義：
+  `null` 和 `blank` 常常搞混，前者是**資料庫限制**，後者是**表單限制**。基於 `phone = models.CharField(max_length=20, null=False, blank=True)` 對應 TT, TF, FT, FF 四種狀況，說明了 `null` 和 `blank` 的組合及其含義：
 
-|  `null`   |  `blank`  |  狀況  | 含義 (針對 `phone` 欄位)                                                                                                                                                                         |
-| :-------: | :-------: | :----: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **True**  | **True**  | **TT** | 資料庫**允許** `NULL` 值。Django 表單**允許**留空字串 (`''`)。電話號碼在資料庫中可以是沒有值 (`NULL`) 的，使用者在表單中也可以不填寫。                                                           |
-| **True**  | **False** | **TF** | 資料庫允許 `NULL` 值。Django 表單**不允許**留空字串 (`''`)。電話號碼在資料庫中可以是沒有值 (`NULL`) 的，但是使用者在表單中**必須填寫**，不能留空。                                               |
-| **False** | **True**  | **FT** | 資料庫**不允許** `NULL` 值。Django 表單允許留空字串 (`''`)。電話號碼在資料庫中**必須有值** (但可以是空字串 `''`)，使用者在表單中可以不填寫。當表單留空提交時，資料庫會儲存空字串 (`''`)。        |
-| **False** | **False** | **FF** | 資料庫**不允許** `NULL` 值。Django 表單**不允許**留空字串 (`''`)。電話號碼在資料庫中**必須有值** (且不能是 `NULL`)，使用者在表單中**必須填寫**，不能留空。這是強制要求使用者提供電話號碼的設定。 |
+  |  `null`   |  `blank`  |  狀況  | 含義 (針對 `phone` 欄位)                                                                                                                                                                         |
+  | :-------: | :-------: | :----: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | **True**  | **True**  | **TT** | 資料庫**允許** `NULL` 值。Django 表單**允許**留空字串 (`''`)。電話號碼在資料庫中可以是沒有值 (`NULL`) 的，使用者在表單中也可以不填寫。                                                           |
+  | **True**  | **False** | **TF** | 資料庫允許 `NULL` 值。Django 表單**不允許**留空字串 (`''`)。電話號碼在資料庫中可以是沒有值 (`NULL`) 的，但是使用者在表單中**必須填寫**，不能留空。                                               |
+  | **False** | **True**  | **FT** | 資料庫**不允許** `NULL` 值。Django 表單允許留空字串 (`''`)。電話號碼在資料庫中**必須有值** (但可以是空字串 `''`)，使用者在表單中可以不填寫。當表單留空提交時，資料庫會儲存空字串 (`''`)。        |
+  | **False** | **False** | **FF** | 資料庫**不允許** `NULL` 值。Django 表單**不允許**留空字串 (`''`)。電話號碼在資料庫中**必須有值** (且不能是 `NULL`)，使用者在表單中**必須填寫**，不能留空。這是強制要求使用者提供電話號碼的設定。 |
 
 
-#### 3. 唯一性限制 (UNIQUE Constraint)
+* **3. 唯一性限制 (UNIQUE Constraint)**
 
-* **定義：** 確保欄位中的所有值都是唯一的。
-* **Django 範例：** 使用 `unique=True` 參數可以為欄位增加唯一性限制。
+  * **定義：** 確保欄位中的所有值都是唯一的。
+  * **Django 範例：** 使用 `unique=True` 參數可以為欄位增加唯一性限制。
 
-    ```python
-    class User(models.Model):
-        username = models.CharField(max_length=30, unique=True)  # username 必須是唯一的
-        email = models.EmailField(unique=True)  # email 也必須是唯一的
-    ```
-    也可以在模型層級定義多個欄位的聯合唯一性約束：
+      ```python
+      class User(models.Model):
+          username = models.CharField(max_length=30, unique=True)  # username 必須是唯一的
+          email = models.EmailField(unique=True)  # email 也必須是唯一的
+      ```
+      也可以在模型層級定義多個欄位的聯合唯一性約束：
 
-    ```python
-    class Meta:
-        unique_together = (('first_name', 'last_name'),)  # first_name 和 last_name 的組合必須是唯一的
-    ```
-    或者使用 `UniqueConstraint` (Django 2.2+):
+      ```python
+      class Meta:
+          unique_together = (('first_name', 'last_name'),)  # first_name 和 last_name 的組合必須是唯一的
+      ```
+      或者使用 `UniqueConstraint` (Django 2.2+):
 
-    ```python
-    from django.db.models import UniqueConstraint
+      ```python
+      from django.db.models import UniqueConstraint
 
-    class Person(models.Model):
-        first_name = models.CharField(max_length=30)
-        last_name = models.CharField(max_length=30)
+      class Person(models.Model):
+          first_name = models.CharField(max_length=30)
+          last_name = models.CharField(max_length=30)
 
-        class Meta:
-            constraints = [
-                UniqueConstraint(fields=['first_name', 'last_name'], name='unique_full_name')
-            ]
-    ```
+          class Meta:
+              constraints = [
+                  UniqueConstraint(fields=['first_name', 'last_name'], name='unique_full_name')
+              ]
+      ```
 
-#### 4. 主鍵限制 (PRIMARY KEY Constraint)
+* **4. 主鍵限制 (PRIMARY KEY Constraint)**
 
-* **定義：** 唯一標識資料表中的每一行。每個資料表只能有一個主鍵。主鍵通常是非空且唯一的。
-* **Django 範例：** Django 模型預設會自動建立一個名為 `id` 的 `AutoField` 欄位作為主鍵。你可以選擇其他欄位作為主鍵，但通常不建議修改預設行為。
+  * **定義：** 唯一標識資料表中的每一行。每個資料表只能有一個主鍵。主鍵通常是非空且唯一的。
+  * **Django 範例：** Django 模型預設會自動建立一個名為 `id` 的 `AutoField` 欄位作為主鍵。你可以選擇其他欄位作為主鍵，但通常不建議修改預設行為。
 
-    ```python
-    class Book(models.Model):
-        book_id = models.AutoField(primary_key=True)  # 明確指定 book_id 為主鍵 (通常不需要)
-        title = models.CharField(max_length=200)
-    ```
+      ```python
+      class Book(models.Model):
+          book_id = models.AutoField(primary_key=True)  # 明確指定 book_id 為主鍵 (通常不需要)
+          title = models.CharField(max_length=200)
+      ```
 
-#### 5. 外鍵限制 (FOREIGN KEY Constraint)
+* **5. 外鍵限制 (FOREIGN KEY Constraint)**
 
-* **定義：** 用於建立和強制執行不同資料表之間的關係。外鍵欄位的值必須參考另一個資料表的主鍵。
-* **Django 範例：** 使用 `ForeignKey` 欄位來定義外鍵關係。
+  * **定義：** 用於建立和強制執行不同資料表之間的關係。外鍵欄位的值必須參考另一個資料表的主鍵。
+  * **Django 範例：** 使用 `ForeignKey` 欄位來定義外鍵關係。
 
-    ```python
-    class Author(models.Model):
-        name = models.CharField(max_length=100)
+      ```python
+      class Author(models.Model):
+          name = models.CharField(max_length=100)
 
-    class Article(models.Model):
-        title = models.CharField(max_length=200)
-        author = models.ForeignKey(Author, on_delete=models.CASCADE)  # author 是外鍵，參考 Author 模型
-    ```
-    * `on_delete`: 定義當參考的父物件被刪除時，子物件應該如何處理 (`CASCADE`, `PROTECT`, `SET_NULL`, `SET_DEFAULT`, `DO_NOTHING` 等)。
-        * `CASCADE`: author 被刪除，其所關聯的 article 一起被刪除。
-        * `PROTECT`: 刪除 author 時，因為已有 book 與之關聯，會跳出警告避免被刪。
-        * `SET_NULL`: author 被刪除，Article 相關聯的 author 欄位被設為 null。Article 的 author 必須允許為 null (`null=True`)。
-        * `SET_DEFAULT`: author 被刪除時，Article 中的 author 設為預設值(如 `default="unknown"`)。
-        * `DO_NOTHING`: author 被刪就被刪，不做任何處理，強烈不建議，會造成資料的不完整。
+      class Article(models.Model):
+          title = models.CharField(max_length=200)
+          author = models.ForeignKey(Author, on_delete=models.CASCADE)  # author 是外鍵，參考 Author 模型
+      ```
+      * `on_delete`: 定義當參考的父物件被刪除時，子物件應該如何處理 (`CASCADE`, `PROTECT`, `SET_NULL`, `SET_DEFAULT`, `DO_NOTHING` 等)。
+          * `CASCADE`: author 被刪除，其所關聯的 article 一起被刪除。
+          * `PROTECT`: 刪除 author 時，因為已有 book 與之關聯，會跳出警告避免被刪。
+          * `SET_NULL`: author 被刪除，Article 相關聯的 author 欄位被設為 null。Article 的 author 必須允許為 null (`null=True`)。
+          * `SET_DEFAULT`: author 被刪除時，Article 中的 author 設為預設值(如 `default="unknown"`)。
+          * `DO_NOTHING`: author 被刪就被刪，不做任何處理，強烈不建議，會造成資料的不完整。
 
-#### 6. 檢查限制 (CHECK Constraint)
+* **6. 檢查限制 (CHECK Constraint)**
 
-* **定義：** 定義一個布林表達式，用於限制欄位中允許的值。只有滿足表達式的值才能被接受。
-* **Django 範例：** Django 模型在早期版本中沒有直接支援 CHECK constraint。從 Django 3.2 開始，可以使用 `CheckConstraint` (Django 3.2+)。
+  * **定義：** 定義一個布林表達式，用於限制欄位中允許的值。只有滿足表達式的值才能被接受。
+  * **Django 範例：** Django 模型在早期版本中沒有直接支援 CHECK constraint。從 Django 3.2 開始，可以使用 `CheckConstraint` (Django 3.2+)。
 
-    ```python
-    from django.db.models import CheckConstraint, Q
+      ```python
+      from django.db.models import CheckConstraint, Q
 
-    class Order(models.Model):
-        quantity = models.IntegerField()
-        status = models.CharField(max_length=20)
+      class Order(models.Model):
+          quantity = models.IntegerField()
+          status = models.CharField(max_length=20)
 
-        class Meta:
-            constraints = [
-                CheckConstraint(check=Q(quantity__gt=0), name='quantity_greater_than_zero'),
-                CheckConstraint(check=Q(status__in=['pending', 'processing', 'shipped', 'delivered']), name='valid_status')
-            ]
-    ```
+          class Meta:
+              constraints = [
+                  CheckConstraint(check=Q(quantity__gt=0), name='quantity_greater_than_zero'),
+                  CheckConstraint(check=Q(status__in=['pending', 'processing', 'shipped', 'delivered']), name='valid_status')
+              ]
+      ```
 
-#### 7. 預設值限制 (DEFAULT Constraint)
+* **7. 預設值限制 (DEFAULT Constraint)**
 
-* **定義：** 為欄位指定一個預設值，當在插入新記錄時沒有提供該欄位的值時，將使用預設值。
-* **Django 範例：** 使用 `default` 參數為欄位設定預設值。
+  * **定義：** 為欄位指定一個預設值，當在插入新記錄時沒有提供該欄位的值時，將使用預設值。
+  * **Django 範例：** 使用 `default` 參數為欄位設定預設值。
 
-    ```python
-    class Task(models.Model):
-        description = models.TextField()
-        is_completed = models.BooleanField(default=False)  # 預設為 False
-        priority = models.IntegerField(default=3)  # 預設優先級為 3
-    ```
+      ```python
+      class Task(models.Model):
+          description = models.TextField()
+          is_completed = models.BooleanField(default=False)  # 預設為 False
+          priority = models.IntegerField(default=3)  # 預設優先級為 3
+      ```
 
-#### 8. 長度限制 (LENGTH Constraint)
+* **8. 長度限制 (LENGTH Constraint)**
 
-* **定義：** 限制字串或二進制資料欄位的最大長度。
-* **Django 範例：** `CharField` 和 `TextField` 可以使用 `max_length` 參數來設定最大長度。
+  * **定義：** 限制字串或二進制資料欄位的最大長度。
+  * **Django 範例：** `CharField` 和 `TextField` 可以使用 `max_length` 參數來設定最大長度。
 
-    ```python
-    class BlogPost(models.Model):
-        title = models.CharField(max_length=255)  # 標題最大長度為 255
-        content = models.TextField()
-    ```
+      ```python
+      class BlogPost(models.Model):
+          title = models.CharField(max_length=255)  # 標題最大長度為 255
+          content = models.TextField()
+      ```
 
-#### 9. 列舉限制 (ENUM Constraint)
+* **9. 列舉限制 (ENUM Constraint)**
 
-* **定義：** 限制欄位只能從預先定義的一組值中選擇。
-* **Django 範例：** Django 雖然有 Enum 類型，也常用 `TextChoices` 搭配 `choices` 參數來模擬列舉限制。
+  * **定義：** 限制欄位只能從預先定義的一組值中選擇。
+  * **Django 範例：** Django 雖然有 Enum 類型，也常用 `TextChoices` 搭配 `choices` 參數來模擬列舉限制。
 
-    ```python
-    class OrderStatus(models.TextChoices):
-        PENDING = 'PD', 'Pending'
-        PROCESSING = 'PR', 'Processing'
-        SHIPPED = 'SH', 'Shipped'
-        DELIVERED = 'DE', 'Delivered'
+      ```python
+      class OrderStatus(models.TextChoices):
+          PENDING = 'PD', 'Pending'
+          PROCESSING = 'PR', 'Processing'
+          SHIPPED = 'SH', 'Shipped'
+          DELIVERED = 'DE', 'Delivered'
 
-    class Shipment(models.Model):
-        status = models.CharField(max_length=2, choices=OrderStatus.choices, default=OrderStatus.PENDING)
-    ```
+      class Shipment(models.Model):
+          status = models.CharField(max_length=2, choices=OrderStatus.choices, default=OrderStatus.PENDING)
+      ```
 
-#### 總結
+**總結**
 
 合理地使用資料庫的各種限制對於建立一個健壯、可靠的應用程式至關重要。它們有助於確保資料的準確性、一致性和完整性。Django 的模型定義提供了方便的方式來聲明這些限制，並且 Django 的 ORM 會在與資料庫互動時考慮這些限制。在設計模型時，仔細思考每個欄位的限制，將有助於避免後續的資料問題。
 
-### 9.3.2 Lab04: 管理者與欄位設定
+### 9.3.2 Lab04: 管理者與欄位設定 (`admin`)
 > [!NOTE]
 > 🏈 You will learn
 > * 如何建立一個管理者 (admin) 的帳號和密碼
 > * 如何修改資料庫的資料表，需要注意哪些設定
 > * 建立資料表時，額外的參數設定
+> See branch **[admin](https://github.com/nlhsueh/nlh_tennis_club/tree/admin)**
 
 
 #### 建立管理者
@@ -645,12 +649,13 @@ joined_date = models.DateField(null=True,
 
 See branch **[admin](https://github.com/nlhsueh/nlh_tennis_club/tree/admin)**
 
-### 9.3.3 Lab05: 細節資料與擴充頁面
+### 9.3.3 Lab05: 細節資料與擴充頁面 (`details`)
 
 > [!NOTE]
 > 🏈 You will learn
 > * 細節資料的頁面設計
 > * 主頁面與擴充頁面的設計，以提升主頁面設計的可重用性，將地程式開發的複雜度。
+> * See branch **[details](https://github.com/nlhsueh/nlh_tennis_club/tree/details)**
 
 <概述資料-細節資料>的呈現常常在資訊系統中出現：在概述資料中，我們呈現「一群」資料的概述，當我們點擊某一筆資料的時候，就會出現細節(detail)資料的全貌。
 * members 是一個集合物件，透過 `id` 指定明確物件，近一步呈現某會員的細節資料。
@@ -814,15 +819,16 @@ classDiagram
     `all_members.html` ..> `details.html`
 ```
 
-See branch **[details](https://github.com/nlhsueh/nlh_tennis_club/tree/details)**
 
-### 9.3.4 Lab06: 主畫面
+
+### 9.3.4 Lab06: 主畫面 (`index`)
 
 > [!NOTE]
 > 🏈 You will do
 > * 一個系統的首頁，並且讓其他分頁可以快速回到首頁
 > * 如何關閉與開啟除錯模式
 > * 當除錯模式關閉時，如何將系統錯誤引導到錯誤說明頁面。
+> See branch **[index](https://github.com/nlhsueh/nlh_tennis_club/tree/index)**
 
 * 做一個系統的 主畫面- [main.html](https://github.com/nlhsueh/nlh_tennis_club/blob/index/members/templates/main.html); 路由要記得設定 ([urls.py](https://github.com/nlhsueh/nlh_tennis_club/blob/index/members/urls.py))
 * 再設定檔 [setting.py](https://github.com/nlhsueh/nlh_tennis_club/blob/index/my_tennis_club/settings.py) 關閉除錯模式 -- 也就是設定 `default=False`。系統出錯時，就不會出現除錯資訊，會自動轉到 `404.html`。
@@ -831,15 +837,16 @@ See branch **[details](https://github.com/nlhsueh/nlh_tennis_club/tree/details)*
 * 修改 [master.html](https://github.com/nlhsueh/nlh_tennis_club/blob/index/members/templates/master.html), 加上回到首頁的連接。
 * Read [w3school example](https://www.w3schools.com/django/django_add_main.php) for more information.
 
-See branch **[index](https://github.com/nlhsueh/nlh_tennis_club/tree/index)**
+
 
 ❓ 如果不想用預設的 404.html, 該如何設定？ (Ans: see [here](https://www.geeksforgeeks.org/how-to-fix-page-not-found-404-django/))
 
-### 9.3.5 Lab07: 查詢會員
+### 9.3.5 Lab07: 查詢會員 (`form_get`)
 > [!NOTE]
 > 🏈 You will learn
 > * 如何設計一個輸入表單，和後端的 django 互動
 > * form GET 和 POST 的差異
+> See branch **[form_get](https://github.com/nlhsueh/nlh_tennis_club/tree/form_get)**
 
 * 做一個輸入表單，透過 lastname 來查詢會員
 
@@ -892,12 +899,14 @@ path('members/check_member', views.check_member, name='check_member'),
 * 第一次呼叫 [views.check_member](https://github.com/nlhsueh/nlh_tennis_club/blob/form_get/members/views.py), 是由 urls 導向過來的，`request.method` 是 `GET`, 但 `request.GET` 是空的。此時我們引導到 [check_member.html](https://github.com/nlhsueh/nlh_tennis_club/blob/form_get/members/templates/check_member.html)
 * 當使用者在 `check_member.html` 中輸入 `last_name` 的值並提交後，會再次執行 `views.check_member`, 此時 `request.GET` 會包含使用者在 form 中所填寫的值。我們透過 `Member.objects.filter()` 來找到所有符合條件的物件，在引導到 [checked_members.html](https://github.com/nlhsueh/nlh_tennis_club/blob/form_get/members/templates/checked_members.html).
 
-### 9.3.6 Lab08: 用表單新增會員
+### 9.3.6 Lab08: 用表單新增會員 (`form_post`)
 
 > [!NOTE]
 > 🏈 You will learn
 > * POST request 如何被處理，如何將使用者輸入的資料存到資料庫
 > * ModelForm 的設計與應用
+> See branch **[form_post](https://github.com/nlhsueh/nlh_tennis_club/tree/form_post)**
+
 1. 設計一個資料表單 [NewMemberForm](https://github.com/nlhsueh/nlh_tennis_club/blob/form_post/members/forms.py), 可以用來呈現介面，同時儲存到資料庫。記得是繼承 `ModelForm`。
 2. 新增路由到 [urls.py](https://github.com/nlhsueh/nlh_tennis_club/blob/form_post/members/urls.py)
 3. 設計 [new_member.html](https://github.com/nlhsueh/nlh_tennis_club/blob/form_post/members/templates/new_member.html): 透過 POST 方式，將提交的資料存到資料庫。注意我們是用資料表單來產生介面表單(`form.as_p()`)。
