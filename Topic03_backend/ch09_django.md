@@ -955,7 +955,7 @@ See [branch **form_post**](https://github.com/nlhsueh/nlh_tennis_club/tree/form_
 
 ## 9.4 網球俱樂部 (III)
 
-### 9.4.1 ex01_age: tag if
+### 9.4.1 ex01_age: tag if (age)
 > [!NOTE]
 > 🏈 年齡分組
 > * 在 model 中為會員增加一個欄位 age
@@ -964,6 +964,7 @@ See [branch **form_post**](https://github.com/nlhsueh/nlh_tennis_club/tree/form_
 > 學習重點
 > * template tag: if
 > * `py manage.py makemigrations`; `py manage.py migrate`
+> * See branch **[age](https://github.com/nlhsueh/nlh_tennis_club/tree/age)**
 > 
 ```mermaid
 classDiagram
@@ -987,9 +988,7 @@ Code:
 
 <img style="border:1px solid; width:280px" src="https://hackmd.io/_uploads/HkvY2jmGR.png"><br>
 
-See [branch **age**](https://github.com/nlhsueh/nlh_tennis_club/tree/age)
-
-### 9.4.2 ex02_court: enum
+### 9.4.2 ex02_court: enum (court)
 > [!NOTE]
 > 🏈 網球場
 > * 在 model 中增加一個資料球場: 球場名稱、球場型態（草地、硬地、泥地、地毯)，所在城市。
@@ -998,6 +997,8 @@ See [branch **age**](https://github.com/nlhsueh/nlh_tennis_club/tree/age)
 > 學習重點
 > * 一個系統可以有多個 app (子系統)
 > * 資料庫中列舉性的資料型態處理
+> * See branch **[court](https://github.com/nlhsueh/nlh_tennis_club/tree/court)**
+
 Hint
 * 建立 courts 的 App (`py manage.py startapp courts`)
 * 建立一個 Courts 的 model
@@ -1028,9 +1029,7 @@ graph TD
 
 <img style="border:1px solid; width:280px" src="https://hackmd.io/_uploads/SJxB0smG0.png"><br>
 
-See [branch **court**](https://github.com/nlhsueh/nlh_tennis_club/tree/court)
-
-### 9.4.3 ex03_web
+### 9.4.3 ex03_web (web)
 
 > [!NOTE]
 > 🏈 我要預約
@@ -1043,8 +1042,9 @@ See [branch **court**](https://github.com/nlhsueh/nlh_tennis_club/tree/court)
 > * 表單輸入對於防呆的處理 (clean data)
 > * 需登入才能執行動作處理及導向
 > * 資料庫外鍵 (foreign key) 的設定
+> * See branch **[web](https://github.com/nlhsueh/nlh_tennis_club/tree/web)**
 
-See [branch **web**](https://github.com/nlhsueh/nlh_tennis_club/tree/web); [readme.md 解說](https://github.com/nlhsueh/nlh_tennis_club/blob/web/readme.md)
+[readme.md 解說](https://github.com/nlhsueh/nlh_tennis_club/blob/web/readme.md)
 #### Login process
 ```mermaid
 graph TD
@@ -1088,7 +1088,7 @@ graph TD
 ```
 
 
-### 9.4.4 ex04_static_files
+### 9.4.4 ex04_static_files (static)
 
 > [!NOTE]
 > 🏈 css 與 images
@@ -1096,11 +1096,11 @@ graph TD
 > 
 > 學習重點
 > * 與 CSS 的合用
-See [branch **static**](https://github.com/nlhsueh/nlh_tennis_club/tree/static)
+> * See branch **[static](https://github.com/nlhsueh/nlh_tennis_club/tree/static)**
 
 * [readme.md 解說](https://github.com/nlhsueh/nlh_tennis_club/blob/static/readme.md)
 
-### 9.4.5 ex05_bootstrap
+### 9.4.5 ex05_bootstrap (bs)
 
 > [!NOTE]
 > 🏈 bootstrap
@@ -1108,41 +1108,41 @@ See [branch **static**](https://github.com/nlhsueh/nlh_tennis_club/tree/static)
 > 
 > 學習重點
 > * bootstrap 的合用
-See [branch **bs**](https://github.com/nlhsueh/nlh_tennis_club/tree/bs)
+> * See branch **[bs](https://github.com/nlhsueh/nlh_tennis_club/tree/bs)**
 
 * [readme.md 解說](https://github.com/nlhsueh/nlh_tennis_club/blob/bs/readme.md)
 
 <img src=https://hackmd.io/_uploads/rJ2krF0LT.png width=400>
 
 
-### 9.4.6 ex06_validation
+### 9.4.6 ex06_validation (validation)
 > [!NOTE]
 > 🏈 輸入驗證
 > * 預借網球場時，需要寫理由，理由必須大於 10 個字。
 > 
 > 學習重點：
 > * 如何在 form 中宣告方法，撰寫表單輸入時的驗證邏輯。
-See [branch **validation**](https://github.com/nlhsueh/nlh_tennis_club/tree/validation)
+> * See branch **[validation](https://github.com/nlhsueh/nlh_tennis_club/tree/validation)**
 
 * [readme.md 解說](https://github.com/nlhsueh/nlh_tennis_club/blob/validation/readme.md)
 
 <img src="https://hackmd.io/_uploads/rkjBGi-Pp.png" width='350'>
 
-### 9.4.7 ex07_img
+### 9.4.7 ex07_img (img)
 > [!NOTE]
 > 🏈 多媒體欄位
 > * 在 admin 的介面，直接設定網球場的圖片; 並且之後可以顯示。
 > 
 > 學習重點：
 > * 如何宣告圖形檔的資料欄位 ImageField; 
-See [branch **img**](https://github.com/nlhsueh/nlh_tennis_club/tree/img)
+> * See branch **[img](https://github.com/nlhsueh/nlh_tennis_club/tree/img)**
 
 * 此版本需要安裝 pillow `py -m pip install pillow` 
 * [readme.md 解說](https://github.com/nlhsueh/nlh_tennis_club/blob/img/readme.md)
 
 <img src="https://hackmd.io/_uploads/SyjVqofPp.png" width="300">
 
-### 9.4.8 ex08_bind_user
+### 9.4.8 ex08_bind_user (bind_user)
 > [!NOTE]
 > 🏈 把 user 和 member 綁定
 > * Member 資料中增加 user 連接
@@ -1150,7 +1150,7 @@ See [branch **img**](https://github.com/nlhsueh/nlh_tennis_club/tree/img)
 > 
 > 學習重點
 > * 資料庫設計的資料表如何與系統的 user 做綁定
-See [branch **bind_user**](https://github.com/nlhsueh/nlh_tennis_club/tree/bind_user)
+> * See branch **[bind_user](https://github.com/nlhsueh/nlh_tennis_club/tree/bind_user)**
 
 * [readme.md 解說](https://github.com/nlhsueh/nlh_tennis_club/blob/bind_user/readme.md)
 
