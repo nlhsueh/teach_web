@@ -955,7 +955,7 @@ See [branch **form_post**](https://github.com/nlhsueh/nlh_tennis_club/tree/form_
 
 ## 9.4 網球俱樂部 (III)
 
-### 9.4.1 ex01_age: tag if (age)
+### 9.4.1 ex01: tag if (age)
 > [!NOTE]
 > 🏈 年齡分組
 > * 在 model 中為會員增加一個欄位 age
@@ -988,7 +988,7 @@ Code:
 
 <img style="border:1px solid; width:280px" src="https://hackmd.io/_uploads/HkvY2jmGR.png"><br>
 
-### 9.4.2 ex02_court: enum (court)
+### 9.4.2 ex02: enum (court)
 > [!NOTE]
 > 🏈 網球場
 > * 在 model 中增加一個資料球場: 球場名稱、球場型態（草地、硬地、泥地、地毯)，所在城市。
@@ -1029,7 +1029,7 @@ graph TD
 
 <img style="border:1px solid; width:280px" src="https://hackmd.io/_uploads/SJxB0smG0.png"><br>
 
-### 9.4.3 ex03_web (web)
+### 9.4.3 ex03 (web)
 
 > [!NOTE]
 > 🏈 我要預約
@@ -1088,7 +1088,7 @@ graph TD
 ```
 
 
-### 9.4.4 ex04_static_files (static)
+### 9.4.4 ex04 (static)
 
 > [!NOTE]
 > 🏈 css 與 images
@@ -1100,7 +1100,7 @@ graph TD
 
 * [readme.md 解說](https://github.com/nlhsueh/nlh_tennis_club/blob/static/readme.md)
 
-### 9.4.5 ex05_bootstrap (bs)
+### 9.4.5 ex05 (bs)
 
 > [!NOTE]
 > 🏈 bootstrap
@@ -1115,7 +1115,7 @@ graph TD
 <img src=https://hackmd.io/_uploads/rJ2krF0LT.png width=400>
 
 
-### 9.4.6 ex06_validation (validation)
+### 9.4.6 ex06 (validation)
 > [!NOTE]
 > 🏈 輸入驗證
 > * 預借網球場時，需要寫理由，理由必須大於 10 個字。
@@ -1128,7 +1128,7 @@ graph TD
 
 <img src="https://hackmd.io/_uploads/rkjBGi-Pp.png" width='350'>
 
-### 9.4.7 ex07_img (img)
+### 9.4.7 ex07 (img)
 > [!NOTE]
 > 🏈 多媒體欄位
 > * 在 admin 的介面，直接設定網球場的圖片; 並且之後可以顯示。
@@ -1142,7 +1142,7 @@ graph TD
 
 <img src="https://hackmd.io/_uploads/SyjVqofPp.png" width="300">
 
-### 9.4.8 ex08_bind_user (bind_user)
+### 9.4.8 ex08 (bind_user)
 > [!NOTE]
 > 🏈 把 user 和 member 綁定
 > * Member 資料中增加 user 連接
