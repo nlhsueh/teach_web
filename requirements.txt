@@ -1,0 +1,5 @@
+# 核心網頁框架
+Django==6.0.8
+
+# 影像處理套件 (使用 Django ImageField 時必備)
+Pillow==12.0.0
