@@ -6,6 +6,7 @@
 * [W3school tutorials- Tennis example](https://www.w3schools.com/django/index.php)
 * [Nienlin Hsueh 投影片](https://docs.google.com/presentation/d/1N1aFjWdkCn0jMXeHF6Af6xw18bIkG-UjRMDRGVtN0IE/edit?usp=sharing)
 * [django docs](https://docs.djangoproject.com/en/5.0/)
+* [https://github.com/nlhsueh/nlh_tennis_club.git](https://github.com/nlhsueh/nlh_tennis_club.git)
 
 ## 9.2 網球俱樂部 (I)
 
