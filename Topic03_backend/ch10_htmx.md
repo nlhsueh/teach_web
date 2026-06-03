@@ -18,6 +18,15 @@ HTMX 是一個輕量級的 JavaScript 庫，它讓你能夠直接在 HTML 標籤
 <div id="result">這裡將被替換</div>
 ```
 
+> [!TIP]
+> **💡 完整頁面範例實作**
+> 本範例的完整 HTML/HTMX 靜態範例已放置於 [src/ch10_htmx_demo](file:///Users/nickhsueh/Library/Mobile%20Documents/com~apple~CloudDocs/TEACH/teach_web/Topic03_backend/src/ch10_htmx_demo) 資料夾中。
+> 包含：
+> * 載入 HTMX 並發送請求的主網頁：[index.html](file:///Users/nickhsueh/Library/Mobile%20Documents/com~apple~CloudDocs/TEACH/teach_web/Topic03_backend/src/ch10_htmx_demo/index.html)
+> * 被非同步載入的 HTML 局部片段：[update.html](file:///Users/nickhsueh/Library/Mobile%20Documents/com~apple~CloudDocs/TEACH/teach_web/Topic03_backend/src/ch10_htmx_demo/update.html)
+> * 本地 HTTP 伺服器啟動與執行說明：[README.md](file:///Users/nickhsueh/Library/Mobile%20Documents/com~apple~CloudDocs/TEACH/teach_web/Topic03_backend/src/ch10_htmx_demo/README.md)
+
+
 ---
 
 ## 2. 為什麼 Django 適合搭配 HTMX？
