@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTMX 基礎非同步範例 (Basic Asynchronous Demo)</title>
+    <title>HTMX 基礎非同步範例與教學 (Basic Asynchronous Demo & Guide)</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,12 +14,15 @@
     
     <style>
         :root {
-            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-            --card-bg: rgba(30, 41, 59, 0.7);
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+            --card-bg: rgba(30, 41, 59, 0.4);
             --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --warn-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            --success-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border-color: rgba(255, 255, 255, 0.08);
+            --code-bg: rgba(15, 23, 42, 0.8);
         }
 
         * {
@@ -36,85 +39,108 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            padding: 40px 20px;
             position: relative;
         }
 
         /* Ambient glowing background orbs */
         .glow-orb {
             position: absolute;
-            width: 300px;
-            height: 300px;
+            width: 400px;
+            height: 400px;
             border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.15;
+            filter: blur(120px);
+            opacity: 0.12;
             z-index: 0;
             pointer-events: none;
         }
 
         .orb-1 {
             background: #6366f1;
-            top: 10%;
-            left: 15%;
+            top: 5%;
+            left: 10%;
         }
 
         .orb-2 {
             background: #a855f7;
-            bottom: 10%;
-            right: 15%;
+            bottom: 5%;
+            right: 10%;
         }
 
         .container {
             position: relative;
             z-index: 10;
             width: 100%;
-            max-width: 500px;
-            padding: 20px;
+            max-width: 1100px;
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
         }
 
         .card {
             background: var(--card-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border-color);
             border-radius: 24px;
-            padding: 40px 30px;
+            padding: 35px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
 
         .logo-area {
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             display: flex;
-            justify-content: center;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .logo-tag {
-            font-size: 0.8rem;
-            font-weight: 600;
+            font-size: 0.75rem;
+            font-weight: 700;
             background: var(--primary-gradient);
             padding: 4px 10px;
-            border-radius: 12px;
+            border-radius: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        h1 {
-            font-size: 2rem;
+        .logo-tag.blue {
+            background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+        }
+
+        h1, h2 {
             font-weight: 800;
-            margin-bottom: 12px;
             background: linear-gradient(to right, #fff, #cbd5e1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
         }
 
         p.desc {
             color: var(--text-muted);
             font-size: 0.95rem;
             line-height: 1.6;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
         }
 
         .demo-btn {
@@ -129,6 +155,7 @@
             width: 100%;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+            margin-bottom: 24px;
         }
 
         .demo-btn:hover {
@@ -142,22 +169,132 @@
         }
 
         #result {
-            margin-top: 24px;
-            min-height: 80px;
+            min-height: 100px;
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100%;
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
         }
 
         .placeholder-text {
             color: var(--text-muted);
             font-style: italic;
             font-size: 0.9rem;
-            border: 1px dashed var(--border-color);
+            text-align: center;
+        }
+
+        /* Guide column styles */
+        .guide-section {
+            margin-bottom: 24px;
+        }
+
+        .guide-section h3 {
+            font-size: 1rem;
+            color: #a5b4fc;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .guide-section p, .guide-section li {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .guide-section ul {
+            padding-left: 20px;
+            margin-top: 6px;
+        }
+
+        .warning-box {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .warning-box h4 {
+            color: #fbbf24;
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            background: rgba(255, 255, 255, 0.08);
+            color: #cbd5e1;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.85em;
+        }
+
+        pre {
+            background: var(--code-bg);
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 8px 0;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: #e2e8f0;
+            font-size: 0.85rem;
+        }
+
+        /* Result card CSS styling */
+        .result-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            border-radius: 12px;
+            text-align: left;
             width: 100%;
-            padding: 20px;
-            border-radius: 14px;
+        }
+
+        .result-card.success {
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+        }
+
+        .result-title {
+            font-weight: 600;
+            color: #34d399;
+            font-size: 0.95rem;
+        }
+
+        .result-time {
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        /* Animations */
+        .animate-pop-in {
+            animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.9) translateY(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
         }
     </style>
 </head>
@@ -166,24 +303,81 @@
     <div class="glow-orb orb-2"></div>
 
     <div class="container">
+        <!-- Left: Interactive Demo Card -->
         <div class="card">
             <div class="logo-area">
                 <span class="logo-tag">HTMX</span>
-                <span class="logo-tag" style="background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);">AJAX</span>
+                <span class="logo-tag blue">Single File</span>
             </div>
-            <h1>HTMX 基礎非同步範例</h1>
+            <h1>HTMX 基礎非同步示範</h1>
             <p class="desc">
-                點擊下方按鈕，HTMX 將發送非同步 GET 請求取得 <code>update.html</code> 的內容，並直接替換至下方的區域中（無須重新整理頁面）。
+                點擊下方按鈕，HTMX 將向當前頁面發送 AJAX 請求，並僅選取隱藏的 HTML 片段插入到虛線框內。
             </p>
             
-            <!-- HTMX Button: Fetch update.html and put inside #result -->
-            <button class="demo-btn" hx-get="update.html" hx-target="#result">
-                更新內容
+            <!-- HTMX Button: Fetch index.html but select only #update-content -->
+            <button class="demo-btn" 
+                    hx-get="index.html" 
+                    hx-select="#update-content" 
+                    hx-target="#result"
+                    hx-swap="innerHTML">
+                點此更新內容 (AJAX)
             </button>
             
             <!-- Target container for HTMX response -->
             <div id="result">
-                <div class="placeholder-text">這裡將被替換 (Waiting to be replaced...)</div>
+                <div class="placeholder-text">點擊上方按鈕後，此處內容將被替換。</div>
+            </div>
+        </div>
+
+        <!-- Right: Educational Guide Card -->
+        <div class="card">
+            <h2>💡 教學與運作說明</h2>
+            
+            <!-- Warning Box for CORS -->
+            <div class="warning-box">
+                <h4>⚠️ 瀏覽器安全性警告 (CORS Policy)</h4>
+                <p style="color: #fcd34d; font-size: 0.85rem;">
+                    <b>重要：</b>如果您直接雙擊檔案開啟（網址為 <code>file:///...</code>），點擊按鈕將會無效。這是因為瀏覽器出於安全性限制，禁止本地檔案發送非同步（AJAX）請求。
+                </p>
+            </div>
+
+            <div class="guide-section">
+                <h3>🚀 如何在本地運行此範例？</h3>
+                <p>您必須使用本地 HTTP 伺服器來載入此頁面：</p>
+                <ul>
+                    <li>
+                        <strong>方法一 (推薦)：</strong>在終端機切換至本目錄，執行 <code>python -m http.server 8000</code>，接著瀏覽 <code>http://localhost:8000</code>。
+                    </li>
+                    <li>
+                        <strong>方法二：</strong>使用 VS Code，安裝 <strong>Live Server</strong> 擴充套件，並對本檔案右鍵選擇「Open with Live Server」。
+                    </li>
+                </ul>
+            </div>
+
+            <div class="guide-section">
+                <h3>🔎 這段代碼是如何運作的？</h3>
+                <p>我們在左側的按鈕上宣告了三個 HTMX 屬性：</p>
+                <pre><code>&lt;button hx-get="index.html" 
+        hx-select="#update-content" 
+        hx-target="#result"&gt;</code></pre>
+                <ul>
+                    <li><code>hx-get="index.html"</code>：非同步請求當前這個 HTML 檔案本身。</li>
+                    <li><code>hx-select="#update-content"</code>：指明<strong>只提取</strong>回傳 HTML 中 ID 為 <code>#update-content</code> 的那個元素，其餘捨棄。這使得我們不需要另外準備一個檔案！</li>
+                    <li><code>hx-target="#result"</code>：將提取出來的元素放進 ID 為 <code>#result</code> 的區塊中。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden HTML Fragment (HTMX will extract this element upon AJAX request) -->
+    <div style="display: none;">
+        <div id="update-content">
+            <div class="result-card success animate-pop-in">
+                <div style="font-size: 1.5rem;">✨</div>
+                <div>
+                    <span class="result-title" style="display: block;">非同步載入成功！</span>
+                    <span class="result-time">這是利用 <code>hx-select</code> 從同一個 <code>index.html</code> 中動態提取出來的隱藏區塊。</span>
+                </div>
             </div>
         </div>
     </div>
