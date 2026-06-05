@@ -75,6 +75,8 @@ htmlcov/
 exam/
 
 # 排除教學用巢狀 Git 專案
+Topic04_framework/
 Topic10_cases/
 pdf/
 slide/
+hidden/
