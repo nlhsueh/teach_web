@@ -299,3 +299,5 @@ Django 的優勢在於強大的伺服器端渲染 (Template System)。HTMX 與�
 ## 10.6 實作案例：網球俱樂部
 
 * [readme.md 解說](https://github.com/nlhsueh/nlh_tennis_club/blob/htmx/readme.md)
+
+Deploy in Render.com: [網球俱樂部網站](https://nlh-tennis-club.onrender.com/)
